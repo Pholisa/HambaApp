@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_below="@id/search_bar"
+    android:background="#1600BCD4"
+    tools:context=".MainActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/search_bar"
+        android:background="#6500BCD4">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hamba"
+            android:textSize="30sp"
+            android:layout_marginStart="150dp"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/tv_heading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginTop="60dp"
+            android:text="Dashboard"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:id="@+id/search_lay"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_below="@id/tv_heading"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            android:layout_marginEnd="20dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="4dp"
+            android:background="@drawable/search_background">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/ic_search"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginEnd="10dp"
+                android:hint="e.g. Entertainment"/>
+
+        </LinearLayout>
+
+        <HorizontalScrollView
+            android:id="@+id/hv_options"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_below="@id/search_lay">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/lay_car"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="220dp"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:background="@color/white"
+                    android:padding="5dp">
+
+                    <ImageView
+                        android:id="@+id/iv_car"
+                        android:layout_width="94dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/ic_car" />
+
+                    <TextView
+                        android:layout_width="158dp"
+                        android:layout_height="35dp"
+                        android:layout_below="@+id/tvTravel"
+                        android:gravity="center"
+                        android:text="Travel"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_bed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:background="@color/white"
+                    android:padding="5dp">
+
+                    <ImageView
+                        android:id="@+id/iv_bed"
+                        android:layout_width="94dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/ic_bed" />
+
+                    <TextView
+                        android:layout_width="158dp"
+                        android:layout_height="35dp"
+                        android:layout_below="@+id/tvAccomodation"
+                        android:gravity="center"
+                        android:text="Accomodation"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_entertain"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="420dp"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:background="@color/white"
+                    android:padding="5dp">
+
+                    <ImageView
+                        android:id="@+id/iv_entertain"
+                        android:layout_width="94dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/ic_entertaintment" />
+
+                    <TextView
+                        android:layout_width="158dp"
+                        android:layout_height="35dp"
+                        android:layout_below="@+id/tvEntertainment"
+                        android:gravity="center"
+                        android:text="Entertainment"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_gear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="620dp"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:background="@color/white"
+                    android:padding="5dp">
+
+                    <ImageView
+                        android:id="@+id/iv_gear"
+                        android:layout_width="94dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/ic_gear" />
+
+                    <TextView
+                        android:layout_width="158dp"
+                        android:layout_height="35dp"
+                        android:layout_below="@+id/tvMoreOptions"
+                        android:gravity="center"
+                        android:text="More Options"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+            </RelativeLayout>
+        </HorizontalScrollView>
+
+        <TextView
+            android:id="@+id/tv_heading2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/hv_options"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginEnd="30dp"
+            android:text="Nearby"
+            android:textSize="20sp" />
+
+
+        <LinearLayout
+            android:id="@+id/lay_business"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:orientation="horizontal"
+            android:layout_below="@id/tv_heading2">
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/tvBusinessDisplay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:textSize="16sp"/>
+
+
+
+
+        </LinearLayout>
+    </RelativeLayout>
+    </ScrollView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_navigation"
+        >
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+</androidx.constraintlayout.widget.ConstraintLayout>

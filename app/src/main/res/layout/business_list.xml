@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".BusinessList" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvHeading"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:fontFamily="cursive"
+        android:text="Hamba"
+        android:textAlignment="center"
+        android:textSize="48sp"
+        android:textStyle="italic" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="List Your Business"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:text="------------------------------------------------------------------------------------------------------------------------------------------------"
+                android:textSize="10sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="It is simple to list your enterprise on Hamba"
+                    android:textSize="22sp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginRight="25dp"
+                    android:textStyle="bold"
+                    android:textAlignment="center"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:text=".............................................."
+                        android:textSize="25dp"
+                        android:textStyle="bold"
+                        android:textAlignment="center"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="1 Provide information about your enterprise."
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:layout_marginLeft="40dp"
+                            android:layout_marginRight="40dp"
+                            android:layout_marginTop="10dp"
+                            android:textAlignment="center"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Enter a few fundamental details such as the location of your business."
+                                android:textSize="15sp"
+                                android:layout_marginLeft="40dp"
+                                android:layout_marginRight="40dp"
+                                android:layout_marginTop="10dp"
+                                android:textAlignment="center"/>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="35dp"
+                                    android:text="......................................."
+                                    android:textSize="25dp"
+                                    android:textStyle="bold"
+                                    android:textAlignment="center"/>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="2 Make your enterprise distinct and unique."
+                                        android:textSize="20sp"
+                                        android:textStyle="bold"
+                                        android:layout_marginLeft="40dp"
+                                        android:layout_marginRight="40dp"
+                                        android:layout_marginTop="10dp"
+                                        android:textAlignment="center"/>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:text="Include 5 or more photographs, as well as a title and description."
+                                            android:textSize="15sp"
+                                            android:layout_marginLeft="40dp"
+                                            android:layout_marginRight="40dp"
+                                            android:layout_marginTop="10dp"
+                                            android:textAlignment="center"/>
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:orientation="vertical">
+
+                                            <TextView
+                                                android:layout_width="match_parent"
+                                                android:layout_height="35dp"
+                                                android:text="......................................."
+                                                android:textSize="25dp"
+                                                android:textStyle="bold"
+                                                android:textAlignment="center"/>
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent"
+                                                android:orientation="vertical">
+
+                                                <TextView
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="3 Wrap up and publish your enterprise."
+                                                    android:textSize="20sp"
+                                                    android:textStyle="bold"
+                                                    android:layout_marginLeft="40dp"
+                                                    android:layout_marginRight="40dp"
+                                                    android:layout_marginTop="10dp"
+                                                    android:textAlignment="center"/>
+
+                                                    <TextView
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="wrap_content"
+                                                        android:text="Add your speciaities and an estimate for your services, then publish your listing."
+                                                        android:textSize="15sp"
+                                                        android:layout_marginLeft="40dp"
+                                                        android:layout_marginRight="40dp"
+                                                        android:layout_marginTop="10dp"
+                                                        android:textAlignment="center"/>
+
+                                                        <Button
+                                                            android:id="@+id/btnGetStart"
+                                                            android:layout_width="wrap_content"
+                                                            android:layout_height="50dp"
+                                                            android:backgroundTint="@color/black"
+                                                            android:layout_gravity="center"
+                                                            android:layout_marginTop="20dp"
+                                                            android:text="GET STARTED"
+                                                            android:textSize="20dp"
+                                                            android:textStyle="bold" />
+
+                                            </LinearLayout>
+
+                                        </LinearLayout>
+
+                                    </LinearLayout>
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+   </LinearLayout>
+    </ScrollView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_navigation"
+        >
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

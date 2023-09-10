@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MoreOptions">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#6500BCD4">
+
+
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hamba"
+            android:fontFamily="cursive"
+            android:textSize="30sp"
+            android:layout_marginStart="150dp"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/tv_heading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginTop="60dp"
+            android:text="Dashboard"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:id="@+id/lay_info"
+            android:layout_below="@id/tv_heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="220dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:background="@color/white"
+            android:padding="5dp">
+
+            <ImageView
+                android:id="@+id/iv_info"
+                android:layout_width="94dp"
+                android:layout_height="70dp"
+                android:src="@drawable/ic_info" />
+
+            <TextView
+                android:layout_width="158dp"
+                android:layout_height="35dp"
+                android:layout_below="@+id/iv_info"
+                android:gravity="center"
+                android:text="More Info"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lay_listBusiness"
+            android:layout_below="@id/tv_heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:background="@color/white"
+            android:padding="5dp">
+
+            <ImageView
+                android:id="@+id/iv_listBusiness"
+                android:layout_width="94dp"
+                android:layout_height="70dp"
+                android:src="@drawable/ic_list" />
+
+            <TextView
+                android:layout_width="158dp"
+                android:layout_height="35dp"
+                android:layout_below="@+id/iv_listBusiness"
+                android:gravity="center"
+                android:text="List business"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lay_businessPortal"
+            android:layout_below="@id/lay_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="220dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:background="@color/white"
+            android:padding="5dp">
+
+            <ImageView
+                android:id="@+id/iv_businessPortal"
+                android:layout_width="94dp"
+                android:layout_height="70dp"
+                android:src="@drawable/ic_monitor" />
+
+            <TextView
+                android:layout_width="158dp"
+                android:layout_height="35dp"
+                android:gravity="center"
+                android:text="Business Portal"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lay_settings"
+            android:layout_below="@id/lay_listBusiness"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:background="@color/white"
+            android:padding="5dp">
+
+            <ImageView
+                android:id="@+id/iv_settings"
+                android:layout_width="94dp"
+                android:layout_height="70dp"
+                android:src="@drawable/ic_gear" />
+
+            <TextView
+                android:layout_width="158dp"
+                android:layout_height="35dp"
+                android:gravity="center"
+                android:text="Settings"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_advert1"
+            android:layout_width="391dp"
+            android:layout_height="150dp"
+            android:layout_below="@id/lay_settings"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="33dp"
+            android:layout_marginEnd="0dp"
+            android:src="@drawable/img_ad1" />
+
+        <ImageView
+            android:id="@+id/iv_advert2"
+            android:layout_width="391dp"
+            android:layout_height="150dp"
+            android:layout_below="@id/iv_advert1"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="33dp"
+            android:layout_marginEnd="0dp"
+            android:src="@drawable/img_ad2" />
+
+    </RelativeLayout>
+    </ScrollView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_navigation"
+        >
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_started_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="Welcome to HAMBA by SALTHA!"
+                android:fontFamily="@font/comfortaabold"
+                android:textColor="@color/black"
+                android:textSize="22dp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/tv_started_subtitle" />
+
+            <TextView
+                android:id="@+id/tv_started_subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/comfortaaregular"
+                android:text="Hamba is an authentic South African tourism and leisure application designed to provide the best experience of South Africa, If you already have an account log in, if you don't have an account please sign up"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                android:textStyle="italic"
+                app:layout_constraintStart_toStartOf="@id/img_hamba_logo"
+                app:layout_constraintTop_toBottomOf="@id/tv_started_title"
+                tools:ignore="TextSizeCheck" />
+
+            <ImageView
+                android:id="@+id/img_hamba_logo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="400dp"
+                android:padding="20dp">
+
+                <Button
+                    android:layout_width="350dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="30dp"
+                    android:text="Login"
+                    android:backgroundTint="@color/black"
+                    android:id="@+id/btnLogin"
+                    android:textSize="18sp"
+                    app:cornerRadius = "30dp"/>
+
+                <Button
+                    android:layout_width="350dp"
+                    android:layout_height="50dp"
+                    android:text="Sign Up"
+                    android:backgroundTint="@color/black"
+                    android:id="@+id/btnSignUp"
+                    android:textSize="18sp"
+                    app:cornerRadius = "30dp"/>
+
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

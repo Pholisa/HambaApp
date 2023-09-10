@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blue"
+    tools:context=".Login">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="430dp"
+                android:padding="20dp">
+
+                <EditText
+                    android:layout_width="350dp"
+                    android:layout_height="60dp"
+                    android:id="@+id/edLoginEmailAddress"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/theborder"
+                    android:padding="8dp"
+                    android:hint="Email Address"
+                    android:drawableLeft="@drawable/baseline_person_24"
+                    android:drawablePadding="8dp"
+                    android:textColor="@color/grey"/>
+
+                <EditText
+                    android:layout_width="350dp"
+                    android:layout_height="60dp"
+                    android:id="@+id/edLoginPassword"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/theborder"
+                    android:padding="8dp"
+                    android:inputType="textPassword"
+                    android:hint="Password"
+                    android:drawableLeft="@drawable/baseline_lock_24"
+                    android:drawablePadding="8dp"
+                    android:textColor="@color/grey"/>
+
+
+                <Button
+                    android:layout_width="350dp"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="30dp"
+                    android:text="Login"
+                    android:backgroundTint="@color/white"
+                    android:textColor="@color/black"
+                    android:id="@+id/btnLogin"
+                    android:textSize="18sp"
+                    app:cornerRadius = "30dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvForgot"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="6dp"
+                    android:padding="8dp"
+                    android:text="Forgot Password?"
+                    android:textColor="@color/grey"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvSignupRedirectText"
+                    android:text="Not yet registered? Signup"
+                    android:layout_gravity="center"
+                    android:padding="8dp"
+                    android:layout_marginTop="14dp"
+                    android:textSize="18sp"
+                    android:textColor="@color/grey"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
+

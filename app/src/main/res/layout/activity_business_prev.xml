@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity" >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvHeading"
+        android:layout_width="match_parent"
+        android:layout_height="71dp"
+        android:fontFamily="cursive"
+        android:text="Hamba"
+        android:textAlignment="center"
+        android:textSize="48sp"
+        android:textStyle="italic" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="580dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="List Your Business"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tvCompanyName"
+                    android:layout_width="226dp"
+                    android:layout_height="45dp"
+                    android:text="Company Name"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tvCompanyNameShow"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:hint="Company Name"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tvRegisterNumber"
+                    android:layout_width="138dp"
+                    android:layout_height="45dp"
+                    android:text="Register No."
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tvRegisterNumberShow"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:hint="Register No."
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tvEmailAddress"
+                    android:layout_width="138dp"
+                    android:layout_height="45dp"
+                    android:text="Email Address"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tvEmailAddressShow"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:hint="Email Address"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tvTelephoneNumber"
+                    android:layout_width="138dp"
+                    android:layout_height="45dp"
+                    android:text="Telephone No."
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tvTelephoneNumberShow"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:hint="Telephone No."
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tvBusinessType"
+                    android:layout_width="138dp"
+                    android:layout_height="45dp"
+                    android:text="Business Type"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tvBusinessTypeShow"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:hint="Business Type"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tvBusinessAddress"
+                    android:layout_width="219dp"
+                    android:layout_height="45dp"
+                    android:text="Business Address"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tvBusinessAddressShow"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:hint="Business Address"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tvBusinessCategory"
+                    android:layout_width="250dp"
+                    android:layout_height="45dp"
+                    android:text="Business Category"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tvBusinessCategoryShow"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:hint="Business Category"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tvTitle"
+                    android:layout_width="138dp"
+                    android:layout_height="45dp"
+                    android:text="Title"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tvTitleShow"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:hint="Title"
+                    android:textSize="20sp" />
+
+
+                <TextView
+                    android:id="@+id/tvBusinessSummary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Summary"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tvBusinessSummaryShow"
+                    android:layout_width="match_parent"
+                    android:layout_height="155dp"
+                    android:hint="Summary"
+                    android:textSize="20sp" />
+
+                <Button
+                    android:layout_width="200dp"
+                    android:layout_height="60dp"
+                    android:text="Done"
+                    android:backgroundTint="@color/black"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:orientation="vertical" />
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_navigation"
+        >
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

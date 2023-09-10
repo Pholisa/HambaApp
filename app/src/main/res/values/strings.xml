@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">HambaApp</string>
+    <string name="first_name">first Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="first_name1">First Name</string>
+    <string name="email_address">Email Address</string>
+    <string name="title_activity_maps">MapsActivity</string>
+</resources>

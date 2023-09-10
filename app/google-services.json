@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "381997713254",
+    "project_id": "hambaapp-b4826",
+    "storage_bucket": "hambaapp-b4826.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:381997713254:android:8623964dbf0a08f0bf2aa7",
+        "android_client_info": {
+          "package_name": "com.example.hambaapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBS9vZ0cIgbnFMFLn68cMe_G8qPQWU5NQw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

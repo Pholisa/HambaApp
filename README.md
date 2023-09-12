@@ -33,7 +33,8 @@ Juliet: Your role is to help me with retrieving data from the database and prese
 
 Tebza: You can do the map, integrating the Maps API into our app.
 
-Lisa: tbc
+Lisa: You can assist Tebza with the frontend screens, which includes navigation.
+
 
 To view the information on the data, you need to use the CTRLALTELITE details. After changing the database, signing up doesn't work. I have been trying to figure out why.
 

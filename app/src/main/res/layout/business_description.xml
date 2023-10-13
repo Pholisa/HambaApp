@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/hamba_background"
     tools:context=".MainActivity" >
 
     <LinearLayout
@@ -16,12 +17,14 @@
     <TextView
         android:id="@+id/tvHeading"
         android:layout_width="match_parent"
-        android:layout_height="71dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="10dp"
         android:fontFamily="cursive"
         android:text="Hamba"
+        android:textStyle="bold"
         android:textAlignment="center"
-        android:textSize="48sp"
-        android:textStyle="italic" />
+        android:textColor="@color/white"
+        android:textSize="50sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -32,8 +35,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="List Your Business"
-            android:textSize="20sp" />
-
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="25sp" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -43,10 +47,12 @@
                 android:id="@+id/ETBusTitle"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="60dp"
                 android:layout_marginLeft="35dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="25dp"
                 android:layout_marginRight="35dp"
+                android:background="@drawable/theborder"
+                android:textColor="@color/black"
                 android:hint="Title"
                 app:boxStrokeColor="@color/white"/>
 
@@ -54,13 +60,14 @@
 
 
             <!--needs to be fixed the text is not written in paragraph form-->
+            <!--Will come back to this to limit characters: https://www.tutorialspoint.com/how-to-use-inputfilter-to-limit-characters-in-an-edittext-in-android -->
             <EditText
                 android:id="@+id/ETBusDescrip"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="160dp"
                 android:layout_marginLeft="35dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="45dp"
                 android:layout_marginRight="35dp"
                 android:hint="Description of the business.\nMax Character 2500"
                 android:textColorHint="@color/black"

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/hamba_background"
     tools:context=".MoreOptions">
 
     <ScrollView
@@ -12,20 +13,17 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#6500BCD4">
-
-
+        android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/tv_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hamba"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="cursive"
-            android:textSize="30sp"
-            android:layout_marginStart="150dp"
-            android:layout_marginTop="10dp"/>
+            android:text="Hamba"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="50sp" />
 
         <TextView
             android:id="@+id/tv_heading"
@@ -34,8 +32,9 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="30dp"
             android:layout_marginTop="60dp"
+            android:textColor="@color/black"
             android:text="Dashboard"
-            android:textSize="20sp" />
+            android:textSize="30sp" />
 
         <LinearLayout
             android:id="@+id/lay_info"
@@ -46,7 +45,7 @@
             android:layout_marginTop="20dp"
             android:gravity="center"
             android:orientation="vertical"
-            android:background="@color/white"
+            android:background="@drawable/theborder"
             android:padding="5dp">
 
             <ImageView
@@ -74,7 +73,7 @@
             android:layout_marginTop="20dp"
             android:gravity="center"
             android:orientation="vertical"
-            android:background="@color/white"
+            android:background="@drawable/theborder"
             android:padding="5dp">
 
             <ImageView
@@ -102,7 +101,7 @@
             android:layout_marginTop="20dp"
             android:gravity="center"
             android:orientation="vertical"
-            android:background="@color/white"
+            android:background="@drawable/theborder"
             android:padding="5dp">
 
             <ImageView
@@ -129,7 +128,7 @@
             android:layout_marginTop="20dp"
             android:gravity="center"
             android:orientation="vertical"
-            android:background="@color/white"
+            android:background="@drawable/theborder"
             android:padding="5dp">
 
             <ImageView

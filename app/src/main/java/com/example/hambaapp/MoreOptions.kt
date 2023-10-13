@@ -16,6 +16,7 @@ class MoreOptions : AppCompatActivity() {
 
     lateinit var infoImageView: ImageView
     lateinit var listImageView: ImageView
+    lateinit var portalImageView: ImageView
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,6 +26,7 @@ class MoreOptions : AppCompatActivity() {
         navigationBar()
         infoImageView = findViewById(R.id.iv_info)
         listImageView = findViewById(R.id.iv_listBusiness)
+        portalImageView = findViewById(R.id.iv_businessPortal)
 
 
 
@@ -39,6 +41,14 @@ class MoreOptions : AppCompatActivity() {
         //Allows user to click image view
         //Will take user to the Business Description screen after clicking
         listImageView.setOnClickListener {
+            val intent = Intent(this, BusinessList::class.java)
+            startActivity(intent)
+
+        }
+
+        //Allows user to click image view
+        //Will take user to the Business Portal screen after clicking
+        portalImageView.setOnClickListener {
             val intent = Intent(this, BusinessList::class.java)
             startActivity(intent)
 

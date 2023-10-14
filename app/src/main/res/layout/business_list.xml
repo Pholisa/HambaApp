@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/hamba_background"
     android:orientation="vertical"
     tools:context=".BusinessList" >
 
@@ -20,18 +21,23 @@
     <TextView
         android:id="@+id/tvHeading"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="10dp"
         android:fontFamily="cursive"
         android:text="Hamba"
+        android:textStyle="bold"
         android:textAlignment="center"
-        android:textSize="48sp"
-        android:textStyle="italic" />
+        android:textColor="@color/white"
+        android:textSize="50sp"/>
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="56dp"
+            android:layout_marginStart="10dp"
             android:text="List Your Business"
-            android:textSize="20sp" />
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="25sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -41,7 +47,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
-                android:text="------------------------------------------------------------------------------------------------------------------------------------------------"
+                android:textColor="@color/white"
+                android:text="--------------------------------------------------------------------------------------------------------------------------------------------------------"
                 android:textSize="10sp" />
 
             <LinearLayout
@@ -53,7 +60,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="It is simple to list your enterprise on Hamba"
-                    android:textSize="22sp"
+                    android:textSize="25sp"
+                    android:textColor="@color/white"
                     android:layout_marginLeft="25dp"
                     android:layout_marginRight="25dp"
                     android:textStyle="bold"
@@ -70,6 +78,7 @@
                         android:text=".............................................."
                         android:textSize="25dp"
                         android:textStyle="bold"
+                        android:textColor="@color/white"
                         android:textAlignment="center"/>
 
                     <LinearLayout
@@ -83,6 +92,7 @@
                             android:text="1 Provide information about your enterprise."
                             android:textSize="20sp"
                             android:textStyle="bold"
+                            android:textColor="@color/white"
                             android:layout_marginLeft="40dp"
                             android:layout_marginRight="40dp"
                             android:layout_marginTop="10dp"
@@ -97,7 +107,8 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="Enter a few fundamental details such as the location of your business."
-                                android:textSize="15sp"
+                                android:textSize="16sp"
+                                android:textColor="@color/black"
                                 android:layout_marginLeft="40dp"
                                 android:layout_marginRight="40dp"
                                 android:layout_marginTop="10dp"
@@ -114,6 +125,7 @@
                                     android:text="......................................."
                                     android:textSize="25dp"
                                     android:textStyle="bold"
+                                    android:textColor="@color/white"
                                     android:textAlignment="center"/>
 
                                 <LinearLayout
@@ -127,6 +139,7 @@
                                         android:text="2 Make your enterprise distinct and unique."
                                         android:textSize="20sp"
                                         android:textStyle="bold"
+                                        android:textColor="@color/white"
                                         android:layout_marginLeft="40dp"
                                         android:layout_marginRight="40dp"
                                         android:layout_marginTop="10dp"
@@ -141,7 +154,8 @@
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
                                             android:text="Include 5 or more photographs, as well as a title and description."
-                                            android:textSize="15sp"
+                                            android:textSize="16sp"
+                                            android:textColor="@color/black"
                                             android:layout_marginLeft="40dp"
                                             android:layout_marginRight="40dp"
                                             android:layout_marginTop="10dp"
@@ -158,6 +172,7 @@
                                                 android:text="......................................."
                                                 android:textSize="25dp"
                                                 android:textStyle="bold"
+                                                android:textColor="@color/white"
                                                 android:textAlignment="center"/>
 
                                             <LinearLayout
@@ -174,13 +189,15 @@
                                                     android:layout_marginLeft="40dp"
                                                     android:layout_marginRight="40dp"
                                                     android:layout_marginTop="10dp"
+                                                    android:textColor="@color/white"
                                                     android:textAlignment="center"/>
 
                                                     <TextView
                                                         android:layout_width="match_parent"
                                                         android:layout_height="wrap_content"
                                                         android:text="Add your speciaities and an estimate for your services, then publish your listing."
-                                                        android:textSize="15sp"
+                                                        android:textSize="16sp"
+                                                        android:textColor="@color/black"
                                                         android:layout_marginLeft="40dp"
                                                         android:layout_marginRight="40dp"
                                                         android:layout_marginTop="10dp"

@@ -5,4 +5,6 @@
     <string name="first_name1">First Name</string>
     <string name="email_address">Email Address</string>
     <string name="title_activity_maps">MapsActivity</string>
+    <string name="business_username">Display user Name</string>
+    <string name="business_email">Display user Email</string>
 </resources>

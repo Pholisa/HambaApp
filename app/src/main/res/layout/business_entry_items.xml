@@ -7,7 +7,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
-
+    <!--Is not a screen -->
+    <!-- This cardview will be displayed in the recycler view under Nearby in the Dashboard screen -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -77,6 +78,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
+                        android:id="@+id/btn_moreInfo"
                         android:text="More Info"
                         style="?attr/borderlessButtonStyle"
                         />

@@ -94,9 +94,9 @@ class BusinessInfo : AppCompatActivity() {
             myReference.push().setValue(type)
             myReference.push().setValue(address)
             myReference.push().setValue(category)*/
-            database = FirebaseDatabase.getInstance().getReference("Business Information")
+            //database = FirebaseDatabase.getInstance().getReference("Business Information")
             val Info = Information(companyName, registerNumber, emailAddress, telephoneNumber, businessType,businessAddress,businessCategory)
-            database.child(userID!!).setValue(Info).addOnSuccessListener {
+            myReference.setValue(Info).addOnSuccessListener {
                 Toast.makeText(this, "Information Saved", Toast.LENGTH_SHORT).show()
             }
         }

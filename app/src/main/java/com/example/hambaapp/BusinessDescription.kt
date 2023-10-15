@@ -54,6 +54,12 @@ class BusinessDescription : AppCompatActivity() {
             ValidateData()
 
         }
+
+        binding.btnBusDescNext.setOnClickListener {
+            ValidateData()
+            val intentNext = Intent(this, BusinessPrev::class.java)
+            startActivity(intentNext)
+        }
         navigationBar()
 
 
@@ -82,9 +88,9 @@ class BusinessDescription : AppCompatActivity() {
             myReference.push().setValue(title)
             myReference.push().setValue(UploadImage())
             myReference.push().setValue(description)*/
-            database = FirebaseDatabase.getInstance().getReference("Business Description")
+            //database = FirebaseDatabase.getInstance().getReference("Business Description")
             val description = BusinessDetails(title, summary)
-            database.child(userID!!).setValue(description).addOnSuccessListener {
+            myReference.setValue(description).addOnSuccessListener {
                 Toast.makeText(this, "Information Saved", Toast.LENGTH_SHORT).show()
             }
         }

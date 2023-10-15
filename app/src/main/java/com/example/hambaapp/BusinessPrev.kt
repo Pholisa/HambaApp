@@ -51,23 +51,31 @@ class BusinessPrev : AppCompatActivity() {
         emailAddress = findViewById(R.id.tvEmailAddressShow)
         telephoneNumber = findViewById(R.id.tvTelephoneNumberShow)
         businessType = findViewById(R.id.tvBusinessTypeShow)
-        businessAddress = findViewById(R.id.tvEmailAddressShow)
+        businessAddress = findViewById(R.id.tvBusinessAddressShow)
         businessCategory = findViewById(R.id.tvBusinessCategoryShow)
         title = findViewById(R.id.tvTitleShow)
         businessSummary = findViewById(R.id.tvBusinessSummaryShow)
 
         database = Firebase.database.reference
         val userID = FirebaseAuth.getInstance().currentUser?.uid
-        database.child("Business Information").child("Business Description").child(userID!!).get().addOnSuccessListener {
-            val company = it.child("companyName").value.toString()
-            val regNumber = it.child("registerNumber").value.toString()
-            val emailAd = it.child("emailAddress").value.toString()
-            val telephoneNum = it.child("telephoneNumber").value.toString()
-            val type = it.child("businessType").value.toString()
-            val businessAd = it.child("businessAddress").value.toString()
-            val businessCat = it.child("businessCategory").value.toString()
-            val theTitle = it.child("title").value.toString()
-            val businessSum = it.child("businessSummary").value.toString()
+        database.child("users").child(userID!!).get().addOnSuccessListener {
+            val company = it.child("Business Information").child("companyName").value.toString()
+            val regNumber =
+                it.child("Business Information").child("registerNumber").child("").value.toString()
+            val emailAd =
+                it.child("Business Information").child("emailAddress").child("").value.toString()
+            val telephoneNum =
+                it.child("Business Information").child("telephoneNumber").child("").value.toString()
+            val type =
+                it.child("Business Information").child("businessType").child("").value.toString()
+            val businessAd =
+                it.child("Business Information").child("businessAddress").child("").value.toString()
+            val businessCat =
+                it.child("Business Information").child("businessCategory").child("").value.toString()
+            val theTitle =
+                it.child("Business Description").child("title").child("").value.toString()
+            val businessSum =
+                it.child("Business Description").child("businessSummary").child("").value.toString()
 
             companyName.text = company
             registerNumber.text = regNumber
@@ -80,13 +88,13 @@ class BusinessPrev : AppCompatActivity() {
             businessSummary.text = businessSum
 
         }.addOnFailureListener {
-            Toast.makeText(this,it.toString() , Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, it.toString(), Toast.LENGTH_SHORT).show()
 
         }
+    }
 
 
-
-        // Read from the database
+        /*// Read from the database
         myReference.addValueEventListener(object: ValueEventListener {
 
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -110,7 +118,7 @@ class BusinessPrev : AppCompatActivity() {
         }
         navigationBar()
 
-    }
+    }*/
 
 
 

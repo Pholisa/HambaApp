@@ -36,9 +36,8 @@ class Register : AppCompatActivity() {
             val username = binding.edEmailAddress.text.toString()
             val password = binding.edPassword.text.toString()
             val confirmPassword = binding.edPasswordConfirm.text.toString()
-
-            val FullName = binding.edFullName.text.toString()
-            val PhoneNumber = binding.edPhoneNumber.text.toString()
+            val name = binding.edFullName.text.toString()
+            val number = binding.edPhoneNumber.text.toString()
 
 
             if(username.isNotEmpty() && password.isNotEmpty() && confirmPassword.isNotEmpty())
@@ -48,20 +47,22 @@ class Register : AppCompatActivity() {
                     firebaseAuthentication.createUserWithEmailAndPassword(username, password).addOnCompleteListener {
                         if(it.isSuccessful)
                         {
-
-
-                            val fullName = findViewById<EditText>(R.id.edFullName)
+                            /*val fullName = findViewById<EditText>(R.id.edFullName)
                             var name = fullName.text.toString().trim()
                             val phoneNumber = findViewById<EditText>(R.id.edPhoneNumber)
                             var number = phoneNumber.text.toString().trim()
                             myReference.push().setValue(name)
-                            myReference.push().setValue(number).addOnSuccessListener {
+                            myReference.push().setValue(number)*/
 
-                               Toast.makeText(this, "Information Saved", Toast.LENGTH_SHORT).show()
+                            //database = FirebaseDatabase.getInstance().getReference("Users")
+                            val User = User(name, number)
+                            myReference.setValue(User).addOnSuccessListener {
+                                Toast.makeText(this, "Information Saved", Toast.LENGTH_SHORT).show()
 
+                                val intent = Intent(this, Login::class.java)
+                                startActivity(intent)
                             }
-                            val intent = Intent(this, Login::class.java)
-                            startActivity(intent)
+
                         }
                         else
                         {
@@ -83,8 +84,6 @@ class Register : AppCompatActivity() {
             val loginIntent = Intent(this, Login::class.java)
             startActivity(loginIntent)
         }
-
-
+    }
 
     }
-}

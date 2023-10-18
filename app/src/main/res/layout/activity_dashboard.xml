@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_below="@id/search_bar"
-    android:background="#1600BCD4"
+    android:background="@drawable/hamba_background"
     tools:context=".MainActivity">
 
     <ScrollView
@@ -16,27 +16,30 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/search_bar"
-        android:background="#6500BCD4">
+        android:id="@+id/search_bar">
 
         <TextView
             android:id="@+id/tv_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="cursive"
             android:text="Hamba"
-            android:textSize="30sp"
-            android:layout_marginStart="150dp"
-            android:layout_marginTop="10dp"/>
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="50sp"/>
 
         <TextView
             android:id="@+id/tv_heading"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="56dp"
             android:layout_marginStart="10dp"
-            android:layout_marginEnd="30dp"
             android:layout_marginTop="60dp"
             android:text="Dashboard"
-            android:textSize="20sp" />
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="25sp" />
 
         <LinearLayout
             android:id="@+id/search_lay"
@@ -85,7 +88,7 @@
                     android:layout_marginTop="20dp"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:background="@color/white"
+                    android:background="@drawable/theborder"
                     android:padding="5dp">
 
                     <ImageView
@@ -112,7 +115,7 @@
                     android:layout_marginTop="20dp"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:background="@color/white"
+                    android:background="@drawable/theborder"
                     android:padding="5dp">
 
                     <ImageView
@@ -139,7 +142,7 @@
                     android:layout_marginTop="20dp"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:background="@color/white"
+                    android:background="@drawable/theborder"
                     android:padding="5dp">
 
                     <ImageView
@@ -166,7 +169,7 @@
                     android:layout_marginTop="20dp"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:background="@color/white"
+                    android:background="@drawable/theborder"
                     android:padding="5dp">
 
                     <ImageView
@@ -196,8 +199,10 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="60dp"
             android:layout_marginEnd="30dp"
+            android:textStyle="bold"
             android:text="Nearby"
-            android:textSize="20sp" />
+            android:textColor="@color/white"
+            android:textSize="25sp" />
 
 
         <LinearLayout

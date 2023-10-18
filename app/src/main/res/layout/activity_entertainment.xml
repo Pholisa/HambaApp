@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/hamba_background"
     tools:context=".Entertainment">
 
     <ScrollView
@@ -13,28 +14,30 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/rLay_entertain"
-        android:background="#6500BCD4">
+        android:id="@+id/rLay_entertain">
 
         <TextView
             android:id="@+id/tv_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hamba"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="cursive"
-            android:textSize="30sp"
-            android:layout_marginStart="150dp"
-            android:layout_marginTop="10dp"/>
+            android:text="Hamba"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="50sp"/>
 
         <TextView
             android:id="@+id/tv_heading"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="56dp"
             android:layout_marginStart="10dp"
-            android:layout_marginEnd="30dp"
             android:layout_marginTop="60dp"
             android:text="Entertainment"
-            android:textSize="20sp" />
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="25sp" />
 
         <TextView
             android:id="@+id/tv_busTitle"
@@ -44,6 +47,8 @@
             android:layout_marginStart="60dp"
             android:layout_marginEnd="30dp"
             android:layout_marginTop="30dp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
             android:text="Display business Title"
             android:textSize="30sp" />
 
@@ -76,6 +81,8 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="30dp"
             android:layout_marginTop="30dp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
             android:text="Overview"
             android:textSize="30sp" />
 
@@ -87,8 +94,10 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="30dp"
             android:layout_marginTop="10dp"
+            android:textStyle="italic"
+            android:textColor="@color/white"
             android:text="Retrieve business description and display here"
-            android:textSize="25sp" />
+            android:textSize="20sp" />
 
     </RelativeLayout>
     </ScrollView>

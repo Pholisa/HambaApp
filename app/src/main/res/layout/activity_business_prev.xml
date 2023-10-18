@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/hamba_background"
     tools:context=".MainActivity" >
 
 
@@ -19,9 +20,10 @@
         android:layout_height="71dp"
         android:fontFamily="cursive"
         android:text="Hamba"
+        android:textColor="@color/white"
+        android:textStyle="bold"
         android:textAlignment="center"
-        android:textSize="48sp"
-        android:textStyle="italic" />
+        android:textSize="50sp" />
 
         <ScrollView
             android:layout_width="match_parent"
@@ -34,14 +36,18 @@
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="56dp"
+                    android:layout_marginStart="10dp"
                     android:text="List Your Business"
-                    android:textSize="20sp" />
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:textSize="25sp" />
 
                 <TextView
                     android:id="@+id/tvCompanyName"
                     android:layout_width="226dp"
                     android:layout_height="45dp"
+                    android:textColor="@color/black"
                     android:text="Company Name"
                     android:textSize="20sp" />
 
@@ -49,6 +55,7 @@
                     android:id="@+id/tvCompanyNameShow"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
+                    android:textColor="@color/white"
                     android:hint="Company Name"
                     android:textSize="20sp" />
 
@@ -56,13 +63,15 @@
                     android:id="@+id/tvRegisterNumber"
                     android:layout_width="138dp"
                     android:layout_height="45dp"
-                    android:text="Register No."
+                    android:textColor="@color/black"
+                    android:text="Register No.:"
                     android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/tvRegisterNumberShow"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
+                    android:textColor="@color/white"
                     android:hint="Register No."
                     android:textSize="20sp" />
 
@@ -70,7 +79,8 @@
                     android:id="@+id/tvEmailAddress"
                     android:layout_width="138dp"
                     android:layout_height="45dp"
-                    android:text="Email Address"
+                    android:textColor="@color/black"
+                    android:text="Email Address:"
                     android:textSize="20sp" />
 
                 <TextView
@@ -78,19 +88,22 @@
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:hint="Email Address"
+                    android:textColor="@color/white"
                     android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/tvTelephoneNumber"
                     android:layout_width="138dp"
                     android:layout_height="45dp"
-                    android:text="Telephone No."
+                    android:textColor="@color/black"
+                    android:text="Telephone No.:"
                     android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/tvTelephoneNumberShow"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
+                    android:textColor="@color/white"
                     android:hint="Telephone No."
                     android:textSize="20sp" />
 
@@ -98,13 +111,15 @@
                     android:id="@+id/tvBusinessType"
                     android:layout_width="138dp"
                     android:layout_height="45dp"
-                    android:text="Business Type"
+                    android:textColor="@color/black"
+                    android:text="Business Type:"
                     android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/tvBusinessTypeShow"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
+                    android:textColor="@color/white"
                     android:hint="Business Type"
                     android:textSize="20sp" />
 
@@ -112,27 +127,31 @@
                     android:id="@+id/tvBusinessAddress"
                     android:layout_width="219dp"
                     android:layout_height="45dp"
-                    android:text="Business Address"
+                    android:textColor="@color/black"
+                    android:text="Business Address:"
                     android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/tvBusinessAddressShow"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
-                    android:hint="Business Address"
+                    android:textColor="@color/white"
+                    android:hint="Business Address:"
                     android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/tvBusinessCategory"
                     android:layout_width="250dp"
                     android:layout_height="45dp"
-                    android:text="Business Category"
+                    android:textColor="@color/black"
+                    android:text="Business Category:"
                     android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/tvBusinessCategoryShow"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
+                    android:textColor="@color/white"
                     android:hint="Business Category"
                     android:textSize="20sp" />
 
@@ -140,13 +159,15 @@
                     android:id="@+id/tvTitle"
                     android:layout_width="138dp"
                     android:layout_height="45dp"
-                    android:text="Title"
+                    android:textColor="@color/black"
+                    android:text="Title:"
                     android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/tvTitleShow"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
+                    android:textColor="@color/white"
                     android:hint="Title"
                     android:textSize="20sp" />
 
@@ -155,21 +176,25 @@
                     android:id="@+id/tvBusinessSummary"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Summary"
+                    android:textColor="@color/black"
+                    android:text="Summary:"
                     android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/tvBusinessSummaryShow"
                     android:layout_width="match_parent"
                     android:layout_height="155dp"
+                    android:textColor="@color/white"
                     android:hint="Summary"
                     android:textSize="20sp" />
 
                 <Button
                     android:layout_width="200dp"
                     android:layout_height="60dp"
+                    android:layout_marginStart="100dp"
                     android:text="Done"
-                    android:backgroundTint="@color/black"/>
+                    android:textColor="@color/black"
+                    android:backgroundTint="@color/white"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"

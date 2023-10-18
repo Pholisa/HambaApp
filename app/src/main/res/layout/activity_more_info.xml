@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/hamba_background"
     tools:context=".MoreInfo">
 
     <ScrollView
@@ -12,28 +13,30 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#6500BCD4">
+        android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/tv_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hamba"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginTop="10dp"
         android:fontFamily="cursive"
-        android:textSize="30sp"
-        android:layout_marginStart="150dp"
-        android:layout_marginTop="10dp"/>
+        android:text="Hamba"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="50sp"/>
 
     <TextView
         android:id="@+id/tv_heading"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="56dp"
         android:layout_marginStart="10dp"
-        android:layout_marginEnd="30dp"
         android:layout_marginTop="60dp"
         android:text="More Info"
-        android:textSize="20sp" />
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="25sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -48,6 +51,9 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="30dp"
             android:layout_marginTop="15dp"
+            android:textStyle="italic"
+            android:textColor="@color/black"
+            android:fontFamily="@font/comfortaabold"
             android:text="WHO ARE WE"
             android:textSize="30sp" />
 
@@ -58,6 +64,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginTop="15dp"
+            android:textColor="@color/white"
             android:text="SALTHA (South Aftrican Leisure, Tourism, and Hospitality Association) was founded to provide a secure space in the economy for small rising tourism operators."
             android:textSize="18sp" />
 
@@ -68,6 +75,8 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="30dp"
             android:layout_marginTop="15dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/comfortaabold"
             android:text="OUR VISION"
             android:textSize="30sp" />
 
@@ -80,6 +89,7 @@
             android:layout_marginTop="15dp"
             android:text="To be the leading voice of tourism leisure and hospitality for small, medium and large enterprices in South Africa.
 "
+            android:textColor="@color/white"
             android:textSize="18sp"
             tools:ignore="HardcodedText" />
 
@@ -90,6 +100,8 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="30dp"
             android:layout_marginTop="15dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/comfortaabold"
             android:text="OUR MISSION"
             android:textSize="30sp" />
 
@@ -102,6 +114,7 @@
             android:layout_marginTop="15dp"
             android:text="Aims to develop the leisure and tourism in our country, promotes to protect members rights, lobby for a conductive atmosphere, growth and development of professional small tourism operators."
             android:textSize="20sp"
+            android:textColor="@color/white"
             tools:ignore="HardcodedText" />
 
         <TextView
@@ -111,6 +124,8 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="30dp"
             android:layout_marginTop="15dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/comfortaabold"
             android:text="TALK TO US"
             android:textSize="30sp" />
 
@@ -121,6 +136,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="30dp"
             android:layout_marginTop="5dp"
+            android:textColor="@color/white"
             android:text="Contact person for SALTHA:"
             android:textSize="20sp" />
         <TextView
@@ -130,6 +146,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="30dp"
             android:layout_marginTop="5dp"
+            android:textColor="@color/white"
             android:text="Mr Richard Zulu"
             android:textSize="20sp" />
         <TextView
@@ -139,6 +156,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="30dp"
             android:layout_marginTop="5dp"
+            android:textColor="@color/white"
             android:text="Cell: 083 790 0875"
             android:textSize="20sp" />
         <TextView
@@ -148,6 +166,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="30dp"
             android:layout_marginTop="5dp"
+            android:textColor="@color/white"
             android:text="Email: info.saltha@gmail.com"
             android:textSize="20sp" />
 
@@ -158,6 +177,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="30dp"
             android:layout_marginTop="105dp"
+            android:textColor="@color/white"
             android:text="This was proudly designed and developed by:"
             android:textSize="18sp"
             tools:ignore="HardcodedText" />
@@ -169,6 +189,7 @@
             android:layout_marginStart="130dp"
             android:layout_marginEnd="30dp"
             android:layout_marginTop="15dp"
+            android:textColor="@color/white"
             android:text="CTRL ALT ELITE"
             android:textSize="18sp" />
     </LinearLayout>

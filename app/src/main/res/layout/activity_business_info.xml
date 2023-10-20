@@ -74,6 +74,7 @@
                             android:id="@+id/ETBusCompRegNo"
                             android:layout_width="match_parent"
                             android:layout_height="60dp"
+                            android:inputType = "number"
                             android:layout_marginLeft="35dp"
                             android:layout_marginTop="15dp"
                             android:layout_marginRight="35dp"
@@ -85,7 +86,7 @@
                             android:textColor="@color/black"
                             android:ems="10"
                             android:hint="Company Reg. No."
-                            android:inputType="textPersonName"/>
+                            />
 
                         <EditText
                             android:id="@+id/ETBusEmailAd"
@@ -116,6 +117,7 @@
                             android:layout_marginEnd="10dp"
                             android:background="@drawable/theborder"
                             android:padding="8dp"
+                            android:inputType = "number"
                             android:drawablePadding="8dp"
                             android:textColor="@color/black"
                             android:ems="10"

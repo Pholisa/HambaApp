@@ -9,3 +9,4 @@ class AccomodationPage : AppCompatActivity() {
         setContentView(R.layout.activity_accomodation_page)
     }
 }
+////

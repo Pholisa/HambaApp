@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/hamba_background"
+    tools:context=".RateUs">
+
+    <TextView
+        android:id="@+id/hamba_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="cursive"
+        android:text="Hamba"
+        android:textSize="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023" />
+
+    <TextView
+        android:id="@+id/rateus_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-thin"
+        android:text="Rate Us"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.092"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.109" />
+
+    <ImageView
+        android:id="@+id/rateus_image"
+        android:layout_width="350dp"
+        android:layout_height="300dp"
+        android:src="@drawable/rateuspic"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <TextView
+        android:id="@+id/tvLikeHamba"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:text="Do You like Hamba?"
+        android:textAllCaps="true"
+        android:textColor="@color/lightgrey"
+        android:textSize="40dp"
+        android:textStyle="bold"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="223dp" />
+
+    <TextView
+        android:id="@+id/rateus_titletext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:text="Help us improve our app"
+        android:textAllCaps="true"
+        android:textColor="@color/black"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="9dp"
+        tools:layout_editor_absoluteY="285dp" />
+
+    <TextView
+        android:id="@+id/rateus_bodytxtparagraph1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:text="We strive to make providing feedback as simple as possible for you. Please always take the time to let us know whether you were satisfied with the service we provided."
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        tools:ignore="MissingConstraints,TextSizeCheck"
+        tools:layout_editor_absoluteX="9dp"
+        tools:layout_editor_absoluteY="325dp" />
+
+    <TextView
+        android:id="@+id/rateus_bodytxtparagraph2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:text="Your feedback assists us in identifying trends and areas for improvement. Our staff appreciates any comments and uses it to generate new ideas for how to better serve you."
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        tools:ignore="MissingConstraints,TextSizeCheck"
+        tools:layout_editor_absoluteX="9dp"
+        tools:layout_editor_absoluteY="401dp" />
+
+    <TextView
+        android:id="@+id/rateus_subtitletext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:text="Rate our App"
+        android:textAllCaps="true"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="124dp"
+        tools:layout_editor_absoluteY="465dp"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/rateus_redicon"
+        android:layout_width="130dp"
+        android:layout_height="95dp"
+        android:src="@drawable/redfaceicon"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="-14dp"
+        tools:layout_editor_absoluteY="492dp" />
+
+    <ImageView
+        android:id="@+id/rateus_organeicon"
+        android:layout_width="130dp"
+        android:layout_height="95dp"
+        android:src="@drawable/organefaceicon"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="79dp"
+        tools:layout_editor_absoluteY="492dp" />
+
+    <ImageView
+        android:id="@+id/rateus_yellowicon"
+        android:layout_width="130dp"
+        android:layout_height="95dp"
+        android:src="@drawable/yellowfaceicon"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="153dp"
+        tools:layout_editor_absoluteY="492dp" />
+
+    <ImageView
+        android:id="@+id/rateus_lgreenicon"
+        android:layout_width="130dp"
+        android:layout_height="95dp"
+        android:src="@drawable/lightgreenfaceicon"
+        tools:layout_editor_absoluteX="227dp"
+        tools:layout_editor_absoluteY="492dp"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/rateus_dgreenicon"
+        android:layout_width="130dp"
+        android:layout_height="95dp"
+        android:src="@drawable/darkgreenfaceicon"
+        tools:layout_editor_absoluteX="303dp"
+        tools:layout_editor_absoluteY="490dp"
+        tools:ignore="MissingConstraints" />
+
+
+    <TextView
+        android:id="@+id/ratus_commentboxtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:text="Write a customised  review"
+        android:textAllCaps="true"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="116dp"
+        tools:layout_editor_absoluteY="585dp"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/commentEditText"
+        android:layout_width="377dp"
+        android:layout_height="104dp"
+        android:hint="Enter your comment"
+        android:inputType="textMultiLine"
+        android:lines="4"
+        tools:layout_editor_absoluteX="18dp"
+        tools:layout_editor_absoluteY="611dp"
+        tools:ignore="MissingConstraints" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -45,7 +45,7 @@
                 android:layout_height="316dp"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/hambalogo"
+                android:background="@drawable/hambalogojpeg2"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 

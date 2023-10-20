@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/hamba_background"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/accomodationHambaTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="cursive"
+        android:text="Hamba"
+        android:textSize="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023" />
+
+    <TextView
+        android:id="@+id/accomodationpageTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-thin"
+        android:text="Accomodation"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="89dp"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/accomodationdiplayimage"
+        android:layout_width="382dp"
+        android:layout_height="209dp"
+        android:src="@drawable/vilakazijunction"
+        tools:layout_editor_absoluteX="13dp"
+        tools:layout_editor_absoluteY="141dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/accomodationdiplaytext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:textStyle="bold"
+        android:text="Vilakazi Street (Soweto), South Africa"
+        android:textColor="@color/grey"
+        android:textSize="20dp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="13dp"
+        tools:layout_editor_absoluteY="365dp" />
+
+    <LinearLayout
+        android:layout_width="397dp"
+        android:layout_height="94dp"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="3dp"
+        tools:layout_editor_absoluteY="378dp">
+
+    </LinearLayout>
+
+    <CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="281dp"
+        android:layout_height="170dp"
+        android:layout_gravity="center"
+        android:background="@color/white"
+        android:firstDayOfWeek="2"
+        android:showWeekNumber="true"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="65dp"
+        tools:layout_editor_absoluteY="475dp" />
+
+    <Button
+        android:id="@+id/moreInfoButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onMoreInfoButtonClick"
+        android:text="Check Availability "
+        tools:layout_editor_absoluteX="197dp"
+        tools:layout_editor_absoluteY="667dp"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/icon1"
+        android:layout_width="61dp"
+        android:layout_height="86dp"
+        android:layout_weight="1"
+        android:clickable="true"
+        android:contentDescription="Icon 1"
+        android:src="@drawable/icon1"
+        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteY="389dp"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/icon2"
+        android:layout_width="65dp"
+        android:layout_height="85dp"
+        android:layout_weight="1"
+        android:clickable="true"
+        android:contentDescription="Icon 2"
+        android:src="@drawable/icon2"
+        tools:layout_editor_absoluteX="107dp"
+        tools:layout_editor_absoluteY="390dp"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/icon3"
+        android:layout_width="64dp"
+        android:layout_height="105dp"
+        android:layout_weight="1"
+        android:clickable="true"
+        android:contentDescription="Icon 3"
+        android:src="@drawable/icon3"
+        tools:layout_editor_absoluteX="197dp"
+        tools:layout_editor_absoluteY="378dp"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/icon4"
+        android:layout_width="73dp"
+        android:layout_height="60dp"
+        android:layout_weight="1"
+        android:clickable="true"
+        android:contentDescription="Icon 4"
+        android:src="@drawable/icon4"
+        tools:layout_editor_absoluteX="278dp"
+        tools:layout_editor_absoluteY="403dp"
+        tools:ignore="MissingConstraints" />
+
+    <View
+        android:id="@+id/whiteBanner"
+        android:layout_width="418dp"
+        android:layout_height="81dp"
+        android:background="#FFFFFF"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="-3dp"
+        tools:layout_editor_absoluteY="651dp" />
+
+    <TextView
+        android:id="@+id/accomodationdiplayprice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:text=" R 1 500"
+        android:textColor="@color/grey"
+        android:textSize="20dp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteY="688dp" />
+
+    <TextView
+        android:id="@+id/accomodationdiplaypricetitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:text="Booking Price:"
+        android:textColor="@color/grey"
+        android:textSize="12dp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="28dp"
+        tools:layout_editor_absoluteY="667dp" />
+
+    <ImageView
+        android:id="@+id/heartImageView"
+        android:layout_width="79dp"
+        android:layout_height="55dp"
+        android:src="@drawable/hearticon"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="107dp"
+        tools:layout_editor_absoluteY="660dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

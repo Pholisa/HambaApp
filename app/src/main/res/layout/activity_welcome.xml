@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/hamba_welcome"
+    tools:context=".Welcome">
+
+    <LinearLayout
+        android:id="@+id/linLay_welcome"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="340dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:fontFamily="@font/alata"
+            android:text="Welcome"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="48sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_started_subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/alata"
+            android:text="Hamba by SALTHA is an authentic South African tourism and leisure application designed to provide the best experience of South Africa, If you already have an account log in, if you don't have an account please sign up"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            android:textStyle="italic"
+            tools:ignore="TextSizeCheck" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:fontFamily="@font/alata"
+            android:text="Choose an Account:"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btn_tourist"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="100dp"
+            android:backgroundTint="@color/black"
+            android:text="Tourist"
+            android:textSize="18sp"
+            app:cornerRadius="30dp" />
+
+        <Button
+            android:id="@+id/btn_business"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@color/black"
+            android:text="Business"
+            android:textSize="18sp"
+            app:cornerRadius="30dp" />
+
+    </LinearLayout>
+
+</RelativeLayout>

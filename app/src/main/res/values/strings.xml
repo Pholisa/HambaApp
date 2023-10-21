@@ -7,4 +7,12 @@
     <string name="title_activity_maps">MapsActivity</string>
     <string name="business_username">Display user Name</string>
     <string name="business_email">Display user Email</string>
+    <string name="username">Display user Name</string>
+    <string name="email">Display user Email</string>
+    <string name="edit">Edit Profile</string>
+    <string name="about">About</string>
+    <string name="TandCs">Terms and Conditions</string>
+    <string name="privacy">Privacy Policy</string>
+    <string name="rate">Rate this App</string>
+    <string name="share">Share this App</string>
 </resources>

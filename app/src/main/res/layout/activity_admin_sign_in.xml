@@ -8,6 +8,18 @@
     tools:context=".AdminSignIn">
 
     <ImageView
+        android:id="@+id/btnRtrn"
+        android:layout_width="46dp"
+        android:layout_height="73dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.072"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/baseline_arrow_back_ios_24" />
+
+    <ImageView
         android:id="@+id/imageView"
         android:layout_width="227dp"
         android:layout_height="347dp"
@@ -23,7 +35,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/gvtime"
-        android:text="TextView"
+        android:text="Hamba"
         android:textColor="@color/white"
         android:textSize="48sp"
         app:layout_constraintBottom_toTopOf="@+id/imageView"
@@ -31,14 +43,13 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.637"
-        tools:text="Hamba" />
+        app:layout_constraintVertical_bias="0.637"/>
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="Admin Sign In"
         android:textColor="@color/white"
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -46,8 +57,7 @@
         app:layout_constraintHorizontal_bias="0.132"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.182"
-        tools:text="Admin Sign In" />
+        app:layout_constraintVertical_bias="0.182"/>
 
     <EditText
         android:id="@+id/edLoginEmail_ad"

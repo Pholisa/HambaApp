@@ -3,6 +3,7 @@ package com.example.hambaapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageView
 import android.widget.Toast
 import com.example.hambaapp.databinding.ActivityAdminSignInBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -17,7 +18,14 @@ class AdminSignIn : AppCompatActivity() {
         binding = ActivityAdminSignInBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        firebaseAuthentication = FirebaseAuth.getInstance()
+        firebaseAuthentication = FirebaseAuth.getInstance() //gettina an instance of firebase
+
+        var prevScreen = findViewById<ImageView>(R.id.btnRtrn)
+
+        prevScreen.setOnClickListener {
+            val intent = Intent(this, Welcome::class.java)
+            startActivity(intent)
+        }
 
         //If signing in button is clicked
         binding.btnSignInAd.setOnClickListener{

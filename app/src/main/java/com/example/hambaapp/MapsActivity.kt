@@ -1,5 +1,6 @@
 package com.example.hambaapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
@@ -21,6 +22,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         binding = ActivityMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        //calling the nav bar function
+        navigationBar()
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
@@ -44,5 +48,35 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val sydney = LatLng(-34.0, 151.0)
         mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+    }
+
+    private fun navigationBar() {
+        //This will account for event clicking of the navigation bar (similar to if statement format)
+        binding.bottomNavigationView.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+
+                R.id.home -> {
+                    val intent = Intent(this, Dashboard::class.java)
+                    startActivity(intent)
+                }
+
+                R.id.location -> {
+                    val intent = Intent(this, MapsActivity::class.java)
+                    startActivity(intent)
+                }
+
+                R.id.favourites -> {
+                    val intent = Intent(this, Favourites::class.java)
+                    startActivity(intent)
+                }
+                R.id.profile -> {
+                    val intent = Intent(this, BusinessPortal::class.java)
+                    startActivity(intent)
+                }
+
+                else -> {}
+            }
+            true
+        }
     }
 }

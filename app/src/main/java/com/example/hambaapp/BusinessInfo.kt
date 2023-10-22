@@ -15,7 +15,7 @@ import com.google.firebase.ktx.Firebase
 
 class BusinessInfo : AppCompatActivity() {
 
-     private lateinit var binding: ActivityBusinessInfoBinding
+    private lateinit var binding: ActivityBusinessInfoBinding
     private lateinit var database: DatabaseReference
 
     private val theDatabase = Firebase.database
@@ -25,25 +25,27 @@ class BusinessInfo : AppCompatActivity() {
 
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?)
+    {
         super.onCreate(savedInstanceState)
         binding = ActivityBusinessInfoBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        //calling the navigation bar
         navigationBar()
 
         val buttonNext = findViewById<Button>(R.id.btnBusNext)
 
         buttonNext.setOnClickListener {
-            ValidateData()
+            validateData()
             val intentNext = Intent(this, BusinessDescription::class.java)
             startActivity(intentNext)
 
-
         }
-        navigationBar()
 
     }
-         private fun ValidateData() {
+         private fun validateData()
+         {
 
              val companyName = binding.ETBusCompName.text.toString()
              val registerNumber =binding.ETBusCompRegNo.text.toString()
@@ -60,7 +62,8 @@ class BusinessInfo : AppCompatActivity() {
             binding.ETBusType.text.toString().isEmpty() ||
             binding.ETBusAddress.text.toString().isEmpty() ||
             binding.ETBusCat.text.toString().isEmpty()
-        ) {
+        )
+        {
             Toast.makeText(this,"Please enter all fields", Toast.LENGTH_SHORT).show()
         }
         else
@@ -114,16 +117,16 @@ class BusinessInfo : AppCompatActivity() {
                 }
 
                 R.id.location -> {
-                    val intent = Intent(this, Dashboard::class.java)
+                    val intent = Intent(this, MapsActivity::class.java)
                     startActivity(intent)
                 }
 
                 R.id.favourites -> {
-                    val intent = Intent(this, Dashboard::class.java)
+                    val intent = Intent(this, Favourites::class.java)
                     startActivity(intent)
                 }
                 R.id.profile -> {
-                    val intent = Intent(this, Dashboard::class.java)
+                    val intent = Intent(this, BusinessPortal::class.java)
                     startActivity(intent)
                 }
 

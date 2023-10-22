@@ -3,13 +3,10 @@ package com.example.hambaapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.EditText
 import android.widget.Toast
-import com.example.hambaapp.R
 import com.example.hambaapp.databinding.ActivityRegisterBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
@@ -59,7 +56,7 @@ class Register : AppCompatActivity() {
                             myReference.setValue(User).addOnSuccessListener {
                                 Toast.makeText(this, "Information Saved", Toast.LENGTH_SHORT).show()
 
-                                val intent = Intent(this, Login::class.java)
+                                val intent = Intent(this, TouristSignIn::class.java)
                                 startActivity(intent)
                             }
 
@@ -80,8 +77,10 @@ class Register : AppCompatActivity() {
                 Toast.makeText(this, "Field cannot be empty", Toast.LENGTH_SHORT).show()
             }
         }
-        binding.tvLoginRedirectText.setOnClickListener {
-            val loginIntent = Intent(this, Login::class.java)
+
+        //Currently redirects user to register tourist only
+        binding.tvLogin1.setOnClickListener {
+            val loginIntent = Intent(this, TouristSignIn::class.java)
             startActivity(loginIntent)
         }
     }

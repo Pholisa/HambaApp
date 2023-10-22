@@ -9,23 +9,23 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import com.example.hambaapp.databinding.ActivityLoginBinding
+import com.example.hambaapp.databinding.ActivityTouristSignInBinding
 import com.google.firebase.auth.FirebaseAuth
-import com.example.hambaapp.R
 
 
-class Login : AppCompatActivity() {
+class TouristSignIn : AppCompatActivity() {
 
-    private lateinit var binding: ActivityLoginBinding
+    private lateinit var binding: ActivityTouristSignInBinding
     private lateinit var firebaseAuthentication: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityLoginBinding.inflate(layoutInflater)
+        binding = ActivityTouristSignInBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         firebaseAuthentication = FirebaseAuth.getInstance()
 
+        //Login button click event
         binding.btnLogin.setOnClickListener {
             val username = binding.edLoginEmailAddress.text.toString()
             val password = binding.edLoginPassword.text.toString()
@@ -50,6 +50,7 @@ class Login : AppCompatActivity() {
 
         }
 
+        //resetting password is user forgot
         binding.tvForgot.setOnClickListener{
             val builder = AlertDialog.Builder(this)
             val view = layoutInflater.inflate(R.layout.activity_forgot_password, null)
@@ -74,7 +75,8 @@ class Login : AppCompatActivity() {
             dialog.show()
         }
 
-        binding.tvSignupRedirectText.setOnClickListener {
+        //Going to Register screen if user does not have an account already
+        binding.tvTourstReg.setOnClickListener {
             val signupIntent = Intent(this, Register::class.java)
             startActivity(signupIntent)
         }

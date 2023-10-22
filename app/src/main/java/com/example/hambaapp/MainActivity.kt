@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
 
         buttonLogin.setOnClickListener {
 
-            startActivity(Intent(this, Login::class.java))
+            startActivity(Intent(this, TouristSignIn::class.java))
 
         }
         buttonRegister.setOnClickListener {

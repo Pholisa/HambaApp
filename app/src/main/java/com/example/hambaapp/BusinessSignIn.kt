@@ -10,7 +10,6 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.hambaapp.databinding.ActivityBusinessSignInBinding
-import com.example.hambaapp.databinding.ActivityLoginBinding
 import com.google.firebase.auth.FirebaseAuth
 
 class BusinessSignIn : AppCompatActivity() {

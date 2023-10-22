@@ -7,6 +7,8 @@
     android:background="@drawable/hamba_background"
     tools:context=".MainActivity">
 
+
+
     <TextView
         android:id="@+id/accomodationHambaTitle"
         android:layout_width="wrap_content"
@@ -18,7 +20,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/accomodationpageTitle"
@@ -28,8 +30,12 @@
         android:text="Accomodation"
         android:textColor="@color/white"
         android:textSize="25dp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="89dp"
+        app:layout_constraintBottom_toTopOf="@+id/accomodationdiplayimage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.118"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/accomodationHambaTitle"
+        app:layout_constraintVertical_bias="0.553"
         tools:ignore="MissingConstraints" />
 
     <ImageView
@@ -37,8 +43,12 @@
         android:layout_width="382dp"
         android:layout_height="209dp"
         android:src="@drawable/vilakazijunction"
-        tools:layout_editor_absoluteX="13dp"
-        tools:layout_editor_absoluteY="141dp"
+        app:layout_constraintBottom_toTopOf="@+id/accomodationdiplaytext"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.482"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/accomodationHambaTitle"
+        app:layout_constraintVertical_bias="0.75"
         tools:ignore="MissingConstraints" />
 
     <TextView
@@ -46,22 +56,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif"
-        android:textStyle="bold"
         android:text="Vilakazi Street (Soweto), South Africa"
         android:textColor="@color/grey"
         android:textSize="20dp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="13dp"
-        tools:layout_editor_absoluteY="365dp" />
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/accomodationHambaTitle"
+        app:layout_constraintVertical_bias="0.972"
+        tools:ignore="MissingConstraints" />
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="397dp"
         android:layout_height="94dp"
         android:layout_gravity="center"
         android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/accomodationHambaTitle"
+        app:layout_constraintVertical_bias="0.556"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="3dp"
-        tools:layout_editor_absoluteY="378dp">
+        tools:layout_editor_absoluteX="7dp">
 
     </LinearLayout>
 
@@ -95,9 +111,10 @@
         android:clickable="true"
         android:contentDescription="Icon 1"
         android:src="@drawable/icon1"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="389dp"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintEnd_toStartOf="@+id/icon2"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="389dp" />
 
     <ImageView
         android:id="@+id/icon2"
@@ -113,7 +130,7 @@
 
     <ImageView
         android:id="@+id/icon3"
-        android:layout_width="64dp"
+        android:layout_width="65dp"
         android:layout_height="105dp"
         android:layout_weight="1"
         android:clickable="true"
@@ -135,50 +152,21 @@
         tools:layout_editor_absoluteY="403dp"
         tools:ignore="MissingConstraints" />
 
-    <View
-        android:id="@+id/whiteBanner"
-        android:layout_width="418dp"
-        android:layout_height="81dp"
-        android:background="#FFFFFF"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="-3dp"
-        tools:layout_editor_absoluteY="651dp" />
 
-    <TextView
-        android:id="@+id/accomodationdiplayprice"
-        android:layout_width="wrap_content"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif"
-        android:text=" R 1 500"
-        android:textColor="@color/grey"
-        android:textSize="20dp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="688dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/nav_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_navigation"
+        >
 
-    <TextView
-        android:id="@+id/accomodationdiplaypricetitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif"
-        android:text="Booking Price:"
-        android:textColor="@color/grey"
-        android:textSize="12dp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="28dp"
-        tools:layout_editor_absoluteY="667dp" />
-
-    <ImageView
-        android:id="@+id/heartImageView"
-        android:layout_width="79dp"
-        android:layout_height="55dp"
-        android:src="@drawable/hearticon"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="107dp"
-        tools:layout_editor_absoluteY="660dp" />
-
-
-
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+

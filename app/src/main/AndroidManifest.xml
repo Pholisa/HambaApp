@@ -15,7 +15,10 @@
         android:theme="@style/Theme.HambaApp"
         tools:targetApi="31">
         <activity
-            android:name=".Welcome"
+            android:name=".AdminPortal"
+            android:exported="false" />
+        <activity
+            android:name=".ActiveBusinesses"
             android:exported="false" />
         <activity
             android:name=".Settings"
@@ -61,7 +64,7 @@
             android:name=".Register"
             android:exported="false" />
         <activity
-            android:name=".Login"
+            android:name=".TouristSignIn"
             android:exported="false" />
         <activity
             android:name=".BusinessDescription"
@@ -77,6 +80,9 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Welcome"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

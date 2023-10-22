@@ -3,44 +3,38 @@ package com.example.hambaapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.hambaapp.databinding.ActivityAccomodationPageBinding
+import com.example.hambaapp.databinding.ActivityActiveBusinessesBinding
 import com.example.hambaapp.databinding.ActivityBusinessPortalBinding
 
-class AccomodationPage : AppCompatActivity() {
+class ActiveBusinesses : AppCompatActivity() {
 
-    private lateinit var binding: ActivityAccomodationPageBinding
+    private lateinit var binding: ActivityActiveBusinessesBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityAccomodationPageBinding.inflate(layoutInflater)
+        binding = ActivityActiveBusinessesBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         //calling the navigation bar
         navigationBar()
-
     }
-
-    //navivation bar if statement
     private fun navigationBar() {
         //This will account for event clicking of the navigation bar (similar to if statement format)
         binding.bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
 
                 R.id.home -> {
-                    val intent = Intent(this, Dashboard::class.java)
+                    val intent = Intent(this, AdminDashboard::class.java)
                     startActivity(intent)
                 }
 
-                R.id.location -> {
-                    val intent = Intent(this, MapsActivity::class.java)
+                //we need a recyler viewer of all active businesses
+                R.id.activeBusinesses -> {
+                    val intent = Intent(this, ActiveBusinesses::class.java)
                     startActivity(intent)
                 }
 
-                R.id.favourites -> {
-                    val intent = Intent(this, Favourites::class.java)
-                    startActivity(intent)
-                }
-                R.id.profile -> {
-                    val intent = Intent(this, BusinessPortal::class.java)
+                R.id.profile -> { //Admin settings screen
+                    val intent = Intent(this, AdminPortal::class.java)
                     startActivity(intent)
                 }
 
@@ -49,4 +43,5 @@ class AccomodationPage : AppCompatActivity() {
             true
         }
     }
+
 }

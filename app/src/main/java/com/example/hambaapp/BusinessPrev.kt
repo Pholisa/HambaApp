@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import com.example.hambaapp.databinding.ActivityBusinessPrevBinding
@@ -45,6 +46,14 @@ class BusinessPrev : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityBusinessPrevBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        //is user clicks save
+        var save = findViewById<Button>(R.id.btnDone1)
+
+        save.setOnClickListener {
+            val intent = Intent(this, Favourites::class.java)
+            startActivity(intent)
+        }
 
         companyName = findViewById(R.id.tvCompanyNameShow)
         registerNumber = findViewById(R.id.tvRegisterNumberShow)
@@ -91,6 +100,8 @@ class BusinessPrev : AppCompatActivity() {
             Toast.makeText(this, it.toString(), Toast.LENGTH_SHORT).show()
 
         }
+
+
     }
 
 
@@ -122,7 +133,8 @@ class BusinessPrev : AppCompatActivity() {
 
 
 
-    private fun navigationBar() {
+    private fun navigationBar()
+    {
         //This will account for event clicking of the navigation bar (similar to if statement format)
         binding.bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
@@ -133,16 +145,16 @@ class BusinessPrev : AppCompatActivity() {
                 }
 
                 R.id.location -> {
-                    val intent = Intent(this, Dashboard::class.java)
+                    val intent = Intent(this, MapsActivity::class.java)
                     startActivity(intent)
                 }
 
                 R.id.favourites -> {
-                    val intent = Intent(this, Dashboard::class.java)
+                    val intent = Intent(this, Favourites::class.java)
                     startActivity(intent)
                 }
                 R.id.profile -> {
-                    val intent = Intent(this, Dashboard::class.java)
+                    val intent = Intent(this, BusinessPortal::class.java)
                     startActivity(intent)
                 }
 

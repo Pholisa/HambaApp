@@ -1,11 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/hamba_welcome"
-    tools:context=".Welcome">
+    tools:context=".Welcome"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvAdminSignIn"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:fontFamily="@font/alata"
+        android:text="Admin"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:gravity="center|right"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/linLay_welcome"
@@ -14,6 +34,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="340dp"
         android:orientation="vertical">
+
 
         <TextView
             android:layout_width="match_parent"
@@ -69,6 +90,9 @@
             android:textSize="18sp"
             app:cornerRadius="30dp" />
 
-    </LinearLayout>
 
-</RelativeLayout>
+    </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -17,7 +17,8 @@ class Register : AppCompatActivity() {
 
     private val theDatabase = Firebase.database
     private val userID = FirebaseAuth.getInstance().currentUser?.uid
-    private val myReference = theDatabase.getReference("users").child(userID!!).child("Personal Details")
+    val myReference = theDatabase.getReference("users").child(userID ?: "").child("Personal Details")
+
 
     private lateinit var database: DatabaseReference
 
@@ -28,6 +29,7 @@ class Register : AppCompatActivity() {
         setContentView(binding.root)
 
         firebaseAuthentication = FirebaseAuth.getInstance()
+
 
         binding.btnSignUp.setOnClickListener{
             val username = binding.edEmailAddress.text.toString()
@@ -80,7 +82,7 @@ class Register : AppCompatActivity() {
 
         //Currently redirects user to register tourist only
         binding.tvLogin1.setOnClickListener {
-            val loginIntent = Intent(this, TouristSignIn::class.java)
+            val loginIntent = Intent(this, Welcome::class.java)
             startActivity(loginIntent)
         }
     }

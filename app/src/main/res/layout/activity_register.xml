@@ -142,7 +142,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@id/tvAccountexist"
-                android:text="Reset"
+                android:text="Login"
                 android:textColor="@color/design_default_color_error"
                 android:textSize="15sp"
                 android:textStyle="bold" />

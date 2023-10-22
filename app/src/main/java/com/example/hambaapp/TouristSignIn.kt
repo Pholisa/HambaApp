@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Patterns
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.hambaapp.databinding.ActivityTouristSignInBinding
@@ -25,8 +26,12 @@ class TouristSignIn : AppCompatActivity() {
 
         firebaseAuthentication = FirebaseAuth.getInstance()
 
+        var register = findViewById<TextView>(R.id.tvTourstReg)
+        val login = findViewById<Button>(R.id.btnLogin)
+        val resetPass = findViewById<TextView>(R.id.tvForgot)
+
         //Login button click event
-        binding.btnLogin.setOnClickListener {
+       login.setOnClickListener {
             val username = binding.edLoginEmailAddress.text.toString()
             val password = binding.edLoginPassword.text.toString()
 
@@ -51,7 +56,7 @@ class TouristSignIn : AppCompatActivity() {
         }
 
         //resetting password is user forgot
-        binding.tvForgot.setOnClickListener{
+        resetPass.setOnClickListener{
             val builder = AlertDialog.Builder(this)
             val view = layoutInflater.inflate(R.layout.activity_forgot_password, null)
             val userEmailAddress = view.findViewById<EditText>(R.id.editBox)
@@ -76,7 +81,7 @@ class TouristSignIn : AppCompatActivity() {
         }
 
         //Going to Register screen if user does not have an account already
-        binding.tvTourstReg.setOnClickListener {
+        register.setOnClickListener {
             val signupIntent = Intent(this, Register::class.java)
             startActivity(signupIntent)
         }

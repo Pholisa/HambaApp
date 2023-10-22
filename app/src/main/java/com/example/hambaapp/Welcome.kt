@@ -14,8 +14,8 @@ class Welcome : AppCompatActivity()
         setContentView(R.layout.activity_welcome)
 
         val touristUR = findViewById<Button>(R.id.btn_tourist)
-        val businessUR = findViewById<Button>(R.id.btn_tourist)
-        val admin = findViewById<TextView>(R.id.tvAdminSignIn)
+        val businessUR = findViewById<Button>(R.id.btn_business)
+        val admin = findViewById<TextView>(R.id.tvAdmnSignIn)
 
         //To access tourist UI
         touristUR.setOnClickListener {

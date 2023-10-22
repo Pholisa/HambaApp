@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.example.hambaapp.databinding.ActivityAdminSignInBinding
-import com.example.hambaapp.databinding.ActivityLoginBinding
 import com.google.firebase.auth.FirebaseAuth
 
 class AdminSignIn : AppCompatActivity() {
@@ -20,6 +19,7 @@ class AdminSignIn : AppCompatActivity() {
 
         firebaseAuthentication = FirebaseAuth.getInstance()
 
+        //If signing in button is clicked
         binding.btnSignInAd.setOnClickListener{
             val username = binding.edLoginEmailAd.text.toString()
             val pass = binding.edLoginPasswordAd.text.toString()

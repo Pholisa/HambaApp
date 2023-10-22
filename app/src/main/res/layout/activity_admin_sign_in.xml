@@ -98,16 +98,6 @@
         app:layout_constraintTop_toBottomOf="@+id/edLoginPassword_ad"
         app:layout_constraintVertical_bias="0.205" />
 
-    <TextView
-        android:id="@+id/tvForgot_ad"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Forgot Your Password?"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnSignIn_ad" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

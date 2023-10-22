@@ -3,24 +3,20 @@ package com.example.hambaapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.hambaapp.databinding.ActivityAccomodationPageBinding
+import com.example.hambaapp.databinding.ActivityActiveBusinessesBinding
 import com.example.hambaapp.databinding.ActivityAdminDashboardBinding
+import com.example.hambaapp.databinding.ActivityAdminPortalBinding
 
-class AdminDashboard : AppCompatActivity() {
+class AdminPortal : AppCompatActivity() {
 
-    private lateinit var binding: ActivityAdminDashboardBinding
+    private lateinit var binding: ActivityAdminPortalBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityAdminDashboardBinding.inflate(layoutInflater)
+        binding = ActivityAdminPortalBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        //calling nav bar
-        navigationBar()
     }
 
-    //navigation bar with limited user access for admin
-    private fun navigationBar()
-    {
+    private fun navigationBar() {
         //This will account for event clicking of the navigation bar (similar to if statement format)
         binding.bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {

@@ -122,16 +122,31 @@
                 android:textSize="18sp"
                 app:cornerRadius = "30dp"/>
 
-            <TextView
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/tvLoginRedirectText"
-                android:text="Already an user? Login"
                 android:layout_gravity="center"
-                android:padding="8dp"
                 android:layout_marginTop="8dp"
-                android:textSize="18sp"
-                android:textColor="@color/white"/>
+                android:padding="15dp">
+
+                <TextView
+                    android:id="@+id/tvAccountexist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Already have an account? "
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/tvLogin1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/tvAccountexist"
+                android:text="Reset"
+                android:textColor="@color/design_default_color_error"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+            </RelativeLayout>
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

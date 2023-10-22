@@ -98,16 +98,65 @@
         app:layout_constraintTop_toBottomOf="@+id/edLoginPassword_bus"
         app:layout_constraintVertical_bias="0.205" />
 
-    <TextView
-        android:id="@+id/tv_busForgot"
+    <RelativeLayout
+        android:id="@+id/relative1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Forgot Your Password?"
-        android:textColor="@color/white"
-        android:textSize="16sp"
+        android:layout_gravity="center"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:padding="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_busSignIn" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_busSignIn">
+
+        <TextView
+            android:id="@+id/tvLoginRedirectText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Don't have an account? "
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tvRegisterRedirectText2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/tvLoginRedirectText"
+            android:text="Register"
+            android:textColor="@color/design_default_color_error"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp"
+            android:padding="15dp">
+
+            <TextView
+                android:id="@+id/tvAccountexist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Forgot Password? "
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/tvBusForgot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/tvAccountexist"
+                android:text="Reset"
+                android:textColor="@color/design_default_color_error"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

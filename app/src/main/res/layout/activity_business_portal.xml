@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,79 +8,85 @@
     tools:context=".BusinessPortal">
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="56dp"
-        android:layout_marginTop="10dp"
+        android:id="@+id/tv_heading1"
         android:fontFamily="cursive"
         android:text="Hamba"
         android:textStyle="bold"
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:textSize="50sp" />
+        android:textSize="50sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/tv_heading2"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="56dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="60dp"
         android:text="Business Portal"
         android:textColor="@color/black"
-        android:textSize="25sp" />
+        android:textSize="25sp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_heading1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <LinearLayout
         android:id="@+id/linLay_profile"
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:layout_below="@id/tv_heading2"
-        android:orientation="vertical">
+        app:layout_constraintTop_toBottomOf="@+id/tv_heading2"
+        android:orientation="vertical"
+        android:gravity="center">
 
         <ImageView
             android:id="@+id/iv_profile"
             android:layout_width="182dp"
             android:layout_height="112dp"
-            android:layout_marginStart="100dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="20dp"
             android:contentDescription="profile"
             android:background="@drawable/theborder"
-            android:src="@drawable/ic_user" />
+            android:src="@drawable/ic_user"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
 
         <TextView
             android:id="@+id/tv_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
             android:text="@string/business_username"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="28sp" />
+            android:textSize="28sp"
+            app:layout_constraintTop_toBottomOf="@+id/iv_profile"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
             android:id="@+id/tv_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
             android:text="@string/business_email"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            app:layout_constraintTop_toBottomOf="@+id/tv_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/lay_addList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/linLay_profile"
-        android:layout_marginStart="220dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/theborder"
-        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/linLay_profile"
+        app:layout_constraintStart_toStartOf="parent"
         android:orientation="vertical"
         android:padding="5dp"
-        android:soundEffectsEnabled="false">
+        android:gravity="center">
 
         <ImageView
             android:id="@+id/iv_addList"
@@ -91,7 +97,6 @@
         <TextView
             android:layout_width="158dp"
             android:layout_height="35dp"
-            android:layout_below="@+id/iv_addList"
             android:gravity="center"
             android:text="Add Listing"
             android:textColor="@color/black"
@@ -102,13 +107,11 @@
         android:id="@+id/lay_editList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/linLay_profile"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/theborder"
-        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/linLay_profile"
+        app:layout_constraintStart_toEndOf="@+id/lay_addList"
         android:orientation="vertical"
-        android:padding="5dp">
+        android:padding="5dp"
+        android:gravity="center">
 
         <ImageView
             android:id="@+id/iv_editList"
@@ -129,13 +132,11 @@
         android:id="@+id/lay_viewList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/lay_editList"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/theborder"
-        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/lay_editList"
+        app:layout_constraintStart_toStartOf="parent"
         android:orientation="vertical"
-        android:padding="5dp">
+        android:padding="5dp"
+        android:gravity="center">
 
         <ImageView
             android:id="@+id/iv_viewList"
@@ -156,13 +157,11 @@
         android:id="@+id/lay_deleteList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/lay_addList"
-        android:layout_marginStart="220dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/theborder"
-        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/lay_addList"
+        app:layout_constraintStart_toEndOf="@+id/lay_viewList"
         android:orientation="vertical"
-        android:padding="5dp">
+        android:padding="5dp"
+        android:gravity="center">
 
         <ImageView
             android:id="@+id/iv_deleteList"
@@ -179,6 +178,12 @@
             android:textSize="15sp" />
     </LinearLayout>
 
-
-
-</RelativeLayout>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/bottom_navigation_admin" />
+</androidx.constraintlayout.widget.ConstraintLayout>

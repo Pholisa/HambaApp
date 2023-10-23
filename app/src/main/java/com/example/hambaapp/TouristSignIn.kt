@@ -55,6 +55,11 @@ class TouristSignIn : AppCompatActivity() {
 
         }
 
+        binding.tvTourstReg.setOnClickListener {
+            val intent = Intent(this, Register::class.java)
+            startActivity(intent)
+        }
+
         //resetting password is user forgot
         resetPass.setOnClickListener{
             val builder = AlertDialog.Builder(this)

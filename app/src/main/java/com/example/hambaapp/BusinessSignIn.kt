@@ -46,6 +46,12 @@ class BusinessSignIn : AppCompatActivity() {
             }
         }
 
+        binding.tvRegisterRedirectText2.setOnClickListener {
+            val intent = Intent(this, Register::class.java)
+            startActivity(intent)
+
+        }
+
         binding.tvBusForgot.setOnClickListener{
             val builder = AlertDialog.Builder(this)
             val view = layoutInflater.inflate(R.layout.activity_forgot_password, null)

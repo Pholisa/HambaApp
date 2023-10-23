@@ -68,18 +68,19 @@ class MoreOptions : AppCompatActivity() {
                 }
 
                 R.id.location -> {
-                    val intent = Intent(this, Dashboard::class.java)
+                    val intent = Intent(this, MapsActivity::class.java)
                     startActivity(intent)
                 }
 
                 R.id.favourites -> {
-                    val intent = Intent(this, Dashboard::class.java)
+                    val intent = Intent(this, Favourites::class.java)
                     startActivity(intent)
                 }
                 R.id.profile -> {
-                    val intent = Intent(this, Dashboard::class.java)
+                    val intent = Intent(this, BusinessPortal::class.java)
                     startActivity(intent)
                 }
+
 
                 else -> {}
             }

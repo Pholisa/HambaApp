@@ -77,18 +77,7 @@ class BusinessDescription : AppCompatActivity() {
         }
         else
         {
-            /*val businessTitle = findViewById<EditText>(R.id.ETBusTitle)
-            var title = businessTitle.text.toString().trim()
 
-            val businessDescript = findViewById<EditText>(R.id.ETBusDescrip)
-            var description = businessDescript.text.toString().trim()
-
-
-
-            myReference.push().setValue(title)
-            myReference.push().setValue(UploadImage())
-            myReference.push().setValue(description)*/
-            //database = FirebaseDatabase.getInstance().getReference("Business Description")
             val description = BusinessDetails(title, summary)
             myReference.setValue(description).addOnSuccessListener {
                 Toast.makeText(this, "Information Saved", Toast.LENGTH_SHORT).show()

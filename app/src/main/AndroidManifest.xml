@@ -14,6 +14,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HambaApp"
         tools:targetApi="31">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="YOUR_API_KEY" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
+        <activity
+            android:name=".AdminSignIn"
+            android:exported="false" />
         <activity
             android:name=".AdminPortal"
             android:exported="false" />
@@ -23,23 +34,6 @@
         <activity
             android:name=".Settings"
             android:exported="false" />
-        <!--
-             TODO: Before you run your application, you need a Google Maps API key.
-
-             To get one, follow the directions here:
-
-                https://developers.google.com/maps/documentation/android-sdk/get-api-key
-
-             Once you have your API key (it starts with "AIza"), define a new property in your
-             project's local.properties file (e.g. MAPS_API_KEY=Aiza...), and replace the
-             "YOUR_API_KEY" string in this file with "${MAPS_API_KEY}".
-        -->
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="YOUR_API_KEY" />
-        <meta-data
-            android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
 
         <activity
             android:name=".MapsActivity"
@@ -48,11 +42,15 @@
         <activity
             android:name=".BusinessInfo"
             android:exported="false" />
+
         <activity
             android:name=".ForgotPassword"
             android:exported="false" />
         <activity
             android:name=".Dashboard"
+            android:exported="false" />
+        <activity
+            android:name=".BusinessSignIn"
             android:exported="false" />
         <activity
             android:name=".Entertainment"
@@ -81,9 +79,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="false" />
-        <activity
-            android:name=".AdminSignIn"
-            android:exported="false" />
+
         <activity
             android:name=".Welcome"
             android:exported="true">

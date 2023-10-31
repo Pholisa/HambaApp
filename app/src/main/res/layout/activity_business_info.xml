@@ -135,8 +135,6 @@
                             android:background="@drawable/theborder"
                             android:padding="8dp"
                             android:drawablePadding="8dp"
-                            android:textColor="@color/black"
-                            android:ems="10"
                             android:hint="*Business Type*"
                             android:inputType="textPersonName"/>
 

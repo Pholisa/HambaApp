@@ -38,7 +38,7 @@ class BusinessInfo : AppCompatActivity() {
 
         buttonNext.setOnClickListener {
             validateData()
-            val intentNext = Intent(this, BusinessDescription::class.java)
+            val intentNext = Intent(this, BusinessPrev::class.java)
             startActivity(intentNext)
 
         }
@@ -68,36 +68,7 @@ class BusinessInfo : AppCompatActivity() {
         }
         else
         {
-            /*val companyName = findViewById<EditText>(R.id.ETBusCompName)
-            var name = companyName.text.toString().trim()
 
-            val registerNumber = findViewById<EditText>(R.id.ETBusCompRegNo)
-            var regNo = registerNumber.text.toString().trim()
-
-            val emailAddress = findViewById<EditText>(R.id.ETBusEmailAd)
-            var email = emailAddress.text.toString().trim()
-
-            val telephoneNumber = findViewById<EditText>(R.id.ETBusTelNo)
-            var telephone = telephoneNumber.text.toString().trim()
-
-            val businessType = findViewById<EditText>(R.id.ETBusType)
-            var type = businessType.text.toString().trim()
-
-            val businessAddress = findViewById<EditText>(R.id.ETBusAddress)
-            var address = businessAddress.text.toString().trim()
-
-            val businessCategory = findViewById<EditText>(R.id.ETBusCat)
-            var category = businessCategory.text.toString().trim()
-
-
-            myReference.push().setValue(name)
-            myReference.push().setValue(regNo)
-            myReference.push().setValue(email)
-            myReference.push().setValue(telephone)
-            myReference.push().setValue(type)
-            myReference.push().setValue(address)
-            myReference.push().setValue(category)*/
-            //database = FirebaseDatabase.getInstance().getReference("Business Information")
             val Info = Information(companyName, registerNumber, emailAddress, telephoneNumber, businessType,businessAddress,businessCategory)
             myReference.setValue(Info).addOnSuccessListener {
                 Toast.makeText(this, "Information Saved", Toast.LENGTH_SHORT).show()

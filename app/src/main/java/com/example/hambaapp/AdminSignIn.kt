@@ -28,7 +28,7 @@ class AdminSignIn : AppCompatActivity() {
         }
 
         //If signing in button is clicked
-        binding.btnSignInAd.setOnClickListener{
+        binding.btnSignInAd.setOnClickListener {
             val username = binding.edLoginEmailAd.text.toString()
             val pass = binding.edLoginPasswordAd.text.toString()
 
@@ -38,16 +38,23 @@ class AdminSignIn : AppCompatActivity() {
                         if (it.isSuccessful) {
                             val intent = Intent(this, AdminDashboard::class.java)
                             startActivity(intent)
-                        } else
-                        {
-                            Toast.makeText(this, "Email or Password is Incorrect", Toast.LENGTH_SHORT).show()
+                        } else {
+                            Toast.makeText(
+                                this,
+                                "Email or Password is Incorrect",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
                     }
-            } else
-                {
+            } else {
 
-                    Toast.makeText(this, "Fields cannot be empty", Toast.LENGTH_SHORT).show()
-                }
+                Toast.makeText(this, "Fields cannot be empty", Toast.LENGTH_SHORT).show()
             }
         }
+
+
     }
+
+
+
+        }

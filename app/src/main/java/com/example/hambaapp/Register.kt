@@ -46,6 +46,14 @@ class Register : AppCompatActivity() {
                     firebaseAuthentication.createUserWithEmailAndPassword(username, password).addOnCompleteListener {
                         if(it.isSuccessful)
                         {
+                            /*val fullName = findViewById<EditText>(R.id.edFullName)
+                            var name = fullName.text.toString().trim()
+                            val phoneNumber = findViewById<EditText>(R.id.edPhoneNumber)
+                            var number = phoneNumber.text.toString().trim()
+                            myReference.push().setValue(name)
+                            myReference.push().setValue(number)*/
+
+                            //database = FirebaseDatabase.getInstance().getReference("Users")
                             val User = User(name, number)
                             myReference.setValue(User).addOnSuccessListener {
                                 Toast.makeText(this, "Information Saved", Toast.LENGTH_SHORT).show()
@@ -77,8 +85,6 @@ class Register : AppCompatActivity() {
             val loginIntent = Intent(this, Welcome::class.java)
             startActivity(loginIntent)
         }
-
-
     }
 
     }

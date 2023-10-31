@@ -17,7 +17,7 @@ class Dashboard : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.layBed.setOnClickListener {
-            val signupIntent = Intent(this, BusinessPortal::class.java)
+            val signupIntent = Intent(this, AccomodationPage::class.java)
             startActivity(signupIntent)
         }
 

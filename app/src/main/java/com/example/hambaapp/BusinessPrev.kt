@@ -105,34 +105,6 @@ class BusinessPrev : AppCompatActivity() {
     }
 
 
-        /*// Read from the database
-        myReference.addValueEventListener(object: ValueEventListener {
-
-            override fun onDataChange(snapshot: DataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                val value = snapshot.getValue<String>()
-                Log.d(TAG, "Value is: " + value)
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                Log.w(TAG, "Failed to read value.", error.toException())
-            }
-
-        })
-
-
-        myReference.child("users").child(userID!!).get().addOnSuccessListener {
-            Log.i("firebase", "Got value ${it.value}")
-        }.addOnFailureListener{
-            Log.e("firebase", "Error getting data", it)
-        }
-        navigationBar()
-
-    }*/
-
-
-
     private fun navigationBar()
     {
         //This will account for event clicking of the navigation bar (similar to if statement format)

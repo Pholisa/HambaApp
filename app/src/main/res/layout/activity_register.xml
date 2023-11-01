@@ -67,6 +67,7 @@
                 android:layout_marginTop="30dp"
                 android:background="@drawable/theborder"
                 android:padding="8dp"
+                android:inputType="number"
                 android:hint="Phone Number"
                 android:drawableLeft="@drawable/baseline_person_24"
                 android:drawablePadding="8dp"

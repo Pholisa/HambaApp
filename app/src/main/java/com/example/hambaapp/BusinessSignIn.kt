@@ -10,6 +10,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.hambaapp.databinding.ActivityBusinessSignInBinding
+import com.example.hambaapp.databinding.ActivityTouristSignInBinding
 import com.google.firebase.auth.FirebaseAuth
 
 class BusinessSignIn : AppCompatActivity() {
@@ -19,8 +20,8 @@ class BusinessSignIn : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(binding.root)
         binding = ActivityBusinessSignInBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         firebaseAuthentication = FirebaseAuth.getInstance()
         binding.btnBusSignIn.setOnClickListener{
@@ -43,6 +44,12 @@ class BusinessSignIn : AppCompatActivity() {
 
                 Toast.makeText(this, "Fields cannot be empty", Toast.LENGTH_SHORT).show()
             }
+        }
+
+        binding.tvRegisterRedirectText2.setOnClickListener {
+            val intent = Intent(this, Register::class.java)
+            startActivity(intent)
+
         }
 
         binding.tvBusForgot.setOnClickListener{

@@ -19,13 +19,13 @@ class Welcome : AppCompatActivity()
 
         //To access tourist UI
         touristUR.setOnClickListener {
-            var intent = Intent(this, BusinessSignIn::class.java)
+            var intent = Intent(this, TouristSignIn::class.java)
             startActivity(intent)
         }
 
         //To access business UI
         businessUR.setOnClickListener {
-            var intent = Intent(this, TouristSignIn::class.java)
+            var intent = Intent(this, BusinessSignIn::class.java)
             startActivity(intent)
         }
 

@@ -259,6 +259,7 @@
                     android:id="@+id/rv_displayApproved"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    tools:listitem="@layout/list_accepted_requests"
                     android:layout_marginLeft="10dp"
                     android:textSize="16sp"/>
 
@@ -286,6 +287,7 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_displayDeclined"
                     android:layout_width="match_parent"
+                    tools:listitem="@layout/list_declined_requests"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:textSize="16sp"/>

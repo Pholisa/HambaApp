@@ -12,11 +12,11 @@
         android:id="@+id/tvAdmnSignIn"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:text="Admin"
+        android:layout_marginHorizontal="170dp"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:gravity="center|right"/>
+       />
 
     <ScrollView
         android:layout_width="match_parent"

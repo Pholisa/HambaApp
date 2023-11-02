@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/hamba_background"
-    tools:context=".MainActivity" >
+    tools:context=".BusinessDescription" >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -77,7 +77,7 @@
 
 
             <Button
-                android:id="@+id/btnBusDescUpload"
+                android:id="@+id/btnBusImageUpload"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:layout_gravity="center"
@@ -115,8 +115,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:background="@drawable/nav_background"
-        app:menu="@menu/bottom_navigation"
-        >
+        app:menu="@menu/bottom_navigation">
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 

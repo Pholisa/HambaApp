@@ -7,208 +7,197 @@
     android:layout_height="match_parent"
     android:background="@drawable/hamba_background"
     android:orientation="vertical"
-    tools:context=".MainActivity" >
+    tools:context=".BusinessInfo" >
 
-    <ScrollView
+
+
+<TextView
+    android:id="@+id/tvHeading"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:fontFamily="cursive"
+    android:text="Hamba"
+    android:textAlignment="center"
+    android:textColor="@color/white"
+    android:textSize="48sp"
+    android:textStyle="bold"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent" />
+
+<ScrollView
+    android:id="@+id/scrollView2"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    app:layout_constraintTop_toBottomOf="@+id/tvHeading"
+    app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    tools:layout_editor_absoluteX="10dp">
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/tvHeading"
-                    android:layout_width="match_parent"
-                    android:layout_height="71dp"
-                    android:fontFamily="cursive"
-                    android:text="Hamba"
-                    android:textAlignment="center"
-                    android:textSize="48sp"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="List Your Business"
-                        android:textStyle="bold"
-                        android:textColor="@color/black"
-                        android:textSize="25sp" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:outlineProvider="paddedBounds">
-
-                        <EditText
-                            android:id="@+id/ETBusCompName"
-                            android:layout_width="match_parent"
-                            android:layout_height="60dp"
-                            android:layout_marginLeft="35dp"
-                            android:layout_marginTop="15dp"
-                            android:layout_marginRight="35dp"
-                            android:layout_marginStart="10dp"
-                            android:layout_marginEnd="10dp"
-                            android:background="@drawable/theborder"
-                            android:padding="8dp"
-                            android:drawablePadding="8dp"
-                            android:textColor="@color/black"
-                            android:ems="10"
-                            android:hint="*Company Name*"
-                            android:inputType="textPersonName"
-                            android:minHeight="48dp" />
-
-                        <EditText
-                            android:id="@+id/ETBusCompRegNo"
-                            android:layout_width="match_parent"
-                            android:layout_height="60dp"
-                            android:inputType = "number"
-                            android:layout_marginLeft="35dp"
-                            android:layout_marginTop="15dp"
-                            android:layout_marginRight="35dp"
-                            android:layout_marginStart="10dp"
-                            android:layout_marginEnd="10dp"
-                            android:background="@drawable/theborder"
-                            android:padding="8dp"
-                            android:drawablePadding="8dp"
-                            android:textColor="@color/black"
-                            android:ems="10"
-                            android:hint="Company Reg. No."
-                            />
-
-                        <EditText
-                            android:id="@+id/ETBusEmailAd"
-                            android:layout_width="match_parent"
-                            android:layout_height="60dp"
-                            android:layout_marginLeft="35dp"
-                            android:layout_marginTop="15dp"
-                            android:layout_marginRight="35dp"
-                            android:layout_marginStart="10dp"
-                            android:layout_marginEnd="10dp"
-                            android:background="@drawable/theborder"
-                            android:padding="8dp"
-                            android:drawablePadding="8dp"
-                            android:textColor="@color/black"
-                            android:ems="10"
-                            android:hint="*Email Address*"
-                            android:inputType="textPersonName"
-                            android:minHeight="48dp" />
-
-                        <EditText
-                            android:id="@+id/ETBusTelNo"
-                            android:layout_width="match_parent"
-                            android:layout_height="60dp"
-                            android:layout_marginLeft="35dp"
-                            android:layout_marginTop="15dp"
-                            android:layout_marginRight="35dp"
-                            android:layout_marginStart="10dp"
-                            android:layout_marginEnd="10dp"
-                            android:background="@drawable/theborder"
-                            android:padding="8dp"
-                            android:inputType = "number"
-                            android:drawablePadding="8dp"
-                            android:textColor="@color/black"
-                            android:ems="10"
-                            android:hint="*Telephone Number*" />
-
-                        <EditText
-                            android:id="@+id/ETBusType"
-                            android:layout_width="match_parent"
-                            android:layout_height="60dp"
-                            android:layout_marginLeft="35dp"
-                            android:layout_marginTop="15dp"
-                            android:layout_marginRight="35dp"
-                            android:layout_marginStart="10dp"
-                            android:layout_marginEnd="10dp"
-                            android:background="@drawable/theborder"
-                            android:padding="8dp"
-                            android:drawablePadding="8dp"
-                            android:hint="*Business Type*"
-                            android:inputType="textPersonName"/>
-
-                        <EditText
-                            android:id="@+id/ETBusAddress"
-                            android:layout_width="match_parent"
-                            android:layout_height="60dp"
-                            android:layout_marginLeft="35dp"
-                            android:layout_marginTop="15dp"
-                            android:layout_marginRight="35dp"
-                            android:layout_marginStart="10dp"
-                            android:layout_marginEnd="10dp"
-                            android:background="@drawable/theborder"
-                            android:padding="8dp"
-                            android:drawablePadding="8dp"
-                            android:textColor="@color/black"
-                            android:ems="10"
-                            android:hint="*Address*" />
-
-                        <EditText
-                            android:id="@+id/ETBusCat"
-                            android:layout_width="match_parent"
-                            android:layout_height="60dp"
-                            android:layout_marginLeft="35dp"
-                            android:layout_marginTop="15dp"
-                            android:layout_marginRight="35dp"
-                            android:layout_marginStart="10dp"
-                            android:layout_marginEnd="10dp"
-                            android:background="@drawable/theborder"
-                            android:padding="8dp"
-                            android:drawablePadding="8dp"
-                            android:textColor="@color/black"
-                            android:ems="10"
-                            android:hint="*Business Category*"
-                            android:inputType="textPersonName"/>
-
-                        <Button
-                            android:id="@+id/btnBusNext"
-                            android:layout_width="160dp"
-                            android:layout_height="55dp"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="20dp"
-                            android:backgroundTint="@color/black"
-                            android:text="NEXT"
-                            android:textSize="20dp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="30dp"
-                            android:text="*Mandatory Fields*"
-                            android:textAlignment="center"
-                            android:textColor="#FF0000"
-                            android:textSize="20sp" />
-
-                    </LinearLayout>
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </RelativeLayout>
-
-    </ScrollView>
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView"
-        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:background="@drawable/nav_background"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_navigation">
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="List Your Business"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/ETBusCompName"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="35dp"
+            android:background="@drawable/theborder"
+            android:drawablePadding="8dp"
+            android:ems="10"
+            android:hint="*Company Name*"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:padding="8dp"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/ETBusCompRegNo"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="35dp"
+            android:background="@drawable/theborder"
+            android:drawablePadding="8dp"
+            android:ems="10"
+            android:hint="Company Reg. No."
+            android:inputType="number"
+            android:padding="8dp"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/ETBusEmailAd"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="35dp"
+            android:background="@drawable/theborder"
+            android:drawablePadding="8dp"
+            android:ems="10"
+            android:hint="*Email Address*"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:padding="8dp"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/ETBusTelNo"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="35dp"
+            android:background="@drawable/theborder"
+            android:drawablePadding="8dp"
+            android:ems="10"
+            android:hint="*Telephone Number*"
+            android:inputType="number"
+            android:padding="8dp"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/ETBusType"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="35dp"
+            android:background="@drawable/theborder"
+            android:drawablePadding="8dp"
+            android:hint="*Business Type*"
+            android:inputType="textPersonName"
+            android:padding="8dp" />
+
+        <EditText
+            android:id="@+id/ETBusAddress"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="35dp"
+            android:background="@drawable/theborder"
+            android:drawablePadding="8dp"
+            android:ems="10"
+            android:hint="*Address*"
+            android:padding="8dp"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/ETBusCat"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="35dp"
+            android:background="@drawable/theborder"
+            android:drawablePadding="8dp"
+            android:ems="10"
+            android:hint="*Business Category*"
+            android:inputType="textPersonName"
+            android:padding="8dp"
+            android:textColor="@color/black" />
+
+        <Button
+            android:id="@+id/btnBusNext"
+            android:layout_width="160dp"
+            android:layout_height="55dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/black"
+            android:text="NEXT"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="*Mandatory Fields*"
+            android:textAlignment="center"
+            android:textColor="#FF0000"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+</ScrollView>
+
+<com.google.android.material.bottomnavigation.BottomNavigationView
+    android:id="@+id/bottomNavigationView"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    android:background="@drawable/nav_background"
+    app:menu="@menu/bottom_navigation">
+</com.google.android.material.bottomnavigation.BottomNavigationView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

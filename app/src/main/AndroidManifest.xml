@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:dist="http://schemas.android.com/apk/distribution">
+    xmlns:dist="http://schemas.android.com/apk/distribution"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <dist:module dist:instant="true" />
 
@@ -18,7 +18,6 @@
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
@@ -31,7 +30,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HambaApp"
         tools:targetApi="31">
-
+        <activity
+            android:name=".Welcome"
+            android:exported="false" />
+        <activity
+            android:name=".DeleteListing"
+            android:exported="false" />
+        <activity
+            android:name=".CurrentListing"
+            android:exported="false" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -94,7 +101,7 @@
             android:exported="false" />
 
         <activity
-            android:name=".Welcome"
+            android:name=".LoadingWelcome"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -103,7 +110,5 @@
             </intent-filter>
         </activity>
     </application>
-
-
 
 </manifest>

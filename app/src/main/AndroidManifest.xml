@@ -87,6 +87,9 @@
             android:name=".BusinessEntryItems"
             android:exported="false" />
         <activity
+            android:name=".Favourites"
+            android:exported="false" />
+        <activity
             android:name=".BusinessList"
             android:exported="false" />
         <activity

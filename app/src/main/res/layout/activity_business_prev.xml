@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/hamba_background"
-    tools:context=".MainActivity" >
+    tools:context=".BusinessPrev" >
 
 
     <LinearLayout
@@ -187,6 +187,21 @@
                     android:textColor="@color/white"
                     android:hint="Summary"
                     android:textSize="20sp" />
+                <TextView
+                    android:id="@+id/tvBusinessImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:text="Image:"
+                    android:textSize="20sp" />
+
+                <LinearLayout
+                    android:id="@+id/imageContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                </LinearLayout>
+
 
                 <Button
                     android:id="@+id/btnDone1"

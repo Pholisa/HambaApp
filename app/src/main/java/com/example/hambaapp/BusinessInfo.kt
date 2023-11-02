@@ -20,11 +20,9 @@ class BusinessInfo : AppCompatActivity() {
 
     private val theDatabase = Firebase.database
     private val userID = FirebaseAuth.getInstance().currentUser?.uid
-    private val myReference = theDatabase.getReference("users").child(userID!!).child("Business Information")
-    private lateinit var firebaseAuthentication: FirebaseAuth
-
-
-
+   // private val myReference1 = theDatabase.getReference("users").child(userID!!).child("Business Information")
+   private val myReference = theDatabase.getReference("Businesses").child(userID!!)
+   // private lateinit var firebaseAuthentication: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
@@ -38,22 +36,20 @@ class BusinessInfo : AppCompatActivity() {
 
         buttonNext.setOnClickListener {
             validateData()
-            val intentNext = Intent(this, BusinessDescription::class.java)
-            startActivity(intentNext)
-
         }
 
     }
-         private fun validateData()
-         {
 
-             val companyName = binding.ETBusCompName.text.toString()
-             val registerNumber =binding.ETBusCompRegNo.text.toString()
-             val emailAddress = binding.ETBusEmailAd.text.toString()
-             val telephoneNumber=binding.ETBusTelNo.text.toString()
-             val businessType = binding.ETBusType.text.toString()
-             val businessAddress =binding.ETBusAddress.text.toString()
-             val businessCategory =binding.ETBusCat.text.toString()
+    private fun validateData()
+    {
+
+        val companyName = binding.ETBusCompName.text.toString()
+        val registerNumber = binding.ETBusCompRegNo.text.toString()
+        val emailAddress = binding.ETBusEmailAd.text.toString()
+        val telephoneNumber = binding.ETBusTelNo.text.toString()
+        val businessType = binding.ETBusType.text.toString()
+        val businessAddress = binding.ETBusAddress.text.toString()
+        val businessCategory = binding.ETBusCat.text.toString()
 
         if (binding.ETBusCompName.text.toString().isEmpty() ||
             binding.ETBusCompRegNo.text.toString().isEmpty() ||
@@ -64,43 +60,18 @@ class BusinessInfo : AppCompatActivity() {
             binding.ETBusCat.text.toString().isEmpty()
         )
         {
-            Toast.makeText(this,"Please enter all fields", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show()
         }
         else
         {
-            /*val companyName = findViewById<EditText>(R.id.ETBusCompName)
-            var name = companyName.text.toString().trim()
+            //storing data in firebase
+            val Info = Information(companyName, registerNumber, emailAddress, telephoneNumber, businessType, businessAddress, businessCategory)
 
-            val registerNumber = findViewById<EditText>(R.id.ETBusCompRegNo)
-            var regNo = registerNumber.text.toString().trim()
-
-            val emailAddress = findViewById<EditText>(R.id.ETBusEmailAd)
-            var email = emailAddress.text.toString().trim()
-
-            val telephoneNumber = findViewById<EditText>(R.id.ETBusTelNo)
-            var telephone = telephoneNumber.text.toString().trim()
-
-            val businessType = findViewById<EditText>(R.id.ETBusType)
-            var type = businessType.text.toString().trim()
-
-            val businessAddress = findViewById<EditText>(R.id.ETBusAddress)
-            var address = businessAddress.text.toString().trim()
-
-            val businessCategory = findViewById<EditText>(R.id.ETBusCat)
-            var category = businessCategory.text.toString().trim()
-
-
-            myReference.push().setValue(name)
-            myReference.push().setValue(regNo)
-            myReference.push().setValue(email)
-            myReference.push().setValue(telephone)
-            myReference.push().setValue(type)
-            myReference.push().setValue(address)
-            myReference.push().setValue(category)*/
-            //database = FirebaseDatabase.getInstance().getReference("Business Information")
-            val Info = Information(companyName, registerNumber, emailAddress, telephoneNumber, businessType,businessAddress,businessCategory)
             myReference.setValue(Info).addOnSuccessListener {
                 Toast.makeText(this, "Information Saved", Toast.LENGTH_SHORT).show()
+
+                val intentNext = Intent(this, BusinessDescription::class.java)
+                startActivity(intentNext)
             }
         }
 
@@ -126,6 +97,7 @@ class BusinessInfo : AppCompatActivity() {
                     val intent = Intent(this, Favourites::class.java)
                     startActivity(intent)
                 }
+
                 R.id.profile -> {
                     val intent = Intent(this, BusinessPortal::class.java)
                     startActivity(intent)
@@ -137,3 +109,4 @@ class BusinessInfo : AppCompatActivity() {
         }
     }
 }
+

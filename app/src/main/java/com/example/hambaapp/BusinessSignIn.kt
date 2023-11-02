@@ -28,18 +28,22 @@ class BusinessSignIn : AppCompatActivity() {
             val username = binding.edLoginEmailBus.text.toString()
             val pass = binding.edLoginPasswordBus.text.toString()
 
-            if (username.isNotEmpty() && pass.isNotEmpty()) {
+            if (username.isNotEmpty() && pass.isNotEmpty())
+            {
                 firebaseAuthentication.signInWithEmailAndPassword(username, pass)
                     .addOnCompleteListener {
-                        if (it.isSuccessful) {
+                        if (it.isSuccessful)
+                        {
                             val intent = Intent(this, BusinessInfo::class.java)
                             startActivity(intent)
-                        } else
+                        }
+                        else
                         {
                             Toast.makeText(this, "Email or Password is Incorrect", Toast.LENGTH_SHORT).show()
                         }
                     }
-            } else
+            }
+            else
             {
 
                 Toast.makeText(this, "Fields cannot be empty", Toast.LENGTH_SHORT).show()

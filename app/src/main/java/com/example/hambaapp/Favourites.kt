@@ -38,7 +38,7 @@ class Favourites : AppCompatActivity() {
                     startActivity(intent)
                 }
                 R.id.profile -> {
-                    val intent = Intent(this, BusinessPortal::class.java)
+                    val intent = Intent(this, Settings::class.java)
                     startActivity(intent)
                 }
 

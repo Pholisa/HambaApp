@@ -167,6 +167,18 @@
             android:textColor="@color/black" />
 
         <Button
+            android:id="@+id/btnUploadImage"
+            android:layout_width="350dp"
+            android:layout_height="55dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/black"
+            android:text="Upload Business Images"
+            app:icon="@android:drawable/ic_menu_upload"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <Button
             android:id="@+id/btnBusNext"
             android:layout_width="160dp"
             android:layout_height="55dp"
@@ -176,6 +188,8 @@
             android:text="NEXT"
             android:textSize="20sp"
             android:textStyle="bold" />
+
+
 
         <TextView
             android:layout_width="match_parent"

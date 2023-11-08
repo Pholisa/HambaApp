@@ -101,7 +101,7 @@ class BusinessDescription : AppCompatActivity() {
             }
         }
 
-    //Checkinh permissions in gallery
+    //Checking permissions in gallery
     private fun galleryCheckPermission() {
         Dexter.withContext(this).withPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
             .withListener(object : PermissionListener {

@@ -25,13 +25,13 @@ class Welcome : AppCompatActivity()
 
         //To access business UI
         businessUR.setOnClickListener {
-            var intent = Intent(this, BusinessSignIn::class.java)
+            var intent = Intent(this, BusinessOption::class.java)
             startActivity(intent)
         }
 
         //To access business UI
         admin.setOnClickListener {
-            var intent = Intent(this, AdminSignIn::class.java)
+            var intent = Intent(this, SignInAdmin::class.java)
             startActivity(intent)
         }
     }

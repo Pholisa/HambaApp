@@ -156,38 +156,6 @@
                     android:textSize="20sp" />
 
                 <TextView
-                    android:id="@+id/tvTitle"
-                    android:layout_width="138dp"
-                    android:layout_height="45dp"
-                    android:textColor="@color/black"
-                    android:text="Title:"
-                    android:textSize="20sp" />
-
-                <TextView
-                    android:id="@+id/tvTitleShow"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:textColor="@color/white"
-                    android:hint="Title"
-                    android:textSize="20sp" />
-
-
-                <TextView
-                    android:id="@+id/tvBusinessSummary"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:text="Summary:"
-                    android:textSize="20sp" />
-
-                <TextView
-                    android:id="@+id/tvBusinessSummaryShow"
-                    android:layout_width="match_parent"
-                    android:layout_height="155dp"
-                    android:textColor="@color/white"
-                    android:hint="Summary"
-                    android:textSize="20sp" />
-                <TextView
                     android:id="@+id/tvBusinessImage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

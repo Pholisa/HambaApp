@@ -31,9 +31,15 @@
         android:theme="@style/Theme.HambaApp"
         tools:targetApi="31">
         <activity
-            android:name=".BusinessDashboard"
-                  android:exported="false" />
-         <activity
+            android:name=".BusinessOption"
+            android:exported="false" />
+        <activity
+            android:name=".DashboardAdmin"
+            android:exported="false" />
+        <activity
+            android:name=".SignInAdmin"
+            android:exported="false" />
+        <activity
             android:name=".Welcome"
             android:exported="false" />
         <activity
@@ -50,9 +56,7 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity
-            android:name=".AdminSignIn"
-            android:exported="false" />
+      
         <activity
             android:name=".AdminPortal"
             android:exported="false" />

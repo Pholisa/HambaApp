@@ -18,6 +18,29 @@ class BusinessPortal : AppCompatActivity() {
         binding = ActivityBusinessPortalBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+
+        binding.layAddList.setOnClickListener {
+            val signupIntent = Intent(this, BusinessDescription::class.java)
+            startActivity(signupIntent)
+        }
+
+        binding.layEditList.setOnClickListener {
+            val signupIntent = Intent(this, BusinessDescription::class.java)
+            startActivity(signupIntent)
+        }
+
+        binding.layViewList.setOnClickListener {
+            val signupIntent = Intent(this, CurrentListing::class.java)
+            startActivity(signupIntent)
+        }
+
+        binding.layDeleteList.setOnClickListener {
+            val signupIntent = Intent(this, DeleteListing::class.java)
+            startActivity(signupIntent)
+        }
+
+
         //calling the navigation bar
         navigationBar()
 
@@ -26,7 +49,7 @@ class BusinessPortal : AppCompatActivity() {
         //Allows user to click image view
         //Will take user to the More Info screen after clicking
         viewListImageView.setOnClickListener {
-            val intent = Intent(this, ViewListing::class.java)
+            val intent = Intent(this, CurrentListing::class.java)
             startActivity(intent)
         }
     }

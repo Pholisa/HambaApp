@@ -3,7 +3,6 @@ package com.example.hambaapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.hambaapp.databinding.ActivityAccomodationPageBinding
 import com.example.hambaapp.databinding.ActivityAdminDashboardBinding
 
 class AdminDashboard : AppCompatActivity() {
@@ -15,7 +14,7 @@ class AdminDashboard : AppCompatActivity() {
         setContentView(binding.root)
 
         //calling nav bar
-        navigationBar()
+       // navigationBar()
     }
 
     //navigation bar with limited user access for admin

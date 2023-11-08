@@ -34,7 +34,7 @@ class BusinessSignIn : AppCompatActivity() {
                     .addOnCompleteListener {
                         if (it.isSuccessful)
                         {
-                            val intent = Intent(this, BusinessInfo::class.java)
+                            val intent = Intent(this, BusinessPortal::class.java)
                             startActivity(intent)
                         }
                         else

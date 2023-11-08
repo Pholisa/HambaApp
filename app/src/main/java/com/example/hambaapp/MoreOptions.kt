@@ -18,7 +18,6 @@ class MoreOptions : AppCompatActivity() {
     lateinit var listImageView: ImageView
     lateinit var portalImageView: ImageView
 
-    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMoreOptionsBinding.inflate(layoutInflater)

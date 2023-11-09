@@ -13,8 +13,8 @@ import com.example.hambaapp.databinding.ActivityBusinessSignInBinding
 import com.example.hambaapp.databinding.ActivityTouristSignInBinding
 import com.google.firebase.auth.FirebaseAuth
 
-class BusinessSignIn : AppCompatActivity() {
-
+class BusinessSignIn : AppCompatActivity()
+{
     private lateinit var binding: ActivityBusinessSignInBinding
     private lateinit var firebaseAuthentication: FirebaseAuth
 
@@ -53,7 +53,6 @@ class BusinessSignIn : AppCompatActivity() {
         binding.tvRegisterRedirectText2.setOnClickListener {
             val intent = Intent(this, Register::class.java)
             startActivity(intent)
-
         }
 
         binding.tvBusForgot.setOnClickListener{

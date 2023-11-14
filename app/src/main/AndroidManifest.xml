@@ -32,6 +32,15 @@
         tools:targetApi="31">
         <activity
             android:name=".BusinessDashboard"
+                  android:exported="false" />
+         <activity
+            android:name=".Welcome"
+            android:exported="false" />
+        <activity
+            android:name=".DeleteListing"
+            android:exported="false" />
+        <activity
+            android:name=".CurrentListing"
             android:exported="false" />
 
         <meta-data
@@ -97,7 +106,7 @@
             android:name=".BusinessPrev"
             android:exported="false" />
         <activity
-            android:name=".Welcome"
+            android:name=".LoadingWelcome"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

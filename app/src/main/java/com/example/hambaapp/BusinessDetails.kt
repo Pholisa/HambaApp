@@ -3,7 +3,7 @@ package com.example.hambaapp
 data class BusinessDetails(
     val title: String? = null,
     val businessSummary: String? = null,
-    val stringImages: List<String>? = null
+    val stringImages: String? = null
 )
 
 data class User(val fullName: String? = null,val phoneNumber: String? = null)

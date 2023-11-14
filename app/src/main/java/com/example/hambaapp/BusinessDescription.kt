@@ -39,7 +39,7 @@ class BusinessDescription : AppCompatActivity() {
     private val userID = FirebaseAuth.getInstance().currentUser?.uid
     private val myReference = theDatabase.getReference("Listing Data").child(userID!!)
     private lateinit var firebaseAuthentication: FirebaseAuth
-    private val stringImages = mutableListOf<String>()
+    private var stringImage: String = ""
 
     private val galleryRequestCode = 2
 
@@ -70,11 +70,11 @@ class BusinessDescription : AppCompatActivity() {
         val summary = binding.ETBusDescrip.text.toString()
 
         if (binding.ETBusTitle.text.toString().isEmpty() ||
-            binding.ETBusDescrip.text.toString().isEmpty() || stringImages.isEmpty()
+            binding.ETBusDescrip.text.toString().isEmpty() || stringImage.isEmpty()
         ) {
             Toast.makeText(this, "Please enter all fields and select images", Toast.LENGTH_SHORT).show()
         } else {
-            val description = BusinessDetails(title, summary, stringImages)
+            val description = BusinessDetails(title, summary, stringImage)
             myReference.setValue(description).addOnSuccessListener {
                 Toast.makeText(this, "Information Saved", Toast.LENGTH_SHORT).show()
             }
@@ -91,8 +91,8 @@ class BusinessDescription : AppCompatActivity() {
                     val stream = ByteArrayOutputStream()
                     myBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream)
                     val bytes = stream.toByteArray()
-                    val stringImage = Base64.encodeToString(bytes, Base64.DEFAULT)
-                    stringImages.add(stringImage)
+                    stringImage = Base64.encodeToString(bytes, Base64.DEFAULT)
+                    //stringImages.add(stringImage)
                     // You can add the image to an ImageView or display some feedback to the user here.
                     inputStream!!.close()
                 } catch (ex: Exception) {

@@ -3,6 +3,7 @@ package com.example.hambaapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.hambaapp.HambaBusiness.BusinessSettings
 import com.example.hambaapp.databinding.ActivityRateUsBinding
 
 class RateUs : AppCompatActivity() {
@@ -39,7 +40,7 @@ class RateUs : AppCompatActivity() {
                 }
 
                 R.id.profile -> {
-                    val intent = Intent(this, BusinessPortal::class.java)
+                    val intent = Intent(this, BusinessSettings::class.java)
                     startActivity(intent)
                 }
 

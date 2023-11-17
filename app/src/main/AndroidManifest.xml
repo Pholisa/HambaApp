@@ -31,7 +31,7 @@
         android:theme="@style/Theme.HambaApp"
         tools:targetApi="31">
         <activity
-            android:name=".BusinessOption"
+            android:name=".HambaBusiness.BusinessOption"
             android:exported="false" />
         <activity
             android:name=".DashboardAdmin"
@@ -61,7 +61,7 @@
             android:name=".AdminPortal"
             android:exported="false" />
         <activity
-            android:name=".ActiveBusinesses"
+            android:name=".HambaBusiness.ActiveBusinesses"
             android:exported="false" />
         <activity
             android:name=".Settings"
@@ -71,7 +71,7 @@
             android:exported="false"
             android:label="@string/title_activity_maps" />
         <activity
-            android:name=".BusinessInfo"
+            android:name=".HambaBusiness.BusinessRegForm"
             android:exported="false" />
         <activity
             android:name=".ForgotPassword"
@@ -80,7 +80,7 @@
             android:name=".Dashboard"
             android:exported="false" />
         <activity
-            android:name=".BusinessSignIn"
+            android:name=".HambaBusiness.BusinessSignIn"
             android:exported="false" />
         <activity
             android:name=".Entertainment"
@@ -92,22 +92,28 @@
             android:name=".Register"
             android:exported="false" />
         <activity
+            android:name=".HambaBusiness.BusinessDashboard"
+            android:exported="false" />
+        <activity
+            android:name=".HambaBusiness.BusinessSettings"
+            android:exported="false" />
+        <activity
             android:name=".TouristSignIn"
             android:exported="false" />
         <activity
-            android:name=".BusinessDescription"
+            android:name=".HambaBusiness.BusinessListingData"
             android:exported="false" />
         <activity
-            android:name=".BusinessEntryItems"
+            android:name=".HambaBusiness.BusinessEntryItems"
             android:exported="false" />
         <activity
             android:name=".Favourites"
             android:exported="false" />
         <activity
-            android:name=".BusinessList"
+            android:name=".HambaBusiness.BusinessListIntro"
             android:exported="false" />
         <activity
-            android:name=".BusinessPrev"
+            android:name=".HambaBusiness.BusinessPrev"
             android:exported="false" />
         <activity
             android:name=".LoadingWelcome"

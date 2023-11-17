@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ActiveBusinesses"
+    tools:context=".HambaBusiness.ActiveBusinesses"
     android:background="@drawable/hamba_background">
 
     <TextView
@@ -25,5 +25,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:menu="@menu/bottom_navigation_admin" />
+        app:menu="@menu/bottom_navigation_business" />
 </androidx.constraintlayout.widget.ConstraintLayout>

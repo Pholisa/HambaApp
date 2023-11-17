@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/hamba_background"
-    tools:context=".BusinessPrev" >
+    tools:context=".HambaBusiness.BusinessPrev" >
 
 
     <LinearLayout
@@ -197,7 +197,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:background="@drawable/nav_background"
-        app:menu="@menu/bottom_navigation"
+        app:menu="@menu/bottom_navigation_business"
         >
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/hamba_background"
     android:orientation="vertical"
-    tools:context=".BusinessInfo" >
+    tools:context=".HambaBusiness.BusinessRegForm" >
 
 
 
@@ -41,14 +41,14 @@
         android:orientation="vertical">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="List Your Business"
+            android:text="Please fill in the form :"
             android:textColor="@color/black"
             android:textSize="25sp"
             android:textStyle="bold" />
 
-        <EditText
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/ETBusCompName"
             android:layout_width="match_parent"
             android:layout_height="60dp"
@@ -57,16 +57,22 @@
             android:layout_marginTop="15dp"
             android:layout_marginEnd="10dp"
             android:layout_marginRight="35dp"
-            android:background="@drawable/theborder"
             android:drawablePadding="8dp"
             android:ems="10"
             android:hint="*Company Name*"
             android:inputType="textPersonName"
             android:minHeight="48dp"
             android:padding="8dp"
-            android:textColor="@color/black" />
+            android:textColor="@color/black">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
 
-        <EditText
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/ETBusCompRegNo"
             android:layout_width="match_parent"
             android:layout_height="60dp"
@@ -75,15 +81,20 @@
             android:layout_marginTop="15dp"
             android:layout_marginEnd="10dp"
             android:layout_marginRight="35dp"
-            android:background="@drawable/theborder"
             android:drawablePadding="8dp"
             android:ems="10"
             android:hint="Company Reg. No."
             android:inputType="number"
             android:padding="8dp"
-            android:textColor="@color/black" />
+            android:textColor="@color/black" >
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
 
-        <EditText
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/ETBusEmailAd"
             android:layout_width="match_parent"
             android:layout_height="60dp"
@@ -92,16 +103,22 @@
             android:layout_marginTop="15dp"
             android:layout_marginEnd="10dp"
             android:layout_marginRight="35dp"
-            android:background="@drawable/theborder"
             android:drawablePadding="8dp"
             android:ems="10"
             android:hint="*Email Address*"
             android:inputType="textPersonName"
             android:minHeight="48dp"
             android:padding="8dp"
-            android:textColor="@color/black" />
+            android:textColor="@color/black" >
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
 
-        <EditText
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/ETBusTelNo"
             android:layout_width="match_parent"
             android:layout_height="60dp"
@@ -110,15 +127,21 @@
             android:layout_marginTop="15dp"
             android:layout_marginEnd="10dp"
             android:layout_marginRight="35dp"
-            android:background="@drawable/theborder"
             android:drawablePadding="8dp"
             android:ems="10"
             android:hint="*Telephone Number*"
             android:inputType="number"
             android:padding="8dp"
-            android:textColor="@color/black" />
+            android:textColor="@color/black" >
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
 
-        <EditText
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/ETBusType"
             android:layout_width="match_parent"
             android:layout_height="60dp"
@@ -127,13 +150,19 @@
             android:layout_marginTop="15dp"
             android:layout_marginEnd="10dp"
             android:layout_marginRight="35dp"
-            android:background="@drawable/theborder"
             android:drawablePadding="8dp"
             android:hint="*Business Type*"
             android:inputType="textPersonName"
-            android:padding="8dp" />
+            android:padding="8dp" >
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
 
-        <EditText
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/ETBusAddress"
             android:layout_width="match_parent"
             android:layout_height="60dp"
@@ -142,14 +171,20 @@
             android:layout_marginTop="15dp"
             android:layout_marginEnd="10dp"
             android:layout_marginRight="35dp"
-            android:background="@drawable/theborder"
             android:drawablePadding="8dp"
             android:ems="10"
             android:hint="*Address*"
             android:padding="8dp"
-            android:textColor="@color/black" />
+            android:textColor="@color/black" >
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
 
-        <EditText
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/ETBusCat"
             android:layout_width="match_parent"
             android:layout_height="60dp"
@@ -158,13 +193,18 @@
             android:layout_marginTop="15dp"
             android:layout_marginEnd="10dp"
             android:layout_marginRight="35dp"
-            android:background="@drawable/theborder"
             android:drawablePadding="8dp"
             android:ems="10"
             android:hint="*Business Category*"
             android:inputType="textPersonName"
             android:padding="8dp"
-            android:textColor="@color/black" />
+            android:textColor="@color/black" >
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/btnUploadImage"
@@ -173,10 +213,10 @@
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:backgroundTint="@color/black"
-            android:text="Upload Business Images"
-            app:icon="@android:drawable/ic_menu_upload"
+            android:text="Upload Documents"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:icon="@android:drawable/ic_menu_upload" />
 
         <Button
             android:id="@+id/btnBusNext"
@@ -211,7 +251,7 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     android:background="@drawable/nav_background"
-    app:menu="@menu/bottom_navigation">
+    app:menu="@menu/bottom_navigation_business">
 </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

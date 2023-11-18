@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/hamba_background"
     android:orientation="vertical"
-    tools:context=".BusinessList" >
+    tools:context=".HambaBusiness.BusinessListIntro" >
 
     <ScrollView
         android:layout_width="match_parent"
@@ -237,10 +237,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:background="@drawable/nav_background"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_navigation"
+        app:menu="@menu/bottom_navigation_business"
         >
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

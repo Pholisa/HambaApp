@@ -14,6 +14,14 @@
         android:orientation="vertical"
         android:padding="10dp">
 
+        <ImageView
+            android:id="@+id/btnMore"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="end"
+            android:src="@drawable/baseline_more_horiz_24"
+            android:contentDescription="Delete"/>
+
         <!-- Media -->
         <ImageView
             android:layout_width="match_parent"
@@ -46,7 +54,7 @@
 
 
         <TextView
-            android:id="@+id/tvBusinessPrices"
+            android:id="@+id/tvBusinessType"
             android:layout_width="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_height="wrap_content"
@@ -65,7 +73,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
-                android:id="@+id/btn_moreInfo"
+                android:id="@+id/btnMoreInfo"
                 android:text="More Info"
                 style="?attr/borderlessButtonStyle"
                 />

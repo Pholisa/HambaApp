@@ -3,8 +3,8 @@ package com.example.hambaapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.hambaapp.HambaBusiness.BusinessSettings
 import com.example.hambaapp.databinding.ActivityAccomodationPageBinding
-import com.example.hambaapp.databinding.ActivityBusinessPortalBinding
 
 class AccomodationPage : AppCompatActivity() {
 
@@ -40,7 +40,7 @@ class AccomodationPage : AppCompatActivity() {
                     startActivity(intent)
                 }
                 R.id.profile -> {
-                    val intent = Intent(this, BusinessPortal::class.java)
+                    val intent = Intent(this, BusinessSettings::class.java)
                     startActivity(intent)
                 }
 

@@ -1,10 +1,12 @@
-package com.example.hambaapp
+package com.example.hambaapp.HambaBusiness
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.hambaapp.AdminDashboard
+import com.example.hambaapp.AdminPortal
+import com.example.hambaapp.R
 import com.example.hambaapp.databinding.ActivityActiveBusinessesBinding
-import com.example.hambaapp.databinding.ActivityBusinessPortalBinding
 
 class ActiveBusinesses : AppCompatActivity() {
 

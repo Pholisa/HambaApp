@@ -4,8 +4,9 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.hambaapp.R
 import android.widget.Button
+import com.example.hambaapp.HambaBusiness.BusinessRegForm
+import com.example.hambaapp.HambaBusiness.BusinessSettings
 import com.example.hambaapp.databinding.ActivityMoreInfoBinding
 
 class MoreInfo : AppCompatActivity() {
@@ -25,7 +26,7 @@ class MoreInfo : AppCompatActivity() {
         //Allows user to click image view
         //Will take user to the next screen after clicking
         btnNextOpt.setOnClickListener {
-            val intent = Intent(this, BusinessInfo::class.java)
+            val intent = Intent(this, BusinessRegForm::class.java)
             startActivity(intent)
 
         }
@@ -52,7 +53,7 @@ class MoreInfo : AppCompatActivity() {
                     startActivity(intent)
                 }
                 R.id.profile -> {
-                    val intent = Intent(this, BusinessPortal::class.java)
+                    val intent = Intent(this, BusinessSettings::class.java)
                     startActivity(intent)
                 }
 

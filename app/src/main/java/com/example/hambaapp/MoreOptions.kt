@@ -1,14 +1,14 @@
 package com.example.hambaapp
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.hambaapp.R
 import com.example.hambaapp.databinding.ActivityMoreOptionsBinding
 
 
 import android.widget.ImageView
+import com.example.hambaapp.HambaBusiness.BusinessListIntro
+import com.example.hambaapp.HambaBusiness.BusinessSettings
 
 class MoreOptions : AppCompatActivity() {
 
@@ -40,7 +40,7 @@ class MoreOptions : AppCompatActivity() {
         //Allows user to click image view
         //Will take user to the Business Description screen after clicking
         listImageView.setOnClickListener {
-            val intent = Intent(this, BusinessList::class.java)
+            val intent = Intent(this, BusinessListIntro::class.java)
             startActivity(intent)
 
         }
@@ -48,7 +48,7 @@ class MoreOptions : AppCompatActivity() {
         //Allows user to click image view
         //Will take user to the Business Portal screen after clicking
         portalImageView.setOnClickListener {
-            val intent = Intent(this, BusinessList::class.java)
+            val intent = Intent(this, BusinessListIntro::class.java)
             startActivity(intent)
 
         }
@@ -76,7 +76,7 @@ class MoreOptions : AppCompatActivity() {
                     startActivity(intent)
                 }
                 R.id.profile -> {
-                    val intent = Intent(this, BusinessPortal::class.java)
+                    val intent = Intent(this, BusinessSettings::class.java)
                     startActivity(intent)
                 }
 

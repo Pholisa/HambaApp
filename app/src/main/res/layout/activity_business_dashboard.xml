@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BusinessDashboard"
+    tools:context=".HambaBusiness.BusinessDashboard"
     android:background="@drawable/hamba_background">
 
     <TextView
@@ -35,14 +35,27 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler1"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:padding="7dp"
-                tools:listitem="@layout/business_list_item"/>
+                tools:listitem="@layout/list_business_item"/>
         </LinearLayout>
 
 
     </ScrollView>
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnAddBusiness"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/grey"
+        android:src="@drawable/baseline_add_24"
+        app:tint="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
@@ -52,7 +65,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:background="@drawable/nav_background"
-        app:menu="@menu/bottom_navigation">
+        app:menu="@menu/bottom_navigation_business">
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 

@@ -3,8 +3,7 @@ package com.example.hambaapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.hambaapp.databinding.ActivityActiveBusinessesBinding
-import com.example.hambaapp.databinding.ActivityAdminDashboardBinding
+import com.example.hambaapp.HambaBusiness.ActiveBusinesses
 import com.example.hambaapp.databinding.ActivityAdminPortalBinding
 
 class AdminPortal : AppCompatActivity() {

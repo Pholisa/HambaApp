@@ -1,21 +1,20 @@
-package com.example.hambaapp
+package com.example.hambaapp.HambaBusiness
 
-import android.content.ContentValues.TAG
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import com.example.hambaapp.Dashboard
+import com.example.hambaapp.Favourites
+import com.example.hambaapp.MapsActivity
+import com.example.hambaapp.R
+import com.example.hambaapp.Welcome
 import com.example.hambaapp.databinding.ActivityBusinessPrevBinding
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
-import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
 
 
@@ -25,7 +24,7 @@ class BusinessPrev : AppCompatActivity() {
 
     private val theDatabase = Firebase.database
     private val userID = FirebaseAuth.getInstance().currentUser?.uid
-    private val myReference = theDatabase.getReference("users").child(userID!!).child("Business Preview")
+    private val myReference = theDatabase.getReference("users").child(userID!!).child("Business Information")
     private lateinit var firebaseAuthentication: FirebaseAuth
 
     private lateinit var database: DatabaseReference
@@ -36,8 +35,6 @@ class BusinessPrev : AppCompatActivity() {
     private lateinit var businessType : TextView
     private lateinit var businessAddress : TextView
     private lateinit var businessCategory : TextView
-    private lateinit var title : TextView
-    private lateinit var businessSummary : TextView
 
 
 
@@ -103,28 +100,23 @@ class BusinessPrev : AppCompatActivity() {
     }
 
 
-    private fun navigationBar()
-    {
+    private fun navigationBar() {
         //This will account for event clicking of the navigation bar (similar to if statement format)
         binding.bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
 
                 R.id.home -> {
-                    val intent = Intent(this, Dashboard::class.java)
+                    val intent = Intent(this, BusinessDashboard::class.java)
+                    startActivity(intent)
+                }
+                //we need a recyler viewer of all active businesses
+                R.id.activeBusinesses -> {
+                    val intent = Intent(this, ActiveBusinesses::class.java)
                     startActivity(intent)
                 }
 
-                R.id.location -> {
-                    val intent = Intent(this, MapsActivity::class.java)
-                    startActivity(intent)
-                }
-
-                R.id.favourites -> {
-                    val intent = Intent(this, Favourites::class.java)
-                    startActivity(intent)
-                }
                 R.id.profile -> {
-                    val intent = Intent(this, BusinessPortal::class.java)
+                    val intent = Intent(this, BusinessSettings::class.java)
                     startActivity(intent)
                 }
 

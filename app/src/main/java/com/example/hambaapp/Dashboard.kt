@@ -3,12 +3,19 @@ package com.example.hambaapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.hambaapp.R
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.hambaapp.Adapter.NearbyPlaceAdaptar
+import com.example.hambaapp.Model.NearbyPlaceData
 import com.example.hambaapp.databinding.ActivityDashboardBinding
+import com.google.firebase.database.*
 
 class Dashboard : AppCompatActivity() {
 
     private lateinit var binding: ActivityDashboardBinding
+    //private lateinit var nearbyPlaceRecycler: RecyclerView
+    //private lateinit var nearbyAdapter: NearbyPlaceAdapter
+    //private lateinit var databaseReference: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -16,8 +23,17 @@ class Dashboard : AppCompatActivity() {
         binding = ActivityDashboardBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //databaseReference = FirebaseDatabase.getInstance().reference
+
+        // Initialize RecyclerView
+        //nearbyPlaceRecycler = findViewById(R.id.nearby_place_recycler)
+        //nearbyPlaceRecycler.layoutManager = LinearLayoutManager(this)
+
+        // Fetch data from Firebase
+        //fetchDataFromFirebase()
+
         binding.layBed.setOnClickListener {
-            val signupIntent = Intent(this, Accomodation::class.java)
+            val signupIntent = Intent(this, AccomodationPage::class.java)
             startActivity(signupIntent)
         }
 
@@ -40,13 +56,10 @@ class Dashboard : AppCompatActivity() {
     }
 
     private fun navigationBar() {
-        //This will account for event clicking of the navigation bar (similar to if statement format)
         binding.bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
-
                 R.id.home -> {
-                    val intent = Intent(this, Dashboard::class.java)
-                    startActivity(intent)
+                    // You are already in the Dashboard, so no need to navigate again.
                 }
 
                 R.id.location -> {
@@ -68,4 +81,23 @@ class Dashboard : AppCompatActivity() {
             true
         }
     }
+
+    /*private fun fetchDataFromFirebase() {
+        databaseReference.child("nearby_places").addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val nearbyPlacesList = mutableListOf<NearbyPlaceData>()
+                for (dataSnapshot in snapshot.children) {
+                    val nearbyPlaceData = dataSnapshot.getValue(NearbyPlaceData::class.java)
+                    nearbyPlaceData?.let { nearbyPlacesList.add(it) }
+                }
+                // Set up the RecyclerView adapter
+                //nearbyAdapter = NearbyPlaceAdapter(this@Dashboard, nearbyPlacesList)
+                //nearbyPlaceRecycler.adapter = nearbyAdapter
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Handle the error
+            }
+        })
+    }*/
 }

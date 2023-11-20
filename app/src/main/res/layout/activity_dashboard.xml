@@ -200,7 +200,7 @@
             android:layout_marginTop="60dp"
             android:layout_marginEnd="30dp"
             android:textStyle="bold"
-            android:text="Nearby"
+            android:text="Buisness"
             android:textColor="@color/white"
             android:textSize="25sp" />
 
@@ -218,6 +218,7 @@
                 android:id="@+id/tvBusinessDisplay"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                tools:listitem="@layout/activity_dashboard_recycle_view"
                 android:layout_marginLeft="10dp"
                 android:textSize="16sp"/>
 

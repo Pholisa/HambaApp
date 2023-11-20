@@ -13,23 +13,28 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hambaapp.R
 import android.content.Context
+import android.content.Intent
 
 
 class MyBusinessAdapter(
     private val context: Context,
     private val birdList: MutableList<BusinessDetail> = mutableListOf(),
-    private val onDeleteClickListener: (Int) -> Unit
+    private val onDeleteClickListener: (Int) -> Unit,
+    private val onItemClickListener: (Int) -> Unit
 ) : RecyclerView.Adapter<MyBusinessAdapter.MyViewHolder>() {
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val title: TextView = itemView.findViewById(R.id.tvBusinessName)
         val location: TextView = itemView.findViewById(R.id.tvBusinessAddress)
-        val businessSummary: TextView = itemView.findViewById(R.id.tvBusinessType)
+        val businessPrice: TextView = itemView.findViewById(R.id.tvBusinessPrice)
+        val businessSummary: TextView = itemView.findViewById(R.id.tvBusinessSummary)
         val btnMore: ImageView = itemView.findViewById(R.id.btnMore)
         val ivImage: ImageView = itemView.findViewById(R.id.ivImage)
 
         init {
-            btnMore.setOnClickListener { showPopupMenu(btnMore, adapterPosition) }
+          //  btnMore.setOnClickListener { showPopupMenu(btnMore, adapterPosition) }
+            itemView.setOnClickListener { onItemClickListener(adapterPosition) }
+           // btnMore.setOnClickListener { showPopupMenu(btnMore, adapterPosition) }
         }
     }
 
@@ -44,9 +49,10 @@ class MyBusinessAdapter(
 
         holder.title.text = currentBird.title
         holder.location.text = currentBird.location
+        holder.businessPrice.text = "R"+ currentBird.price
         holder.businessSummary.text = currentBird.businessSummary
 
-        // ... (rest of the onBindViewHolder code remains unchanged)
+
         // Check if imageString is not null or empty before decoding
         val imageString = currentBird.stringImage
         if (!imageString.isNullOrBlank())
@@ -94,8 +100,12 @@ class MyBusinessAdapter(
         popupMenu.setOnMenuItemClickListener { item ->
             when (item.itemId) {
                 R.id.menu_edit -> {
-                    // Handle edit option
-                    Toast.makeText(context, "Edit clicked for item at position $position", Toast.LENGTH_SHORT).show()
+                  Toast.makeText(context, "Edit clicked for item at position $position", Toast.LENGTH_SHORT).show()
+                    /*
+                    val intent = Intent(context, BusinessPrev::class.java)
+                    intent.putExtra("position", position)
+                    context.startActivity(intent)
+                     */
                     true
                 }
                 R.id.menu_delete -> {
@@ -109,6 +119,7 @@ class MyBusinessAdapter(
 
         popupMenu.show()
     }
+
 }
 
 

@@ -21,6 +21,7 @@ class BusinessSettings : AppCompatActivity() {
         binding = ActivityBusinessSettingsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        /*
         binding.layAddList.setOnClickListener {
             val signupIntent = Intent(this, BusinessListingData::class.java)
             startActivity(signupIntent)
@@ -41,10 +42,6 @@ class BusinessSettings : AppCompatActivity() {
             startActivity(signupIntent)
         }
 
-
-        //calling the navigation bar
-        navigationBar()
-
         viewListImageView = findViewById(R.id.iv_viewList)
 
         //Allows user to click image view
@@ -53,6 +50,10 @@ class BusinessSettings : AppCompatActivity() {
             val intent = Intent(this, CurrentListing::class.java)
             startActivity(intent)
         }
+
+         */
+        //calling the navigation bar
+        navigationBar()
     }
 
     private fun navigationBar() {

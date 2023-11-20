@@ -52,14 +52,13 @@
             android:text="Business Address"
             android:textStyle="italic" />
 
-
         <TextView
-            android:id="@+id/tvBusinessType"
+            android:id="@+id/tvBusinessSummary"
             android:layout_width="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_height="wrap_content"
             android:textSize="15sp"
-            android:text="Business Price"
+            android:text=""
             android:textStyle="italic" />
 
         <!-- Buttons -->
@@ -70,10 +69,10 @@
             android:orientation="horizontal">
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/tvBusinessPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
-                android:id="@+id/btnMoreInfo"
                 android:text="More Info"
                 style="?attr/borderlessButtonStyle"
                 />

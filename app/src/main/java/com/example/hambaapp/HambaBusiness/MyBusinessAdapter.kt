@@ -23,6 +23,7 @@ class MyBusinessAdapter(
     private val onItemClickListener: (Int) -> Unit
 ) : RecyclerView.Adapter<MyBusinessAdapter.MyViewHolder>() {
 
+    //Grabbing objects from Recycler viewer
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val title: TextView = itemView.findViewById(R.id.tvBusinessName)
         val location: TextView = itemView.findViewById(R.id.tvBusinessAddress)
@@ -32,7 +33,7 @@ class MyBusinessAdapter(
         val ivImage: ImageView = itemView.findViewById(R.id.ivImage)
 
         init {
-          //  btnMore.setOnClickListener { showPopupMenu(btnMore, adapterPosition) }
+            btnMore.setOnClickListener { showPopupMenu(btnMore, adapterPosition) }
             itemView.setOnClickListener { onItemClickListener(adapterPosition) }
            // btnMore.setOnClickListener { showPopupMenu(btnMore, adapterPosition) }
         }

@@ -8,6 +8,8 @@ import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Base64
 import android.widget.*
 import androidx.activity.result.ActivityResult
@@ -16,6 +18,13 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.hambaapp.R
 import com.example.hambaapp.databinding.ActivityBusinessListingDataBinding
+import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.libraries.places.api.Places
+import com.google.android.libraries.places.api.model.Place
+import com.google.android.libraries.places.api.net.FetchPlaceRequest
+import com.google.android.libraries.places.api.net.FindAutocompletePredictionsRequest
+import com.google.android.libraries.places.api.net.PlacesClient
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
@@ -26,6 +35,13 @@ import com.karumi.dexter.listener.PermissionDeniedResponse
 import com.karumi.dexter.listener.PermissionGrantedResponse
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.single.PermissionListener
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.withContext
 import java.io.ByteArrayOutputStream
 
 
@@ -42,6 +58,11 @@ class BusinessListingData : AppCompatActivity() {
     private var stringImage: String = ""
 
     private val galleryRequestCode = 2
+
+    private lateinit var placesClient: PlacesClient
+    private lateinit var autoCompleteTextView: AutoCompleteTextView
+    private var theLocation: LatLng = LatLng(0.0, 0.0)
+    private var theLocationString: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,22 +83,110 @@ class BusinessListingData : AppCompatActivity() {
 
         //calling nav bar function
         navigationBar()
+
+        /////////////////////////////////////
+        // Initialize Places API
+        Places.initialize(applicationContext, "YOUR_API_KEY") // Replace with your API key
+        placesClient = Places.createClient(this)
+
+        // Initialize AutoCompleteTextView
+        autoCompleteTextView = findViewById(R.id.autoCompleteTextView)
+
+        // Set up AutoCompleteTextView with adapter
+        val adapter = ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line)
+        autoCompleteTextView.setAdapter(adapter)
+
+        // Set item click listener for AutoCompleteTextView
+        autoCompleteTextView.setOnItemClickListener { _, _, position, _ ->
+            val selectedPrediction = adapter.getItem(position)
+            if (selectedPrediction != null) {
+                // Perform place details request for the selected prediction
+                getPlaceDetails(selectedPrediction)
+            }
+        }
+
+        // Set up text change listener for AutoCompleteTextView
+        autoCompleteTextView.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+
+            override fun afterTextChanged(s: Editable?) {
+                // Perform autocomplete predictions when text changes
+                getAutocompletePredictions(s.toString())
+            }
+        })
+    }
+
+    private fun getAutocompletePredictions(query: String) {
+        // Create a request for autocomplete predictions
+        val request = FindAutocompletePredictionsRequest.builder()
+            .setQuery(query)
+            .build()
+
+        // Get autocomplete predictions asynchronously
+        placesClient.findAutocompletePredictions(request)
+            .addOnSuccessListener { response ->
+                val predictions = response.autocompletePredictions
+                val places = predictions.map { it.getFullText(null).toString() }
+                updateAutocompleteSuggestions(places)
+            }
+            .addOnFailureListener { exception ->
+                // Handle errors
+                if (exception is ApiException) {
+                    val statusCode = exception.statusCode
+                    // Handle API errors
+                }
+            }
+    }
+
+    private fun updateAutocompleteSuggestions(places: List<String>) {
+        // Update AutoCompleteTextView adapter with new suggestions
+        val adapter = ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, places)
+        autoCompleteTextView.setAdapter(adapter)
+    }
+
+    private fun getPlaceDetails(placeId: String) {
+        // Create a request for place details
+        val request = FetchPlaceRequest.builder(placeId, listOf(Place.Field.LAT_LNG))
+            .build()
+
+        // Get place details asynchronously
+        placesClient.fetchPlace(request).addOnSuccessListener { response ->
+            val place = response.place
+            val latLng = place.latLng
+
+            // Handle the LatLng (latitude and longitude) as needed
+            if (latLng != null) {
+                val latitude = latLng.latitude
+                val longitude = latLng.longitude
+                theLocation = latLng
+                // Save the selected location as a string
+              //  selectedLocation = "Lat: $latitude, Lng: $longitude"
+            }
+        }.addOnFailureListener { exception ->
+            // Handle errors
+            if (exception is ApiException) {
+                val statusCode = exception.statusCode
+                // Handle API errors
+            }
+        }
     }
 
     private fun ValidateData()
     {
         val title = binding.ETBusTitle.editText?.text.toString()
-        val location = binding.ETBusAddress.editText?.text.toString()
+       // val location = binding.ETBusAddress.editText?.text.toString()
         val price = binding.ETBusPrice.editText?.text.toString()
         val businessSummary = binding.ETBusDescrip.editText?.text.toString()
 
         if (binding.ETBusTitle.editText?.text.toString().isNotEmpty()
-            ||binding.ETBusAddress.editText?.text.toString().isNotEmpty() ||
+            ||
             binding.ETBusDescrip.editText?.text.toString().isNotEmpty()
         )
         {
             //savind data to thr database
-            val description = BusinessDetail(title, location,price, businessSummary, stringImage)
+            val description = BusinessDetail(title, theLocationString,price, businessSummary, stringImage)
              myReference.push().setValue(description).addOnSuccessListener {
                 Toast.makeText(this, "Information Saved", Toast.LENGTH_SHORT).show()
                 val intentNext = Intent(this, BusinessDashboard::class.java)

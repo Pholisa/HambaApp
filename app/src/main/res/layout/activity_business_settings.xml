@@ -120,7 +120,7 @@
 
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/ETBusCompRegNo"
+                    android:id="@+id/ETBusEmailAd"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     android:layout_marginStart="10dp"
@@ -130,7 +130,7 @@
                     android:layout_marginRight="35dp"
                     android:drawablePadding="8dp"
                     android:ems="10"
-                    android:hint="Company Reg. No."
+                    android:hint="Email Address"
                     android:inputType="number"
                     android:padding="8dp"
                     android:textColor="@color/black" >
@@ -142,7 +142,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/ETBusEmailAd"
+                    android:id="@+id/ETBusCompRegNo"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     android:layout_marginStart="10dp"
@@ -152,7 +152,7 @@
                     android:layout_marginRight="35dp"
                     android:drawablePadding="8dp"
                     android:ems="10"
-                    android:hint="*Email Address*"
+                    android:hint="Company Reg. No."
                     android:inputType="textPersonName"
                     android:minHeight="48dp"
                     android:padding="8dp"

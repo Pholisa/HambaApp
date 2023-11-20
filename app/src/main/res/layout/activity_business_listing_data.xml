@@ -61,23 +61,14 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/ETBusAddress"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
+            <AutoCompleteTextView
+                android:id="@+id/autoCompleteTextView"
+                android:layout_width="wrap_content"
                 android:layout_height="60dp"
-                android:layout_marginLeft="35dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="35dp"
-                android:textColor="@color/black"
-                android:hint="Address"
-                app:boxStrokeColor="@color/white">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    />
-
-            </com.google.android.material.textfield.TextInputLayout>
+                android:hint="Type an address"
+                android:inputType="text"
+                android:maxLines="1"
+                android:paddingLeft="60dp"/>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/ETBusPrice"

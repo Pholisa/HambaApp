@@ -55,6 +55,7 @@ class Register : AppCompatActivity() {
                             myReference.push().setValue(number)*/
 
                             //database = FirebaseDatabase.getInstance().getReference("Users")
+
                             val User = User(name, number)
                             myReference.setValue(User).addOnSuccessListener {
                                 Toast.makeText(this, "Information Saved", Toast.LENGTH_SHORT).show()

@@ -68,6 +68,7 @@ class BusinessListingData : AppCompatActivity() {
     {
         val title = binding.ETBusTitle.editText?.text.toString()
         val location = binding.ETBusAddress.editText?.text.toString()
+        val price = binding.ETBusPrice.editText?.text.toString()
         val businessSummary = binding.ETBusDescrip.editText?.text.toString()
 
         if (binding.ETBusTitle.editText?.text.toString().isNotEmpty()
@@ -76,7 +77,7 @@ class BusinessListingData : AppCompatActivity() {
         )
         {
             //savind data to thr database
-            val description = BusinessDetail(title, location, businessSummary, stringImage)
+            val description = BusinessDetail(title, location,price, businessSummary, stringImage)
              myReference.push().setValue(description).addOnSuccessListener {
                 Toast.makeText(this, "Information Saved", Toast.LENGTH_SHORT).show()
                 val intentNext = Intent(this, BusinessDashboard::class.java)

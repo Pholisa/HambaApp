@@ -5,8 +5,11 @@ data class BusinessDetail(
     val location: String? = null,
     val price: String? = null,
     val businessSummary: String? = null,
-    val stringImage: String? = null
-)
+    val stringImage: String? = null,
+    val emailAd: String? = null,
+    val telephoneNo: String? = null
+
+    )
 
 data class BusinessDetailPublic(
     val title: String? = null,

@@ -1,5 +1,6 @@
 package com.example.hambaapp
 
+import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.util.Base64
@@ -13,13 +14,22 @@ import com.example.hambaapp.HambaBusiness.BusinessDetail
 import java.lang.Exception
 
 
-class TourismAdapter(private val tourismList : ArrayList<BusinessDetail>): RecyclerView.Adapter<TourismAdapter.MyViewHolder>(){
+class TourismAdapter(private val context: Context,
+                     private val tourismList : MutableList<BusinessDetail> = mutableListOf(),
+                     private val onItemClickListener: (Int) -> Unit): RecyclerView.Adapter<TourismAdapter.MyViewHolder>(){
 
-     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val tvBusinessTitle: TextView = itemView.findViewById(R.id.busTitleRV)
         val tvBusinessType : TextView = itemView.findViewById(R.id.busTypeRV)
         val tvBusinessDesc : TextView = itemView.findViewById(R.id.busDescriptionRV)
         val businessImageView : ImageView = itemView.findViewById(R.id.busImageRV)
+        val tvBusinessEmail : TextView = itemView.findViewById(R.id.contPhoneDBV)
+        val tvBusinessNo : TextView = itemView.findViewById(R.id.ContEmailDBV)
+
+
+        init {
+            itemView.setOnClickListener { onItemClickListener(adapterPosition) }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -33,8 +43,11 @@ class TourismAdapter(private val tourismList : ArrayList<BusinessDetail>): Recyc
         val currentBusiness = tourismList[position]
 
         holder.tvBusinessTitle.text = currentBusiness.title
-        holder.tvBusinessType.text = currentBusiness.price
+        holder.tvBusinessType.text = "R"+ currentBusiness.price
         holder.tvBusinessDesc.text = currentBusiness.businessSummary
+        holder.tvBusinessEmail.text = currentBusiness.emailAd
+        holder.tvBusinessNo.text = currentBusiness.telephoneNo
+
 
 
         val imageString = currentBusiness.stringImage

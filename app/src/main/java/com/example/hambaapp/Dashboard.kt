@@ -6,13 +6,21 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hambaapp.Adapter.NearbyPlaceAdaptar
+import com.example.hambaapp.HambaBusiness.BusinessDetail
 import com.example.hambaapp.Model.NearbyPlaceData
 import com.example.hambaapp.databinding.ActivityDashboardBinding
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
 class Dashboard : AppCompatActivity() {
 
     private lateinit var binding: ActivityDashboardBinding
+    private lateinit var recyclerViewTourism: RecyclerView
+    private lateinit var businessArrayList: ArrayList<BusinessDetail>
+    private val userID = FirebaseAuth.getInstance().currentUser?.uid
+    private lateinit var databaseReference: DatabaseReference
+
+
     //private lateinit var nearbyPlaceRecycler: RecyclerView
     //private lateinit var nearbyAdapter: NearbyPlaceAdapter
     //private lateinit var databaseReference: DatabaseReference
@@ -31,6 +39,15 @@ class Dashboard : AppCompatActivity() {
 
         // Fetch data from Firebase
         //fetchDataFromFirebase()
+
+        //recycler viewer setting
+        recyclerViewTourism = findViewById(R.id.tvBusinessDisplay)
+        recyclerViewTourism.layoutManager = LinearLayoutManager(this)
+
+        //business list
+        businessArrayList = arrayListOf()
+
+       // databaseReference = FirebaseDatabase.getInstance().getReference("users").child(userID!!).child()
 
         binding.layBed.setOnClickListener {
             val signupIntent = Intent(this, AccomodationPage::class.java)

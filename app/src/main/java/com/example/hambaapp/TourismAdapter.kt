@@ -14,26 +14,26 @@ import com.example.hambaapp.HambaBusiness.BusinessDetail
 import java.lang.Exception
 
 
-class TourismAdapter(private val context: Context,
-                     private val tourismList : MutableList<BusinessDetail> = mutableListOf(),
-                     private val onItemClickListener: (Int) -> Unit): RecyclerView.Adapter<TourismAdapter.MyViewHolder>(){
+class TourismAdapter( //private val context: Context,
+                      private val tourismList : ArrayList<BusinessDetail>
+                     //private val onItemClickListener: (Int) -> Unit
+): RecyclerView.Adapter<TourismAdapter.MyViewHolder>() {
 
-    inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val tvBusinessTitle: TextView = itemView.findViewById(R.id.busTitleRV)
         val tvBusinessType : TextView = itemView.findViewById(R.id.busTypeRV)
         val tvBusinessDesc : TextView = itemView.findViewById(R.id.busDescriptionRV)
         val businessImageView : ImageView = itemView.findViewById(R.id.busImageRV)
-        val tvBusinessEmail : TextView = itemView.findViewById(R.id.contPhoneDBV)
-        val tvBusinessNo : TextView = itemView.findViewById(R.id.ContEmailDBV)
 
 
-        init {
+
+       /* init {
             itemView.setOnClickListener { onItemClickListener(adapterPosition) }
-        }
+        }*/
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.activity_dashboard_recycle_view, parent, false)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.dashboard_list_item, parent, false)
         return MyViewHolder(itemView)
     }
 
@@ -43,10 +43,10 @@ class TourismAdapter(private val context: Context,
         val currentBusiness = tourismList[position]
 
         holder.tvBusinessTitle.text = currentBusiness.title
-        holder.tvBusinessType.text = "R"+ currentBusiness.price
-        holder.tvBusinessDesc.text = currentBusiness.businessSummary
-        holder.tvBusinessEmail.text = currentBusiness.emailAd
-        holder.tvBusinessNo.text = currentBusiness.telephoneNo
+        holder.tvBusinessType.text = "R" + currentBusiness.price
+        holder.tvBusinessDesc.text =   currentBusiness.businessSummary
+        //holder.tvBusinessEmail.text = currentBusiness.emailAd
+        //holder.tvBusinessNo.text = currentBusiness.telephoneNo
 
 
 

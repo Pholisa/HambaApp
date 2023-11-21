@@ -21,7 +21,7 @@ class Dashboard : AppCompatActivity() {
 
     private lateinit var binding: ActivityDashboardBinding
     private lateinit var recyclerViewTourism: RecyclerView
-    val businessArrayList = mutableListOf<BusinessDetail>()
+    private lateinit var businessArrayList : ArrayList<BusinessDetail>
     private val userID = FirebaseAuth.getInstance().currentUser?.uid
     private lateinit var databaseReference: DatabaseReference
 
@@ -49,45 +49,40 @@ class Dashboard : AppCompatActivity() {
         recyclerViewTourism = findViewById(R.id.tvBusinessDisplay)
         recyclerViewTourism.layoutManager = LinearLayoutManager(this)
 
+
+        //arraylist of birds
+        businessArrayList = arrayListOf()
         //----------------------------------------------------------------------------------------------
         //getting business data from database
-        databaseReference = FirebaseDatabase.getInstance().getReference("users").child(userID!!).child("Listing Data")
+        databaseReference = FirebaseDatabase.getInstance().getReference("Businesses")
         databaseReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists())
-                {
-                    for (businessSnapshot in snapshot.children)
-                    {
+                if (snapshot.exists()) {
+                    for (businessSnapshot in snapshot.children) {
                         val busines = businessSnapshot.getValue(BusinessDetail::class.java)
                         businessArrayList.add(busines!!)
                     }
-                    val adapter = TourismAdapter(this@Dashboard, businessArrayList,
-                        onItemClickListener = { position ->
-                            Toast.makeText(applicationContext, "click works", Toast.LENGTH_SHORT).show()
-                            // Bottom sheet data
-                            val sheet1 = findViewById<FrameLayout>(R.id.sheet)
-                            BottomSheetBehavior.from(sheet1).apply {
-                                peekHeight = 0
-                                state = BottomSheetBehavior.STATE_EXPANDED
-                                //calling function that populates sheet with data from database
-                                sheetPopulation(position)
+// val adapter = TourismAdapter(this@Dashboard, businessArrayList,
+//  onItemClickListener = { position ->
+// Toast.makeText(applicationContext, "click works", Toast.LENGTH_SHORT)
+//    .show()
+                    // Bottom sheet data
+                    // val sheet1 = findViewById<FrameLayout>(R.id.sheet)
+                    //BottomSheetBehavior.from(sheet1).apply {
+                    //  peekHeight = 0
+                    //state = BottomSheetBehavior.STATE_EXPANDED
+                    //calling function that populates sheet with data from database
+                    //sheetPopulation(position)
 
-                                //edit button
-                                var editBusines = findViewById<TextView>(R.id.tv_Edit_Business)
-                                editBusines.setOnClickListener {
-                                    Toast.makeText(applicationContext, "currently disabled", Toast.LENGTH_SHORT).show()
-                                }
+                    //}
 
-
-                            }
-                        }
-                    )
-                    recyclerViewTourism.adapter = adapter
+                    recyclerViewTourism.adapter = TourismAdapter(businessArrayList)
                 }
-                else //no birds in database
-                {
-                    Toast.makeText(applicationContext, "You currently have no birds saved", Toast.LENGTH_SHORT).show()
-                }
+                    else
+                    {
+                        Toast.makeText(applicationContext, "no businesses", Toast.LENGTH_SHORT).show()
+                    }
+
             }
 
             override fun onCancelled(error: DatabaseError)
@@ -143,7 +138,7 @@ class Dashboard : AppCompatActivity() {
         businessSummary.text = businessSummary1.businessSummary.toString()
 
 
-        //Business Number
+       /* //Business Number
         var businessNumber = findViewById<TextView>(R.id.contPhoneDBV)
         var businessNumber1 = businessArrayList[position]
         businessNumber.text = businessNumber1.telephoneNo.toString()
@@ -151,7 +146,7 @@ class Dashboard : AppCompatActivity() {
         //Business Email
         var businessEmail = findViewById<TextView>(R.id.ContEmailDBV)
         var businessEmail1 = businessArrayList[position]
-        businessEmail.text = businessEmail1.emailAd.toString()
+        businessEmail.text = businessEmail1.emailAd.toString()*/
     }
 
 

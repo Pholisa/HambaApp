@@ -5,8 +5,11 @@ data class BusinessDetail(
     val location: String? = null,
     val price: String? = null,
     val businessSummary: String? = null,
-    val stringImage: String? = null
-)
+    val stringImage: String? = null,
+    val emailAd: String? = null,
+    val telephoneNo: String? = null
+
+    )
 
 data class User(val fullName: String? = null,val phoneNumber: String? = null)
 data class Information(

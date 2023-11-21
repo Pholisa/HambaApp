@@ -14,6 +14,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Base64
 import android.util.Log
+import android.view.View
 import android.widget.*
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -68,6 +69,7 @@ class BusinessListingData : AppCompatActivity() {
     private var theLocation: LatLng = LatLng(0.0, 0.0)
     private var theLocationStringPersonal: String = ""
     private var theLocationStringPublic: String = ""
+    private var selectedCategory: String = ""
 
     private val predictions: MutableList<AutocompletePrediction> = mutableListOf()
 
@@ -84,8 +86,8 @@ class BusinessListingData : AppCompatActivity() {
             ActivityResultLauncher.launch(myfileintent)
         }
 
-
-//"AIzaSyD78Ws9Y4GtZVZtYP9pWBXjHjMNDwGJRbQ"
+        //calling category function
+        getSelectedCategory()
         //calling nav bar function
         navigationBar()
 
@@ -176,44 +178,24 @@ class BusinessListingData : AppCompatActivity() {
         }
     }
 
-    private fun getSelectedCategory(): String {
+    private fun getSelectedCategory()
+    {
+        val states = listOf("Accommodation", "Food & Entertainment", "Travel", "Other")
         val dropdownMenu: Spinner = findViewById(R.id.dropdownMenu)
+        val adapter = ArrayAdapter(applicationContext, android.R.layout.simple_spinner_item, states)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        dropdownMenu.adapter = adapter
 
-        // Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter.createFromResource(
-            this,
-            R.array.menu_items,
-            android.R.layout.simple_spinner_item
-        ).also { adapter ->
-            // Specify the layout to use when the list of choices appears
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            // Apply the adapter to the spinner
-            dropdownMenu.adapter = adapter
-        }
-
-        // Variable to store the selected item
-        var selectedItem = ""
-
-        // Set an item selected listener for handling selections
         dropdownMenu.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, view: android.view.View?, position: Int, id: Long)
-            {
-                // Update the selected item when an item is selected
-
-               // selectedItem = parent.getItemAtPosition(position).toString()
-                selectedItem = dropdownMenu.selectedItem.toString()
-                 Toast.makeText(this@BusinessListingData, "selected category is $selectedItem", Toast.LENGTH_SHORT).show()
-                // Handle the selected item as needed
+            override fun onItemSelected(adapterView: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                selectedCategory = dropdownMenu.selectedItem?.toString() ?: ""
+                Toast.makeText(applicationContext, "You selected: $selectedCategory", Toast.LENGTH_LONG).show()
             }
 
-            override fun onNothingSelected(parent: AdapterView<*>) {
-                // Handle the case where nothing is selected
-                // You can set a default value or show an error message here
+            override fun onNothingSelected(adapterView: AdapterView<*>?) {
+                // Handle nothing selected event if needed
             }
         }
-
-        // Return the selected item if it's not the initial value
-        return if (selectedItem.isNotBlank()) selectedItem else "Accommodation"
     }
 
 
@@ -223,7 +205,7 @@ class BusinessListingData : AppCompatActivity() {
         val location = theLocationStringPublic
         val price = binding.ETBusPrice.editText?.text.toString()
         val businessSummary = binding.ETBusDescrip.editText?.text.toString()
-        val selectedCategory = getSelectedCategory()
+       // val selectedCategory = getSelectedCategory()
         if (binding.ETBusTitle.editText?.text.toString().isNotEmpty()
             ||theLocationStringPersonal.isNotEmpty()||
             binding.ETBusDescrip.editText?.text.toString().isNotEmpty() ||selectedCategory.isNotEmpty()

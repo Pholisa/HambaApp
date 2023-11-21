@@ -215,7 +215,7 @@
 
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/tvBusinessDisplay"
+                android:id="@+id/rvBusinessDisplaying"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:listitem="@layout/activity_dashboard_recycle_view"
@@ -237,7 +237,7 @@
         android:elevation="5dp">
 
         <FrameLayout
-            android:id="@+id/sheet"
+            android:id="@+id/sheet1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
@@ -265,8 +265,7 @@
                     android:id="@+id/scroll"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:fillViewport="true"
-                    android:layout_above="@+id/layoutBottom">
+                    android:fillViewport="true">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -282,16 +281,6 @@
                             app:layout_constraintTop_toTopOf="parent"
                             app:srcCompat="@drawable/img_soweto" />
 
-                        <ImageView
-                            android:id="@+id/backArrowDBV"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginTop="16dp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:srcCompat="@drawable/baseline_arrow_back_ios_24" />
-
                         <TextView
                             android:id="@+id/busTitleDBV"
                             android:layout_width="wrap_content"
@@ -304,28 +293,6 @@
                             android:textSize="20sp"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/openImageDBV" />
-
-                        <ImageView
-                            android:id="@+id/busRateDBV"
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:layout_marginEnd="16dp"
-                            app:layout_constraintBottom_toBottomOf="@+id/busTitleDBV"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="@+id/busTitleDBV"
-                            app:srcCompat="@drawable/ic_star" />
-
-                        <TextView
-                            android:id="@+id/busRatingTVDBV"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="12dp"
-                            android:fontFamily="@font/alata"
-                            android:text="4.5"
-                            android:textSize="16sp"
-                            app:layout_constraintBottom_toBottomOf="@+id/busTitleDBV"
-                            app:layout_constraintEnd_toStartOf="@+id/busRateDBV"
-                            app:layout_constraintTop_toTopOf="@+id/busTitleDBV" />
 
                         <TextView
                             android:id="@+id/tvPriceRangeDBV"
@@ -351,29 +318,6 @@
                             app:layout_constraintTop_toTopOf="@+id/tvPriceRangeDBV" />
 
                         <TextView
-                            android:id="@+id/tvGalleryHeadingDBV"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="25dp"
-                            android:fontFamily="@font/comfortaabold"
-                            android:text="Photo Gallery"
-                            android:textSize="20dp"
-                            android:textColor="@android:color/background_dark"
-                            app:layout_constraintStart_toStartOf="@+id/tvPriceRangeDBV"
-                            app:layout_constraintTop_toBottomOf="@+id/tvPriceRangeDBV" />
-
-                        <androidx.viewpager2.widget.ViewPager2
-                            android:id="@+id/busPhotoGalDBV"
-                            android:layout_width="match_parent"
-                            android:layout_height="130dp"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginEnd="16dp"
-                            android:layout_marginTop="10dp"
-                            android:scaleType="fitXY"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/tvGalleryHeadingDBV" />
-
-                        <TextView
                             android:id="@+id/tvAboutHeadDBV"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -384,7 +328,7 @@
                             android:textSize="21dp"
                             android:textColor="@android:color/background_dark"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/busPhotoGalDBV" />
+                            app:layout_constraintTop_toBottomOf="@+id/tvPriceDBV" />
 
                         <TextView
                             android:id="@+id/tvBusDescptionDBV"
@@ -408,7 +352,7 @@
                             android:layout_marginBottom="20dp"
                             android:layout_marginTop="10dp"
                             app:layout_constraintStart_toStartOf="@+id/tvBusDescptionDBV"
-                            app:layout_constraintTop_toBottomOf="@+id/tvBusDescptionDBV"/>
+                            app:layout_constraintTop_toBottomOf="@+id/tvBusDescptionDBV" />
 
                         <ImageView
                             android:id="@+id/iconContLocationDBV"
@@ -417,20 +361,19 @@
                             android:src="@drawable/ic_location"
                             android:layout_marginTop="15dp"
                             app:layout_constraintStart_toStartOf="@+id/tvContHeadDBV"
-                            app:layout_constraintTop_toBottomOf="@+id/tvContHeadDBV"/>
+                            app:layout_constraintTop_toBottomOf="@+id/tvContHeadDBV" />
 
                         <TextView
                             android:id="@+id/contLocationDBV"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_toEndOf="@+id/iconContLocationDBV"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginTop="15dp"
-                            android:textSize="20sp"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginTop="4dp"
                             android:text="Location"
+                            android:textSize="20sp"
                             android:textStyle="bold"
                             app:layout_constraintStart_toEndOf="@+id/iconContLocationDBV"
-                            app:layout_constraintTop_toBottomOf="@+id/tvContHeadDBV"/>
+                            app:layout_constraintTop_toBottomOf="@+id/iconContLocationDBV" />
 
                         <ImageView
                             android:id="@+id/iconContPhoneDBV"
@@ -439,21 +382,19 @@
                             android:src="@drawable/ic_phone"
                             android:layout_marginTop="20dp"
                             app:layout_constraintStart_toStartOf="@+id/iconContLocationDBV"
-                            app:layout_constraintTop_toBottomOf="@+id/iconContLocationDBV"/>
+                            app:layout_constraintTop_toBottomOf="@+id/contLocationDBV" />
 
                         <TextView
                             android:id="@+id/contPhoneDBV"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="20sp"
-                            android:text="Phone"
-                            android:textStyle="bold"
                             android:layout_marginStart="20dp"
-                            android:layout_marginTop="25dp"
-                            android:layout_toEndOf="@+id/iconContPhoneDBV"
-                            android:layout_below="@id/contLocationDBV"
+                            android:layout_marginTop="4dp"
+                            android:text="Phone"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
                             app:layout_constraintStart_toEndOf="@+id/iconContPhoneDBV"
-                            app:layout_constraintTop_toBottomOf="@+id/contLocationDBV"/>
+                            app:layout_constraintTop_toBottomOf="@+id/iconContPhoneDBV" />
 
                         <ImageView
                             android:id="@+id/iconContEmailDBV"
@@ -462,113 +403,24 @@
                             android:src="@drawable/ic_email"
                             android:layout_marginTop="20dp"
                             app:layout_constraintStart_toStartOf="@+id/iconContPhoneDBV"
-                            app:layout_constraintTop_toBottomOf="@+id/iconContPhoneDBV"/>
+                            app:layout_constraintTop_toBottomOf="@+id/iconContPhoneDBV" />
 
                         <TextView
                             android:id="@+id/ContEmailDBV"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="20sp"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginTop="25dp"
                             android:text="Email"
+                            android:textSize="20sp"
                             android:textStyle="bold"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginTop="25dp"
                             app:layout_constraintStart_toEndOf="@+id/iconContEmailDBV"
-                            app:layout_constraintTop_toBottomOf="@+id/contPhoneDBV"/>
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="25dp"
-                            app:layout_constraintTop_toBottomOf="@+id/ContEmailDBV">
-
-                            <RatingBar
-                                android:id="@+id/ratingBar"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:numStars="5"
-                                android:progressBackgroundTint="@color/grey"
-                                android:progressTint="@color/orange"
-                                android:rating="1"
-
-                                android:stepSize="1"
-                                app:layout_constraintLeft_toLeftOf="parent"
-                                app:layout_constraintRight_toRightOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                            <TextView
-                                android:id="@+id/ratingText"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="15dp"
-                                android:text=""
-                                android:textSize="20dp"
-                                android:textStyle="bold"
-                                app:layout_constraintLeft_toLeftOf="parent"
-                                app:layout_constraintRight_toRightOf="parent"
-                                app:layout_constraintTop_toBottomOf="@id/ratingBar" />
-
-                            <EditText
-                                android:id="@+id/ratingComment"
-                                android:layout_width="wrap_content"
-                                android:layout_height="60dp"
-                                android:layout_marginTop="10dp"
-                                android:width="240dp"
-                                android:background="@drawable/theborder"
-                                android:hint="Comment"
-                                android:padding="8dp"
-                                app:layout_constraintLeft_toLeftOf="parent"
-                                app:layout_constraintRight_toRightOf="parent"
-                                app:layout_constraintTop_toBottomOf="@id/ratingText" />
-
-                            <Button
-                                android:id="@+id/btnRateNow"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginHorizontal="20dp"
-                                android:layout_marginTop="18dp"
-                                android:backgroundTint="@color/grey"
-                                android:text="Rate Now"
-                                app:layout_constraintLeft_toLeftOf="parent"
-                                app:layout_constraintRight_toRightOf="parent"
-                                app:layout_constraintTop_toBottomOf="@id/ratingComment" />
-                        </androidx.constraintlayout.widget.ConstraintLayout>
+                            app:layout_constraintTop_toBottomOf="@+id/iconContEmailDBV" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </ScrollView>
-                <RelativeLayout
-                    android:id="@+id/layoutBottom"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true">
-
-                    <ImageView
-                        android:id="@+id/favouriteDBV"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginBottom="16dp"
-                        app:srcCompat="@drawable/ic_heartempty" />
-
-                    <Button
-                        android:id="@+id/btnContactDBV"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginEnd="16dp"
-                        android:fontFamily="@font/montserrat"
-                        android:text="Get in Contact"
-                        android:textColor="#FFFFFF"
-                        android:layout_toEndOf="@+id/favouriteDBV"
-                        android:layout_toRightOf="@+id/favouriteDBV"
-                        android:layout_alignTop="@+id/favouriteDBV"
-                        android:layout_alignBottom="@+id/favouriteDBV"/>
-
-                </RelativeLayout>
-
             </RelativeLayout>
             </ScrollView>
-
         </FrameLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

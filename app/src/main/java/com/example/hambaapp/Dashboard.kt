@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hambaapp.Adapter.NearbyPlaceAdaptar
 import com.example.hambaapp.HambaBusiness.BusinessDetail
+import com.example.hambaapp.HambaBusiness.BusinessDetailPublic
 import com.example.hambaapp.HambaBusiness.MyBusinessAdapter
 import com.example.hambaapp.Model.NearbyPlaceData
 import com.example.hambaapp.databinding.ActivityDashboardBinding
@@ -21,7 +22,7 @@ class Dashboard : AppCompatActivity() {
 
     private lateinit var binding: ActivityDashboardBinding
     private lateinit var recyclerViewTourism: RecyclerView
-    private lateinit var businessArrayList : ArrayList<BusinessDetail>
+    val businessArrayList = mutableListOf<BusinessDetailPublic>()
     private val userID = FirebaseAuth.getInstance().currentUser?.uid
     private lateinit var databaseReference: DatabaseReference
 
@@ -45,44 +46,42 @@ class Dashboard : AppCompatActivity() {
         // Fetch data from Firebase
         //fetchDataFromFirebase()
 
-        //recycler viewer setting
-        recyclerViewTourism = findViewById(R.id.tvBusinessDisplay)
+        //setting the recycler viewer
+        recyclerViewTourism = findViewById(R.id.rvBusinessDisplaying)
         recyclerViewTourism.layoutManager = LinearLayoutManager(this)
 
-
-        //arraylist of birds
-        businessArrayList = arrayListOf()
         //----------------------------------------------------------------------------------------------
         //getting business data from database
         databaseReference = FirebaseDatabase.getInstance().getReference("Businesses")
         databaseReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()) {
-                    for (businessSnapshot in snapshot.children) {
-                        val busines = businessSnapshot.getValue(BusinessDetail::class.java)
+                if (snapshot.exists())
+                {
+                    for (businessSnapshot in snapshot.children)
+                    {
+                        val busines = businessSnapshot.getValue(BusinessDetailPublic::class.java)
                         businessArrayList.add(busines!!)
                     }
-// val adapter = TourismAdapter(this@Dashboard, businessArrayList,
-//  onItemClickListener = { position ->
-// Toast.makeText(applicationContext, "click works", Toast.LENGTH_SHORT)
-//    .show()
-                    // Bottom sheet data
-                    // val sheet1 = findViewById<FrameLayout>(R.id.sheet)
-                    //BottomSheetBehavior.from(sheet1).apply {
-                    //  peekHeight = 0
-                    //state = BottomSheetBehavior.STATE_EXPANDED
-                    //calling function that populates sheet with data from database
-                    //sheetPopulation(position)
 
-                    //}
-
-                    recyclerViewTourism.adapter = TourismAdapter(businessArrayList)
+                    val adapter = TourismAdapter(this@Dashboard, businessArrayList,
+                        onItemClickListener = { position ->
+                            Toast.makeText(applicationContext, "click works", Toast.LENGTH_SHORT).show()
+                            // Bottom sheet data
+                            val sheet1 = findViewById<FrameLayout>(R.id.sheet1)
+                            BottomSheetBehavior.from(sheet1).apply {
+                                peekHeight = 0
+                                state = BottomSheetBehavior.STATE_EXPANDED
+                                //calling function that populates sheet with data from database
+                                sheetPopulation(position)
+                            }
+                        }
+                    )
+                    recyclerViewTourism.adapter = adapter
                 }
-                    else
-                    {
-                        Toast.makeText(applicationContext, "no businesses", Toast.LENGTH_SHORT).show()
-                    }
-
+                else //no birds in database
+                {
+                    Toast.makeText(applicationContext, "You currently have no businesses saved", Toast.LENGTH_SHORT).show()
+                }
             }
 
             override fun onCancelled(error: DatabaseError)
@@ -91,7 +90,9 @@ class Dashboard : AppCompatActivity() {
             }
         })
 
-        binding.layBed.setOnClickListener {
+
+
+    binding.layBed.setOnClickListener {
             val signupIntent = Intent(this, AccomodationPage::class.java)
             startActivity(signupIntent)
         }
@@ -123,22 +124,21 @@ class Dashboard : AppCompatActivity() {
         businessName.text = businessName1.title.toString()
 
         //Business Address
-        var businessLocation = findViewById<TextView>(R.id.tv_Bus_Address)
+        var businessLocation = findViewById<TextView>(R.id.contLocationDBV)
         var businessLocation1 = businessArrayList[position]
         businessLocation.text = businessLocation1.location.toString()
 
         //Business price
         var businessPrice = findViewById<TextView>(R.id.tvPriceDBV)
         var businessPrice1 = businessArrayList[position]
-        businessPrice.text = "R"+ businessPrice1.price.toString()
+        businessPrice.text = businessPrice1.price.toString()
 
         //Business Summary
         var businessSummary = findViewById<TextView>(R.id.tvBusDescptionDBV)
         var businessSummary1 = businessArrayList[position]
         businessSummary.text = businessSummary1.businessSummary.toString()
 
-
-       /* //Business Number
+        //Business Number
         var businessNumber = findViewById<TextView>(R.id.contPhoneDBV)
         var businessNumber1 = businessArrayList[position]
         businessNumber.text = businessNumber1.telephoneNo.toString()
@@ -146,7 +146,7 @@ class Dashboard : AppCompatActivity() {
         //Business Email
         var businessEmail = findViewById<TextView>(R.id.ContEmailDBV)
         var businessEmail1 = businessArrayList[position]
-        businessEmail.text = businessEmail1.emailAd.toString()*/
+        businessEmail.text = businessEmail1.emailAd.toString()
     }
 
 

@@ -37,7 +37,7 @@ import com.google.firebase.database.ValueEventListener
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-
+import kotlin.concurrent.thread
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
@@ -79,8 +79,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private val myReference3 = database.getReference("users").child(userID!!).child("Listing Data")
     private val myMutableMap: MutableMap<LatLng, String> = mutableMapOf()
 
-    private val allUsersReference = database.getReference("users")
-    private val allListingDataReference = database.getReference("users").child("Listing Data")
+    private val allListingDataReference = database.getReference("Businesses")
     private var  businessName:String = ""
 
 
@@ -103,7 +102,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
 
         //calling retrieve business data function
-        // Retrieving bird hotspots from Firebase
         allListingDataReference.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists())
@@ -114,6 +112,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                         // Using the correct type parameter for the getValue method
                         val businessLocat = userSnapshot.child("location").getValue(String::class.java).toString()
                         businessName = userSnapshot.child("title").getValue(String::class.java).toString()
+                       // val selectedCategory = userSnapshot.child("selectedCategory").getValue(String::class.java).toString()
 
                         // Your existing code to process businessLocat and businessName...
                         if (businessLocat != null)
@@ -145,13 +144,14 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 {
                     // Handle case when no data is found
                    // Log.e("FirebaseData", "No data found in Listing Data")
-                    Toast.makeText(this@MapsActivity, "No data found in Listing Data", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@MapsActivity, "No data found in Businesses", Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onCancelled(error: DatabaseError) {
                 Log.e("FirebaseData", "Data retrieval failed: $error")
                 // Handle error
+                Toast.makeText(this@MapsActivity, "retrieval failed", Toast.LENGTH_SHORT).show()
             }
         })
 
@@ -171,7 +171,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     //Executables once map is on screen
     override fun onMapReady(googleMap: GoogleMap)
     {
+
         mMap = googleMap
+
+
         //Zoom in Controls
         zoomFunction(googleMap)
         // Check for location permissions
@@ -197,10 +200,24 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                     // How zoomed in the map will be.
                     mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 15f))
 
-                    displaySavedSightings()
+
+                    //retrive sightings to display
+                    runOnUiThread{
+                        for ((coordinates, businessName) in myMutableMap)
+                        {
+                            val latLng = LatLng(coordinates.latitude, coordinates.longitude)
+                            val markerOption = MarkerOptions()
+                                .position(latLng)
+                                .title(businessName)
+                                .icon(BitmapDescriptorFactory.fromResource(R.drawable.markersmall))
+                            googleMap.addMarker(markerOption)
+                            Toast.makeText(this, "we found $businessName", Toast.LENGTH_SHORT).show()
+                        }
+                    }
 
                 }
             }
+
     }
     //----------------------------------------------------------------------------------------------
 
@@ -218,80 +235,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         }
     }
     //----------------------------------------------------------------------------------------------
-    private fun retrieveBusinesses()
-    {
-        // Retrieving bird hotspots from Firebase
-        allUsersReference.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot)
-            {
-                if (snapshot.exists())
-                {
-                    // If sighting locations are found
-                    for (userSnapshot in snapshot.children)
-                    {
-                        val businessInfoSnapshot = userSnapshot.child("Listing Data")
-                        // Using the correct type parameter for the getValue method
-
-                        // Iterate through Birdie Information data for each user
-                        for (busInfo in businessInfoSnapshot.children) {
-                            val businessLocat = busInfo.child("location").getValue(String::class.java)
-                            var businessName = busInfo.child("title").getValue(String::class.java).toString()
-                            if (businessLocat != null)
-                            {
-                                // Split the coordinate string into pairs and convert to LatLng
-                                val coordinatePairs = businessLocat.split("|") // Split by pipe character
-
-                                for (coordinatePair in coordinatePairs)
-                                {
-                                    val parts = coordinatePair.split(",") // Split by comma
-                                    if (parts.size == 2) {
-                                        val latitude = parts[0].toDoubleOrNull()
-                                        val longitude = parts[1].toDoubleOrNull()
-                                        if (latitude != null && longitude != null)
-                                        {
-                                            val theCoordinates = LatLng(latitude, longitude)
-                                            //birdObservations.add(theCoordinates)
-                                            myMutableMap.put(theCoordinates, businessName)
-                                        }
-                                    }
-                                }
-
-                            }
-                        }
-
-                    }
-                }
-                else
-                {
-                    Toast.makeText(this@MapsActivity, "Can't find the values", Toast.LENGTH_SHORT).show()
-
-                }
-            }
-
-            override fun onCancelled(error: DatabaseError)
-            {
-                Log.e("FirebaseData", "Data retrieval failed: $error")
-            }
-        })
-    }
-
-    private fun displaySavedSightings() {
-        val googleMap = mMap as? GoogleMap
-        if (googleMap != null) {
-            for ((coordinates, businessName) in myMutableMap)
-            {
-                val latLng = LatLng(coordinates.latitude, coordinates.longitude)
-                val markerOption = MarkerOptions()
-                    .position(latLng)
-                    .title(businessName)
-                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.birdblueiconsmall))
-                googleMap.addMarker(markerOption)
-                Toast.makeText(this, "we found $businessName", Toast.LENGTH_SHORT).show()
-            }
-        } else {
-            throw IllegalStateException("GoogleMap is null.")
-        }
-    }
 
 
 

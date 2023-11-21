@@ -14,6 +14,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Base64
 import android.util.Log
+import android.view.View
 import android.widget.*
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -44,6 +45,8 @@ import com.karumi.dexter.listener.single.PermissionListener
 import java.io.ByteArrayOutputStream
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
+import com.example.hambaapp.Welcome
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import java.io.IOException
 
 class BusinessListingData : AppCompatActivity() {
@@ -64,8 +67,9 @@ class BusinessListingData : AppCompatActivity() {
     private lateinit var placesClient: PlacesClient
     private lateinit var autoCompleteTextView: AutoCompleteTextView
     private var theLocation: LatLng = LatLng(0.0, 0.0)
-    private var theLocationString: String = ""
-    private var theLocationString1: String = ""
+    private var theLocationStringPersonal: String = ""
+    private var theLocationStringPublic: String = ""
+    private var selectedCategory: String = ""
 
     private val predictions: MutableList<AutocompletePrediction> = mutableListOf()
 
@@ -82,8 +86,8 @@ class BusinessListingData : AppCompatActivity() {
             ActivityResultLauncher.launch(myfileintent)
         }
 
-
-//"AIzaSyD78Ws9Y4GtZVZtYP9pWBXjHjMNDwGJRbQ"
+        //calling category function
+        getSelectedCategory()
         //calling nav bar function
         navigationBar()
 
@@ -114,7 +118,7 @@ class BusinessListingData : AppCompatActivity() {
 
         // Set a listener for item selection
         autoCompleteTextView.setOnItemClickListener { _, _, position, _ ->
-           theLocationString = autoCompleteTextView.text.toString()
+            theLocationStringPersonal = autoCompleteTextView.text.toString()
 
             getLatLngFromAddress(autoCompleteTextView.text.toString())
         }
@@ -165,7 +169,7 @@ class BusinessListingData : AppCompatActivity() {
 
                // saveToFirebase(latLng)
                // theLocationString = latLng.toString()
-                theLocationString1 = latLng.latitude.toString()+","+latLng.longitude.toString()
+                theLocationStringPublic = latLng.latitude.toString()+","+latLng.longitude.toString()
             } else {
                 Log.e("Autocomplete", "No result found for the given address.")
             }
@@ -174,27 +178,45 @@ class BusinessListingData : AppCompatActivity() {
         }
     }
 
+    private fun getSelectedCategory()
+    {
+        val states = listOf("Accommodation", "Food & Entertainment", "Travel", "Other")
+        val dropdownMenu: Spinner = findViewById(R.id.dropdownMenu)
+        val adapter = ArrayAdapter(applicationContext, android.R.layout.simple_spinner_item, states)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        dropdownMenu.adapter = adapter
 
+        dropdownMenu.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(adapterView: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                selectedCategory = dropdownMenu.selectedItem?.toString() ?: ""
+                Toast.makeText(applicationContext, "You selected: $selectedCategory", Toast.LENGTH_LONG).show()
+            }
 
+            override fun onNothingSelected(adapterView: AdapterView<*>?) {
+                // Handle nothing selected event if needed
+            }
+        }
+    }
 
 
     private fun ValidateData()
     {
         val title = binding.ETBusTitle.editText?.text.toString()
-        val location = theLocationString1
+        val location = theLocationStringPublic
         val price = binding.ETBusPrice.editText?.text.toString()
         val businessSummary = binding.ETBusDescrip.editText?.text.toString()
-
+       // val selectedCategory = getSelectedCategory()
         if (binding.ETBusTitle.editText?.text.toString().isNotEmpty()
-            ||location.isNotEmpty()||
-            binding.ETBusDescrip.editText?.text.toString().isNotEmpty()
+            ||theLocationStringPersonal.isNotEmpty()||
+            binding.ETBusDescrip.editText?.text.toString().isNotEmpty() ||selectedCategory.isNotEmpty()
         )
         {
             //saving data to thr database
-            val description = BusinessDetail(title, theLocationString,price, businessSummary, stringImage)
-            val description1 = BusinessDetail(title, location,price, businessSummary, stringImage)
+            val description = BusinessDetail(title, theLocationStringPersonal,price, businessSummary, stringImage)
+            val descriptionPublic = BusinessDetailPublic(title, location,selectedCategory,price, businessSummary, stringImage)
              myReference.push().setValue(description).addOnSuccessListener {
-                 myReference2.push().setValue(description1)
+                 myReference2.push().setValue(descriptionPublic)
+                // Toast.makeText(this, "selected category is $selectedCategory", Toast.LENGTH_SHORT).show()
                 Toast.makeText(this, "Information Saved", Toast.LENGTH_SHORT).show()
                 val intentNext = Intent(this, BusinessDashboard::class.java)
                 startActivity(intentNext)
@@ -289,8 +311,7 @@ class BusinessListingData : AppCompatActivity() {
                 }
                 //we need a recyler viewer of all active businesses
                 R.id.activeBusinesses -> {
-                    val intent = Intent(this, ActiveBusinesses::class.java)
-                    startActivity(intent)
+                    logoutUI()
                 }
 
                 R.id.profile -> {
@@ -302,5 +323,22 @@ class BusinessListingData : AppCompatActivity() {
             }
             true
         }
+    }
+
+    //logout function
+    private fun logoutUI()
+    {
+        MaterialAlertDialogBuilder(this)
+            .setTitle("Logout")
+            .setMessage("Are you sure you want to log-out?")
+            .setNeutralButton("Dismiss") { dialog, which ->
+                dialog.dismiss()
+            }
+
+            .setPositiveButton("Sign out") { dialog, which ->
+                val intent = Intent(this, Welcome::class.java)
+                startActivity(intent)
+            }
+            .show()
     }
 }

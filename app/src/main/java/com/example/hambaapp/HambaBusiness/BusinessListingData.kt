@@ -44,6 +44,8 @@ import com.karumi.dexter.listener.single.PermissionListener
 import java.io.ByteArrayOutputStream
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
+import com.example.hambaapp.Welcome
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import java.io.IOException
 
 class BusinessListingData : AppCompatActivity() {
@@ -64,8 +66,8 @@ class BusinessListingData : AppCompatActivity() {
     private lateinit var placesClient: PlacesClient
     private lateinit var autoCompleteTextView: AutoCompleteTextView
     private var theLocation: LatLng = LatLng(0.0, 0.0)
-    private var theLocationString: String = ""
-    private var theLocationString1: String = ""
+    private var theLocationStringPersonal: String = ""
+    private var theLocationStringPublic: String = ""
 
     private val predictions: MutableList<AutocompletePrediction> = mutableListOf()
 
@@ -114,7 +116,7 @@ class BusinessListingData : AppCompatActivity() {
 
         // Set a listener for item selection
         autoCompleteTextView.setOnItemClickListener { _, _, position, _ ->
-           theLocationString = autoCompleteTextView.text.toString()
+            theLocationStringPersonal = autoCompleteTextView.text.toString()
 
             getLatLngFromAddress(autoCompleteTextView.text.toString())
         }
@@ -165,7 +167,7 @@ class BusinessListingData : AppCompatActivity() {
 
                // saveToFirebase(latLng)
                // theLocationString = latLng.toString()
-                theLocationString1 = latLng.latitude.toString()+","+latLng.longitude.toString()
+                theLocationStringPublic = latLng.latitude.toString()+","+latLng.longitude.toString()
             } else {
                 Log.e("Autocomplete", "No result found for the given address.")
             }
@@ -174,27 +176,65 @@ class BusinessListingData : AppCompatActivity() {
         }
     }
 
+    private fun getSelectedCategory(): String {
+        val dropdownMenu: Spinner = findViewById(R.id.dropdownMenu)
 
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter.createFromResource(
+            this,
+            R.array.menu_items,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            // Specify the layout to use when the list of choices appears
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            // Apply the adapter to the spinner
+            dropdownMenu.adapter = adapter
+        }
 
+        // Variable to store the selected item
+        var selectedItem = ""
+
+        // Set an item selected listener for handling selections
+        dropdownMenu.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: android.view.View?, position: Int, id: Long)
+            {
+                // Update the selected item when an item is selected
+
+               // selectedItem = parent.getItemAtPosition(position).toString()
+                selectedItem = dropdownMenu.selectedItem.toString()
+                 Toast.makeText(this@BusinessListingData, "selected category is $selectedItem", Toast.LENGTH_SHORT).show()
+                // Handle the selected item as needed
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                // Handle the case where nothing is selected
+                // You can set a default value or show an error message here
+            }
+        }
+
+        // Return the selected item if it's not the initial value
+        return if (selectedItem.isNotBlank()) selectedItem else "Accommodation"
+    }
 
 
     private fun ValidateData()
     {
         val title = binding.ETBusTitle.editText?.text.toString()
-        val location = theLocationString1
+        val location = theLocationStringPublic
         val price = binding.ETBusPrice.editText?.text.toString()
         val businessSummary = binding.ETBusDescrip.editText?.text.toString()
-
+        val selectedCategory = getSelectedCategory()
         if (binding.ETBusTitle.editText?.text.toString().isNotEmpty()
-            ||location.isNotEmpty()||
-            binding.ETBusDescrip.editText?.text.toString().isNotEmpty()
+            ||theLocationStringPersonal.isNotEmpty()||
+            binding.ETBusDescrip.editText?.text.toString().isNotEmpty() ||selectedCategory.isNotEmpty()
         )
         {
             //saving data to thr database
-            val description = BusinessDetail(title, theLocationString,price, businessSummary, stringImage)
-            val description1 = BusinessDetail(title, location,price, businessSummary, stringImage)
+            val description = BusinessDetail(title, theLocationStringPersonal,price, businessSummary, stringImage)
+            val descriptionPublic = BusinessDetailPublic(title, location,selectedCategory,price, businessSummary, stringImage)
              myReference.push().setValue(description).addOnSuccessListener {
-                 myReference2.push().setValue(description1)
+                 myReference2.push().setValue(descriptionPublic)
+                // Toast.makeText(this, "selected category is $selectedCategory", Toast.LENGTH_SHORT).show()
                 Toast.makeText(this, "Information Saved", Toast.LENGTH_SHORT).show()
                 val intentNext = Intent(this, BusinessDashboard::class.java)
                 startActivity(intentNext)
@@ -289,8 +329,7 @@ class BusinessListingData : AppCompatActivity() {
                 }
                 //we need a recyler viewer of all active businesses
                 R.id.activeBusinesses -> {
-                    val intent = Intent(this, ActiveBusinesses::class.java)
-                    startActivity(intent)
+                    logoutUI()
                 }
 
                 R.id.profile -> {
@@ -302,5 +341,22 @@ class BusinessListingData : AppCompatActivity() {
             }
             true
         }
+    }
+
+    //logout function
+    private fun logoutUI()
+    {
+        MaterialAlertDialogBuilder(this)
+            .setTitle("Logout")
+            .setMessage("Are you sure you want to log-out?")
+            .setNeutralButton("Dismiss") { dialog, which ->
+                dialog.dismiss()
+            }
+
+            .setPositiveButton("Sign out") { dialog, which ->
+                val intent = Intent(this, Welcome::class.java)
+                startActivity(intent)
+            }
+            .show()
     }
 }

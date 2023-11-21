@@ -25,16 +25,22 @@ import com.example.hambaapp.databinding.ActivityMapsBinding
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.MapView
+import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-
+import kotlin.concurrent.thread
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
-    private var mMap: GoogleMap? = null
+    private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityMapsBinding
 
     //----------------------------------------------------------------------------------
@@ -49,7 +55,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private val DEFAULT_ZOOM = 15f
 
-    private  var fusedLocationClient: FusedLocationProviderClient? = null
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
+    private val LOCATION_PERMISSION_REQUEST = 1
 
     private lateinit var accommodation: ImageButton
 
@@ -66,30 +73,15 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     internal lateinit var currentPlace: MyPlaces
 
     var latitude = 0.0
-
     var longitude = 0.0
+    private val userID = FirebaseAuth.getInstance().currentUser?.uid
+    private val database = FirebaseDatabase.getInstance()
+    private val myReference3 = database.getReference("users").child(userID!!).child("Listing Data")
+    private val myMutableMap: MutableMap<LatLng, String> = mutableMapOf()
 
+    private val allListingDataReference = database.getReference("Businesses")
+    private var  businessName:String = ""
 
-    //----------------------------------------------------------------------------------
-    //Ask user for permission before showing map
-    override fun onMapReady(googleMap: GoogleMap) {
-        mapView.onResume()
-        mMap = googleMap
-
-        askPermissionLocation()
-
-        if(ActivityCompat.checkSelfPermission(
-                this,
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-                this,
-                Manifest.permission.ACCESS_COARSE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED) {
-            return
-        }
-        mMap!!.setMyLocationEnabled(true)
-
-    }
 
     //--------------------------------------------------------------------------------------
     //Uses Google Services to search nearby places based on the string of the button clicked
@@ -102,212 +94,148 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         //calling the nav bar function
         navigationBar()
 
-        //Init Service
-        mService = Common.googleApiService
-        mapView = findViewById<MapView>(R.id.map)
 
-        accommodation = findViewById(R.id.ib_accomodation)
-        transport = findViewById(R.id.ib_transport)
-        restaurant = findViewById(R.id.ib_restaurant)
-        localbar = findViewById(R.id.ib_bar)
-        atm = findViewById(R.id.ib_atm)
-
-        askPermissionLocation()
-
-        var mapViewBundle: Bundle? = null
-        if (savedInstanceState != null) {
-            mapViewBundle = savedInstanceState.getBundle(MAP_VIEW_BUNDLE_KEY)
-        }
-
-        mapView.onCreate(mapViewBundle)
-        mapView.getMapAsync(this)
-
-        //On click events to filter search of nearby places
-        accommodation.setOnClickListener {
-            nearByPlace("accommodation")
-
-        }
-        transport.setOnClickListener {
-            nearByPlace("transport")
-        }
-        localbar.setOnClickListener {
-            nearByPlace("local bar")
-        }
-        restaurant.setOnClickListener {
-            nearByPlace("restaurant")
-        }
-        atm.setOnClickListener {
-            nearByPlace("atm")
-        }
+        //Initialising map
+        val mapFragment = supportFragmentManager.findFragmentById(R.id.google_map) as SupportMapFragment
+        mapFragment.getMapAsync(this)
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
 
-    }
-    //----------------------------------------------------------------------------------
-    //Method for search for nearby places based on string for the type of placed being located
-    private fun nearByPlace(typePlace: String) {
-        //Clears all markers on the map
-        mMap!!.clear()
+        //calling retrieve business data function
+        allListingDataReference.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists())
+                {
+                    // If sighting locations are found
+                    for (userSnapshot in snapshot.children)
+                    {
+                        // Using the correct type parameter for the getValue method
+                        val businessLocat = userSnapshot.child("location").getValue(String::class.java).toString()
+                        businessName = userSnapshot.child("title").getValue(String::class.java).toString()
+                       // val selectedCategory = userSnapshot.child("selectedCategory").getValue(String::class.java).toString()
 
-        //build URL request based on lacation
-        val url = getUrl(latitude,longitude, typePlace)
+                        // Your existing code to process businessLocat and businessName...
+                        if (businessLocat != null)
+                        {
+                            // Split the coordinate string into pairs and convert to LatLng
+                            val coordinatePairs =
+                                businessLocat.split("|") // Split by pipe character
 
-        mService.getNearbyPlaces(url).enqueue(object : Callback<MyPlaces> {
-            override fun onResponse(call: Call<MyPlaces>, response: Response<MyPlaces>) {
-                currentPlace = response.body()!!
-
-                if(response.isSuccessful){
-
-                    for (i in 0 until response.body()!!.results!!.size) {
-                        val markerOptions=MarkerOptions()
-                        val googlePlace = response.body()!!.results!![i]
-                        val lat = googlePlace.geometry!!.location!!.lat
-                        val lng = googlePlace.geometry!!.location!!.lng
-                        val placeName = googlePlace.name
-                        val description = googlePlace.rating.toString()
-                        val latLng = LatLng(lat,lng)
-
-                         //Customised markers based on string searched
-                        if(typePlace=="accommodation") {
-                            markerOptions.icon(
-                                BitmapDescriptorFactory.defaultMarker(
-                                    BitmapDescriptorFactory.HUE_VIOLET))
-
-                        }else if(typePlace=="transport")
-                            markerOptions.icon(
-                                BitmapDescriptorFactory.defaultMarker(
-                                    BitmapDescriptorFactory.HUE_AZURE))
-                        else if(typePlace=="restaurant")
-                            markerOptions.icon(
-                                BitmapDescriptorFactory.defaultMarker(
-                                    BitmapDescriptorFactory.HUE_RED))
-                        else if(typePlace=="local bar")
-                            markerOptions.icon(
-                                BitmapDescriptorFactory.defaultMarker(
-                                    BitmapDescriptorFactory.HUE_ORANGE))
-                        else if(typePlace=="atm")
-                            markerOptions.icon(
-                                BitmapDescriptorFactory.defaultMarker(
-                                    BitmapDescriptorFactory.HUE_GREEN))
+                            for (coordinatePair in coordinatePairs) {
+                                val parts = coordinatePair.split(",") // Split by comma
+                                if (parts.size == 2) {
+                                    val latitude = parts[0].toDoubleOrNull()
+                                    val longitude = parts[1].toDoubleOrNull()
+                                    if (latitude != null && longitude != null) {
+                                        val theCoordinates = LatLng(latitude, longitude)
+                                        //birdObservations.add(theCoordinates)
+                                        myMutableMap.put(theCoordinates, businessName)
+                                    }
+                                }
+                            }
+                        }
                         else
-                            markerOptions.icon(
-                                BitmapDescriptorFactory.defaultMarker(
-                                    BitmapDescriptorFactory.HUE_BLUE))
-
-
-                        //Shows details of marker selected
-                        val show = mMap!!.addMarker(
-                            markerOptions
-                                .position(latLng)
-                                .title(placeName).snippet("Ratings: $description")
-                        )
-                        show?.showInfoWindow()
-
-                        //Move camera
-                        mMap!!.moveCamera(CameraUpdateFactory.newLatLng(latLng))
-                        mMap!!.animateCamera(CameraUpdateFactory.zoomTo(15f))
+                        {
+                            Toast.makeText(this@MapsActivity, "Can't find the Location", Toast.LENGTH_SHORT).show()
+                        }
                     }
-
-
+                }
+                else
+                {
+                    // Handle case when no data is found
+                   // Log.e("FirebaseData", "No data found in Listing Data")
+                    Toast.makeText(this@MapsActivity, "No data found in Businesses", Toast.LENGTH_SHORT).show()
                 }
             }
 
-            override fun onFailure(call: Call<MyPlaces>, t: Throwable) {
-                Toast.makeText(baseContext, ""+t.message, Toast.LENGTH_SHORT).show()
+            override fun onCancelled(error: DatabaseError) {
+                Log.e("FirebaseData", "Data retrieval failed: $error")
+                // Handle error
+                Toast.makeText(this@MapsActivity, "retrieval failed", Toast.LENGTH_SHORT).show()
             }
-
         })
 
 
     }
 
-    //----------------------------------------------------------------------------------
-    //The method gets the URL required for searching for nearby places using the Places API services
-    //and the project's API key
-    private fun getUrl(latitude: Double, longitude: Double, typePlace: String): String {
-        val googlePlaceUrl = StringBuilder("https://maps.googleapis.com/maps/api/place/nearbysearch/json")
-        googlePlaceUrl.append("?location=$latitude,$longitude")
-        googlePlaceUrl.append("&radius=10000") //10 km
-        googlePlaceUrl.append("&type=$typePlace")
-        googlePlaceUrl.append("&key=AIzaSyA5QUhTzcsbgSQCvNlARtgPKWDfp0og_ac")
-
-        Log.d("URL_DEBUG",googlePlaceUrl.toString())
-        return googlePlaceUrl.toString()
-
-    }
-    //----------------------------------------------------------------------------------
-    public override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-
-        askPermissionLocation()
-
-        var mapViewBundle = outState.getBundle(MAP_VIEW_BUNDLE_KEY)
-        if (mapViewBundle == null) {
-            mapViewBundle = Bundle()
-            outState.putBundle(MAP_VIEW_BUNDLE_KEY, mapViewBundle)
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray)
+    {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == LOCATION_PERMISSION_REQUEST && grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            // Permission granted, show the device's current location on the map
+            onMapReady(mMap)
         }
-
-        mapView.onSaveInstanceState(mapViewBundle)
     }
 
-    //--------------------------------------------------------------------------------------------------------------------
-    // Asks the user for permission to access their location
-    private fun askPermissionLocation() {
+    //----------------------------------------------------------------------------------------------
+    //Executables once map is on screen
+    override fun onMapReady(googleMap: GoogleMap)
+    {
 
-        if (ActivityCompat.checkSelfPermission(
-                this,
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED) {
+        mMap = googleMap
 
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 100)
+
+        //Zoom in Controls
+        zoomFunction(googleMap)
+        // Check for location permissions
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED)
+        {
+            ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), LOCATION_PERMISSION_REQUEST)
             return
         }
+        // Enable My Location button and show the user's location on the map
+        mMap.isMyLocationEnabled = true
+        // Get the device's current location
+        fusedLocationClient.lastLocation
+            .addOnSuccessListener { location: Location? ->
+                location?.let {
+                    // Add a marker at the device's current location
+                   // var userLocation = LatLng(it.latitude, it.longitude) //actual device location uncomment this
+                    var userLocation = LatLng(-33.8970590380015, 18.48906600246067) //hard coded location to finish app from
+                    val markerOptions = MarkerOptions()
+                    markerOptions.position(userLocation)
+                    markerOptions.title("Your Locationnn")
+                    mMap.addMarker(markerOptions)
 
-        getCurrentLocation()
+                    // How zoomed in the map will be.
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 15f))
 
-    }
 
-    //--------------------------------------------------------------------------------------------------------------------
-    //Gets the user's current location and shows it on the map
-    @SuppressLint("MissingPermission")
-    private fun getCurrentLocation() {
-
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this@MapsActivity)
-
-        try{
-            val location =  fusedLocationClient!!.getLastLocation()
-
-            location.addOnCompleteListener(object : OnCompleteListener<Location> {
-                override fun onComplete(loc: Task<Location>) {
-                    if (loc.isSuccessful) {
-
-                        val currentLocation = loc.result as Location?
-                        if (currentLocation != null) {
-                            moveCamera(
-                                LatLng(currentLocation.latitude, currentLocation.longitude),
-                                DEFAULT_ZOOM
-                            )
-
-                            latitude = currentLocation.latitude
-                            longitude = currentLocation.longitude
-
+                    //retrive sightings to display
+                    runOnUiThread{
+                        for ((coordinates, businessName) in myMutableMap)
+                        {
+                            val latLng = LatLng(coordinates.latitude, coordinates.longitude)
+                            val markerOption = MarkerOptions()
+                                .position(latLng)
+                                .title(businessName)
+                                .icon(BitmapDescriptorFactory.fromResource(R.drawable.markersmall))
+                            googleMap.addMarker(markerOption)
+                            Toast.makeText(this, "we found $businessName", Toast.LENGTH_SHORT).show()
                         }
-                    } else {
-                        askPermissionLocation()
-
                     }
+
                 }
-            })
-        } catch (se: Exception) {
-            Log.e("TAG", "Security Exception")
+            }
+
+    }
+    //----------------------------------------------------------------------------------------------
+
+    //----------------------------------------------------------------------------------------------
+    private fun zoomFunction(googleMap: GoogleMap)
+    {
+        mMap = googleMap
+        mMap.uiSettings.apply {
+            isZoomControlsEnabled = true
+            isCompassEnabled = true
+            isRotateGesturesEnabled = true
+            isScrollGesturesEnabled = true
+            isTiltGesturesEnabled = true
+            isZoomGesturesEnabled = true
         }
-
     }
+    //----------------------------------------------------------------------------------------------
 
-    //--------------------------------------------------------------------------------------------------------------------
-    //Zoom/Moves the camera to the user's location
-    private fun moveCamera(latLng: LatLng, zoom: Float) {
-        mMap!!.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom))
-    }
 
 
     private fun navigationBar() {
@@ -330,7 +258,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                     startActivity(intent)
                 }
                 R.id.profile -> {
-                    val intent = Intent(this, BusinessSettings::class.java)
+                    val intent = Intent(this, Settings::class.java)
                     startActivity(intent)
                 }
 

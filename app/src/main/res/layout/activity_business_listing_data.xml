@@ -9,14 +9,9 @@
     android:background="@drawable/hamba_background"
     tools:context=".HambaBusiness.BusinessListingData" >
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
     <TextView
         android:id="@+id/tvHeading"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="56dp"
         android:layout_marginTop="10dp"
         android:fontFamily="cursive"
@@ -24,23 +19,24 @@
         android:textStyle="bold"
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:textSize="50sp" />
+        android:textSize="50sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/tvHeading"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteX="10dp">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="What your customers will see!"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:textSize="25sp" />
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
@@ -109,76 +105,123 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/ETBusPrice"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+
+            <TextView
+
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginLeft="35dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="35dp"
-                android:textColor="@color/black"
-                android:hint="Price"
-                app:boxStrokeColor="@color/white">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-
-
-            <!--needs to be fixed the text is not written in paragraph form-->
-            <!--Will come back to this to limit characters: https://www.tutorialspoint.com/how-to-use-inputfilter-to-limit-characters-in-an-edittext-in-android -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/ETBusDescrip"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="160dp"
-                android:layout_marginLeft="35dp"
-                android:layout_marginTop="45dp"
-                android:layout_marginRight="35dp"
-                android:hint="Business Description.\nMax Character 2500"
-                android:textColorHint="@color/black"
-                app:boxStrokeColor="@color/white"
-                app:hintTextColor="@color/black">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-
-
-            <Button
-                android:id="@+id/btnBusImageUpload"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:backgroundTint="@color/black"
-                android:text="Upload Cover Image"
-                android:layout_marginLeft="35dp"
-                android:layout_marginRight="35dp"
-                android:textSize="18dp"
+                android:layout_height="wrap_content"
+                android:text="What your customers will see!"
                 android:textStyle="bold"
-                app:icon="@android:drawable/ic_menu_upload"
-                app:iconGravity="textEnd" />
+                android:textColor="@color/black"
+                android:textSize="25sp" />
 
-            <Button
-                android:id="@+id/btnBusDescNext"
-                android:layout_width="160dp"
-                android:layout_height="55dp"
-                android:layout_gravity="center"
-                android:backgroundTint="@color/black"
-                android:text="save"
-                android:layout_marginLeft="35dp"
-                android:layout_marginRight="35dp"
-                android:textSize="18dp"
-                android:textStyle="bold" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/ETBusTitle"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginRight="35dp"
+                    android:textColor="@color/black"
+                    android:hint="Title"
+                    app:boxStrokeColor="@color/white">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <AutoCompleteTextView
+                    android:id="@+id/autoCompleteTextView"
+                    android:layout_width="338dp"
+                    android:layout_height="60dp"
+                    android:hint="Type an address"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="35dp"
+                    android:background="@drawable/theborder1" />
+
+                <Spinner
+                    android:id="@+id/dropdownMenu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:layout_centerInParent="true"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginTop="10dp" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/ETBusPrice"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="35dp"
+                    android:textColor="@color/black"
+                    android:hint="Price"
+                    app:boxStrokeColor="@color/white">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!--needs to be fixed the text is not written in paragraph form-->
+                <!--Will come back to this to limit characters: https://www.tutorialspoint.com/how-to-use-inputfilter-to-limit-characters-in-an-edittext-in-android -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/ETBusDescrip"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="160dp"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginTop="45dp"
+                    android:layout_marginRight="35dp"
+                    android:hint="Business Description.\nMax Character 2500"
+                    android:textColorHint="@color/black"
+                    app:boxStrokeColor="@color/white"
+                    app:hintTextColor="@color/black">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                    android:id="@+id/btnBusImageUpload"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:backgroundTint="@color/black"
+                    android:text="Upload Cover Image"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginRight="35dp"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    app:icon="@android:drawable/ic_menu_upload"
+                    app:iconGravity="textEnd" />
+
+                <Button
+                    android:id="@+id/btnBusDescNext"
+                    android:layout_width="160dp"
+                    android:layout_height="55dp"
+                    android:layout_gravity="center"
+                    android:backgroundTint="@color/black"
+                    android:text="save"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginRight="35dp"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
-    </LinearLayout>
+    </ScrollView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
@@ -188,8 +231,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:background="@drawable/nav_background"
-        app:menu="@menu/bottom_navigation_business">
-
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
-
+        app:menu="@menu/bottom_navigation_business" />
 </androidx.constraintlayout.widget.ConstraintLayout>

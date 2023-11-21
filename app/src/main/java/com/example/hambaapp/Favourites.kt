@@ -3,11 +3,18 @@ package com.example.hambaapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.hambaapp.HambaBusiness.BusinessDetailPublic
 import com.example.hambaapp.databinding.ActivityFavouritesBinding
 
 class Favourites : AppCompatActivity() {
 
     private lateinit var binding: ActivityFavouritesBinding
+    private lateinit var recyclerViewTourism: FavouriteBusinessAdapter
+    private lateinit var recyclerViewFavourites: RecyclerView
+    private lateinit var favoriteAdapter: ItemAdapter
+    private lateinit var favorites: MutableList<BusinessDetailPublic>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityFavouritesBinding.inflate(layoutInflater)
@@ -15,6 +22,22 @@ class Favourites : AppCompatActivity() {
 
         //calling the navigation bar
         navigationBar()
+
+        //recycler viewer setting
+        recyclerViewFavourites = findViewById(R.id.rv_favourites)
+        recyclerViewFavourites.layoutManager = LinearLayoutManager(this)
+
+
+      /*  // Load the favorite items from a persistent storage if needed
+        recyclerViewTourism = FavouriteBusinessAdapter(favorites)
+
+        favoriteAdapter = ItemAdapter(favorites)
+
+        recyclerViewFavourites.apply {
+            layoutManager = LinearLayoutManager(this@Favourites)
+            adapter = favoriteAdapter
+        }*/
+
     }
 
     private fun navigationBar() {

@@ -63,12 +63,14 @@
 
             <AutoCompleteTextView
                 android:id="@+id/autoCompleteTextView"
-                android:layout_width="wrap_content"
+                android:layout_width="338dp"
                 android:layout_height="60dp"
                 android:hint="Type an address"
                 android:inputType="text"
                 android:maxLines="1"
-                android:paddingLeft="60dp"/>
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="35dp"
+                android:background="@drawable/theborder1"/>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/ETBusPrice"

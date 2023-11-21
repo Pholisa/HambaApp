@@ -30,6 +30,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HambaApp"
         tools:targetApi="31">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyB3EPkYb9njIsQ1oX9w511QuDb3gC6xDKY" />
         <activity
             android:name=".DashBusinessView"
             android:exported="false" />
@@ -55,9 +59,6 @@
             android:name=".CurrentListing"
             android:exported="false" />
 
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyCLg05S9-5fmsAzDPQ82AXNPFbawp015wk" />
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

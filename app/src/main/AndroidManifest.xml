@@ -31,12 +31,6 @@
         android:theme="@style/Theme.HambaApp"
         tools:targetApi="31">
         <activity
-            android:name=".DashBusinessView"
-            android:exported="false" />
-        <activity
-            android:name=".DashboardRecycleView"
-            android:exported="false" />
-        <activity
             android:name=".HambaBusiness.BusinessOption"
             android:exported="false" />
         <activity
@@ -61,6 +55,7 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
 
         <activity
             android:name=".AdminPortal"

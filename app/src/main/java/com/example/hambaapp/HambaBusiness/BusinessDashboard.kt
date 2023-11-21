@@ -94,7 +94,7 @@ class BusinessDashboard : AppCompatActivity() {
                 }
                 else //no birds in database
                 {
-                    Toast.makeText(applicationContext, "You currently have no birds saved", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(applicationContext, "You currently have no businesses saved", Toast.LENGTH_SHORT).show()
                 }
             }
 

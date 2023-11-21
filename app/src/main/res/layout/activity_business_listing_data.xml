@@ -9,15 +9,9 @@
     android:background="@drawable/hamba_background"
     tools:context=".HambaBusiness.BusinessListingData" >
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="640dp"
-        tools:ignore="MissingConstraints">
-
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
     <TextView
@@ -185,7 +179,6 @@
         </LinearLayout>
     </LinearLayout>
     </LinearLayout>
-    </ScrollView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"

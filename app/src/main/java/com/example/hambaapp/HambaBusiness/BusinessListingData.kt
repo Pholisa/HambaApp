@@ -5,12 +5,16 @@ import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.location.Address
+import android.location.Geocoder
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Base64
+import android.util.Log
+import android.view.View
 import android.widget.*
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -19,8 +23,10 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.hambaapp.R
 import com.example.hambaapp.databinding.ActivityBusinessListingDataBinding
 import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.common.api.PendingResult
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.libraries.places.api.Places
+import com.google.android.libraries.places.api.model.AutocompletePrediction
 import com.google.android.libraries.places.api.model.Place
 import com.google.android.libraries.places.api.net.FetchPlaceRequest
 import com.google.android.libraries.places.api.net.FindAutocompletePredictionsRequest
@@ -35,15 +41,13 @@ import com.karumi.dexter.listener.PermissionDeniedResponse
 import com.karumi.dexter.listener.PermissionGrantedResponse
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.single.PermissionListener
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.tasks.await
-import kotlinx.coroutines.withContext
-import java.io.ByteArrayOutputStream
 
+import java.io.ByteArrayOutputStream
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
+import com.example.hambaapp.Welcome
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import java.io.IOException
 
 class BusinessListingData : AppCompatActivity() {
 
@@ -53,6 +57,7 @@ class BusinessListingData : AppCompatActivity() {
     private val theDatabase = Firebase.database
     private val userID = FirebaseAuth.getInstance().currentUser?.uid
     private val myReference = theDatabase.getReference("users").child(userID!!).child("Listing Data")
+    private val myReference2 = theDatabase.getReference("Businesses")
    // private val myReference = theDatabase.getReference("users").child(userID!!).child("Business Information")
     private lateinit var firebaseAuthentication: FirebaseAuth
     private var stringImage: String = ""
@@ -62,7 +67,12 @@ class BusinessListingData : AppCompatActivity() {
     private lateinit var placesClient: PlacesClient
     private lateinit var autoCompleteTextView: AutoCompleteTextView
     private var theLocation: LatLng = LatLng(0.0, 0.0)
-    private var theLocationString: String = ""
+    private var theLocationStringPersonal: String = ""
+    private var theLocationStringPublic: String = ""
+    private var selectedCategory: String = ""
+
+    private val predictions: MutableList<AutocompletePrediction> = mutableListOf()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,46 +86,48 @@ class BusinessListingData : AppCompatActivity() {
             ActivityResultLauncher.launch(myfileintent)
         }
 
-        binding.btnBusDescNext.setOnClickListener {
-            ValidateData()
-
-        }
-
+        //calling category function
+        getSelectedCategory()
         //calling nav bar function
         navigationBar()
 
         /////////////////////////////////////
-        // Initialize Places API
-        Places.initialize(applicationContext, "YOUR_API_KEY") // Replace with your API key
+        // Initialize the Places API with your API key
+        Places.initialize(applicationContext, "AIzaSyD78Ws9Y4GtZVZtYP9pWBXjHjMNDwGJRbQ")
         placesClient = Places.createClient(this)
 
         // Initialize AutoCompleteTextView
         autoCompleteTextView = findViewById(R.id.autoCompleteTextView)
 
-        // Set up AutoCompleteTextView with adapter
+        // Set up the adapter for autocomplete suggestions
         val adapter = ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line)
         autoCompleteTextView.setAdapter(adapter)
 
-        // Set item click listener for AutoCompleteTextView
-        autoCompleteTextView.setOnItemClickListener { _, _, position, _ ->
-            val selectedPrediction = adapter.getItem(position)
-            if (selectedPrediction != null) {
-                // Perform place details request for the selected prediction
-                getPlaceDetails(selectedPrediction)
-            }
-        }
-
-        // Set up text change listener for AutoCompleteTextView
+        // Set a listener for text changes to trigger autocomplete predictions
         autoCompleteTextView.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-
-            override fun afterTextChanged(s: Editable?) {
-                // Perform autocomplete predictions when text changes
-                getAutocompletePredictions(s.toString())
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                if (s != null && s.length >= 2) { // You may adjust the minimum length as needed
+                    getAutocompletePredictions(s.toString())
+                }
             }
+
+            override fun afterTextChanged(s: Editable?) {}
         })
+
+        // Set a listener for item selection
+        autoCompleteTextView.setOnItemClickListener { _, _, position, _ ->
+            theLocationStringPersonal = autoCompleteTextView.text.toString()
+
+            getLatLngFromAddress(autoCompleteTextView.text.toString())
+        }
+
+        binding.btnBusDescNext.setOnClickListener {
+            ValidateData()
+
+        }
+
     }
 
     private fun getAutocompletePredictions(query: String) {
@@ -124,76 +136,91 @@ class BusinessListingData : AppCompatActivity() {
             .setQuery(query)
             .build()
 
-        // Get autocomplete predictions asynchronously
         placesClient.findAutocompletePredictions(request)
             .addOnSuccessListener { response ->
                 val predictions = response.autocompletePredictions
-                val places = predictions.map { it.getFullText(null).toString() }
-                updateAutocompleteSuggestions(places)
+                val predictionStrings = mutableListOf<String>()
+
+                for (prediction in predictions) {
+                    predictionStrings.add(prediction.getFullText(null).toString())
+                }
+
+                // Update the adapter with the new predictions
+                val adapter = autoCompleteTextView.adapter as ArrayAdapter<String>
+                adapter.clear()
+                adapter.addAll(predictionStrings)
+                adapter.notifyDataSetChanged()
             }
             .addOnFailureListener { exception ->
-                // Handle errors
-                if (exception is ApiException) {
-                    val statusCode = exception.statusCode
-                    // Handle API errors
-                }
+                Log.e("Autocomplete", "Prediction fetching failed: ${exception.localizedMessage}")
             }
     }
 
-    private fun updateAutocompleteSuggestions(places: List<String>) {
-        // Update AutoCompleteTextView adapter with new suggestions
-        val adapter = ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, places)
-        autoCompleteTextView.setAdapter(adapter)
+    private fun getLatLngFromAddress(address: String) {
+        try {
+            val geocoder = Geocoder(this)
+            val addresses: List<Address>? = geocoder.getFromLocationName(address, 1)
+
+            if (addresses != null && addresses.isNotEmpty()) {
+                val location = addresses[0]
+                val latLng = LatLng(location.latitude, location.longitude)
+
+                Log.d("Autocomplete", "LatLng: $latLng")
+
+               // saveToFirebase(latLng)
+               // theLocationString = latLng.toString()
+                theLocationStringPublic = latLng.latitude.toString()+","+latLng.longitude.toString()
+            } else {
+                Log.e("Autocomplete", "No result found for the given address.")
+            }
+        } catch (e: IOException) {
+            Log.e("Autocomplete", "Geocoding failed: ${e.localizedMessage}")
+        }
     }
 
-    private fun getPlaceDetails(placeId: String) {
-        // Create a request for place details
-        val request = FetchPlaceRequest.builder(placeId, listOf(Place.Field.LAT_LNG))
-            .build()
+    private fun getSelectedCategory()
+    {
+        val states = listOf("Accommodation", "Food & Entertainment", "Travel", "Other")
+        val dropdownMenu: Spinner = findViewById(R.id.dropdownMenu)
+        val adapter = ArrayAdapter(applicationContext, android.R.layout.simple_spinner_item, states)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        dropdownMenu.adapter = adapter
 
-        // Get place details asynchronously
-        placesClient.fetchPlace(request).addOnSuccessListener { response ->
-            val place = response.place
-            val latLng = place.latLng
-
-            // Handle the LatLng (latitude and longitude) as needed
-            if (latLng != null) {
-                val latitude = latLng.latitude
-                val longitude = latLng.longitude
-                theLocation = latLng
-                // Save the selected location as a string
-              //  selectedLocation = "Lat: $latitude, Lng: $longitude"
+        dropdownMenu.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(adapterView: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                selectedCategory = dropdownMenu.selectedItem?.toString() ?: ""
+                Toast.makeText(applicationContext, "You selected: $selectedCategory", Toast.LENGTH_LONG).show()
             }
-        }.addOnFailureListener { exception ->
-            // Handle errors
-            if (exception is ApiException) {
-                val statusCode = exception.statusCode
-                // Handle API errors
+
+            override fun onNothingSelected(adapterView: AdapterView<*>?) {
+                // Handle nothing selected event if needed
             }
         }
     }
 
+
     private fun ValidateData()
     {
         val title = binding.ETBusTitle.editText?.text.toString()
-       // val location = binding.ETBusAddress.editText?.text.toString()
+        val location = theLocationStringPublic
         val price = binding.ETBusPrice.editText?.text.toString()
         val businessSummary = binding.ETBusDescrip.editText?.text.toString()
-
+       // val selectedCategory = getSelectedCategory()
         if (binding.ETBusTitle.editText?.text.toString().isNotEmpty()
-            ||
-            binding.ETBusDescrip.editText?.text.toString().isNotEmpty()
+            ||theLocationStringPersonal.isNotEmpty()||
+            binding.ETBusDescrip.editText?.text.toString().isNotEmpty() ||selectedCategory.isNotEmpty()
         )
         {
-            //savind data to thr database
-            val description = BusinessDetail(title, theLocationString,price, businessSummary, stringImage)
+            //saving data to thr database
+            val description = BusinessDetail(title, theLocationStringPersonal,price, businessSummary, stringImage)
+            val descriptionPublic = BusinessDetailPublic(title, location,selectedCategory,price, businessSummary, stringImage)
              myReference.push().setValue(description).addOnSuccessListener {
+                 myReference2.push().setValue(descriptionPublic)
+                // Toast.makeText(this, "selected category is $selectedCategory", Toast.LENGTH_SHORT).show()
                 Toast.makeText(this, "Information Saved", Toast.LENGTH_SHORT).show()
                 val intentNext = Intent(this, BusinessDashboard::class.java)
                 startActivity(intentNext)
             }
-
-
         }
         else
         {
@@ -284,8 +311,7 @@ class BusinessListingData : AppCompatActivity() {
                 }
                 //we need a recyler viewer of all active businesses
                 R.id.activeBusinesses -> {
-                    val intent = Intent(this, ActiveBusinesses::class.java)
-                    startActivity(intent)
+                    logoutUI()
                 }
 
                 R.id.profile -> {
@@ -297,5 +323,22 @@ class BusinessListingData : AppCompatActivity() {
             }
             true
         }
+    }
+
+    //logout function
+    private fun logoutUI()
+    {
+        MaterialAlertDialogBuilder(this)
+            .setTitle("Logout")
+            .setMessage("Are you sure you want to log-out?")
+            .setNeutralButton("Dismiss") { dialog, which ->
+                dialog.dismiss()
+            }
+
+            .setPositiveButton("Sign out") { dialog, which ->
+                val intent = Intent(this, Welcome::class.java)
+                startActivity(intent)
+            }
+            .show()
     }
 }

@@ -59,6 +59,42 @@
             app:layout_constraintStart_toStartOf="@+id/busTypeRV"
             app:layout_constraintTop_toBottomOf="@+id/busTypeRV" />
 
+        <TextView
+            android:id="@+id/busPriceRV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="Price: R1000"
+            app:layout_constraintStart_toStartOf="@+id/busDescriptionRV"
+            app:layout_constraintTop_toBottomOf="@+id/busDescriptionRV" />
+
+        <TextView
+            android:id="@+id/busLocationRV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="Location: Your Location"
+            app:layout_constraintStart_toStartOf="@+id/busPriceRV"
+            app:layout_constraintTop_toBottomOf="@+id/busPriceRV" />
+
+        <TextView
+            android:id="@+id/busEmailRV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="Email: example@email.com"
+            app:layout_constraintStart_toStartOf="@+id/busLocationRV"
+            app:layout_constraintTop_toBottomOf="@+id/busLocationRV" />
+
+        <TextView
+            android:id="@+id/busNumberRV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="Number: +1234567890"
+            app:layout_constraintStart_toStartOf="@+id/busEmailRV"
+            app:layout_constraintTop_toBottomOf="@+id/busEmailRV" />
+
         <ImageView
             android:id="@+id/ivFavRV"
             android:layout_width="37dp"

@@ -203,17 +203,22 @@ class BusinessListingData : AppCompatActivity() {
     {
         val title = binding.ETBusTitle.editText?.text.toString()
         val location = theLocationStringPublic
+        val number = binding.ETBusNumber.editText?.text.toString()
+        val email = binding.ETBusEmail.editText?.text.toString()
         val price = binding.ETBusPrice.editText?.text.toString()
+
         val businessSummary = binding.ETBusDescrip.editText?.text.toString()
        // val selectedCategory = getSelectedCategory()
         if (binding.ETBusTitle.editText?.text.toString().isNotEmpty()
             ||theLocationStringPersonal.isNotEmpty()||
+            binding.ETBusTitle.editText?.text.toString().isNotEmpty() ||
+            binding.ETBusEmail.editText?.text.toString().isNotEmpty() ||
             binding.ETBusDescrip.editText?.text.toString().isNotEmpty() ||selectedCategory.isNotEmpty()
         )
         {
             //saving data to thr database
             val description = BusinessDetail(title, theLocationStringPersonal,price, businessSummary, stringImage)
-            val descriptionPublic = BusinessDetailPublic(title, location,selectedCategory,price, businessSummary, stringImage)
+            val descriptionPublic = BusinessDetailPublic(title, location,theLocationStringPersonal ,selectedCategory,price, businessSummary, stringImage, email, number)
              myReference.push().setValue(description).addOnSuccessListener {
                  myReference2.push().setValue(descriptionPublic)
                 // Toast.makeText(this, "selected category is $selectedCategory", Toast.LENGTH_SHORT).show()

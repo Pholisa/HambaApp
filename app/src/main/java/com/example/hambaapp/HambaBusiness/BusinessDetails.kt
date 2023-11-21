@@ -6,18 +6,20 @@ data class BusinessDetail(
     val price: String? = null,
     val businessSummary: String? = null,
     val stringImage: String? = null,
-    val emailAd: String? = null,
-    val telephoneNo: String? = null
+
 
     )
 
 data class BusinessDetailPublic(
     val title: String? = null,
     val location: String? = null,
+    val locationString: String? = null,
     val category: String?= null,
     val price: String? = null,
     val businessSummary: String? = null,
-    val stringImage: String? = null
+    val stringImage: String? = null,
+    val emailAd: String? = null,
+    val telephoneNo: String? = null
 )
 
 data class User(val fullName: String? = null,val phoneNumber: String? = null)

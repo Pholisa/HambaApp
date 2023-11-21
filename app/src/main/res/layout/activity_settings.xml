@@ -47,36 +47,6 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <ImageView
-                        android:id="@+id/iv_profile"
-                        android:contentDescription="Profile picture"
-                        android:layout_width="182dp"
-                        android:layout_height="112dp"
-                        android:layout_marginStart="100dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginEnd="20dp"
-                        android:layout_marginBottom="20dp"
-                        android:src="@drawable/ic_user" />
-
-                    <TextView
-                        android:id="@+id/tv_user_name"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:text="@string/username"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="28sp"/>
-                    <TextView
-                        android:id="@+id/tv_user_email"
-                        android:layout_width="match_parent"
-                        android:layout_marginTop="10dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:text="@string/email"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="18sp"/>
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -86,37 +56,37 @@
                         android:layout_marginEnd="30dp">
 
                         <ImageView
-                            android:id="@+id/iv_green"
+                            android:id="@+id/iv_business"
                             android:layout_width="60dp"
                             android:layout_height="50dp"
                             android:layout_marginTop="4dp"
                             android:layout_marginBottom="2dp"
                             android:background="@drawable/round_border"
-                            android:backgroundTint="#00FF06"
+                            android:backgroundTint="#DDEDEB"
                             android:contentDescription="greenBack"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.0"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:srcCompat="@drawable/baseline_edit_24" />
+                            app:srcCompat="@drawable/baseline_add_business_24" />
 
                         <TextView
-                            android:id="@+id/tv_edit"
+                            android:id="@+id/tv_addbusiness"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="20dp"
                             android:layout_marginTop="14dp"
-                            android:layout_marginEnd="200dp"
+                            android:layout_marginEnd="140dp"
                             android:textColor="@color/black"
-                            android:text="@string/edit"
+                            android:text="List your business"
                             android:textSize="18sp"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/iv_green"
+                            app:layout_constraintStart_toEndOf="@+id/iv_business"
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <ImageView
-                            android:id="@+id/iv_selectEdit"
+                            android:id="@+id/iv_businessEdit"
                             android:layout_width="45dp"
                             android:layout_height="25dp"
                             android:layout_marginStart="10dp"
@@ -125,12 +95,12 @@
                             android:background="@drawable/baseline_keyboard_arrow_right_24"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="1.0"
-                            app:layout_constraintStart_toEndOf="@+id/tv_edit"
+                            app:layout_constraintStart_toEndOf="@+id/tv_addbusiness"
                             app:layout_constraintTop_toTopOf="parent" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
                     <TextView
                         android:id="@+id/tv_heading3"
-                        android:layout_below="@id/tv_heading2"
+                        android:layout_below="@id/iv_businessEdit"
                         android:layout_width="match_parent"
                         android:layout_height="56dp"
                         android:layout_marginTop="15dp"

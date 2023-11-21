@@ -22,8 +22,10 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import android.content.Context
 import android.widget.FrameLayout
+import android.widget.ImageView
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.squareup.picasso.Picasso
 
 
 class BusinessDashboard : AppCompatActivity() {
@@ -54,6 +56,12 @@ class BusinessDashboard : AppCompatActivity() {
 
         //----------------------------------------------------------------------------------------------
         //getting business data from database
+        retrievBusinessDataFromFirebase()
+
+    }
+
+    private fun retrievBusinessDataFromFirebase()
+    {
         databaseReference = FirebaseDatabase.getInstance().getReference("users").child(userID!!).child("Listing Data")
         databaseReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -65,32 +73,8 @@ class BusinessDashboard : AppCompatActivity() {
                         businessArrayList.add(birdie!!)
                     }
 
-                    val adapter = MyBusinessAdapter(this@BusinessDashboard, businessArrayList,
-                        onDeleteClickListener = { position ->
-                            //calling delete business function
-                            deleteBusiness(position)
-                        },
-                        onItemClickListener = { position ->
-                            Toast.makeText(applicationContext, "click works", Toast.LENGTH_SHORT).show()
-                            // Bottom sheet data
-                            val sheet1 = findViewById<FrameLayout>(R.id.sheet)
-                            BottomSheetBehavior.from(sheet1).apply {
-                                peekHeight = 0
-                                state = BottomSheetBehavior.STATE_EXPANDED
-                                //calling function that populates sheet with data from database
-                                sheetPopulation(position)
+                    adapterData()
 
-                                //edit button
-                                var editBusines = findViewById<TextView>(R.id.tv_Edit_Business)
-                                editBusines.setOnClickListener {
-                                    Toast.makeText(applicationContext, "currently disabled", Toast.LENGTH_SHORT).show()
-                                }
-
-
-                            }
-                        }
-                    )
-                    recyclerView.adapter = adapter
                 }
                 else //no birds in database
                 {
@@ -103,9 +87,36 @@ class BusinessDashboard : AppCompatActivity() {
                 Toast.makeText(this@BusinessDashboard, error.toString(), Toast.LENGTH_SHORT).show()
             }
         })
-
     }
 
+    private fun adapterData() {
+        val adapter = MyBusinessAdapter(this@BusinessDashboard, businessArrayList,
+            onDeleteClickListener = { position ->
+                // calling delete business function
+                deleteBusiness(position)
+            },
+            onItemClickListener = { position, imageUrl ->
+                Toast.makeText(applicationContext, "click works", Toast.LENGTH_SHORT).show()
+                // Bottom sheet data
+                val sheet1 = findViewById<FrameLayout>(R.id.sheet)
+                BottomSheetBehavior.from(sheet1).apply {
+                    peekHeight = 0
+                    state = BottomSheetBehavior.STATE_EXPANDED
+                    // calling function that populates sheet with data from the database
+                    sheetPopulation(position, imageUrl)
+
+                    // edit button
+                    var editBusines = findViewById<TextView>(R.id.tv_Edit_Business)
+                    editBusines.setOnClickListener {
+                        Toast.makeText(applicationContext, "currently disabled", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        )
+        recyclerView.adapter = adapter
+    }
+
+    //function to delete a business
     private fun deleteBusiness(position: Int)
     {
         // Handling item deletion here
@@ -132,28 +143,42 @@ class BusinessDashboard : AppCompatActivity() {
     }
 
     //function that will populate bottom sheet with data
-    private fun sheetPopulation(position: Int)
+    private fun sheetPopulation(position: Int, imageUrl: String?)
     {
         // businessName
         var businessName = findViewById<TextView>(R.id.tvBusNme)
         var businessName1 = businessArrayList[position]
         businessName.text = businessName1.title.toString()
 
-        //Business Address
+        // Business Address
         var businessLocation = findViewById<TextView>(R.id.tv_Bus_Address)
         var businessLocation1 = businessArrayList[position]
         businessLocation.text = businessLocation1.location.toString()
 
-        //Business price
+        // Business price
         var businessPrice = findViewById<TextView>(R.id.tv_Bus_Price)
         var businessPrice1 = businessArrayList[position]
-        businessPrice.text = "R"+ businessPrice1.price.toString()
+        businessPrice.text = "R" + businessPrice1.price.toString()
 
-        //Business Summary
+        // Business Summary
         var businessSummary = findViewById<TextView>(R.id.tv_Bus_Summary)
         var businessSummary1 = businessArrayList[position]
         businessSummary.text = businessSummary1.businessSummary.toString()
+
+        // Business Image
+        var businessImage = findViewById<ImageView>(R.id.ivCoverImage)
+        //var businessImage1 = businessArrayList[position]
+
+        // Load image using Picasso
+        if (!imageUrl.isNullOrBlank()) {
+            Picasso.get().load(imageUrl).into(businessImage)
+        } else {
+            // Handle the case when imageString is null or empty
+            // You can set a default image or show an error message
+          //  businessImage.setImageResource(R.drawable.default_image) // Replace with your default image resource
+        }
     }
+
 
     //navigation function
     private fun navigationBar()

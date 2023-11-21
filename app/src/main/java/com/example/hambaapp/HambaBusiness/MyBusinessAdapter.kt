@@ -20,7 +20,7 @@ class MyBusinessAdapter(
     private val context: Context,
     private val birdList: MutableList<BusinessDetail> = mutableListOf(),
     private val onDeleteClickListener: (Int) -> Unit,
-    private val onItemClickListener: (Int) -> Unit
+    private val onItemClickListener: (Int, String?) -> Unit // Change the type to accept a String parameter
 ) : RecyclerView.Adapter<MyBusinessAdapter.MyViewHolder>() {
 
     //Grabbing objects from Recycler viewer
@@ -34,8 +34,12 @@ class MyBusinessAdapter(
 
         init {
             btnMore.setOnClickListener { showPopupMenu(btnMore, adapterPosition) }
-            itemView.setOnClickListener { onItemClickListener(adapterPosition) }
-           // btnMore.setOnClickListener { showPopupMenu(btnMore, adapterPosition) }
+            itemView.setOnClickListener {
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    onItemClickListener(position, birdList[position].stringImage)
+                }
+            }
         }
     }
 
@@ -53,9 +57,10 @@ class MyBusinessAdapter(
         holder.businessPrice.text = "R"+ currentBird.price
         holder.businessSummary.text = currentBird.businessSummary
 
-
         // Check if imageString is not null or empty before decoding
         val imageString = currentBird.stringImage
+        onItemClickListener(position, currentBird.stringImage) // Pass both position and imageString to onItemClickListener
+
         if (!imageString.isNullOrBlank())
         {
             val businessImage = decodeImageFromString(imageString)

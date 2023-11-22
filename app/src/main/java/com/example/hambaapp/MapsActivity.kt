@@ -128,7 +128,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                                     val longitude = parts[1].toDoubleOrNull()
                                     if (latitude != null && longitude != null) {
                                         val theCoordinates = LatLng(latitude, longitude)
-                                        //birdObservations.add(theCoordinates)
                                         myMutableMap.put(theCoordinates, businessName)
                                     }
                                 }
@@ -171,9 +170,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     //Executables once map is on screen
     override fun onMapReady(googleMap: GoogleMap)
     {
-
         mMap = googleMap
-
 
         //Zoom in Controls
         zoomFunction(googleMap)
@@ -222,6 +219,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     //----------------------------------------------------------------------------------------------
 
     //----------------------------------------------------------------------------------------------
+    //zoom function on maps
     private fun zoomFunction(googleMap: GoogleMap)
     {
         mMap = googleMap
@@ -236,9 +234,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     }
     //----------------------------------------------------------------------------------------------
 
-
-
-    private fun navigationBar() {
+    //----------------------------------------------------------------------------------------------
+    //navigation bar
+    private fun navigationBar()
+    {
         //This will account for event clicking of the navigation bar (similar to if statement format)
         binding.bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
@@ -267,5 +266,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             true
         }
     }
+    //----------------------------------------------------------------------------------------------
 }
 //------------------------------------------<<<<<<<<<<<-End Of File->>>>>>>>>>>-------------------------

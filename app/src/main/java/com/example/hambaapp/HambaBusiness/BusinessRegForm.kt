@@ -11,8 +11,10 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import com.example.hambaapp.Dashboard
 import com.example.hambaapp.R
 import com.example.hambaapp.databinding.ActivityBusinessRegFormBinding
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
@@ -64,7 +66,9 @@ class BusinessRegForm : AppCompatActivity() {
 
     }
     //----------------------------------------------------------------------------------------------
-    //validation method
+
+    //----------------------------------------------------------------------------------------------
+    //validating data for company data
          private fun validateData()
          {
 
@@ -128,8 +132,10 @@ class BusinessRegForm : AppCompatActivity() {
             .withListener(object : PermissionListener {
                 override fun onPermissionGranted(p0: PermissionGrantedResponse?)
                 {
-                     gallery()
-
+                    // gallery()
+                    val myfileintent = Intent(Intent.ACTION_GET_CONTENT)
+                    myfileintent.type = "image/*"
+                    ActivityResultLauncher.launch(myfileintent)
                 }
 
                 override fun onPermissionDenied(p0: PermissionDeniedResponse?) {
@@ -158,17 +164,15 @@ class BusinessRegForm : AppCompatActivity() {
     //----------------------------------------------------------------------------------------------
 
     //----------------------------------------------------------------------------------------------
-    //gallery function
     private fun gallery() {
-        val myfileintent = Intent(Intent.ACTION_GET_CONTENT)
-        myfileintent.type = "image/*"
-        ActivityResultLauncher.launch(myfileintent)
+        val intent = Intent(Intent.ACTION_PICK)
+        intent.type = "image/*"
+        startActivityForResult(intent, galleryRequestCode)
     }
     //----------------------------------------------------------------------------------------------
 
     //----------------------------------------------------------------------------------------------
-    private fun navigationBar()
-    {
+    private fun navigationBar() {
         //This will account for event clicking of the navigation bar (similar to if statement format)
         binding.bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
@@ -179,8 +183,7 @@ class BusinessRegForm : AppCompatActivity() {
                 }
                 //we need a recyler viewer of all active businesses
                 R.id.activeBusinesses -> {
-                    val intent = Intent(this, ActiveBusinesses::class.java)
-                    startActivity(intent)
+                    logoutUI()
                 }
 
                 R.id.profile -> {
@@ -192,6 +195,25 @@ class BusinessRegForm : AppCompatActivity() {
             }
             true
         }
+    }
+    //----------------------------------------------------------------------------------------------
+
+    //----------------------------------------------------------------------------------------------
+    //logout function
+    private fun logoutUI()
+    {
+        MaterialAlertDialogBuilder(this)
+            .setTitle("Logout")
+            .setMessage("Are you sure you want to log-out?")
+            .setNeutralButton("Dismiss") { dialog, which ->
+                dialog.dismiss()
+            }
+
+            .setPositiveButton("Sign out") { dialog, which ->
+                val intent = Intent(this, Dashboard::class.java)
+                startActivity(intent)
+            }
+            .show()
     }
     //----------------------------------------------------------------------------------------------
 }

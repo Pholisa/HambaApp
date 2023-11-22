@@ -20,7 +20,7 @@ class MyBusinessAdapter(
     private val context: Context,
     private val birdList: MutableList<BusinessDetail> = mutableListOf(),
     private val onDeleteClickListener: (Int) -> Unit,
-    private val onItemClickListener: (Int) -> Unit // Change the type to accept a String parameter
+    private val onItemClickListener: (BusinessDetail) -> Unit // Change the type to accept a String parameter
 ) : RecyclerView.Adapter<MyBusinessAdapter.MyViewHolder>() {
 
     //Grabbing objects from Recycler viewer
@@ -34,7 +34,6 @@ class MyBusinessAdapter(
 
         init {
             btnMore.setOnClickListener { showPopupMenu(btnMore, adapterPosition) }
-            itemView.setOnClickListener { onItemClickListener(adapterPosition) }
         }
 
     }
@@ -48,15 +47,15 @@ class MyBusinessAdapter(
     //----------------------------------------------------------------------------------------------
     //assigning a value to each holder on recycler
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val currentBird = birdList[position]
+        val currentBusiness = birdList[position]
 
-        holder.title.text = currentBird.title
-        holder.location.text = currentBird.location
-        holder.businessPrice.text = "R"+ currentBird.price
-        holder.businessSummary.text = currentBird.businessSummary
+        holder.title.text = currentBusiness.title
+        holder.location.text = currentBusiness.location
+        holder.businessPrice.text = "R"+ currentBusiness.price
+        holder.businessSummary.text = currentBusiness.businessSummary
 
         // Check if imageString is not null or empty before decoding
-        val imageString = currentBird.stringImage
+        val imageString = currentBusiness.stringImage
        // onItemClickListener(position, currentBird.stringImage) // Pass both position and imageString to onItemClickListener
 
         if (!imageString.isNullOrBlank())
@@ -76,6 +75,11 @@ class MyBusinessAdapter(
         else
         {
             // Set a default image
+        }
+
+        //item click listener handler that passes image to display on bottom sheet
+        holder.itemView.setOnClickListener {
+            onItemClickListener(currentBusiness)
         }
     }
 

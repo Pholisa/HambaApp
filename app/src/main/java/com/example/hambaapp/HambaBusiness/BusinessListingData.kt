@@ -42,6 +42,7 @@ import java.io.ByteArrayOutputStream
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import com.example.hambaapp.BusinessDetailPublic1
+import com.example.hambaapp.Dashboard
 import com.example.hambaapp.Welcome
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import java.io.IOException
@@ -351,7 +352,7 @@ class BusinessListingData : AppCompatActivity() {
             }
 
             .setPositiveButton("Sign out") { dialog, which ->
-                val intent = Intent(this, Welcome::class.java)
+                val intent = Intent(this, Dashboard::class.java)
                 startActivity(intent)
             }
             .show()

@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="10dp">
+        >
 
         <ImageView
             android:id="@+id/btnMore"
@@ -40,7 +40,8 @@
             android:text="Business Name"
             android:textColor="@color/black"
             android:textSize="26dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:paddingLeft="10dp"/>
 
 
         <TextView
@@ -50,7 +51,8 @@
             android:layout_marginTop="8dp"
             android:textSize="15sp"
             android:text="Business Address"
-            android:textStyle="italic" />
+            android:textStyle="italic"
+            android:paddingLeft="10dp"/>
 
         <TextView
             android:id="@+id/tvBusinessSummary"
@@ -59,7 +61,8 @@
             android:layout_height="wrap_content"
             android:textSize="15sp"
             android:text=""
-            android:textStyle="italic" />
+            android:textStyle="italic"
+            android:paddingLeft="10dp"/>
 
         <!-- Buttons -->
         <LinearLayout
@@ -75,7 +78,7 @@
                 android:layout_marginEnd="8dp"
                 android:text="More Info"
                 style="?attr/borderlessButtonStyle"
-                />
+                android:paddingLeft="10dp"/>
 
         </LinearLayout>
 

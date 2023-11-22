@@ -23,6 +23,7 @@ class Accomodation : AppCompatActivity() {
         navigationBar()
     }
 
+    //----------------------------------------------------------------------------------------------
     //navivation bar if statement
     private fun navigationBar() {
         //This will account for event clicking of the navigation bar (similar to if statement format)
@@ -53,5 +54,6 @@ class Accomodation : AppCompatActivity() {
             true
         }
     }
+    //----------------------------------------------------------------------------------------------
 }
 

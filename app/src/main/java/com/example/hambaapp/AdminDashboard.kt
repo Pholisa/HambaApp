@@ -18,6 +18,7 @@ class AdminDashboard : AppCompatActivity() {
        // navigationBar()
     }
 
+    //----------------------------------------------------------------------------------------------
     //navigation bar with limited user access for admin
     private fun navigationBar()
     {
@@ -46,4 +47,5 @@ class AdminDashboard : AppCompatActivity() {
             true
         }
     }
+    //----------------------------------------------------------------------------------------------
 }

@@ -184,7 +184,7 @@ class BusinessDashboard : AppCompatActivity() {
         val businessImage1 = businessArrayList[position].stringImage
         //  val businessImage2 = businessImage1.stringImage.toString()
 
-// Load image using Picasso
+        // Load image using Picasso currently not working
         if (!businessImage1.isNullOrBlank())
         {
             Picasso.get().load(businessImage1).into(binding.ivCoverImage)

@@ -277,6 +277,7 @@ class BusinessListingData : AppCompatActivity() {
             }).onSameThread().check()
     }
 
+    //gallery function to open gallery
     private fun gallery() {
         val intent = Intent(Intent.ACTION_PICK)
         intent.type = "image/*"
@@ -284,6 +285,7 @@ class BusinessListingData : AppCompatActivity() {
     }
 
 
+    //rotational dialog
     private fun showRorationalDialogForPermission(){
         AlertDialog.Builder(this).setMessage("It looks like you have turned off permissions" +
                 "required for this feature. It can be enabled under App settings!!!")

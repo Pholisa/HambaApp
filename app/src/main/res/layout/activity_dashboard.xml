@@ -215,19 +215,211 @@
 
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/tvBusinessDisplay"
+                android:id="@+id/rvBusinessDisplaying"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:listitem="@layout/activity_dashboard_recycle_view"
+                tools:listitem="@layout/dashboard_list_item"
                 android:layout_marginLeft="10dp"
                 android:textSize="16sp"/>
-
-
 
 
         </LinearLayout>
     </RelativeLayout>
     </ScrollView>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:elevation="5dp">
+
+        <FrameLayout
+            android:id="@+id/sheet1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+            app:behavior_peekHeight="0dp"
+            android:background="@drawable/rounded">
+
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvHeading"
+                tools:layout_editor_absoluteX="-3dp">
+
+            <RelativeLayout
+                android:id="@+id/relativeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="16dp">
+
+                <ScrollView
+                    android:id="@+id/scroll"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fillViewport="true">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/openImageDBV"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:adjustViewBounds="true"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/img_soweto" />
+
+                        <TextView
+                            android:id="@+id/busTitleDBV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="16dp"
+                            android:fontFamily="@font/montserrat"
+                            android:text="Mughal Gardens, Srinagar"
+                            android:textColor="@android:color/background_dark"
+                            android:textSize="20sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/openImageDBV" />
+
+                        <TextView
+                            android:id="@+id/tvPriceRangeDBV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:fontFamily="@font/montserrat"
+                            android:text="Price: "
+                            android:textSize="20dp"
+                            app:layout_constraintStart_toStartOf="@+id/busTitleDBV"
+                            app:layout_constraintTop_toBottomOf="@+id/busTitleDBV" />
+
+                        <TextView
+                            android:id="@+id/tvPriceDBV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:fontFamily="@font/comfortaameduim"
+                            android:text="R20000"
+                            android:textSize="14sp"
+                            app:layout_constraintBottom_toBottomOf="@+id/tvPriceRangeDBV"
+                            app:layout_constraintStart_toEndOf="@+id/tvPriceRangeDBV"
+                            app:layout_constraintTop_toTopOf="@+id/tvPriceRangeDBV" />
+
+                        <TextView
+                            android:id="@+id/tvAboutHeadDBV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="16dp"
+                            android:fontFamily="@font/comfortaameduim"
+                            android:text="About "
+                            android:textSize="21dp"
+                            android:textColor="@android:color/background_dark"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tvPriceDBV" />
+
+                        <TextView
+                            android:id="@+id/tvBusDescptionDBV"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginBottom="8dp"
+                            android:text="Mughal Gardens which have truly changed the face of the Mughal Empire is one of the most popular and the most visited tourist attractions of Srinagar."
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/tvAboutHeadDBV"
+                            app:layout_constraintTop_toBottomOf="@+id/tvAboutHeadDBV" />
+
+                        <TextView
+                            android:id="@+id/tvContHeadDBV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Contact Deatils"
+                            android:textSize="21dp"
+                            android:fontFamily="@font/comfortaabold"
+                            android:layout_marginBottom="20dp"
+                            android:layout_marginTop="10dp"
+                            app:layout_constraintStart_toStartOf="@+id/tvBusDescptionDBV"
+                            app:layout_constraintTop_toBottomOf="@+id/tvBusDescptionDBV" />
+
+                        <ImageView
+                            android:id="@+id/iconContLocationDBV"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:src="@drawable/ic_location"
+                            android:layout_marginTop="15dp"
+                            app:layout_constraintStart_toStartOf="@+id/tvContHeadDBV"
+                            app:layout_constraintTop_toBottomOf="@+id/tvContHeadDBV" />
+
+                        <TextView
+                            android:id="@+id/contLocationDBV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginTop="4dp"
+                            android:text="Location"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toEndOf="@+id/iconContLocationDBV"
+                            app:layout_constraintTop_toBottomOf="@+id/iconContLocationDBV" />
+
+                        <ImageView
+                            android:id="@+id/iconContPhoneDBV"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:src="@drawable/ic_phone"
+                            android:layout_marginTop="20dp"
+                            app:layout_constraintStart_toStartOf="@+id/iconContLocationDBV"
+                            app:layout_constraintTop_toBottomOf="@+id/contLocationDBV" />
+
+                        <TextView
+                            android:id="@+id/contPhoneDBV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="4dp"
+                            android:text="Phone"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toEndOf="@+id/iconContPhoneDBV"
+                            app:layout_constraintTop_toBottomOf="@+id/iconContPhoneDBV" />
+
+                        <ImageView
+                            android:id="@+id/iconContEmailDBV"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:src="@drawable/ic_email"
+                            android:layout_marginTop="20dp"
+                            app:layout_constraintStart_toStartOf="@+id/iconContPhoneDBV"
+                            app:layout_constraintTop_toBottomOf="@+id/iconContPhoneDBV" />
+
+                        <TextView
+                            android:id="@+id/ContEmailDBV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginTop="25dp"
+                            android:text="Email"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toEndOf="@+id/iconContEmailDBV"
+                            app:layout_constraintTop_toBottomOf="@+id/iconContEmailDBV" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </ScrollView>
+            </RelativeLayout>
+            </ScrollView>
+        </FrameLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"

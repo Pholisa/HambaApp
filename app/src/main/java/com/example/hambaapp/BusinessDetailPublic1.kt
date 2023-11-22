@@ -1,6 +1,5 @@
 package com.example.hambaapp
 
-
 data class BusinessDetailPublic1(
     val title: String? = null,
     val location: String? = null,

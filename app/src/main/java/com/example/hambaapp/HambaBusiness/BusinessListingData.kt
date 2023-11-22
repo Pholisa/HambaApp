@@ -196,6 +196,8 @@ class BusinessListingData : AppCompatActivity() {
     }
 
 
+    //----------------------------------------------------------------------------------------------
+    //validating user data
     private fun ValidateData()
     {
         val title = binding.ETBusTitle.editText?.text.toString()
@@ -249,7 +251,9 @@ class BusinessListingData : AppCompatActivity() {
                 }
             }
         }
+    //----------------------------------------------------------------------------------------------
 
+    //----------------------------------------------------------------------------------------------
     //Checking permissions in gallery
     private fun galleryCheckPermission() {
         Dexter.withContext(this).withPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
@@ -275,14 +279,18 @@ class BusinessListingData : AppCompatActivity() {
                 }
             }).onSameThread().check()
     }
+    //----------------------------------------------------------------------------------------------
 
-    private fun gallery() {
+    //----------------------------------------------------------------------------------------------
+    private fun gallery()
+    {
         val intent = Intent(Intent.ACTION_PICK)
         intent.type = "image/*"
         startActivityForResult(intent, galleryRequestCode)
     }
+    //----------------------------------------------------------------------------------------------
 
-
+    //----------------------------------------------------------------------------------------------
     private fun showRorationalDialogForPermission(){
         AlertDialog.Builder(this).setMessage("It looks like you have turned off permissions" +
                 "required for this feature. It can be enabled under App settings!!!")
@@ -301,8 +309,11 @@ class BusinessListingData : AppCompatActivity() {
                 dialog.dismiss()
             }.show()
     }
+    //----------------------------------------------------------------------------------------------
 
-    private fun navigationBar() {
+    //----------------------------------------------------------------------------------------------
+    private fun navigationBar()
+    {
         //This will account for event clicking of the navigation bar (similar to if statement format)
         binding.bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
@@ -326,7 +337,9 @@ class BusinessListingData : AppCompatActivity() {
             true
         }
     }
+    //----------------------------------------------------------------------------------------------
 
+    //----------------------------------------------------------------------------------------------
     //logout function
     private fun logoutUI()
     {
@@ -343,4 +356,5 @@ class BusinessListingData : AppCompatActivity() {
             }
             .show()
     }
+    //----------------------------------------------------------------------------------------------
 }

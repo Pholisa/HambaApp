@@ -96,7 +96,6 @@ class BusinessDashboard : AppCompatActivity() {
     }
     //----------------------------------------------------------------------------------------------
 
-    //----------------------------------------------------------------------------------------------
     private fun adapterData()
     {
         val adapter = MyBusinessAdapter(this@BusinessDashboard, businessArrayList,
@@ -104,16 +103,15 @@ class BusinessDashboard : AppCompatActivity() {
                 // calling delete business function
                 deleteBusiness(position)
             },
-            onItemClickListener = { position ->
+            onItemClickListener = { userProfile ->
                 // Bottom sheet data
                 val sheet1 = findViewById<FrameLayout>(R.id.sheet)
                 BottomSheetBehavior.from(sheet1).apply {
                     peekHeight = 0
                     state = BottomSheetBehavior.STATE_EXPANDED
-                    // calling function that populates sheet with data from the database
-                   // Toast.makeText(applicationContext, "image found", Toast.LENGTH_SHORT).show()
 
-                    sheetPopulation(position)
+                    //sheet population fucntion that will display business data on sheet
+                     sheetPopulation(userProfile)
 
                     // edit button
                     var editBusines = findViewById<TextView>(R.id.tv_Edit_Business)
@@ -157,59 +155,27 @@ class BusinessDashboard : AppCompatActivity() {
 
     //----------------------------------------------------------------------------------------------
     //function that will populate bottom sheet with data
-    private fun sheetPopulation(position: Int)
-    {
-         // businessName
-        var businessName = findViewById<TextView>(R.id.tvBusNme)
-        var businessName1 = businessArrayList[position]
-        businessName.text = businessName1.title.toString()
+    private fun sheetPopulation(userProfile: BusinessDetail) {
 
-        // Business Address
-        var businessLocation = findViewById<TextView>(R.id.tv_Bus_Address)
-        var businessLocation1 = businessArrayList[position]
-        businessLocation.text = businessLocation1.location.toString()
+        // Set up your views in the bottom sheet
+        val coverImage: ImageView = binding.ivCoverImage
+        val title: TextView = binding.tvBusNme
+        val address: TextView = binding.tvBusAddress
+        val price: TextView = binding.tvBusPrice
+        val summary: TextView = binding.tvBusSummary
 
-        // Business price
-        var businessPrice = findViewById<TextView>(R.id.tv_Bus_Price)
-        var businessPrice1 = businessArrayList[position]
-        businessPrice.text = "R" + businessPrice1.price.toString()
-
-        // Business Summary
-        var businessSummary = findViewById<TextView>(R.id.tv_Bus_Summary)
-        var businessSummary1 = businessArrayList[position]
-        businessSummary.text = businessSummary1.businessSummary.toString()
-
-        // Business Image
-        //  val businessImage = findViewById<ImageView>(R.id.ivCoverImage)
-        val businessImage1 = businessArrayList[position].stringImage
-        //  val businessImage2 = businessImage1.stringImage.toString()
-
-// Load image using Picasso
-        if (!businessImage1.isNullOrBlank())
-        {
-            Picasso.get().load(businessImage1).into(binding.ivCoverImage)
-        } else {
-            Toast.makeText(applicationContext, "image not found", Toast.LENGTH_SHORT).show()
-        }
-
+        // Setting image
+        val imageBytes = Base64.decode(userProfile.stringImage, Base64.DEFAULT)
+        val bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
+        coverImage.setImageBitmap(bitmap)
+        // Set text values
+        title.text = userProfile.title
+        summary.text = userProfile.businessSummary
+        address.text = userProfile.location
+        price.text = userProfile.price
     }
-    //----------------------------------------------------------------------------------------------
 
     //----------------------------------------------------------------------------------------------
-    //decoding image from string to image
-    private fun decodeImageFromString(imageString: String?): Bitmap?
-    {
-        try {
-            val decodedBytes: ByteArray = Base64.decode(imageString, Base64.DEFAULT)
-            return BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.size)
-        } catch (e: Exception) {
-            // Handle the decoding error (e.g., log the error)
-            e.printStackTrace()
-        }
-        return null
-    }
-    //----------------------------------------------------------------------------------------------
-
 
     //----------------------------------------------------------------------------------------------
     //navigation function
@@ -253,7 +219,7 @@ class BusinessDashboard : AppCompatActivity() {
                 }
 
                 .setPositiveButton("Sign out") { dialog, which ->
-                    val intent = Intent(this, Welcome::class.java)
+                    val intent = Intent(this, Dashboard::class.java)
                     startActivity(intent)
                 }
                 .show()

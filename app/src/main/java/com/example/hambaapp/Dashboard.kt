@@ -141,12 +141,12 @@ class Dashboard : AppCompatActivity() {
         //Business Number
         var businessNumber = findViewById<TextView>(R.id.contPhoneDBV)
         var businessNumber1 = businessArrayList[position]
-        businessNumber.text = businessNumber1.telephoneNo.toString()
+       // businessNumber.text = businessNumber1.telephoneNo.toString()
 
         //Business Email
         var businessEmail = findViewById<TextView>(R.id.ContEmailDBV)
         var businessEmail1 = businessArrayList[position]
-        businessEmail.text = businessEmail1.emailAd.toString()
+      //  businessEmail.text = businessEmail1.emailAd.toString()
     }
 
 

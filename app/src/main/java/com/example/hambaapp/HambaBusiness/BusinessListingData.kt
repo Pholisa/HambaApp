@@ -214,7 +214,7 @@ class BusinessListingData : AppCompatActivity() {
         {
             //saving data to thr database
             val description = BusinessDetail(title, theLocationStringPersonal,price, businessSummary, stringImage)
-            val descriptionPublic = BusinessDetailPublic(title, location,theLocationStringPersonal ,selectedCategory,price, businessSummary, stringImage, email, number)
+            val descriptionPublic = BusinessDetailPublic1(title, location,theLocationStringPersonal ,selectedCategory,price, businessSummary, stringImage, email, number)
              myReference.push().setValue(description).addOnSuccessListener {
                  myReference2.push().setValue(descriptionPublic)
                 // Toast.makeText(this, "selected category is $selectedCategory", Toast.LENGTH_SHORT).show()

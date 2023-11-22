@@ -47,10 +47,10 @@ class TourismAdapter(private val context: Context,
         holder.tvBusinessTitle.text = currentBusiness.title
         holder.tvBusinessType.text = currentBusiness.category
         holder.tvBusinessDesc.text =  "Description:" +currentBusiness.businessSummary
-        holder.tvBusinessEmail.text = "Email:" + currentBusiness.emailAd
-        holder.tvBusinessNo.text = "Number:" + currentBusiness.telephoneNo
-        holder.tvBusinessPrice.text = "R" + currentBusiness.price
-        holder.tvBusinessLocation.text = currentBusiness.locationString
+      //  holder.tvBusinessEmail.text = "Email:" + currentBusiness.emailAd
+      //  holder.tvBusinessNo.text = "Number:" + currentBusiness.telephoneNo
+      //  holder.tvBusinessPrice.text = "R" + currentBusiness.price
+      //  holder.tvBusinessLocation.text = currentBusiness.locationString
 
 
 

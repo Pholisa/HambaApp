@@ -2,9 +2,9 @@ name: Android Unit Test
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   build:
@@ -28,7 +28,6 @@ jobs:
           overwrite-settings: true
           job-status: success
 
-
       - name: Cache Gradle dependencies
         uses: actions/cache@v2
         with:
@@ -37,10 +36,16 @@ jobs:
             ~/.gradle/wrapper
           key: gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
 
+      - name: Debug Information
+        run: |
+          ls -R ${{ github.workspace }}
+
+      - name: Build with Gradle
+        run: ./gradlew assemble
+
       - name: Get Commit Hash
         id: commit_hash
         run: echo "::set-output name=hash::$(git rev-parse HEAD)"
-
 
       - name: AppSweep Mobile Application Security Testing
         uses: Guardsquare/appsweep-action@v1.5
@@ -49,10 +54,7 @@ jobs:
           input_file: app/build/outputs/apk/debug/app-debug.apk
           commit_hash: ${{ steps.commit_hash.outputs.hash }}
 
-
-      - name: Build with Gradle
-        run: ./gradlew assemble
-
       - name: Run Unit Tests
         run: ./gradlew test
+
 

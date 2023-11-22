@@ -45,6 +45,8 @@ class MyBusinessAdapter(
         return MyViewHolder(itemView)
     }
 
+    //----------------------------------------------------------------------------------------------
+    //assigning a value to each holder on recycler
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentBird = birdList[position]
 
@@ -73,7 +75,7 @@ class MyBusinessAdapter(
         }
         else
         {
-            // Set a default image or handle the case when imageString is null or empty
+            // Set a default image
         }
     }
 
@@ -81,6 +83,7 @@ class MyBusinessAdapter(
         return birdList.size
     }
 
+    //----------------------------------------------------------------------------------------------
     // Function to decode image from base64 string
     private fun decodeImageFromString(imageString: String?): Bitmap?
     {
@@ -93,7 +96,9 @@ class MyBusinessAdapter(
         }
         return null
     }
+    //----------------------------------------------------------------------------------------------
 
+    //----------------------------------------------------------------------------------------------
     private fun showPopupMenu(view: View, position: Int) {
         val popupMenu = PopupMenu(context, view)
         val inflater = popupMenu.menuInflater
@@ -117,6 +122,7 @@ class MyBusinessAdapter(
 
         popupMenu.show()
     }
+    //----------------------------------------------------------------------------------------------
 
 }
 

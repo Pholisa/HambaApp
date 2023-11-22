@@ -58,12 +58,9 @@ class BusinessListingData : AppCompatActivity() {
     private val userID = FirebaseAuth.getInstance().currentUser?.uid
     private val myReference = theDatabase.getReference("users").child(userID!!).child("Listing Data")
     private val myReference2 = theDatabase.getReference("Businesses")
-   // private val myReference = theDatabase.getReference("users").child(userID!!).child("Business Information")
     private lateinit var firebaseAuthentication: FirebaseAuth
     private var stringImage: String = ""
-
     private val galleryRequestCode = 2
-
     private lateinit var placesClient: PlacesClient
     private lateinit var autoCompleteTextView: AutoCompleteTextView
     private var theLocation: LatLng = LatLng(0.0, 0.0)
@@ -91,19 +88,19 @@ class BusinessListingData : AppCompatActivity() {
         //calling nav bar function
         navigationBar()
 
-        /////////////////////////////////////
-        // Initialize the Places API with your API key
+
+        // Initialising the Places API with your API key
         Places.initialize(applicationContext, "AIzaSyD78Ws9Y4GtZVZtYP9pWBXjHjMNDwGJRbQ")
         placesClient = Places.createClient(this)
 
         // Initialize AutoCompleteTextView
         autoCompleteTextView = findViewById(R.id.autoCompleteTextView)
 
-        // Set up the adapter for autocomplete suggestions
+        // Setting up the adapter for autocomplete suggestions
         val adapter = ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line)
         autoCompleteTextView.setAdapter(adapter)
 
-        // Set a listener for text changes to trigger autocomplete predictions
+        // Setting a listener for text changes to trigger autocomplete predictions
         autoCompleteTextView.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
@@ -130,6 +127,7 @@ class BusinessListingData : AppCompatActivity() {
 
     }
 
+    //autocomplete predictions
     private fun getAutocompletePredictions(query: String) {
         // Create a request for autocomplete predictions
         val request = FindAutocompletePredictionsRequest.builder()

@@ -9,6 +9,12 @@ android {
     namespace 'com.example.hambaapp'
     compileSdk 33
 
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+
     defaultConfig {
         applicationId "com.example.hambaapp"
         minSdk 23

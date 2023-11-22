@@ -99,7 +99,7 @@ class BusinessPrev : AppCompatActivity() {
 
     }
 
-
+    //----------------------------------------------------------------------------------------------
     private fun navigationBar() {
         //This will account for event clicking of the navigation bar (similar to if statement format)
         binding.bottomNavigationView.setOnItemSelectedListener { item ->
@@ -125,4 +125,5 @@ class BusinessPrev : AppCompatActivity() {
             true
         }
     }
+    //----------------------------------------------------------------------------------------------
 }

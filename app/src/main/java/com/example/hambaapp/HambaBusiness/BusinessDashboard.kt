@@ -112,38 +112,8 @@ class BusinessDashboard : AppCompatActivity() {
                     state = BottomSheetBehavior.STATE_EXPANDED
                     // calling function that populates sheet with data from the database
                    // Toast.makeText(applicationContext, "image found", Toast.LENGTH_SHORT).show()
-                    // businessName
-                    var businessName = findViewById<TextView>(R.id.tvBusNme)
-                    var businessName1 = businessArrayList[position]
-                    businessName.text = businessName1.title.toString()
 
-                    // Business Address
-                    var businessLocation = findViewById<TextView>(R.id.tv_Bus_Address)
-                    var businessLocation1 = businessArrayList[position]
-                    businessLocation.text = businessLocation1.location.toString()
-
-                    // Business price
-                    var businessPrice = findViewById<TextView>(R.id.tv_Bus_Price)
-                    var businessPrice1 = businessArrayList[position]
-                    businessPrice.text = "R" + businessPrice1.price.toString()
-
-                    // Business Summary
-                    var businessSummary = findViewById<TextView>(R.id.tv_Bus_Summary)
-                    var businessSummary1 = businessArrayList[position]
-                    businessSummary.text = businessSummary1.businessSummary.toString()
-
-                    // Business Image
-                  //  val businessImage = findViewById<ImageView>(R.id.ivCoverImage)
-                    val businessImage1 = businessArrayList[position].stringImage
-                  //  val businessImage2 = businessImage1.stringImage.toString()
-
-// Load image using Picasso
-                    if (!businessImage1.isNullOrBlank())
-                    {
-                        Picasso.get().load(businessImage1).into(binding.ivCoverImage)
-                    } else {
-                        Toast.makeText(applicationContext, "image not found", Toast.LENGTH_SHORT).show()
-                    }
+                    sheetPopulation(position)
 
                     // edit button
                     var editBusines = findViewById<TextView>(R.id.tv_Edit_Business)
@@ -189,8 +159,7 @@ class BusinessDashboard : AppCompatActivity() {
     //function that will populate bottom sheet with data
     private fun sheetPopulation(position: Int)
     {
-       // Toast.makeText(applicationContext, "image found", Toast.LENGTH_SHORT).show()
-        // businessName
+         // businessName
         var businessName = findViewById<TextView>(R.id.tvBusNme)
         var businessName1 = businessArrayList[position]
         businessName.text = businessName1.title.toString()
@@ -211,9 +180,17 @@ class BusinessDashboard : AppCompatActivity() {
         businessSummary.text = businessSummary1.businessSummary.toString()
 
         // Business Image
-        var businessImage = findViewById<ImageView>(R.id.ivCoverImage)
-        var businessImage1 = businessArrayList[position]
-        var businessImage2 = businessImage1.stringImage
+        //  val businessImage = findViewById<ImageView>(R.id.ivCoverImage)
+        val businessImage1 = businessArrayList[position].stringImage
+        //  val businessImage2 = businessImage1.stringImage.toString()
+
+// Load image using Picasso
+        if (!businessImage1.isNullOrBlank())
+        {
+            Picasso.get().load(businessImage1).into(binding.ivCoverImage)
+        } else {
+            Toast.makeText(applicationContext, "image not found", Toast.LENGTH_SHORT).show()
+        }
 
     }
     //----------------------------------------------------------------------------------------------

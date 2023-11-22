@@ -8,12 +8,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.hambaapp.Adapter.NearbyPlaceAdaptar
-import com.example.hambaapp.HambaBusiness.BusinessDetail
-import com.example.hambaapp.HambaBusiness.BusinessDetailPublic
-import com.example.hambaapp.HambaBusiness.BusinessDetailPublic1
-import com.example.hambaapp.HambaBusiness.MyBusinessAdapter
-import com.example.hambaapp.Model.NearbyPlaceData
 import com.example.hambaapp.databinding.ActivityDashboardBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.firebase.auth.FirebaseAuth

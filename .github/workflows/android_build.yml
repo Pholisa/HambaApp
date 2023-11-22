@@ -10,25 +10,39 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Set up JDK
-      uses: actions/setup-java@v2
-      with:
-        java-version: '8'
-        architecture: 'x64'
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: '8'
+          architecture: 'x64'
 
-    - name: Cache Gradle dependencies
-      uses: actions/cache@v2
-      with:
-        path: |
-          ~/.gradle/caches
-          ~/.gradle/wrapper
-        key: gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+      - name: Cache Gradle dependencies
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
 
-    - name: Build with Gradle
-      run: ./gradlew assemble
+      - name: Get Commit Hash
+        id: commit_hash
+        run: echo "::set-output name=hash::$(git rev-parse HEAD)"
 
-    - name: Run Unit Tests
-      run: ./gradlew test
+
+      - name: AppSweep Mobile Application Security Testing
+        uses: Guardsquare/appsweep-action@v1.5
+        with:
+          appsweep_api_key: gs_appsweep_0BzKyw3_wROiJgUkw3TpUzkVoUaCyMFihKwUcPPE
+          input_file: app/build/outputs/apk/debug/app-debug.apk
+          commit_hash: ${{ steps.commit_hash.outputs.hash }}
+
+
+      - name: Build with Gradle
+        run: ./gradlew assemble
+
+      - name: Run Unit Tests
+        run: ./gradlew test
+

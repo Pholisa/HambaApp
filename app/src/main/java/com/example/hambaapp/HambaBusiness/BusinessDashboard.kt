@@ -65,6 +65,7 @@ class BusinessDashboard : AppCompatActivity() {
 
     }
 
+    //----------------------------------------------------------------------------------------------
     private fun retrievBusinessDataFromFirebase()
     {
         databaseReference = FirebaseDatabase.getInstance().getReference("users").child(userID!!).child("Listing Data")
@@ -93,8 +94,11 @@ class BusinessDashboard : AppCompatActivity() {
             }
         })
     }
+    //----------------------------------------------------------------------------------------------
 
-    private fun adapterData() {
+    //----------------------------------------------------------------------------------------------
+    private fun adapterData()
+    {
         val adapter = MyBusinessAdapter(this@BusinessDashboard, businessArrayList,
             onDeleteClickListener = { position ->
                 // calling delete business function
@@ -151,7 +155,9 @@ class BusinessDashboard : AppCompatActivity() {
         )
         recyclerView.adapter = adapter
     }
+    //----------------------------------------------------------------------------------------------
 
+    //----------------------------------------------------------------------------------------------
     //function to delete a business
     private fun deleteBusiness(position: Int)
     {
@@ -177,7 +183,9 @@ class BusinessDashboard : AppCompatActivity() {
                 }
             })
     }
+    //----------------------------------------------------------------------------------------------
 
+    //----------------------------------------------------------------------------------------------
     //function that will populate bottom sheet with data
     private fun sheetPopulation(position: Int)
     {
@@ -208,7 +216,10 @@ class BusinessDashboard : AppCompatActivity() {
         var businessImage2 = businessImage1.stringImage
 
     }
+    //----------------------------------------------------------------------------------------------
 
+    //----------------------------------------------------------------------------------------------
+    //decoding image from string to image
     private fun decodeImageFromString(imageString: String?): Bitmap?
     {
         try {
@@ -220,8 +231,10 @@ class BusinessDashboard : AppCompatActivity() {
         }
         return null
     }
+    //----------------------------------------------------------------------------------------------
 
 
+    //----------------------------------------------------------------------------------------------
     //navigation function
     private fun navigationBar()
     {
@@ -249,7 +262,9 @@ class BusinessDashboard : AppCompatActivity() {
             true
         }
     }
+    //----------------------------------------------------------------------------------------------
 
+    //----------------------------------------------------------------------------------------------
     //logout function
     private fun logoutUI()
     {
@@ -266,4 +281,5 @@ class BusinessDashboard : AppCompatActivity() {
                 }
                 .show()
     }
+    //----------------------------------------------------------------------------------------------
 }

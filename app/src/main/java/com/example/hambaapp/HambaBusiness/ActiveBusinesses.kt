@@ -19,9 +19,12 @@ class ActiveBusinesses : AppCompatActivity() {
         //calling the navigation bar
         navigationBar()
     }
-    //----------------------------------------------------------------------------------------------
+
 
     //----------------------------------------------------------------------------------------------
+    
+    //----------------------------------------------------------------------------------------------
+    //navigation bar function
     private fun navigationBar() {
         //This will account for event clicking of the navigation bar (similar to if statement format)
         binding.bottomNavigationView.setOnItemSelectedListener { item ->

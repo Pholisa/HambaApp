@@ -18,7 +18,7 @@ class LoadingWelcome : AppCompatActivity() {
         handler = Handler()
 
         handler.postDelayed({
-            val intent = Intent(this, Welcome::class.java)
+            val intent = Intent(this, Dashboard::class.java)
             startActivity(intent)
             finish()
 

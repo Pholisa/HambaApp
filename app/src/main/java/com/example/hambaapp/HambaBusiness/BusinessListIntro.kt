@@ -36,6 +36,9 @@ class BusinessListIntro : AppCompatActivity() {
         navigationBar()
 
     }
+    //----------------------------------------------------------------------------------------------
+
+    //----------------------------------------------------------------------------------------------
     private fun navigationBar()
     {
         //This will account for event clicking of the navigation bar (similar to if statement format)
@@ -79,5 +82,6 @@ class BusinessListIntro : AppCompatActivity() {
             }
             .show()
     }
+
     //----------------------------------------------------------------------------------------------
 }

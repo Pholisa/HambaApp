@@ -12,11 +12,12 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hambaapp.HambaBusiness.BusinessDetail
 import com.example.hambaapp.HambaBusiness.BusinessDetailPublic
+import com.example.hambaapp.HambaBusiness.BusinessDetailPublic1
 import java.lang.Exception
 
 
 class TourismAdapter(private val context: Context,
-                     private val tourismList : MutableList<BusinessDetailPublic> = mutableListOf(),
+                     private val tourismList : MutableList<BusinessDetailPublic1> = mutableListOf(),
                      private val onItemClickListener: (Int) -> Unit): RecyclerView.Adapter<TourismAdapter.MyViewHolder>(){
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -47,10 +48,10 @@ class TourismAdapter(private val context: Context,
         holder.tvBusinessTitle.text = currentBusiness.title
         holder.tvBusinessType.text = currentBusiness.category
         holder.tvBusinessDesc.text =  "Description:" +currentBusiness.businessSummary
-      //  holder.tvBusinessEmail.text = "Email:" + currentBusiness.emailAd
-      //  holder.tvBusinessNo.text = "Number:" + currentBusiness.telephoneNo
-      //  holder.tvBusinessPrice.text = "R" + currentBusiness.price
-      //  holder.tvBusinessLocation.text = currentBusiness.locationString
+        holder.tvBusinessEmail.text = "Email:" + currentBusiness.emailAd
+        holder.tvBusinessNo.text = "Number:" + currentBusiness.telephoneNo
+        holder.tvBusinessPrice.text = "R" + currentBusiness.price
+        holder.tvBusinessLocation.text = currentBusiness.locationString
 
 
 

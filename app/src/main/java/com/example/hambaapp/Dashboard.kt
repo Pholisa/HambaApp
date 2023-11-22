@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.hambaapp.Adapter.NearbyPlaceAdaptar
 import com.example.hambaapp.HambaBusiness.BusinessDetail
 import com.example.hambaapp.HambaBusiness.BusinessDetailPublic
+import com.example.hambaapp.HambaBusiness.BusinessDetailPublic1
 import com.example.hambaapp.HambaBusiness.MyBusinessAdapter
 import com.example.hambaapp.Model.NearbyPlaceData
 import com.example.hambaapp.databinding.ActivityDashboardBinding
@@ -22,7 +23,7 @@ class Dashboard : AppCompatActivity() {
 
     private lateinit var binding: ActivityDashboardBinding
     private lateinit var recyclerViewTourism: RecyclerView
-    val businessArrayList = mutableListOf<BusinessDetailPublic>()
+    val businessArrayList = mutableListOf<BusinessDetailPublic1>()
     private val userID = FirebaseAuth.getInstance().currentUser?.uid
     private lateinit var databaseReference: DatabaseReference
 
@@ -59,7 +60,7 @@ class Dashboard : AppCompatActivity() {
                 {
                     for (businessSnapshot in snapshot.children)
                     {
-                        val busines = businessSnapshot.getValue(BusinessDetailPublic::class.java)
+                        val busines = businessSnapshot.getValue(BusinessDetailPublic1::class.java)
                         businessArrayList.add(busines!!)
                     }
 
@@ -141,12 +142,12 @@ class Dashboard : AppCompatActivity() {
         //Business Number
         var businessNumber = findViewById<TextView>(R.id.contPhoneDBV)
         var businessNumber1 = businessArrayList[position]
-       // businessNumber.text = businessNumber1.telephoneNo.toString()
+        businessNumber.text = businessNumber1.telephoneNo.toString()
 
         //Business Email
         var businessEmail = findViewById<TextView>(R.id.ContEmailDBV)
         var businessEmail1 = businessArrayList[position]
-      //  businessEmail.text = businessEmail1.emailAd.toString()
+        businessEmail.text = businessEmail1.emailAd.toString()
     }
 
 

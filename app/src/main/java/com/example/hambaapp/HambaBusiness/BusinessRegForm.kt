@@ -63,6 +63,8 @@ class BusinessRegForm : AppCompatActivity() {
         }
 
     }
+    //----------------------------------------------------------------------------------------------
+    //validation method
          private fun validateData()
          {
 
@@ -95,7 +97,9 @@ class BusinessRegForm : AppCompatActivity() {
         }
 
     }
+    //----------------------------------------------------------------------------------------------
 
+    //----------------------------------------------------------------------------------------------
     private val ActivityResultLauncher =
         registerForActivityResult<Intent, ActivityResult>(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
             if (result.resultCode == RESULT_OK) {
@@ -113,7 +117,9 @@ class BusinessRegForm : AppCompatActivity() {
                 }
             }
         }
+    //----------------------------------------------------------------------------------------------
 
+    //----------------------------------------------------------------------------------------------
     //Checking permissions in gallery
     private fun galleryCheckPermission()
     {
@@ -122,10 +128,8 @@ class BusinessRegForm : AppCompatActivity() {
             .withListener(object : PermissionListener {
                 override fun onPermissionGranted(p0: PermissionGrantedResponse?)
                 {
-                    // gallery()
-                    val myfileintent = Intent(Intent.ACTION_GET_CONTENT)
-                    myfileintent.type = "image/*"
-                    ActivityResultLauncher.launch(myfileintent)
+                     gallery()
+
                 }
 
                 override fun onPermissionDenied(p0: PermissionDeniedResponse?) {
@@ -151,15 +155,20 @@ class BusinessRegForm : AppCompatActivity() {
 
             }).check()
     }
+    //----------------------------------------------------------------------------------------------
 
+    //----------------------------------------------------------------------------------------------
+    //gallery function
     private fun gallery() {
-        val intent = Intent(Intent.ACTION_PICK)
-        intent.type = "image/*"
-        startActivityForResult(intent, galleryRequestCode)
+        val myfileintent = Intent(Intent.ACTION_GET_CONTENT)
+        myfileintent.type = "image/*"
+        ActivityResultLauncher.launch(myfileintent)
     }
+    //----------------------------------------------------------------------------------------------
 
-
-    private fun navigationBar() {
+    //----------------------------------------------------------------------------------------------
+    private fun navigationBar()
+    {
         //This will account for event clicking of the navigation bar (similar to if statement format)
         binding.bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
@@ -184,4 +193,5 @@ class BusinessRegForm : AppCompatActivity() {
             true
         }
     }
+    //----------------------------------------------------------------------------------------------
 }

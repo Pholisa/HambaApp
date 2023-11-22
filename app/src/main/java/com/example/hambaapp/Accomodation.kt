@@ -8,7 +8,8 @@ import com.example.hambaapp.databinding.ActivityAccomodationPageBinding
 
 class Accomodation : AppCompatActivity() {
 
-    private lateinit var binding: ActivityAccomodationPageBinding
+      private lateinit var binding: ActivityAccomodationPageBinding
+      //space
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

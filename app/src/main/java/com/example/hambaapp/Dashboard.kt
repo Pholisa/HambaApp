@@ -98,12 +98,12 @@ class Dashboard : AppCompatActivity() {
         }
 
         binding.layCar.setOnClickListener {
-            val signupIntent = Intent(this, Register::class.java)
+            val signupIntent = Intent(this, MapsActivity::class.java)
             startActivity(signupIntent)
         }
 
         binding.layGear.setOnClickListener {
-            val signupIntent = Intent(this, MoreOptions::class.java)
+            val signupIntent = Intent(this, Settings::class.java)
             startActivity(signupIntent)
         }
 

@@ -22,7 +22,10 @@ class BusinessEntryItems : AppCompatActivity() {
 
     }
 
-    private fun navigationBar() {
+    //----------------------------------------------------------------------------------------------
+    //navigation bar
+    private fun navigationBar()
+    {
         //This will account for event clicking of the navigation bar (similar to if statement format)
         binding.bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
@@ -52,4 +55,5 @@ class BusinessEntryItems : AppCompatActivity() {
             true
         }
     }
+    //----------------------------------------------------------------------------------------------
 }

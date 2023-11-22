@@ -20,7 +20,7 @@ class MyBusinessAdapter(
     private val context: Context,
     private val birdList: MutableList<BusinessDetail> = mutableListOf(),
     private val onDeleteClickListener: (Int) -> Unit,
-    private val onItemClickListener: (Int, String?) -> Unit // Change the type to accept a String parameter
+    private val onItemClickListener: (Int) -> Unit // Change the type to accept a String parameter
 ) : RecyclerView.Adapter<MyBusinessAdapter.MyViewHolder>() {
 
     //Grabbing objects from Recycler viewer
@@ -34,13 +34,9 @@ class MyBusinessAdapter(
 
         init {
             btnMore.setOnClickListener { showPopupMenu(btnMore, adapterPosition) }
-            itemView.setOnClickListener {
-                val position = adapterPosition
-                if (position != RecyclerView.NO_POSITION) {
-                    onItemClickListener(position, birdList[position].stringImage)
-                }
-            }
+            itemView.setOnClickListener { onItemClickListener(adapterPosition) }
         }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -59,7 +55,7 @@ class MyBusinessAdapter(
 
         // Check if imageString is not null or empty before decoding
         val imageString = currentBird.stringImage
-        onItemClickListener(position, currentBird.stringImage) // Pass both position and imageString to onItemClickListener
+       // onItemClickListener(position, currentBird.stringImage) // Pass both position and imageString to onItemClickListener
 
         if (!imageString.isNullOrBlank())
         {
@@ -107,11 +103,7 @@ class MyBusinessAdapter(
             when (item.itemId) {
                 R.id.menu_edit -> {
                   Toast.makeText(context, "Edit clicked for item at position $position", Toast.LENGTH_SHORT).show()
-                    /*
-                    val intent = Intent(context, BusinessPrev::class.java)
-                    intent.putExtra("position", position)
-                    context.startActivity(intent)
-                     */
+
                     true
                 }
                 R.id.menu_delete -> {

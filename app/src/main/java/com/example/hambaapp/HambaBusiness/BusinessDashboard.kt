@@ -21,10 +21,15 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.util.Base64
+import android.util.Log
 import android.widget.FrameLayout
 import android.widget.ImageView
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 
 
@@ -95,15 +100,46 @@ class BusinessDashboard : AppCompatActivity() {
                 // calling delete business function
                 deleteBusiness(position)
             },
-            onItemClickListener = { position, imageUrl ->
-                Toast.makeText(applicationContext, "click works", Toast.LENGTH_SHORT).show()
+            onItemClickListener = { position ->
                 // Bottom sheet data
                 val sheet1 = findViewById<FrameLayout>(R.id.sheet)
                 BottomSheetBehavior.from(sheet1).apply {
                     peekHeight = 0
                     state = BottomSheetBehavior.STATE_EXPANDED
                     // calling function that populates sheet with data from the database
-                    sheetPopulation(position, imageUrl)
+                   // Toast.makeText(applicationContext, "image found", Toast.LENGTH_SHORT).show()
+                    // businessName
+                    var businessName = findViewById<TextView>(R.id.tvBusNme)
+                    var businessName1 = businessArrayList[position]
+                    businessName.text = businessName1.title.toString()
+
+                    // Business Address
+                    var businessLocation = findViewById<TextView>(R.id.tv_Bus_Address)
+                    var businessLocation1 = businessArrayList[position]
+                    businessLocation.text = businessLocation1.location.toString()
+
+                    // Business price
+                    var businessPrice = findViewById<TextView>(R.id.tv_Bus_Price)
+                    var businessPrice1 = businessArrayList[position]
+                    businessPrice.text = "R" + businessPrice1.price.toString()
+
+                    // Business Summary
+                    var businessSummary = findViewById<TextView>(R.id.tv_Bus_Summary)
+                    var businessSummary1 = businessArrayList[position]
+                    businessSummary.text = businessSummary1.businessSummary.toString()
+
+                    // Business Image
+                  //  val businessImage = findViewById<ImageView>(R.id.ivCoverImage)
+                    val businessImage1 = businessArrayList[position].stringImage
+                  //  val businessImage2 = businessImage1.stringImage.toString()
+
+// Load image using Picasso
+                    if (!businessImage1.isNullOrBlank())
+                    {
+                        Picasso.get().load(businessImage1).into(binding.ivCoverImage)
+                    } else {
+                        Toast.makeText(applicationContext, "image not found", Toast.LENGTH_SHORT).show()
+                    }
 
                     // edit button
                     var editBusines = findViewById<TextView>(R.id.tv_Edit_Business)
@@ -143,8 +179,9 @@ class BusinessDashboard : AppCompatActivity() {
     }
 
     //function that will populate bottom sheet with data
-    private fun sheetPopulation(position: Int, imageUrl: String?)
+    private fun sheetPopulation(position: Int)
     {
+       // Toast.makeText(applicationContext, "image found", Toast.LENGTH_SHORT).show()
         // businessName
         var businessName = findViewById<TextView>(R.id.tvBusNme)
         var businessName1 = businessArrayList[position]
@@ -167,16 +204,21 @@ class BusinessDashboard : AppCompatActivity() {
 
         // Business Image
         var businessImage = findViewById<ImageView>(R.id.ivCoverImage)
-        //var businessImage1 = businessArrayList[position]
+        var businessImage1 = businessArrayList[position]
+        var businessImage2 = businessImage1.stringImage
 
-        // Load image using Picasso
-        if (!imageUrl.isNullOrBlank()) {
-            Picasso.get().load(imageUrl).into(businessImage)
-        } else {
-            // Handle the case when imageString is null or empty
-            // You can set a default image or show an error message
-          //  businessImage.setImageResource(R.drawable.default_image) // Replace with your default image resource
+    }
+
+    private fun decodeImageFromString(imageString: String?): Bitmap?
+    {
+        try {
+            val decodedBytes: ByteArray = Base64.decode(imageString, Base64.DEFAULT)
+            return BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.size)
+        } catch (e: Exception) {
+            // Handle the decoding error (e.g., log the error)
+            e.printStackTrace()
         }
+        return null
     }
 
 

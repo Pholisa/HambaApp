@@ -21,9 +21,16 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.util.Base64
+import android.util.Log
 import android.widget.FrameLayout
+import android.widget.ImageView
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.squareup.picasso.Callback
+import com.squareup.picasso.Picasso
 
 
 class BusinessDashboard : AppCompatActivity() {
@@ -54,6 +61,12 @@ class BusinessDashboard : AppCompatActivity() {
 
         //----------------------------------------------------------------------------------------------
         //getting business data from database
+        retrievBusinessDataFromFirebase()
+
+    }
+
+    private fun retrievBusinessDataFromFirebase()
+    {
         databaseReference = FirebaseDatabase.getInstance().getReference("users").child(userID!!).child("Listing Data")
         databaseReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -65,32 +78,8 @@ class BusinessDashboard : AppCompatActivity() {
                         businessArrayList.add(birdie!!)
                     }
 
-                    val adapter = MyBusinessAdapter(this@BusinessDashboard, businessArrayList,
-                        onDeleteClickListener = { position ->
-                            //calling delete business function
-                            deleteBusiness(position)
-                        },
-                        onItemClickListener = { position ->
-                            Toast.makeText(applicationContext, "click works", Toast.LENGTH_SHORT).show()
-                            // Bottom sheet data
-                            val sheet1 = findViewById<FrameLayout>(R.id.sheet)
-                            BottomSheetBehavior.from(sheet1).apply {
-                                peekHeight = 0
-                                state = BottomSheetBehavior.STATE_EXPANDED
-                                //calling function that populates sheet with data from database
-                                sheetPopulation(position)
+                    adapterData()
 
-                                //edit button
-                                var editBusines = findViewById<TextView>(R.id.tv_Edit_Business)
-                                editBusines.setOnClickListener {
-                                    Toast.makeText(applicationContext, "currently disabled", Toast.LENGTH_SHORT).show()
-                                }
-
-
-                            }
-                        }
-                    )
-                    recyclerView.adapter = adapter
                 }
                 else //no birds in database
                 {
@@ -103,9 +92,67 @@ class BusinessDashboard : AppCompatActivity() {
                 Toast.makeText(this@BusinessDashboard, error.toString(), Toast.LENGTH_SHORT).show()
             }
         })
-
     }
 
+    private fun adapterData() {
+        val adapter = MyBusinessAdapter(this@BusinessDashboard, businessArrayList,
+            onDeleteClickListener = { position ->
+                // calling delete business function
+                deleteBusiness(position)
+            },
+            onItemClickListener = { position ->
+                // Bottom sheet data
+                val sheet1 = findViewById<FrameLayout>(R.id.sheet)
+                BottomSheetBehavior.from(sheet1).apply {
+                    peekHeight = 0
+                    state = BottomSheetBehavior.STATE_EXPANDED
+                    // calling function that populates sheet with data from the database
+                   // Toast.makeText(applicationContext, "image found", Toast.LENGTH_SHORT).show()
+                    // businessName
+                    var businessName = findViewById<TextView>(R.id.tvBusNme)
+                    var businessName1 = businessArrayList[position]
+                    businessName.text = businessName1.title.toString()
+
+                    // Business Address
+                    var businessLocation = findViewById<TextView>(R.id.tv_Bus_Address)
+                    var businessLocation1 = businessArrayList[position]
+                    businessLocation.text = businessLocation1.location.toString()
+
+                    // Business price
+                    var businessPrice = findViewById<TextView>(R.id.tv_Bus_Price)
+                    var businessPrice1 = businessArrayList[position]
+                    businessPrice.text = "R" + businessPrice1.price.toString()
+
+                    // Business Summary
+                    var businessSummary = findViewById<TextView>(R.id.tv_Bus_Summary)
+                    var businessSummary1 = businessArrayList[position]
+                    businessSummary.text = businessSummary1.businessSummary.toString()
+
+                    // Business Image
+                  //  val businessImage = findViewById<ImageView>(R.id.ivCoverImage)
+                    val businessImage1 = businessArrayList[position].stringImage
+                  //  val businessImage2 = businessImage1.stringImage.toString()
+
+// Load image using Picasso
+                    if (!businessImage1.isNullOrBlank())
+                    {
+                        Picasso.get().load(businessImage1).into(binding.ivCoverImage)
+                    } else {
+                        Toast.makeText(applicationContext, "image not found", Toast.LENGTH_SHORT).show()
+                    }
+
+                    // edit button
+                    var editBusines = findViewById<TextView>(R.id.tv_Edit_Business)
+                    editBusines.setOnClickListener {
+                        Toast.makeText(applicationContext, "currently disabled", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        )
+        recyclerView.adapter = adapter
+    }
+
+    //function to delete a business
     private fun deleteBusiness(position: Int)
     {
         // Handling item deletion here
@@ -134,26 +181,46 @@ class BusinessDashboard : AppCompatActivity() {
     //function that will populate bottom sheet with data
     private fun sheetPopulation(position: Int)
     {
+       // Toast.makeText(applicationContext, "image found", Toast.LENGTH_SHORT).show()
         // businessName
         var businessName = findViewById<TextView>(R.id.tvBusNme)
         var businessName1 = businessArrayList[position]
         businessName.text = businessName1.title.toString()
 
-        //Business Address
+        // Business Address
         var businessLocation = findViewById<TextView>(R.id.tv_Bus_Address)
         var businessLocation1 = businessArrayList[position]
         businessLocation.text = businessLocation1.location.toString()
 
-        //Business price
+        // Business price
         var businessPrice = findViewById<TextView>(R.id.tv_Bus_Price)
         var businessPrice1 = businessArrayList[position]
-        businessPrice.text = "R"+ businessPrice1.price.toString()
+        businessPrice.text = "R" + businessPrice1.price.toString()
 
-        //Business Summary
+        // Business Summary
         var businessSummary = findViewById<TextView>(R.id.tv_Bus_Summary)
         var businessSummary1 = businessArrayList[position]
         businessSummary.text = businessSummary1.businessSummary.toString()
+
+        // Business Image
+        var businessImage = findViewById<ImageView>(R.id.ivCoverImage)
+        var businessImage1 = businessArrayList[position]
+        var businessImage2 = businessImage1.stringImage
+
     }
+
+    private fun decodeImageFromString(imageString: String?): Bitmap?
+    {
+        try {
+            val decodedBytes: ByteArray = Base64.decode(imageString, Base64.DEFAULT)
+            return BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.size)
+        } catch (e: Exception) {
+            // Handle the decoding error (e.g., log the error)
+            e.printStackTrace()
+        }
+        return null
+    }
+
 
     //navigation function
     private fun navigationBar()

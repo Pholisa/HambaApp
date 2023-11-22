@@ -92,7 +92,7 @@
             android:name=".ForgotPassword"
             android:exported="false" />
         <activity
-            android:name=".Dashboard"
+            android:name=".LoadingWelcome"
             android:exported="false" />
         <activity
             android:name=".HambaBusiness.BusinessSignIn"
@@ -131,7 +131,7 @@
             android:name=".HambaBusiness.BusinessPrev"
             android:exported="false" />
         <activity
-            android:name=".LoadingWelcome"
+            android:name=".Dashboard"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import com.example.hambaapp.HambaBusiness.User
 import com.example.hambaapp.databinding.ActivityRegisterBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
@@ -33,30 +32,22 @@ class Register : AppCompatActivity() {
 
 
         binding.btnSignUp.setOnClickListener{
-            val username = binding.edEmailAddress.text.toString()
+            val email = binding.edEmailAddress.text.toString()
             val password = binding.edPassword.text.toString()
             val confirmPassword = binding.edPasswordConfirm.text.toString()
             val name = binding.edFullName.text.toString()
             val number = binding.edPhoneNumber.text.toString()
 
 
-            if(username.isNotEmpty() && password.isNotEmpty() && confirmPassword.isNotEmpty())
+            if(email.isNotEmpty() && password.isNotEmpty()&& name.isNotEmpty() && confirmPassword.isNotEmpty())
             {
                 if(password == confirmPassword)
                 {
-                    firebaseAuthentication.createUserWithEmailAndPassword(username, password).addOnCompleteListener {
+                    firebaseAuthentication.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
                         if(it.isSuccessful)
                         {
-                            /*val fullName = findViewById<EditText>(R.id.edFullName)
-                            var name = fullName.text.toString().trim()
-                            val phoneNumber = findViewById<EditText>(R.id.edPhoneNumber)
-                            var number = phoneNumber.text.toString().trim()
-                            myReference.push().setValue(name)
-                            myReference.push().setValue(number)*/
 
-                            //database = FirebaseDatabase.getInstance().getReference("Users")
-
-                            val User = User(name, number)
+                            val User = User(email,name, number)
                             myReference.setValue(User).addOnSuccessListener {
                                 Toast.makeText(this, "Information Saved", Toast.LENGTH_SHORT).show()
 

@@ -76,7 +76,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     var longitude = 0.0
     private val userID = FirebaseAuth.getInstance().currentUser?.uid
     private val database = FirebaseDatabase.getInstance()
-    private val myReference3 = database.getReference("users").child(userID!!).child("Listing Data")
+   // private val myReference3 = database.getReference("users").child(userID!!).child("Listing Data")
     private val myMutableMap: MutableMap<LatLng, String> = mutableMapOf()
 
     private val allListingDataReference = database.getReference("Businesses")

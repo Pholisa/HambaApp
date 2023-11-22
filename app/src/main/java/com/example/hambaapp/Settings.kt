@@ -3,6 +3,8 @@ package com.example.hambaapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageView
+import com.example.hambaapp.HambaBusiness.BusinessOption
 import com.example.hambaapp.databinding.ActivityFavouritesBinding
 import com.example.hambaapp.databinding.ActivitySettingsBinding
 
@@ -15,6 +17,12 @@ class Settings : AppCompatActivity() {
 
         //calling the navigation bar
         navigationBar()
+        var registerAsOwner = findViewById<ImageView>(R.id.iv_businessEdit)
+
+        registerAsOwner.setOnClickListener {
+            val intent = Intent(this, BusinessOption::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun navigationBar() {

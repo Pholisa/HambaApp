@@ -47,6 +47,15 @@
             android:name=".DashboardAdmin"
             android:exported="false" />
         <activity
+            android:name=".Accomodation"
+            android:exported="false" />
+        <activity
+            android:name=".MoreOptions"
+            android:exported="false" />
+        <activity
+            android:name=".AccomodationPage"
+            android:exported="false" />
+        <activity
             android:name=".SignInAdmin"
             android:exported="false" />
         <activity

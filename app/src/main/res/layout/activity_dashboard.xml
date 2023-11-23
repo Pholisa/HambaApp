@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:layout_below="@id/search_bar"
     android:background="@drawable/hamba_background"
-    tools:context=".Dashboard">
+    tools:context=".HambaTourist.Dashboard">
 
     <ScrollView
         android:layout_width="match_parent"

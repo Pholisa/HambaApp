@@ -1,7 +1,5 @@
 package com.example.hambaapp
 
-import android.Manifest
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
@@ -11,8 +9,7 @@ import android.util.Log
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
-import com.example.hambaapp.Common.Common
-import com.example.hambaapp.HambaBusiness.BusinessSettings
+import com.example.hambaapp.HambaTourist.Dashboard
 import com.example.hambaapp.Model.MyPlaces
 import com.example.hambaapp.Remote.IGoogleAPIService
 
@@ -27,17 +24,12 @@ import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.MapView
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import kotlin.concurrent.thread
+
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap

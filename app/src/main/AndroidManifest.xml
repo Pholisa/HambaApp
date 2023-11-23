@@ -92,7 +92,7 @@
             android:name=".ForgotPassword"
             android:exported="false" />
         <activity
-            android:name=".Dashboard"
+            android:name=".HambaTourist.Dashboard"
             android:exported="false" />
         <activity
             android:name=".HambaBusiness.BusinessSignIn"

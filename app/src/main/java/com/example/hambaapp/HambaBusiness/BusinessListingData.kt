@@ -42,8 +42,7 @@ import java.io.ByteArrayOutputStream
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import com.example.hambaapp.BusinessDetailPublic1
-import com.example.hambaapp.Dashboard
-import com.example.hambaapp.Welcome
+import com.example.hambaapp.HambaTourist.Dashboard
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import java.io.IOException
 

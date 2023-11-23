@@ -9,6 +9,7 @@ import com.example.hambaapp.databinding.ActivityMoreOptionsBinding
 import android.widget.ImageView
 import com.example.hambaapp.HambaBusiness.BusinessListIntro
 import com.example.hambaapp.HambaBusiness.BusinessSettings
+import com.example.hambaapp.HambaTourist.Dashboard
 
 class MoreOptions : AppCompatActivity() {
 

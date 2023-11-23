@@ -7,11 +7,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.hambaapp.Dashboard
-import com.example.hambaapp.Favourites
-import com.example.hambaapp.MapsActivity
+import com.example.hambaapp.HambaTourist.Dashboard
 import com.example.hambaapp.R
-import com.example.hambaapp.Welcome
 import com.example.hambaapp.databinding.ActivityBusinessDashboardBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.auth.FirebaseAuth
@@ -20,17 +17,11 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import android.content.Context
-import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.util.Base64
-import android.util.Log
 import android.widget.FrameLayout
 import android.widget.ImageView
-import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.squareup.picasso.Callback
-import com.squareup.picasso.Picasso
 
 
 class BusinessDashboard : AppCompatActivity() {

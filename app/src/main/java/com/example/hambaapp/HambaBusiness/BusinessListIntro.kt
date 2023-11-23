@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import com.example.hambaapp.Dashboard
+import com.example.hambaapp.HambaTourist.Dashboard
 import com.example.hambaapp.R
 import com.example.hambaapp.databinding.ActivityBusinessListIntroBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder

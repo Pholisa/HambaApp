@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import androidx.appcompat.app.AlertDialog
+import com.example.hambaapp.HambaTourist.Dashboard
 
 class LoadingWelcome : AppCompatActivity() {
 

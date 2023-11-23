@@ -3,7 +3,7 @@ package com.example.hambaapp.HambaBusiness
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.hambaapp.Dashboard
+import com.example.hambaapp.HambaTourist.Dashboard
 import com.example.hambaapp.Favourites
 import com.example.hambaapp.MapsActivity
 import com.example.hambaapp.R

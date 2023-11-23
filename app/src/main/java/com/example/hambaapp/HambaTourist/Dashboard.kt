@@ -1,4 +1,4 @@
-package com.example.hambaapp
+package com.example.hambaapp.HambaTourist
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +8,14 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.hambaapp.AccomodationPage
+import com.example.hambaapp.BusinessDetailPublic1
+import com.example.hambaapp.Entertainment
+import com.example.hambaapp.Favourites
+import com.example.hambaapp.MapsActivity
+import com.example.hambaapp.R
+import com.example.hambaapp.Settings
+import com.example.hambaapp.TourismAdapter
 import com.example.hambaapp.databinding.ActivityDashboardBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.firebase.auth.FirebaseAuth

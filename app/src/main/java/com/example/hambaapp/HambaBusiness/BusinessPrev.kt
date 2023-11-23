@@ -6,9 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import com.example.hambaapp.Dashboard
-import com.example.hambaapp.Favourites
-import com.example.hambaapp.MapsActivity
+import com.example.hambaapp.HambaTourist.Dashboard
 import com.example.hambaapp.R
 import com.example.hambaapp.Welcome
 import com.example.hambaapp.databinding.ActivityBusinessPrevBinding

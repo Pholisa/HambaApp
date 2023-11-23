@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import com.example.hambaapp.HambaBusiness.BusinessOption
-import com.example.hambaapp.databinding.ActivityFavouritesBinding
+import com.example.hambaapp.HambaTourist.Dashboard
 import com.example.hambaapp.databinding.ActivitySettingsBinding
 
 class Settings : AppCompatActivity() {

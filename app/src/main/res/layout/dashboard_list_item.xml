@@ -12,8 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
-
+        android:padding="10dp">
 
         <ImageView
             android:id="@+id/busImageRV"
@@ -22,30 +21,42 @@
             android:adjustViewBounds="true"
             android:scaleType="fitXY"
             app:srcCompat="@drawable/img_soweto" />
-        <ImageView
-            android:id="@+id/ivFavRV"
-            android:layout_width="37dp"
-            android:layout_height="40dp"
-            android:layout_gravity="right"
-            android:layout_marginRight="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_heartempty" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp">
 
-
+            <!-- busTitleRV -->
             <TextView
                 android:id="@+id/busTitleRV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="6dp"
                 android:text="Title"
-                android:layout_marginTop="2dp" />
+                android:textStyle="bold" />
 
+            <!-- ivFavRV -->
+            <ImageView
+                android:id="@+id/ivFavRV"
+                android:layout_width="37dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="2dp"
+                app:srcCompat="@drawable/ic_heartempty" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="12dp">
         <TextView
             android:id="@+id/busTypeRV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
             android:text="Category"
             android:visibility="gone" />
 
@@ -53,7 +64,6 @@
             android:id="@+id/busDescriptionRV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
             android:text="Description"
             android:visibility="gone" />
 
@@ -61,8 +71,7 @@
                 android:id="@+id/busPriceRV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Price"
-                android:layout_marginTop="2dp" />
+                android:text="Price"/>
 
             <TextView
                 android:id="@+id/busLocationRV"
@@ -88,6 +97,9 @@
             android:visibility="gone"
             app:layout_constraintStart_toStartOf="@+id/busEmailRV"
             app:layout_constraintTop_toBottomOf="@+id/busEmailRV" />
-
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>
+
+
+

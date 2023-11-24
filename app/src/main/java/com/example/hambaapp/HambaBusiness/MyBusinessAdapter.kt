@@ -18,7 +18,7 @@ import android.content.Intent
 
 class MyBusinessAdapter(
     private val context: Context,
-    private val birdList: MutableList<BusinessDetail> = mutableListOf(),
+    private val businessList: MutableList<BusinessDetail> = mutableListOf(),
     private val onDeleteClickListener: (Int) -> Unit,
     private val onItemClickListener: (BusinessDetail) -> Unit // Change the type to accept a String parameter
 ) : RecyclerView.Adapter<MyBusinessAdapter.MyViewHolder>() {
@@ -47,7 +47,7 @@ class MyBusinessAdapter(
     //----------------------------------------------------------------------------------------------
     //assigning a value to each holder on recycler
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val currentBusiness = birdList[position]
+        val currentBusiness = businessList[position]
 
         holder.title.text = currentBusiness.title
         holder.location.text = currentBusiness.location
@@ -56,7 +56,6 @@ class MyBusinessAdapter(
 
         // Check if imageString is not null or empty before decoding
         val imageString = currentBusiness.stringImage
-       // onItemClickListener(position, currentBird.stringImage) // Pass both position and imageString to onItemClickListener
 
         if (!imageString.isNullOrBlank())
         {
@@ -68,8 +67,7 @@ class MyBusinessAdapter(
             }
             else
             {
-                // Handle the case when the image cannot be decoded
-                // You can set a placeholder image or show an error message
+                //placement picture
             }
         }
         else
@@ -83,8 +81,10 @@ class MyBusinessAdapter(
         }
     }
 
-    override fun getItemCount(): Int {
-        return birdList.size
+    //getting the size of businesses
+    override fun getItemCount(): Int
+    {
+        return businessList.size
     }
 
     //----------------------------------------------------------------------------------------------
@@ -103,6 +103,7 @@ class MyBusinessAdapter(
     //----------------------------------------------------------------------------------------------
 
     //----------------------------------------------------------------------------------------------
+    //pop up menu which will give user the option to either delete or edit business data
     private fun showPopupMenu(view: View, position: Int) {
         val popupMenu = PopupMenu(context, view)
         val inflater = popupMenu.menuInflater

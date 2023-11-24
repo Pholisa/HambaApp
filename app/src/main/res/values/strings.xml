@@ -10,7 +10,8 @@
     <string name="username">Display user Name</string>
     <string name="email">Display user Email</string>
     <string name="edit">Edit Profile</string>
-    <string name="about">About</string>
+    <string name="about">"Hamba by SALTHA is an authentic South African tourism and leisure application designed to provide the best experience of South Africa.
+        Join us as either a small South African business or just looking for a vibe!"</string>
     <string name="TandCs">Terms and Conditions</string>
     <string name="privacy">Privacy Policy</string>
     <string name="rate">Rate this App</string>

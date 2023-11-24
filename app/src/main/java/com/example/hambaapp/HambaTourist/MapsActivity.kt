@@ -1,4 +1,4 @@
-package com.example.hambaapp
+package com.example.hambaapp.HambaTourist
 
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -9,8 +9,8 @@ import android.util.Log
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
-import com.example.hambaapp.HambaTourist.Dashboard
 import com.example.hambaapp.Model.MyPlaces
+import com.example.hambaapp.R
 import com.example.hambaapp.Remote.IGoogleAPIService
 
 import com.google.android.gms.maps.CameraUpdateFactory

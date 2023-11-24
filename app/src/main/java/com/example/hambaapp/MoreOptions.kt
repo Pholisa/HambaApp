@@ -10,6 +10,8 @@ import android.widget.ImageView
 import com.example.hambaapp.HambaBusiness.BusinessListIntro
 import com.example.hambaapp.HambaBusiness.BusinessSettings
 import com.example.hambaapp.HambaTourist.Dashboard
+import com.example.hambaapp.HambaTourist.Favourites
+import com.example.hambaapp.HambaTourist.MapsActivity
 
 class MoreOptions : AppCompatActivity() {
 

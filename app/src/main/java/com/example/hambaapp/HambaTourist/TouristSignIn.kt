@@ -1,4 +1,4 @@
-package com.example.hambaapp
+package com.example.hambaapp.HambaTourist
 
 import android.content.Intent
 import android.graphics.drawable.ColorDrawable
@@ -10,7 +10,8 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import com.example.hambaapp.HambaTourist.Dashboard
+import com.example.hambaapp.R
+import com.example.hambaapp.Register
 import com.example.hambaapp.databinding.ActivityTouristSignInBinding
 import com.google.firebase.auth.FirebaseAuth
 

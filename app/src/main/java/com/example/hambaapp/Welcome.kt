@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import com.example.hambaapp.HambaBusiness.BusinessOption
+import com.example.hambaapp.HambaTourist.TouristSignIn
 
 class Welcome : AppCompatActivity()
 {

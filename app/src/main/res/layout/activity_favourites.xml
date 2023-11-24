@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/hamba_background"
-    tools:context=".Favourites">
+    tools:context=".HambaTourist.Favourites">
 
     <TextView
         android:id="@+id/hamba_txt"

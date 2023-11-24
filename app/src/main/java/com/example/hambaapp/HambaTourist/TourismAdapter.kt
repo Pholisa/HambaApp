@@ -1,4 +1,4 @@
-package com.example.hambaapp
+package com.example.hambaapp.HambaTourist
 
 import android.content.Context
 import android.graphics.Bitmap
@@ -10,14 +10,13 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.hambaapp.HambaBusiness.BusinessDetail
-import com.example.hambaapp.HambaBusiness.BusinessDetailPublic
+import com.example.hambaapp.R
 import java.lang.Exception
 
 
 class TourismAdapter(private val context: Context,
                      private val tourismList : MutableList<BusinessDetailPublic1> = mutableListOf(),
-                     private val onItemClickListener: (Int) -> Unit): RecyclerView.Adapter<TourismAdapter.MyViewHolder>(){
+                     private val onItemClickListener: (BusinessDetailPublic1) -> Unit): RecyclerView.Adapter<TourismAdapter.MyViewHolder>(){
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val tvBusinessTitle: TextView = itemView.findViewById(R.id.busTitleRV)
@@ -29,9 +28,6 @@ class TourismAdapter(private val context: Context,
         val tvBusinessLocation : TextView = itemView.findViewById(R.id.busLocationRV)
         val tvBusinessNo : TextView = itemView.findViewById(R.id.busNumberRV)
 
-        init {
-            itemView.setOnClickListener { onItemClickListener(adapterPosition) }
-        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -52,31 +48,37 @@ class TourismAdapter(private val context: Context,
         holder.tvBusinessPrice.text = "R" + currentBusiness.price
         holder.tvBusinessLocation.text = currentBusiness.locationString
 
-
-
         val imageString = currentBusiness.stringImage
-        if(!imageString.isNullOrBlank()){
+        if(!imageString.isNullOrBlank())
+        {
             val businessImage = decodeImageFromString(imageString)
 
-            if(businessImage != null){
+            if(businessImage != null)
+            {
                 holder.businessImageView.setImageBitmap(businessImage)
             }
             else
             {
 
             }
-        }else{
+        }
+        else
+        {
 
-    }
+        }
 
+        //item click listener handler that passes image to display on bottom sheet
+        holder.itemView.setOnClickListener {
+            onItemClickListener(currentBusiness)
+        }
     }
 
     override fun getItemCount(): Int {
         return tourismList.size
     }
 
+    //decoding image from string to image format
     private fun decodeImageFromString(imageString: String): Bitmap? {
-
 
         try {
             val decodedBytes: ByteArray = Base64.decode(imageString, Base64.DEFAULT)

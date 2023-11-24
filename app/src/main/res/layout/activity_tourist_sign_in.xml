@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/hamba_background"
-    tools:context=".TouristSignIn">
+    tools:context=".HambaTourist.TouristSignIn">
 
     <ScrollView
         android:layout_width="match_parent"

@@ -79,10 +79,10 @@
             android:name=".HambaBusiness.ActiveBusinesses"
             android:exported="false" />
         <activity
-            android:name=".Settings"
+            android:name=".HambaTourist.Settings"
             android:exported="false" />
         <activity
-            android:name=".MapsActivity"
+            android:name=".HambaTourist.MapsActivity"
             android:exported="false"
             android:label="@string/title_activity_maps" />
         <activity
@@ -113,7 +113,7 @@
             android:name=".HambaBusiness.BusinessSettings"
             android:exported="false" />
         <activity
-            android:name=".TouristSignIn"
+            android:name=".HambaTourist.TouristSignIn"
             android:exported="false" />
         <activity
             android:name=".HambaBusiness.BusinessListingData"
@@ -122,7 +122,7 @@
             android:name=".HambaBusiness.BusinessEntryItems"
             android:exported="false" />
         <activity
-            android:name=".Favourites"
+            android:name=".HambaTourist.Favourites"
             android:exported="false" />
         <activity
             android:name=".HambaBusiness.BusinessListIntro"

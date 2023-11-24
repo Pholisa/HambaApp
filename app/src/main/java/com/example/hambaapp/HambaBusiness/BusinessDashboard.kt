@@ -37,7 +37,6 @@ class BusinessDashboard : AppCompatActivity() {
         binding = ActivityBusinessDashboardBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         // Call navigation bar
         navigationBar()
         //button to add a new business

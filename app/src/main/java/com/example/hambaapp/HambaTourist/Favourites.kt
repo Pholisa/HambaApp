@@ -1,28 +1,21 @@
-package com.example.hambaapp
+package com.example.hambaapp.HambaTourist
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ImageView
-import com.example.hambaapp.HambaBusiness.BusinessOption
-import com.example.hambaapp.HambaTourist.Dashboard
-import com.example.hambaapp.databinding.ActivitySettingsBinding
+import com.example.hambaapp.R
+import com.example.hambaapp.databinding.ActivityFavouritesBinding
 
-class Settings : AppCompatActivity() {
-    private lateinit var binding: ActivitySettingsBinding
+class Favourites : AppCompatActivity() {
+
+    private lateinit var binding: ActivityFavouritesBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivitySettingsBinding.inflate(layoutInflater)
+        binding = ActivityFavouritesBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         //calling the navigation bar
         navigationBar()
-        var registerAsOwner = findViewById<ImageView>(R.id.iv_businessEdit)
-
-        registerAsOwner.setOnClickListener {
-            val intent = Intent(this, BusinessOption::class.java)
-            startActivity(intent)
-        }
     }
 
     private fun navigationBar() {

@@ -1,4 +1,4 @@
-package com.example.hambaapp
+package com.example.hambaapp.HambaTourist
 
 data class BusinessDetailPublic1(
     val title: String? = null,

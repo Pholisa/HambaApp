@@ -35,13 +35,11 @@ class Dashboard : AppCompatActivity() {
 
     private lateinit var binding: ActivityDashboardBinding
     private lateinit var recyclerViewTourism: RecyclerView
-    private lateinit var recyclerViewTourism2: RecyclerView
     val businessArrayList = mutableListOf<BusinessDetailPublic1>()
     val businessArrayList1 = mutableListOf<BusinessDetailPublic1>()
     //private val userID = FirebaseAuth.getInstance().currentUser?.uid
     private lateinit var databaseReference: DatabaseReference
     private val database = FirebaseDatabase.getInstance()
-    private val businessReference = database.getReference("Business")
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,80 +53,111 @@ class Dashboard : AppCompatActivity() {
         recyclerViewTourism = findViewById(R.id.rvBusinessDisplaying)
         recyclerViewTourism.layoutManager = LinearLayoutManager(this)
 
-        //setting second recycler
-        //recyclerViewTourism2 = findViewById(R.id.rvBusinessDisplaying2)
-      //  recyclerViewTourism2.layoutManager = LinearLayoutManager(this)
-
-        //----------------------------------------------------------------------------------------------
         //getting business data from database
         getBusinessData()
 
+        //displaying data based in categories
+        bindingsForCategoryClickListeners()
 
-    binding.layBed.setOnClickListener {
-        //businessArrayList.clear()
-        travelCategory("Accommodation")
-        }
-
-        binding.layCar.setOnClickListener {
-            travelCategory("Travel")
-        }
-
-        binding.layGear.setOnClickListener {
-            travelCategory("Other")
-        }
-
-        binding.layEntertain.setOnClickListener {
-            travelCategory("Food & Entertainment")
-        }
 
         //calling navigation bar function
         navigationBar()
     }
+    //----------------------------------------------------------------------------------------------
 
-    //Displaying data based on categories
-    private fun travelCategory(travel:String) {
+    private fun splitCoordinates(coordinates:String)
+    {
+        var finalCoordinates: String
+        val coordinatePairs = coordinates.split("|") // Split by pipe character
+
+        for (coordinatePair in coordinatePairs) {
+            val parts = coordinatePair.split(",") // Split by comma
+            if (parts.size == 2)
+            {
+                val latitude = parts[0].toDoubleOrNull()
+                val longitude = parts[1].toDoubleOrNull()
+                if (latitude != null && longitude != null)
+                {
+                   // val locationConverter = LocationConverter(context)
+                    //val address = locationConverter.getAddressFromLocation(latitude, longitude)
+                  //  finalCoordinates = LatLng(latitude, longitude)
+
+                }
+            }
+        }
+       // return finalCoordinates
+    }
+    //----------------------------------------------------------------------------------------------
+    //function for on click listeners for categories
+    private fun bindingsForCategoryClickListeners()
+    {
+        //displaying business in accomodation categroy
+        binding.layBed.setOnClickListener {
+            businessArrayList1.clear()
+            travelCategory("Accommodation")
+        }
+
+        //displaying business in travel categroy
+        binding.layCar.setOnClickListener {
+            businessArrayList1.clear()
+            travelCategory("Travel")
+        }
+
+        //displaying business in other categroy
+        binding.layGear.setOnClickListener {
+            businessArrayList1.clear()
+            travelCategory("Other")
+        }
+
+        //displaying business in food & entertainment categroy
+        binding.layEntertain.setOnClickListener {
+            businessArrayList1.clear()
+            travelCategory("Food & Entertainment")
+        }
+    }
+    //----------------------------------------------------------------------------------------------
+
+    //----------------------------------------------------------------------------------------------
+    //Displaying business data based on categories
+    private fun travelCategory(travel:String)
+    {
         databaseReference = FirebaseDatabase.getInstance().getReference("Businesses")
         val query: Query = databaseReference.orderByChild("category").equalTo(travel)
 
         query.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-              //  val businessArrayList1 = mutableListOf<BusinessDetailPublic1>()
 
-                if (dataSnapshot.exists()) {
-                    for (businessSnapshot in dataSnapshot.children) {
+                if (dataSnapshot.exists()) //if value exists
+                {
+                    for (businessSnapshot in dataSnapshot.children) //for each loop to go scan every value in the database
+                    {
                         val businessItem = businessSnapshot.getValue(BusinessDetailPublic1::class.java)
                         businessItem?.let {
-                            businessArrayList1.add(it)
+                            businessArrayList1.add(it) //adding found datasnapshot to arraylist
                         }
                     }
+                    //calling bottom sheet behaviour class
+                    adapterSetUp(businessArrayList1)
 
-                    recyclerViewTourism.adapter = TourismAdapter(this@Dashboard, businessArrayList1) { userProfile ->
-                        // Your item click listener logic
-                        Toast.makeText(applicationContext, "click works", Toast.LENGTH_SHORT).show()
 
-                        // Bottom sheet data
-                        val sheet1 = findViewById<FrameLayout>(R.id.sheet1)
-                        BottomSheetBehavior.from(sheet1).apply {
-                            peekHeight = 0
-                            state = BottomSheetBehavior.STATE_EXPANDED
-                            // calling function that populates sheet with data from database
-                            sheetPopulation(userProfile)
-                        }
-                    }
+
                 }
-                else{
+                else //if value doesnt exist
+                {
                     Toast.makeText(applicationContext, "cant find data", Toast.LENGTH_SHORT).show()
                 }
             }
 
-            override fun onCancelled(databaseError: DatabaseError) {
+            override fun onCancelled(databaseError: DatabaseError)
+            {
                 // Handle error
             }
         })
     }
+    //----------------------------------------------------------------------------------------------
 
-
-
+    //----------------------------------------------------------------------------------------------
+    //Function that will retrieve all business data irrespective of category
     private fun getBusinessData()
     {
         databaseReference = FirebaseDatabase.getInstance().getReference("Businesses")
@@ -141,21 +170,8 @@ class Dashboard : AppCompatActivity() {
                         val busines = businessSnapshot.getValue(BusinessDetailPublic1::class.java)
                         businessArrayList.add(busines!!)
                     }
-
-                    val adapter = TourismAdapter(this@Dashboard, businessArrayList,
-                        onItemClickListener = { userProfile  ->
-                            Toast.makeText(applicationContext, "click works", Toast.LENGTH_SHORT).show()
-                            // Bottom sheet data
-                            val sheet1 = findViewById<FrameLayout>(R.id.sheet1)
-                            BottomSheetBehavior.from(sheet1).apply {
-                                peekHeight = 0
-                                state = BottomSheetBehavior.STATE_EXPANDED
-                                //calling function that populates sheet with data from database
-                                sheetPopulation(userProfile )
-                            }
-                        }
-                    )
-                    recyclerViewTourism.adapter = adapter
+                    //calling bottom sheet behaviour class
+                    adapterSetUp(businessArrayList)
                 }
                 else //no businesses in database
                 {
@@ -168,10 +184,31 @@ class Dashboard : AppCompatActivity() {
                 Toast.makeText(this@Dashboard, error.toString(), Toast.LENGTH_SHORT).show()
             }
         })
-
-
     }
+    //----------------------------------------------------------------------------------------------
 
+    //----------------------------------------------------------------------------------------------
+    //bottom sheet
+    private fun adapterSetUp(theList: MutableList<BusinessDetailPublic1>)
+    {
+        val adapter = TourismAdapter(this@Dashboard, theList,
+            onItemClickListener = { userProfile  ->
+               // Toast.makeText(applicationContext, "click works", Toast.LENGTH_SHORT).show()
+                // Bottom sheet data
+                val sheet1 = findViewById<FrameLayout>(R.id.sheet1)
+                BottomSheetBehavior.from(sheet1).apply {
+                    peekHeight = 0
+                    state = BottomSheetBehavior.STATE_EXPANDED
+                    //calling function that populates sheet with data from database
+                    sheetPopulation(userProfile )
+                }
+            }
+        )
+        recyclerViewTourism.adapter = adapter
+    }
+    //----------------------------------------------------------------------------------------------
+
+    //----------------------------------------------------------------------------------------------
     //function that will populate bottom sheet with data
     private fun sheetPopulation(userProfile: BusinessDetailPublic1)
     {
@@ -196,10 +233,10 @@ class Dashboard : AppCompatActivity() {
         businessSummary.text = userProfile.businessSummary
         number.text = userProfile.telephoneNo
         email.text = userProfile.emailAd
-
-
     }
+    //----------------------------------------------------------------------------------------------
 
+    //----------------------------------------------------------------------------------------------
     //displaying navigation function
     private fun navigationBar()
     {
@@ -229,23 +266,6 @@ class Dashboard : AppCompatActivity() {
             true
         }
     }
+    //----------------------------------------------------------------------------------------------
 
-    /*private fun fetchDataFromFirebase() {
-        databaseReference.child("nearby_places").addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                val nearbyPlacesList = mutableListOf<NearbyPlaceData>()
-                for (dataSnapshot in snapshot.children) {
-                    val nearbyPlaceData = dataSnapshot.getValue(NearbyPlaceData::class.java)
-                    nearbyPlaceData?.let { nearbyPlacesList.add(it) }
-                }
-                // Set up the RecyclerView adapter
-                //nearbyAdapter = NearbyPlaceAdapter(this@Dashboard, nearbyPlacesList)
-                //nearbyPlaceRecycler.adapter = nearbyAdapter
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                // Handle the error
-            }
-        })
-    }*/
 }

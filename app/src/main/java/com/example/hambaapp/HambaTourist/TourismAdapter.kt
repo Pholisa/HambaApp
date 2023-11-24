@@ -19,6 +19,7 @@ class TourismAdapter(private val context: Context,
                      private val onItemClickListener: (BusinessDetailPublic1) -> Unit): RecyclerView.Adapter<TourismAdapter.MyViewHolder>(){
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        //initialising recycler view values
         val tvBusinessTitle: TextView = itemView.findViewById(R.id.busTitleRV)
         val tvBusinessType : TextView = itemView.findViewById(R.id.busTypeRV)
         val tvBusinessDesc : TextView = itemView.findViewById(R.id.busDescriptionRV)
@@ -27,6 +28,10 @@ class TourismAdapter(private val context: Context,
         val tvBusinessEmail : TextView = itemView.findViewById(R.id.busEmailRV)
         val tvBusinessLocation : TextView = itemView.findViewById(R.id.busLocationRV)
         val tvBusinessNo : TextView = itemView.findViewById(R.id.busNumberRV)
+        val favourites : ImageView = itemView.findViewById(R.id.busImageRV)
+
+        //on click listener for favourites
+        init { favourites.setOnClickListener {adapterPosition} }
 
     }
 
@@ -38,8 +43,8 @@ class TourismAdapter(private val context: Context,
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
-        val currentBusiness = tourismList[position]
-
+        val currentBusiness = tourismList[position] // current recycler view data binding
+        //assigning values(holders) to textviews
         holder.tvBusinessTitle.text = currentBusiness.title
         holder.tvBusinessType.text = currentBusiness.category
         holder.tvBusinessDesc.text =  "Description:" +currentBusiness.businessSummary
@@ -59,12 +64,12 @@ class TourismAdapter(private val context: Context,
             }
             else
             {
-
+                //placeholder image
             }
         }
         else
         {
-
+            //placeholder image
         }
 
         //item click listener handler that passes image to display on bottom sheet
@@ -72,21 +77,32 @@ class TourismAdapter(private val context: Context,
             onItemClickListener(currentBusiness)
         }
     }
+    //----------------------------------------------------------------------------------------------
 
-    override fun getItemCount(): Int {
+    //----------------------------------------------------------------------------------------------
+    //get business size
+    override fun getItemCount(): Int
+    {
         return tourismList.size
     }
+    //----------------------------------------------------------------------------------------------
 
+    //----------------------------------------------------------------------------------------------
     //decoding image from string to image format
-    private fun decodeImageFromString(imageString: String): Bitmap? {
+    private fun decodeImageFromString(imageString: String): Bitmap?
+    {
 
-        try {
+        try //try catch block to decode image
+        {
             val decodedBytes: ByteArray = Base64.decode(imageString, Base64.DEFAULT)
             return BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.size)
-        }catch (e: Exception){
+        }
+        catch (e: Exception)
+        {
             e.printStackTrace()
         }
         return null
 
     }
+    //----------------------------------------------------------------------------------------------
 }

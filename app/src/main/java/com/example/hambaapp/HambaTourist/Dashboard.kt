@@ -1,34 +1,19 @@
 package com.example.hambaapp.HambaTourist
 
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
-import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Base64
-import android.util.Log
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.core.app.ActivityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.hambaapp.AccomodationPage
-import com.example.hambaapp.Entertainment
 import com.example.hambaapp.R
 import com.example.hambaapp.databinding.ActivityDashboardBinding
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationServices
-import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.BitmapDescriptorFactory
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
 class Dashboard : AppCompatActivity() {
@@ -40,6 +25,7 @@ class Dashboard : AppCompatActivity() {
     //private val userID = FirebaseAuth.getInstance().currentUser?.uid
     private lateinit var databaseReference: DatabaseReference
     private val database = FirebaseDatabase.getInstance()
+    //var businessCount: Int = 0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,6 +39,8 @@ class Dashboard : AppCompatActivity() {
         recyclerViewTourism = findViewById(R.id.rvBusinessDisplaying)
         recyclerViewTourism.layoutManager = LinearLayoutManager(this)
 
+
+
         //getting business data from database
         getBusinessData()
 
@@ -65,28 +53,6 @@ class Dashboard : AppCompatActivity() {
     }
     //----------------------------------------------------------------------------------------------
 
-    private fun splitCoordinates(coordinates:String)
-    {
-        var finalCoordinates: String
-        val coordinatePairs = coordinates.split("|") // Split by pipe character
-
-        for (coordinatePair in coordinatePairs) {
-            val parts = coordinatePair.split(",") // Split by comma
-            if (parts.size == 2)
-            {
-                val latitude = parts[0].toDoubleOrNull()
-                val longitude = parts[1].toDoubleOrNull()
-                if (latitude != null && longitude != null)
-                {
-                   // val locationConverter = LocationConverter(context)
-                    //val address = locationConverter.getAddressFromLocation(latitude, longitude)
-                  //  finalCoordinates = LatLng(latitude, longitude)
-
-                }
-            }
-        }
-       // return finalCoordinates
-    }
     //----------------------------------------------------------------------------------------------
     //function for on click listeners for categories
     private fun bindingsForCategoryClickListeners()
@@ -129,6 +95,10 @@ class Dashboard : AppCompatActivity() {
 
                 if (dataSnapshot.exists()) //if value exists
                 {
+                    //businessArrayList1.clear()
+                    var businessCount = dataSnapshot.childrenCount.toInt()
+                    var businessTotal = findViewById<TextView>(R.id.tv_heading2)
+                    businessTotal.text = "("+businessCount.toString()+")"+" places"
                     for (businessSnapshot in dataSnapshot.children) //for each loop to go scan every value in the database
                     {
                         val businessItem = businessSnapshot.getValue(BusinessDetailPublic1::class.java)
@@ -138,9 +108,6 @@ class Dashboard : AppCompatActivity() {
                     }
                     //calling bottom sheet behaviour class
                     adapterSetUp(businessArrayList1)
-
-
-
                 }
                 else //if value doesnt exist
                 {
@@ -165,6 +132,11 @@ class Dashboard : AppCompatActivity() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists())
                 {
+                   // businessArrayList.clear()
+                    // Count the number of items
+                     var businessCount = snapshot.childrenCount.toInt()
+                    var businessTotal = findViewById<TextView>(R.id.tv_heading2)
+                    businessTotal.text = "("+businessCount.toString()+")"+" places"
                     for (businessSnapshot in snapshot.children)
                     {
                         val busines = businessSnapshot.getValue(BusinessDetailPublic1::class.java)
@@ -201,6 +173,7 @@ class Dashboard : AppCompatActivity() {
                     state = BottomSheetBehavior.STATE_EXPANDED
                     //calling function that populates sheet with data from database
                     sheetPopulation(userProfile )
+
                 }
             }
         )
@@ -228,11 +201,13 @@ class Dashboard : AppCompatActivity() {
 
         // Set text values
         businessName.text = userProfile.title
-        businessLocation.text = userProfile.location
+        businessLocation.text = userProfile.locationString
         businessPrice.text = userProfile.price
         businessSummary.text = userProfile.businessSummary
         number.text = userProfile.telephoneNo
         email.text = userProfile.emailAd
+
+
     }
     //----------------------------------------------------------------------------------------------
 

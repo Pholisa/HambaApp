@@ -95,7 +95,7 @@ class BusinessRegForm : AppCompatActivity() {
         {
 
             val Info = Information(companyName, registerNumber, emailAddress, telephoneNumber, businessType,businessAddress,businessCategory,stringImage)
-            myReference.push().setValue(Info).addOnSuccessListener {
+            myReference.setValue(Info).addOnSuccessListener {
                 Toast.makeText(this, "Information Saved", Toast.LENGTH_SHORT).show()
             }
         }

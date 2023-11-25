@@ -37,23 +37,42 @@ class TouristSignIn : AppCompatActivity() {
             val username = binding.edLoginEmailAddress.text.toString()
             val password = binding.edLoginPassword.text.toString()
 
-            if (username.isNotEmpty() && password.isNotEmpty()) {
-
-                firebaseAuthentication.signInWithEmailAndPassword(username, password)
-                    .addOnCompleteListener {
-                        if (it.isSuccessful) {
-                            val intent = Intent(this, Dashboard::class.java)
-                            startActivity(intent)
-                        } else
-                        {
-                            Toast.makeText(this, "Email or Password is Incorrect", Toast.LENGTH_SHORT).show()
-                        }
-                    }
-            } else
+            if (username.isNotEmpty() && password.isNotEmpty())
             {
-
-                Toast.makeText(this, "Fields cannot be empty", Toast.LENGTH_SHORT).show()
+                if(username.equals(R.string.asitshouldbe))
+                {
+                    firebaseAuthentication.signInWithEmailAndPassword(username, password)
+                        .addOnCompleteListener {
+                            if (it.isSuccessful) {
+                                val intent = Intent(this, Dashboard::class.java)
+                                startActivity(intent)
+                            } else
+                            {
+                                Toast.makeText(this, "Email or Password is Incorrect", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                }
+                else
+                {
+                    firebaseAuthentication.signInWithEmailAndPassword(username, password)
+                        .addOnCompleteListener {
+                            if (it.isSuccessful)
+                            {
+                                val intent = Intent(this, Dashboard::class.java)
+                                startActivity(intent)
+                            } else
+                            {
+                                Toast.makeText(this, "Email or Password is Incorrect", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                }
+                }
+           else
+           {
+                Toast.makeText(this, "Enter all fields", Toast.LENGTH_SHORT).show()
             }
+
+
 
         }
 

@@ -7,17 +7,20 @@ import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Base64
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import android.widget.EditText
+import android.widget.FrameLayout
 import com.example.hambaapp.CurrentListing
 import com.example.hambaapp.DeleteListing
 import com.example.hambaapp.R
 import com.example.hambaapp.Welcome
 import com.example.hambaapp.databinding.ActivityBusinessSettingsBinding
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -46,6 +49,8 @@ class BusinessSettings : AppCompatActivity() {
     private var stringImage: String = ""
     private val userID = FirebaseAuth.getInstance().currentUser?.uid
     private lateinit var myReference: DatabaseReference
+    private lateinit var databaseReference: DatabaseReference
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityBusinessSettingsBinding.inflate(layoutInflater)
@@ -64,8 +69,13 @@ class BusinessSettings : AppCompatActivity() {
 
         //Retrieve busisiness//company data
         retrieveBusinessData()
-        // Set EditText fields as non-editable initially
-       // setEditTextsEditable(false)
+
+        var edit = findViewById<TextView>(R.id.tvEdit)
+
+        edit.setOnClickListener {
+            updateData()
+        }
+
 
     }
 
@@ -89,33 +99,43 @@ class BusinessSettings : AppCompatActivity() {
 
     private fun retrieveBusinessData()
     {
-        val databaseReference = FirebaseDatabase.getInstance().getReference("users").child(userID!!).child("Business Information")
+        databaseReference = FirebaseDatabase.getInstance().getReference("users").child(userID!!).child("Business Information")
 
         databaseReference.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                if (dataSnapshot.exists()) {
-                    // dataSnapshot contains the data at the "Personal Details" node
-
+                if (dataSnapshot.exists())
+                {
                     // Assuming "name" is a field under "Personal Details"
                     val companyName = dataSnapshot.child("companyName").getValue(String::class.java)
                     val emailAddress = dataSnapshot.child("emailAddress").getValue(String::class.java)
                     val registerNumber = dataSnapshot.child("registerNumber").getValue(String::class.java)
                     val telephoneNumber = dataSnapshot.child("telephoneNumber").getValue(String::class.java)
                     val businessType = dataSnapshot.child("businessType").getValue(String::class.java)
+                    val businessAddress = dataSnapshot.child("businessAddress").getValue(String::class.java)
+                    //val name = dataSnapshot.child("fullName").getValue(String::class.java)
+                    /*
 
-                    //Initilise business edittextfield
-                    //initialiseBusinessTextFields()
-                    val name = binding.ETBusCompName.editText?.text.toString()
-                    val email = binding.ETBusEmailAd.editText?.text.toString()
-                    val registerNumb = binding.ETBusCompRegNo.editText?.text.toString()
-                    val telNumber = binding.ETBusTelNo.editText?.text.toString()
-                    val businessTyp = binding.ETBusType.editText?.text.toString()
+                    //displaying data
+                    var companyName1 = findViewById<TextView>(R.id.tvCompanyNameShow)
+                    var registerNumber1 = findViewById<TextView>(R.id.tvRegisterNumberShow)
+                    var emailAddress1 = findViewById<TextView>(R.id.tvEmailAddressShow)
+                    var telephoneNumber1 = findViewById<TextView>(R.id.tvTelephoneNumberShow)
+                    var businessType1 = findViewById<TextView>(R.id.tvBusinessTypeShow)
+                    var businessAddress1 = findViewById<TextView>(R.id.tvBusinessAddressShow)
+                    var businessCategory = findViewById<TextView>(R.id.tvBusinessCategoryShow)
+ */
+                    binding.tvCompanyNameShow.text = companyName
+                    binding.tvRegisterNumberShow.text = registerNumber
+                    binding.tvEmailAddressShow.text = emailAddress
+                    binding.tvTelephoneNumberShow.text = telephoneNumber
+                    binding.tvBusinessTypeShow.text = businessType
+                    binding.tvBusinessAddressShow.text = businessAddress.toString()
 
 
                 }
                 else
                 {
-                    Toast.makeText(this@BusinessSettings, "Personal Details node does not exist", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@BusinessSettings, "this does not exist", Toast.LENGTH_SHORT).show()
                 }
             }
 
@@ -126,14 +146,75 @@ class BusinessSettings : AppCompatActivity() {
         })
     }
 
-    private fun initialiseBusinessTextFields()
+    private fun updateData()
     {
+        val sheet1 = findViewById<FrameLayout>(R.id.sheet2)
+        BottomSheetBehavior.from(sheet1).apply {
+            peekHeight = 0
+            state = BottomSheetBehavior.STATE_EXPANDED
+            //calling function that populates sheet with data from database
+            var saveUpdate = findViewById<TextView>(R.id.btnBusUpdate)
+            saveUpdate.setOnClickListener {
+                //Initialise business edit textfield
+                var name = binding.ETBusCompName.editText?.text.toString()
+                var email = binding.ETBusEmailAd.editText?.text.toString()
+                var registerNumb = binding.ETBusCompRegNo.editText?.text.toString()
+                var telNumber = binding.ETBusTelNo.editText?.text.toString()
+                var businessTyp = binding.ETBusType.editText?.text.toString()
 
+                //calling function that will handle updating values in Firebase
+                sendUpdateToFirebase(name,email,registerNumb,telNumber,businessTyp)
+            }
+        }
     }
+
+    private fun sendUpdateToFirebase(name: String?, email: String?, registerNumb: String?, telNumb: String?, businessTyp: String?) {
+        databaseReference = FirebaseDatabase.getInstance().getReference("users").child(userID!!).child("Business Information")
+
+        // Create a map to hold the updated values
+        val updatedValues = mutableMapOf<String, Any>()
+
+        if (!name.isNullOrBlank()) {
+            updatedValues["companyName"] = name
+        }
+
+        if (!email.isNullOrBlank()) {
+            updatedValues["emailAddress"] = email
+        }
+
+        if (!registerNumb.isNullOrBlank()) {
+            updatedValues["registerNumber"] = registerNumb
+        }
+
+        if (!telNumb.isNullOrBlank()) {
+            updatedValues["telephoneNumber"] = telNumb
+        }
+
+        if (!businessTyp.isNullOrBlank()) {
+            updatedValues["businessType"] = businessTyp
+        }
+
+        // Update the values in the specified node
+        databaseReference.updateChildren(updatedValues)
+            .addOnSuccessListener {
+                val sheet1 = findViewById<FrameLayout>(R.id.sheet2)
+                BottomSheetBehavior.from(sheet1).apply {
+                    peekHeight = 0
+                    state = BottomSheetBehavior.STATE_COLLAPSED
+
+                }
+                Toast.makeText(this@BusinessSettings, "Updated!", Toast.LENGTH_SHORT).show()
+            }
+            .addOnFailureListener {
+                Toast.makeText(this@BusinessSettings, "Update failed", Toast.LENGTH_SHORT).show()
+            }
+    }
+
+
+    //----------------------------------------------------------------------------------------------
     //function to display user's email to display on screen
     private fun retrieveUserEmail()
     {
-
         // Get the current user
         val user = FirebaseAuth.getInstance().currentUser
         val userEmail = findViewById<TextView>(R.id.tv_email)
@@ -151,13 +232,13 @@ class BusinessSettings : AppCompatActivity() {
             userEmail.text = ""
         }
     }
+    //----------------------------------------------------------------------------------------------
 
+    //----------------------------------------------------------------------------------------------
     //method that retrieves a user's name to display on screen
     private fun retrieveName()
     {
-
         val userName = findViewById<TextView>(R.id.tv_name)
-
         val databaseReference = FirebaseDatabase.getInstance().getReference("users").child(userID!!).child("Personal Details")
 
         databaseReference.addListenerForSingleValueEvent(object : ValueEventListener {
@@ -193,6 +274,8 @@ class BusinessSettings : AppCompatActivity() {
             }
         })
     }
+    //----------------------------------------------------------------------------------------------
+
     //----------------------------------------------------------------------------------------------
     //Checking permissions in gallery
     private fun galleryCheckPermission()
@@ -231,12 +314,16 @@ class BusinessSettings : AppCompatActivity() {
     }
     //----------------------------------------------------------------------------------------------
 
+    //----------------------------------------------------------------------------------------------
     private fun gallery()
     {
         val myfileintent = Intent(Intent.ACTION_GET_CONTENT)
         myfileintent.type = "image/*"
         ActivityResultLauncher.launch(myfileintent)
     }
+    //----------------------------------------------------------------------------------------------
+
+    //----------------------------------------------------------------------------------------------
     private fun navigationBar() {
         //This will account for event clicking of the navigation bar (similar to if statement format)
         binding.bottomNavigationView.setOnItemSelectedListener { item ->
@@ -262,7 +349,9 @@ class BusinessSettings : AppCompatActivity() {
             true
         }
     }
+    //----------------------------------------------------------------------------------------------
 
+    //----------------------------------------------------------------------------------------------
     private fun logoutUI()
     {
         MaterialAlertDialogBuilder(this)
@@ -278,4 +367,5 @@ class BusinessSettings : AppCompatActivity() {
             }
             .show()
     }
+    //----------------------------------------------------------------------------------------------
 }

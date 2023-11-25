@@ -79,6 +79,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
+        <TextView
+            android:id="@+id/tvEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="Edit"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:gravity="right"
+            android:paddingRight="30dp"/>
+
+
         <ScrollView
             android:id="@+id/scrollView2"
             android:layout_width="match_parent"
@@ -94,205 +107,327 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/ETBusCompName"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginLeft="35dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginRight="35dp"
-                    android:drawablePadding="8dp"
-                    android:ems="10"
-                    android:hint="*Company Name*"
-                    android:inputType="textPersonName"
-                    android:minHeight="48dp"
-                    android:padding="8dp"
-                    android:textColor="@color/black">
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/ETBusEmailAd"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginLeft="35dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginRight="35dp"
-                    android:drawablePadding="8dp"
-                    android:ems="10"
-                    android:hint="Email Address"
-                    android:inputType="number"
-                    android:padding="8dp"
-                    android:textColor="@color/black" >
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/ETBusCompRegNo"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginLeft="35dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginRight="35dp"
-                    android:drawablePadding="8dp"
-                    android:ems="10"
-                    android:hint="Company Reg. No."
-                    android:inputType="textPersonName"
-                    android:minHeight="48dp"
-                    android:padding="8dp"
-                    android:textColor="@color/black" >
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/ETBusTelNo"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginLeft="35dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginRight="35dp"
-                    android:drawablePadding="8dp"
-                    android:ems="10"
-                    android:hint="*Telephone Number*"
-                    android:inputType="number"
-                    android:padding="8dp"
-                    android:textColor="@color/black" >
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/ETBusType"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginLeft="35dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginRight="35dp"
-                    android:drawablePadding="8dp"
-                    android:hint="*Business Type*"
-                    android:inputType="textPersonName"
-                    android:padding="8dp" >
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/ETBusAddress"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginLeft="35dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginRight="35dp"
-                    android:drawablePadding="8dp"
-                    android:ems="10"
-                    android:hint="*Address*"
-                    android:padding="8dp"
-                    android:textColor="@color/black" >
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/ETBusCat"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginLeft="35dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginRight="35dp"
-                    android:drawablePadding="8dp"
-                    android:ems="10"
-                    android:hint="*Business Category*"
-                    android:inputType="textPersonName"
-                    android:padding="8dp"
-                    android:textColor="@color/black" >
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <Button
-                    android:id="@+id/btnUploadImage"
-                    android:layout_width="350dp"
-                    android:layout_height="55dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="20dp"
-                    android:backgroundTint="@color/black"
-                    android:text="Upload Documents"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    app:icon="@android:drawable/ic_menu_upload" />
-
-                <Button
-                    android:id="@+id/btnBusNext"
-                    android:layout_width="160dp"
-                    android:layout_height="55dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="20dp"
-                    android:backgroundTint="@color/black"
-                    android:text="NEXT"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-
+                <TextView
+                    android:id="@+id/tvCompanyName"
+                    android:layout_width="226dp"
+                    android:layout_height="45dp"
+                    android:textColor="@color/black"
+                    android:text="Company Name"
+                    android:textSize="20sp" />
 
                 <TextView
+                    android:id="@+id/tvCompanyNameShow"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:textColor="@color/white"
+                    android:hint="Company Name"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tvRegisterNumber"
+                    android:layout_width="138dp"
+                    android:layout_height="45dp"
+                    android:textColor="@color/black"
+                    android:text="Register No.:"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tvRegisterNumberShow"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:textColor="@color/white"
+                    android:hint="Register No."
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tvEmailAddress"
+                    android:layout_width="138dp"
+                    android:layout_height="45dp"
+                    android:textColor="@color/black"
+                    android:text="Email Address:"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tvEmailAddressShow"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:hint="Email Address"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tvTelephoneNumber"
+                    android:layout_width="138dp"
+                    android:layout_height="45dp"
+                    android:textColor="@color/black"
+                    android:text="Telephone No.:"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tvTelephoneNumberShow"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:textColor="@color/white"
+                    android:hint="Telephone No."
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tvBusinessType"
+                    android:layout_width="138dp"
+                    android:layout_height="45dp"
+                    android:textColor="@color/black"
+                    android:text="Business Type:"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tvBusinessTypeShow"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:textColor="@color/white"
+                    android:hint="Business Type"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tvBusinessAddress"
+                    android:layout_width="219dp"
+                    android:layout_height="45dp"
+                    android:textColor="@color/black"
+                    android:text="Business Address:"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tvBusinessAddressShow"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:textColor="@color/white"
+                    android:hint="Business Address:"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tvBusinessCategory"
+                    android:layout_width="250dp"
+                    android:layout_height="45dp"
+                    android:textColor="@color/black"
+                    android:text="Business Category:"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tvBusinessCategoryShow"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:textColor="@color/white"
+                    android:hint="Business Category"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tvBusinessImage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
-                    android:text="*Mandatory Fields*"
-                    android:textAlignment="center"
-                    android:textColor="#FF0000"
+                    android:textColor="@color/black"
+                    android:text="Image:"
                     android:textSize="20sp" />
+
+                <LinearLayout
+                    android:id="@+id/imageContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                </LinearLayout>
+
+
+                <Button
+                    android:id="@+id/btnDone1"
+                    android:layout_width="200dp"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="100dp"
+                    android:text="Done"
+                    android:textColor="@color/black"
+                    android:backgroundTint="@color/white"/>
+
+
 
             </LinearLayout>
         </ScrollView>
-
     </LinearLayout>
 
 
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:elevation="5dp">
+
+        <FrameLayout
+            android:id="@+id/sheet2"
+            android:layout_width="match_parent"
+            android:layout_height="425dp"
+            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+            app:behavior_peekHeight="0dp"
+            android:background="@drawable/rounded">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/btnBusUpdate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:backgroundTint="@color/black"
+                android:text="save"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_gravity="right|end"
+                android:paddingRight="30dp"/>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingTop="10dp"
+                    android:paddingLeft="30dp"
+                    android:paddingRight="30dp">
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/ETBusCompName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:ems="10"
+                        android:hint="*Company Name*"
+                        android:inputType="textPersonName"
+                        android:minHeight="48dp"
+                        android:textColor="@color/black">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/ETBusEmailAd"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="8dp"
+                        android:ems="10"
+                        android:hint="Business Email Address"
+                        android:inputType="number"
+                        android:padding="8dp"
+                        android:textColor="@color/black" >
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/ETBusCompRegNo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="8dp"
+                        android:ems="10"
+                        android:hint="Company Reg. No."
+                        android:inputType="textPersonName"
+                        android:minHeight="48dp"
+                        android:padding="8dp"
+                        android:textColor="@color/black" >
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/ETBusTelNo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="8dp"
+                        android:ems="10"
+                        android:hint="*Telephone Number*"
+                        android:inputType="number"
+                        android:padding="8dp"
+                        android:textColor="@color/black" >
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/ETBusType"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="8dp"
+                        android:hint="*Business Type*"
+                        android:inputType="textPersonName"
+                        android:padding="8dp" >
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/ETBusAddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="8dp"
+                        android:ems="10"
+                        android:hint="*Address*"
+                        android:padding="8dp"
+                        android:textColor="@color/black" >
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/ETBusCat"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="8dp"
+                        android:ems="10"
+                        android:hint="*Business Category*"
+                        android:inputType="textPersonName"
+                        android:padding="8dp"
+                        android:textColor="@color/black" >
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+                </LinearLayout>
+            </ScrollView>
+            </LinearLayout>
+        </FrameLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

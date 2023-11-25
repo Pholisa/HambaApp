@@ -187,7 +187,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                     mMap.addMarker(markerOptions)
 
                     // How zoomed in the map will be.
-                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 15f))
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 10f))
 
 
                     //retrive sightings to display

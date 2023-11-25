@@ -47,7 +47,7 @@ class BusinessPrev : AppCompatActivity() {
         var save = findViewById<Button>(R.id.btnDone1)
 
         save.setOnClickListener {
-            val intent = Intent(this, Welcome::class.java)
+            val intent = Intent(this, BusinessDashboard::class.java)
             startActivity(intent)
         }
 

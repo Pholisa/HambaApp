@@ -3,7 +3,7 @@ package com.example.hambaapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.hambaapp.R
+import com.example.hambaapp.HambaTourist.Dashboard
 import com.example.hambaapp.databinding.ActivityEntertainmentBinding
 
 

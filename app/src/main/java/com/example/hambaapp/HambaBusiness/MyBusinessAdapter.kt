@@ -18,11 +18,12 @@ import android.content.Intent
 
 class MyBusinessAdapter(
     private val context: Context,
-    private val birdList: MutableList<BusinessDetail> = mutableListOf(),
+    private val businessList: MutableList<BusinessDetail> = mutableListOf(),
     private val onDeleteClickListener: (Int) -> Unit,
-    private val onItemClickListener: (Int) -> Unit
+    private val onItemClickListener: (BusinessDetail) -> Unit // Change the type to accept a String parameter
 ) : RecyclerView.Adapter<MyBusinessAdapter.MyViewHolder>() {
 
+    //Grabbing objects from Recycler viewer
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val title: TextView = itemView.findViewById(R.id.tvBusinessName)
         val location: TextView = itemView.findViewById(R.id.tvBusinessAddress)
@@ -32,10 +33,9 @@ class MyBusinessAdapter(
         val ivImage: ImageView = itemView.findViewById(R.id.ivImage)
 
         init {
-          //  btnMore.setOnClickListener { showPopupMenu(btnMore, adapterPosition) }
-            itemView.setOnClickListener { onItemClickListener(adapterPosition) }
-           // btnMore.setOnClickListener { showPopupMenu(btnMore, adapterPosition) }
+            btnMore.setOnClickListener { showPopupMenu(btnMore, adapterPosition) }
         }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -44,17 +44,19 @@ class MyBusinessAdapter(
         return MyViewHolder(itemView)
     }
 
+    //----------------------------------------------------------------------------------------------
+    //assigning a value to each holder on recycler
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val currentBird = birdList[position]
+        val currentBusiness = businessList[position]
 
-        holder.title.text = currentBird.title
-        holder.location.text = currentBird.location
-        holder.businessPrice.text = "R"+ currentBird.price
-        holder.businessSummary.text = currentBird.businessSummary
-
+        holder.title.text = currentBusiness.title
+        holder.location.text = currentBusiness.location
+        holder.businessPrice.text = "R"+ currentBusiness.price
+        holder.businessSummary.text = currentBusiness.businessSummary
 
         // Check if imageString is not null or empty before decoding
-        val imageString = currentBird.stringImage
+        val imageString = currentBusiness.stringImage
+
         if (!imageString.isNullOrBlank())
         {
             val businessImage = decodeImageFromString(imageString)
@@ -65,20 +67,27 @@ class MyBusinessAdapter(
             }
             else
             {
-                // Handle the case when the image cannot be decoded
-                // You can set a placeholder image or show an error message
+                //placement picture
             }
         }
         else
         {
-            // Set a default image or handle the case when imageString is null or empty
+            // Set a default image
+        }
+
+        //item click listener handler that passes image to display on bottom sheet
+        holder.itemView.setOnClickListener {
+            onItemClickListener(currentBusiness)
         }
     }
 
-    override fun getItemCount(): Int {
-        return birdList.size
+    //getting the size of businesses
+    override fun getItemCount(): Int
+    {
+        return businessList.size
     }
 
+    //----------------------------------------------------------------------------------------------
     // Function to decode image from base64 string
     private fun decodeImageFromString(imageString: String?): Bitmap?
     {
@@ -91,7 +100,10 @@ class MyBusinessAdapter(
         }
         return null
     }
+    //----------------------------------------------------------------------------------------------
 
+    //----------------------------------------------------------------------------------------------
+    //pop up menu which will give user the option to either delete or edit business data
     private fun showPopupMenu(view: View, position: Int) {
         val popupMenu = PopupMenu(context, view)
         val inflater = popupMenu.menuInflater
@@ -101,11 +113,7 @@ class MyBusinessAdapter(
             when (item.itemId) {
                 R.id.menu_edit -> {
                   Toast.makeText(context, "Edit clicked for item at position $position", Toast.LENGTH_SHORT).show()
-                    /*
-                    val intent = Intent(context, BusinessPrev::class.java)
-                    intent.putExtra("position", position)
-                    context.startActivity(intent)
-                     */
+
                     true
                 }
                 R.id.menu_delete -> {
@@ -119,6 +127,7 @@ class MyBusinessAdapter(
 
         popupMenu.show()
     }
+    //----------------------------------------------------------------------------------------------
 
 }
 

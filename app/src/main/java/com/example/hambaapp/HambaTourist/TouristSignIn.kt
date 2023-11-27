@@ -1,4 +1,4 @@
-package com.example.hambaapp
+package com.example.hambaapp.HambaTourist
 
 import android.content.Intent
 import android.graphics.drawable.ColorDrawable
@@ -10,6 +10,8 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import com.example.hambaapp.R
+import com.example.hambaapp.Register
 import com.example.hambaapp.databinding.ActivityTouristSignInBinding
 import com.google.firebase.auth.FirebaseAuth
 
@@ -35,23 +37,42 @@ class TouristSignIn : AppCompatActivity() {
             val username = binding.edLoginEmailAddress.text.toString()
             val password = binding.edLoginPassword.text.toString()
 
-            if (username.isNotEmpty() && password.isNotEmpty()) {
-
-                firebaseAuthentication.signInWithEmailAndPassword(username, password)
-                    .addOnCompleteListener {
-                        if (it.isSuccessful) {
-                            val intent = Intent(this, Dashboard::class.java)
-                            startActivity(intent)
-                        } else
-                        {
-                            Toast.makeText(this, "Email or Password is Incorrect", Toast.LENGTH_SHORT).show()
-                        }
-                    }
-            } else
+            if (username.isNotEmpty() && password.isNotEmpty())
             {
-
-                Toast.makeText(this, "Fields cannot be empty", Toast.LENGTH_SHORT).show()
+                if(username.equals(R.string.asitshouldbe))
+                {
+                    firebaseAuthentication.signInWithEmailAndPassword(username, password)
+                        .addOnCompleteListener {
+                            if (it.isSuccessful) {
+                                val intent = Intent(this, Dashboard::class.java)
+                                startActivity(intent)
+                            } else
+                            {
+                                Toast.makeText(this, "Email or Password is Incorrect", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                }
+                else
+                {
+                    firebaseAuthentication.signInWithEmailAndPassword(username, password)
+                        .addOnCompleteListener {
+                            if (it.isSuccessful)
+                            {
+                                val intent = Intent(this, Dashboard::class.java)
+                                startActivity(intent)
+                            } else
+                            {
+                                Toast.makeText(this, "Email or Password is Incorrect", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                }
+                }
+           else
+           {
+                Toast.makeText(this, "Enter all fields", Toast.LENGTH_SHORT).show()
             }
+
+
 
         }
 

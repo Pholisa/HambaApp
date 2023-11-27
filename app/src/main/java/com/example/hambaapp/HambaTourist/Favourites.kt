@@ -1,16 +1,17 @@
-package com.example.hambaapp
+package com.example.hambaapp.HambaTourist
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.hambaapp.R
 import com.example.hambaapp.databinding.ActivityFavouritesBinding
-import com.example.hambaapp.databinding.ActivitySettingsBinding
 
-class Settings : AppCompatActivity() {
-    private lateinit var binding: ActivitySettingsBinding
+class Favourites : AppCompatActivity() {
+
+    private lateinit var binding: ActivityFavouritesBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivitySettingsBinding.inflate(layoutInflater)
+        binding = ActivityFavouritesBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         //calling the navigation bar

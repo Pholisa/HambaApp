@@ -11,8 +11,10 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import com.example.hambaapp.HambaTourist.Dashboard
 import com.example.hambaapp.R
 import com.example.hambaapp.databinding.ActivityBusinessRegFormBinding
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
@@ -63,6 +65,10 @@ class BusinessRegForm : AppCompatActivity() {
         }
 
     }
+    //----------------------------------------------------------------------------------------------
+
+    //----------------------------------------------------------------------------------------------
+    //validating data for company data
          private fun validateData()
          {
 
@@ -89,13 +95,15 @@ class BusinessRegForm : AppCompatActivity() {
         {
 
             val Info = Information(companyName, registerNumber, emailAddress, telephoneNumber, businessType,businessAddress,businessCategory,stringImage)
-            myReference.push().setValue(Info).addOnSuccessListener {
+            myReference.setValue(Info).addOnSuccessListener {
                 Toast.makeText(this, "Information Saved", Toast.LENGTH_SHORT).show()
             }
         }
 
     }
+    //----------------------------------------------------------------------------------------------
 
+    //----------------------------------------------------------------------------------------------
     private val ActivityResultLauncher =
         registerForActivityResult<Intent, ActivityResult>(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
             if (result.resultCode == RESULT_OK) {
@@ -113,7 +121,9 @@ class BusinessRegForm : AppCompatActivity() {
                 }
             }
         }
+    //----------------------------------------------------------------------------------------------
 
+    //----------------------------------------------------------------------------------------------
     //Checking permissions in gallery
     private fun galleryCheckPermission()
     {
@@ -151,14 +161,17 @@ class BusinessRegForm : AppCompatActivity() {
 
             }).check()
     }
+    //----------------------------------------------------------------------------------------------
 
+    //----------------------------------------------------------------------------------------------
     private fun gallery() {
         val intent = Intent(Intent.ACTION_PICK)
         intent.type = "image/*"
         startActivityForResult(intent, galleryRequestCode)
     }
+    //----------------------------------------------------------------------------------------------
 
-
+    //----------------------------------------------------------------------------------------------
     private fun navigationBar() {
         //This will account for event clicking of the navigation bar (similar to if statement format)
         binding.bottomNavigationView.setOnItemSelectedListener { item ->
@@ -170,8 +183,7 @@ class BusinessRegForm : AppCompatActivity() {
                 }
                 //we need a recyler viewer of all active businesses
                 R.id.activeBusinesses -> {
-                    val intent = Intent(this, ActiveBusinesses::class.java)
-                    startActivity(intent)
+                    logoutUI()
                 }
 
                 R.id.profile -> {
@@ -184,4 +196,24 @@ class BusinessRegForm : AppCompatActivity() {
             true
         }
     }
+    //----------------------------------------------------------------------------------------------
+
+    //----------------------------------------------------------------------------------------------
+    //logout function
+    private fun logoutUI()
+    {
+        MaterialAlertDialogBuilder(this)
+            .setTitle("Logout")
+            .setMessage("Are you sure you want to log-out?")
+            .setNeutralButton("Dismiss") { dialog, which ->
+                dialog.dismiss()
+            }
+
+            .setPositiveButton("Sign out") { dialog, which ->
+                val intent = Intent(this, Dashboard::class.java)
+                startActivity(intent)
+            }
+            .show()
+    }
+    //----------------------------------------------------------------------------------------------
 }

@@ -30,11 +30,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HambaApp"
         tools:targetApi="31">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyB3EPkYb9njIsQ1oX9w511QuDb3gC6xDKY" />
         <activity
             android:name=".HambaBusiness.BusinessOption"
             android:exported="false" />
         <activity
             android:name=".DashboardAdmin"
+            android:exported="false" />
+        <activity
+            android:name=".Accomodation"
+            android:exported="false" />
+        <activity
+            android:name=".MoreOptions"
+            android:exported="false" />
+        <activity
+            android:name=".AccomodationPage"
             android:exported="false" />
         <activity
             android:name=".SignInAdmin"
@@ -50,9 +63,6 @@
             android:exported="false" />
 
         <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyCLg05S9-5fmsAzDPQ82AXNPFbawp015wk" />
-        <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
@@ -64,10 +74,10 @@
             android:name=".HambaBusiness.ActiveBusinesses"
             android:exported="false" />
         <activity
-            android:name=".Settings"
+            android:name=".HambaTourist.Settings"
             android:exported="false" />
         <activity
-            android:name=".MapsActivity"
+            android:name=".HambaTourist.MapsActivity"
             android:exported="false"
             android:label="@string/title_activity_maps" />
         <activity
@@ -77,7 +87,7 @@
             android:name=".ForgotPassword"
             android:exported="false" />
         <activity
-            android:name=".Dashboard"
+            android:name=".HambaTourist.Dashboard"
             android:exported="false" />
         <activity
             android:name=".HambaBusiness.BusinessSignIn"
@@ -98,7 +108,7 @@
             android:name=".HambaBusiness.BusinessSettings"
             android:exported="false" />
         <activity
-            android:name=".TouristSignIn"
+            android:name=".HambaTourist.TouristSignIn"
             android:exported="false" />
         <activity
             android:name=".HambaBusiness.BusinessListingData"
@@ -107,7 +117,7 @@
             android:name=".HambaBusiness.BusinessEntryItems"
             android:exported="false" />
         <activity
-            android:name=".Favourites"
+            android:name=".HambaTourist.Favourites"
             android:exported="false" />
         <activity
             android:name=".HambaBusiness.BusinessListIntro"

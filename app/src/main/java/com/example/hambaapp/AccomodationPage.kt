@@ -4,6 +4,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.hambaapp.HambaBusiness.BusinessSettings
+import com.example.hambaapp.HambaTourist.Dashboard
+import com.example.hambaapp.HambaTourist.Favourites
+import com.example.hambaapp.HambaTourist.MapsActivity
 import com.example.hambaapp.databinding.ActivityAccomodationPageBinding
 
 class AccomodationPage : AppCompatActivity() {
@@ -19,8 +22,10 @@ class AccomodationPage : AppCompatActivity() {
 
     }
 
+    //----------------------------------------------------------------------------------------------
     //navivation bar if statement
-    private fun navigationBar() {
+    private fun navigationBar()
+    {
         //This will account for event clicking of the navigation bar (similar to if statement format)
         binding.bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
@@ -49,4 +54,5 @@ class AccomodationPage : AppCompatActivity() {
             true
         }
     }
+    //----------------------------------------------------------------------------------------------
 }

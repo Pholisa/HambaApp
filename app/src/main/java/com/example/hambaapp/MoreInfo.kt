@@ -7,6 +7,9 @@ import android.os.Bundle
 import android.widget.Button
 import com.example.hambaapp.HambaBusiness.BusinessRegForm
 import com.example.hambaapp.HambaBusiness.BusinessSettings
+import com.example.hambaapp.HambaTourist.Dashboard
+import com.example.hambaapp.HambaTourist.Favourites
+import com.example.hambaapp.HambaTourist.MapsActivity
 import com.example.hambaapp.databinding.ActivityMoreInfoBinding
 
 class MoreInfo : AppCompatActivity() {

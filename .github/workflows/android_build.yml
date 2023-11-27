@@ -20,13 +20,8 @@ jobs:
           java-version: 8
           architecture: x64
           distribution: 'adopt'
-          java-package: jdk
           check-latest: false
-          server-id: github
-          server-username: GITHUB_ACTOR
-          server-password: GITHUB_TOKEN
           overwrite-settings: true
-          job-status: success
 
       - name: Cache Gradle dependencies
         uses: actions/cache@v2
@@ -34,11 +29,15 @@ jobs:
           path: |
             ~/.gradle/caches
             ~/.gradle/wrapper
-          key: gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+            .gradle
+          key: gradle-${{ runner.os }}-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}-${{ hashFiles('**/*.java') }}-${{ hashFiles('**/*.kts') }}-${{ hashFiles('**/build.gradle*') }}-${{ hashFiles('**/settings.gradle*') }}-${{ hashFiles('**/*.properties') }}
 
       - name: Debug Information
         run: |
           ls -R ${{ github.workspace }}
+
+      - name: Make Gradlew Executable
+        run: chmod +x ./gradlew
 
       - name: Build with Gradle
         run: ./gradlew assemble

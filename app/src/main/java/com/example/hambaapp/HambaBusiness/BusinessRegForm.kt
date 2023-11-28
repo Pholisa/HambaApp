@@ -35,6 +35,7 @@ class BusinessRegForm : AppCompatActivity() {
     private val theDatabase = Firebase.database
     private val userID = FirebaseAuth.getInstance().currentUser?.uid
     private val myReference = theDatabase.getReference("users").child(userID!!).child("Business Information")
+    private val myReference2 = theDatabase.getReference("Account Requests").child(userID!!)
     private lateinit var firebaseAuthentication: FirebaseAuth
     private var stringImage : String = ""
     private val galleryRequestCode = 2
@@ -93,13 +94,12 @@ class BusinessRegForm : AppCompatActivity() {
         }
         else
         {
-
             val Info = Information(companyName, registerNumber, emailAddress, telephoneNumber, businessType,businessAddress,businessCategory,stringImage)
             myReference.setValue(Info).addOnSuccessListener {
+                myReference2.setValue(Info)
                 Toast.makeText(this, "Information Saved", Toast.LENGTH_SHORT).show()
             }
         }
-
     }
     //----------------------------------------------------------------------------------------------
 

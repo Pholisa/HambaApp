@@ -50,7 +50,7 @@
             android:name=".AccomodationPage"
             android:exported="false" />
         <activity
-            android:name=".SignInAdmin"
+            android:name=".HambaAdmin.SignInAdmin"
             android:exported="false" />
         <activity
             android:name=".Welcome"
@@ -71,7 +71,7 @@
             android:name=".AdminPortal"
             android:exported="false" />
         <activity
-            android:name=".HambaBusiness.ActiveBusinesses"
+            android:name=".HambaAdmin.ActiveBusinesses"
             android:exported="false" />
         <activity
             android:name=".HambaTourist.Settings"
@@ -94,6 +94,9 @@
             android:exported="false" />
         <activity
             android:name=".Entertainment"
+            android:exported="false" />
+        <activity
+            android:name=".HambaAdmin.AdminDashboard"
             android:exported="false" />
         <activity
             android:name=".MoreInfo"

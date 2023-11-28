@@ -85,7 +85,7 @@ class BusinessDashboard : AppCompatActivity() {
         })
     }
     //----------------------------------------------------------------------------------------------
-
+    //method to handle data click listeners
     private fun adapterData()
     {
         val adapter = MyBusinessAdapter(this@BusinessDashboard, businessArrayList,

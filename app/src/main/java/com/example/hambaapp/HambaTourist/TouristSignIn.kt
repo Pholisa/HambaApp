@@ -39,21 +39,6 @@ class TouristSignIn : AppCompatActivity() {
 
             if (username.isNotEmpty() && password.isNotEmpty())
             {
-                if(username.equals(R.string.asitshouldbe))
-                {
-                    firebaseAuthentication.signInWithEmailAndPassword(username, password)
-                        .addOnCompleteListener {
-                            if (it.isSuccessful) {
-                                val intent = Intent(this, Dashboard::class.java)
-                                startActivity(intent)
-                            } else
-                            {
-                                Toast.makeText(this, "Email or Password is Incorrect", Toast.LENGTH_SHORT).show()
-                            }
-                        }
-                }
-                else
-                {
                     firebaseAuthentication.signInWithEmailAndPassword(username, password)
                         .addOnCompleteListener {
                             if (it.isSuccessful)
@@ -65,7 +50,7 @@ class TouristSignIn : AppCompatActivity() {
                                 Toast.makeText(this, "Email or Password is Incorrect", Toast.LENGTH_SHORT).show()
                             }
                         }
-                }
+
                 }
            else
            {

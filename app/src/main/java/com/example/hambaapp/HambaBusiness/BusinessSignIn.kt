@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.lifecycle.lifecycleScope
 import com.example.hambaapp.R
 import com.example.hambaapp.Register
 import com.example.hambaapp.databinding.ActivityBusinessSignInBinding
@@ -20,13 +21,19 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.withContext
 
 class BusinessSignIn : AppCompatActivity() {
     private lateinit var binding: ActivityBusinessSignInBinding
     private lateinit var firebaseAuthentication: FirebaseAuth
     private val theDatabase = Firebase.database
-    private val userID: String? = FirebaseAuth.getInstance().currentUser?.uid
-    private val myReference by lazy { userID?.let { theDatabase.getReference("users").child(it).child("Business Information") } }
+    private lateinit var myReference: DatabaseReference
+    private var companyName: String = ""
+   private var myReference1 = theDatabase.getReference("users")
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,14 +55,15 @@ class BusinessSignIn : AppCompatActivity() {
 
     private fun setupUI() {
         binding.btnBusSignIn.setOnClickListener {
-            val username = binding.edLoginEmailBus.text.toString()
-            val pass = binding.edLoginPasswordBus.text.toString()
+            val username = binding.edLoginEmailBus.editText?.text.toString()
+            val pass = binding.edLoginPasswordBus.editText?.text.toString()
 
             if (username.isNotEmpty() && pass.isNotEmpty()) {
                 firebaseAuthentication.signInWithEmailAndPassword(username, pass)
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
-                            checkBusinessSetup()
+                            var userID = FirebaseAuth.getInstance().currentUser?.uid
+                            checkBusinessSetup(userID!!)
                         } else {
                             Toast.makeText(this, "Email or Password is Incorrect", Toast.LENGTH_SHORT).show()
                         }
@@ -66,7 +74,8 @@ class BusinessSignIn : AppCompatActivity() {
         }
     }
 
-    private fun checkBusinessSetup() {
+    private fun checkBusinessSetup(userID:String) {
+        myReference = theDatabase.getReference("users").child(userID!!).child("Business Information")
         myReference?.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists())
@@ -75,7 +84,7 @@ class BusinessSignIn : AppCompatActivity() {
                 } else
                 {
                     startAppropriateActivity(false)
-                //    Toast.makeText(applicationContext, "No business set up yet.", Toast.LENGTH_SHORT).show()
+                    //    Toast.makeText(applicationContext, "No business set up yet.", Toast.LENGTH_SHORT).show()
                 }
             }
 
@@ -95,7 +104,7 @@ class BusinessSignIn : AppCompatActivity() {
             Intent(this, BusinessListIntro::class.java)
         }
         startActivity(intent)
-         finish()  // Optional: finish the current activity to prevent going back to the sign-in screen
+        finish()  // Optional: finish the current activity to prevent going back to the sign-in screen
     }
 
     private fun showForgotPasswordDialog() {

@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace 'com.example.hambaapp'
-    compileSdk 33
+    compileSdk 34
 
     testOptions {
         unitTests {
@@ -37,7 +37,7 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '17'
     }
 
     buildFeatures{

@@ -116,7 +116,6 @@
             android:layout_height="wrap_content"
             android:text="Edit"
             app:layout_constraintTop_toBottomOf="@+id/tv_edit_name"
-            app:layout_constraintStart_toBottomOf="@+id/tv_edit_name"
             android:layout_marginStart="10dp"/>
 
         <Button
@@ -149,7 +148,6 @@
                 android:layout_height="wrap_content"
                 android:text="Edit"
                 app:layout_constraintTop_toBottomOf="@+id/tv_edit_name"
-                app:layout_constraintStart_toBottomOf="@+id/tv_edit_name"
                 android:layout_marginStart="10dp"/>
 
             <Button

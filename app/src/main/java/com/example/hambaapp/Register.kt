@@ -33,11 +33,11 @@ class Register : AppCompatActivity() {
 
 
         binding.btnSignUp.setOnClickListener{
-            val email = binding.edEmailAddress.text.toString()
-            val password = binding.edPassword.text.toString()
-            val confirmPassword = binding.edPasswordConfirm.text.toString()
-            val name = binding.edFullName.text.toString()
-            val number = binding.edPhoneNumber.text.toString()
+            val email = binding.edEmailAddress.editText?.text.toString()
+            val password = binding.edPassword.editText?.text.toString()
+            val confirmPassword = binding.edPasswordConfirm.editText?.text.toString()
+            val name = binding.edFullName.editText?.text.toString()
+            val number = binding.edPhoneNumber.editText?.text.toString()
 
 
             if(email.isNotEmpty() && password.isNotEmpty()&& name.isNotEmpty() && confirmPassword.isNotEmpty())

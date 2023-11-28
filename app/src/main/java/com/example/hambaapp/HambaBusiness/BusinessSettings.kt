@@ -190,7 +190,8 @@ class BusinessSettings : AppCompatActivity() {
             updatedValues["telephoneNumber"] = telNumb
         }
 
-        if (!businessTyp.isNullOrBlank()) {
+        if (!businessTyp.isNullOrBlank())
+        {
             updatedValues["businessType"] = businessTyp
         }
 
@@ -201,7 +202,9 @@ class BusinessSettings : AppCompatActivity() {
                 BottomSheetBehavior.from(sheet1).apply {
                     peekHeight = 0
                     state = BottomSheetBehavior.STATE_COLLAPSED
-
+                    //calling business settings class so data is refreshed
+                    val intent = Intent(this@BusinessSettings, BusinessSettings::class.java)
+                    startActivity(intent)
                 }
                 Toast.makeText(this@BusinessSettings, "Updated!", Toast.LENGTH_SHORT).show()
             }

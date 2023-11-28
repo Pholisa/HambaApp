@@ -1,4 +1,4 @@
-package com.example.hambaapp
+package com.example.hambaapp.HambaAdmin
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -27,7 +27,7 @@ class SignInAdmin : AppCompatActivity() {
                 firebaseAuthentication.signInWithEmailAndPassword(username, password)
                     .addOnCompleteListener {
                         if (it.isSuccessful) {
-                            val intent = Intent(this, DashboardAdmin::class.java)
+                            val intent = Intent(this, AdminDashboard::class.java)
                             startActivity(intent)
                         } else {
                             Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()

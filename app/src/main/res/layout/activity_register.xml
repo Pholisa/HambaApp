@@ -11,7 +11,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
 
         <TextView
             android:layout_width="match_parent"
@@ -23,20 +25,13 @@
             android:textColor="@color/white"
             android:textSize="50sp" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_marginTop="24dp"
-            android:text="Sign Up"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="30sp" />
+
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_marginTop="24dp"
-            android:text="Create New Account"
+            android:text="Create An Account"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="30sp" />
@@ -48,69 +43,86 @@
             android:orientation="vertical"
             android:padding="20dp">
 
-            <EditText
-                android:layout_width="350dp"
-                android:layout_height="60dp"
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:id="@+id/edFullName"
-                android:layout_marginTop="30dp"
-                android:background="@drawable/theborder"
+                android:layout_marginTop="10dp"
                 android:padding="8dp"
                 android:hint="Full Name"
                 android:drawableLeft="@drawable/baseline_person_24"
                 android:drawablePadding="8dp"
-                android:textColor="@color/grey"/>
+                android:textColor="@color/white"
+                app:endIconMode="clear_text"
+             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-            <EditText
-                android:layout_width="350dp"
-                android:layout_height="60dp"
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:id="@+id/edPhoneNumber"
-                android:layout_marginTop="30dp"
-                android:background="@drawable/theborder"
+                android:layout_marginTop="5dp"
                 android:padding="8dp"
                 android:inputType="number"
                 android:hint="Phone Number"
-                android:drawableLeft="@drawable/baseline_person_24"
                 android:drawablePadding="8dp"
-                android:textColor="@color/grey"/>
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <EditText
-                android:layout_width="350dp"
-                android:layout_height="60dp"
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:id="@+id/edEmailAddress"
-                android:layout_marginTop="30dp"
-                android:background="@drawable/theborder"
+                android:layout_marginTop="5dp"
                 android:padding="8dp"
                 android:hint="Email Address"
                 android:drawableLeft="@drawable/baseline_person_24"
                 android:drawablePadding="8dp"
-                android:textColor="@color/grey"/>
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <EditText
-                android:layout_width="350dp"
-                android:layout_height="60dp"
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:id="@+id/edPassword"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/theborder"
+                android:layout_marginTop="5dp"
                 android:padding="8dp"
                 android:hint="Password"
                 android:inputType="textPassword"
-                android:drawableLeft="@drawable/baseline_lock_24"
                 android:drawablePadding="8dp"
-                android:textColor="@color/grey"/>
+                app:endIconMode="password_toggle">
 
-            <EditText
-                android:layout_width="350dp"
-                android:layout_height="60dp"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:id="@+id/edPasswordConfirm"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/theborder"
+                android:layout_marginTop="5dp"
                 android:padding="8dp"
                 android:hint="Confirm Password"
                 android:inputType="textPassword"
-                android:drawableLeft="@drawable/baseline_password_24"
                 android:drawablePadding="8dp"
-                android:textColor="@color/grey"/>
+                app:endIconMode="password_toggle">
 
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="332dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:layout_width="350dp"

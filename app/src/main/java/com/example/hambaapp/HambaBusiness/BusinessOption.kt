@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import com.example.hambaapp.R
+import com.example.hambaapp.Register
 
 class BusinessOption : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,7 +19,7 @@ class BusinessOption : AppCompatActivity() {
 
         //To access business register UI
         registerBusiness.setOnClickListener {
-            var intent = Intent(this, BusinessRegForm::class.java)
+            var intent = Intent(this, Register::class.java)
             startActivity(intent)
         }
 

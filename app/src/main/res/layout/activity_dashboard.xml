@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_below="@id/search_bar"
-    android:background="@drawable/hamba_background"
+    android:background="@color/black"
     tools:context=".HambaTourist.Dashboard">
 
     <ScrollView
@@ -45,39 +45,12 @@
             android:textColor="@color/black"
             android:textSize="25sp" />
 
-        <LinearLayout
-            android:id="@+id/search_lay"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_below="@id/tv_heading"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="30dp"
-            android:layout_marginEnd="20dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:padding="4dp"
-            android:background="@drawable/search_background">
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginEnd="10dp"
-                android:src="@drawable/ic_search"/>
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginEnd="10dp"
-                android:hint="e.g. Entertainment"/>
-
-        </LinearLayout>
 
         <HorizontalScrollView
             android:id="@+id/hv_options"
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:layout_below="@id/search_lay">
+            android:layout_below="@id/tv_heading">
 
 
             <RelativeLayout
@@ -86,8 +59,8 @@
 
                 <LinearLayout
                     android:id="@+id/lay_car"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="150dp"
+                    android:layout_height="100dp"
                     android:layout_marginStart="220dp"
                     android:layout_marginTop="20dp"
                     android:gravity="center"
@@ -113,8 +86,8 @@
 
                 <LinearLayout
                     android:id="@+id/lay_bed"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="150dp"
+                    android:layout_height="100dp"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="20dp"
                     android:gravity="center"
@@ -124,7 +97,7 @@
 
                     <ImageView
                         android:id="@+id/iv_bed"
-                        android:layout_width="94dp"
+                        android:layout_width="80dp"
                         android:layout_height="70dp"
                         android:src="@drawable/ic_bed" />
 
@@ -140,8 +113,8 @@
 
                 <LinearLayout
                     android:id="@+id/lay_entertain"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="150dp"
+                    android:layout_height="100dp"
                     android:layout_marginStart="420dp"
                     android:layout_marginTop="20dp"
                     android:gravity="center"
@@ -167,8 +140,8 @@
 
                 <LinearLayout
                     android:id="@+id/lay_gear"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="150dp"
+                    android:layout_height="100dp"
                     android:layout_marginStart="620dp"
                     android:layout_marginTop="20dp"
                     android:gravity="center"
@@ -201,7 +174,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/hv_options"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="40dp"
             android:layout_marginEnd="30dp"
             android:text="most recent"
             android:textColor="@color/white"

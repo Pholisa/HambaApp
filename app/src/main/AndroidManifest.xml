@@ -59,7 +59,7 @@
             android:name=".HambaAdmin.SignInAdmin"
             android:exported="false" />
         <activity
-            android:name=".LoadingWelcome"
+            android:name=".Welcome"
             android:exported="false" />
         <activity
             android:name=".DeleteListing"
@@ -134,7 +134,7 @@
             android:name=".HambaBusiness.BusinessPrev"
             android:exported="false" />
         <activity
-            android:name=".Welcome"
+            android:name=".LoadingWelcome"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

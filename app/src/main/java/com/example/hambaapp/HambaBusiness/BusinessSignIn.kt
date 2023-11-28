@@ -46,8 +46,8 @@ class BusinessSignIn : AppCompatActivity() {
 
         var signIn = findViewById<Button>(R.id.btn_busSignIn)
         signIn.setOnClickListener {
-            val username = binding.edLoginEmailBus.text.toString()
-            val pass = binding.edLoginPasswordBus.text.toString()
+            val username = binding.edLoginEmailBus.editText?.text.toString()
+            val pass = binding.edLoginPasswordBus.editText?.text.toString()
 
             if (username.isNotEmpty() && pass.isNotEmpty()) {
                 signIn(username, pass)
@@ -71,8 +71,8 @@ class BusinessSignIn : AppCompatActivity() {
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     val userID: String? = FirebaseAuth.getInstance().currentUser?.uid
-                    getCurrentBusinessName(userID)
-                    checkBusinessSetup1(userID)
+                   // getCurrentBusinessName(userID)
+                   // checkBusinessSetup(userID)
                 } else {
                     Toast.makeText(this, "Email or Password is Incorrect", Toast.LENGTH_SHORT).show()
                 }
@@ -89,8 +89,9 @@ class BusinessSignIn : AppCompatActivity() {
         }
     }
 
-    /*
+
     private fun checkBusinessSetup(userID: String?) {
+
         myReference = theDatabase.getReference("Approved Requests")
         if (!this::myReference.isInitialized) {
             // Initialize myReference here
@@ -119,51 +120,6 @@ class BusinessSignIn : AppCompatActivity() {
         }
     }
 
-     */
-
-    private fun checkBusinessSetup1(userID: String?) {
-        val approvedRequestsReference = theDatabase.getReference("Approved Requests")
-
-        approvedRequestsReference.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                var keyFound: String? = null
-
-                for (childSnapshot in dataSnapshot.children) {
-                    val companyName1 = childSnapshot.child("companyName").value?.toString()
-
-                    if (companyName1 == companyName) {
-                       // Toast.makeText(this@BusinessSignIn, "1:$companyName1 and 2:$companyName", Toast.LENGTH_SHORT).show()
-                        keyFound = childSnapshot.key
-                        break
-                    }
-                }
-
-                if (keyFound != null) {
-                    // Key found, you can use it to get the specific entry
-                    val specificEntryReference = approvedRequestsReference.child(keyFound)
-
-                    specificEntryReference.get().addOnSuccessListener { snapshot ->
-                        // Continue your existing logic
-                        Toast.makeText(this@BusinessSignIn, "approved req and name match found", Toast.LENGTH_SHORT).show()
-                        // startAppropriateActivity(true)
-                        val intent = Intent(this@BusinessSignIn, BusinessDashboard::class.java)
-                        startActivity(intent)
-                    }.addOnFailureListener {
-                        Toast.makeText(this@BusinessSignIn, "Error checking specific entry", Toast.LENGTH_SHORT).show()
-                    }
-                } else {
-                    // Handle the case where companyName is not found
-                    Toast.makeText(this@BusinessSignIn, "Company Name not found in Approved Requests", Toast.LENGTH_SHORT).show()
-                   // checkSecondLayout(userID)
-                }
-            }
-
-            override fun onCancelled(databaseError: DatabaseError) {
-                // Handle errors here
-                Toast.makeText(this@BusinessSignIn, "Database Error: ${databaseError.message}", Toast.LENGTH_SHORT).show()
-            }
-        })
-    }
 
 
     private fun checkSecondLayout(userID: String?) {

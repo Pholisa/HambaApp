@@ -54,7 +54,7 @@ class Settings : AppCompatActivity() {
             BottomSheetBehavior.from(sheet1).apply {
                 peekHeight = 0
                 state = BottomSheetBehavior.STATE_EXPANDED
-                textValue.text = "Terms and conditions go here"
+                textValue.text = getString(R.string.termsandconditions)
             }
         }
 

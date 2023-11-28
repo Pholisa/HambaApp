@@ -34,27 +34,14 @@ class BusinessSignIn : AppCompatActivity() {
     private var companyName: String = ""
    private var myReference1 = theDatabase.getReference("users")
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityBusinessSignInBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         firebaseAuthentication = FirebaseAuth.getInstance()
-
-        // Initialize myReference here
-
-
-        var signIn = findViewById<Button>(R.id.btn_busSignIn)
-        signIn.setOnClickListener {
-            val username = binding.edLoginEmailBus.editText?.text.toString()
-            val pass = binding.edLoginPasswordBus.editText?.text.toString()
-
-            if (username.isNotEmpty() && pass.isNotEmpty()) {
-                signIn(username, pass)
-            } else {
-                Toast.makeText(this, "Fields cannot be empty", Toast.LENGTH_SHORT).show()
-            }
-        }
+        setupUI()
 
         binding.tvRegisterRedirectText2.setOnClickListener {
             val intent = Intent(this, Register::class.java)
@@ -66,90 +53,50 @@ class BusinessSignIn : AppCompatActivity() {
         }
     }
 
-    private fun signIn(username: String, pass: String) {
-        firebaseAuthentication.signInWithEmailAndPassword(username, pass)
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    val userID: String? = FirebaseAuth.getInstance().currentUser?.uid
-                   // getCurrentBusinessName(userID)
-                   // checkBusinessSetup(userID)
-                } else {
-                    Toast.makeText(this, "Email or Password is Incorrect", Toast.LENGTH_SHORT).show()
-                }
-            }
-    }
+    private fun setupUI() {
+        binding.btnBusSignIn.setOnClickListener {
+            val username = binding.edLoginEmailBus.editText?.text.toString()
+            val pass = binding.edLoginPasswordBus.editText?.text.toString()
 
-    private fun getCurrentBusinessName(userID: String?) {
-        myReference1.child(userID!!).child("Business Information").get().addOnSuccessListener { dataSnapshot ->
-            if (dataSnapshot.exists()) {
-                companyName = dataSnapshot.child("companyName").value.toString()
-            }
-        }.addOnFailureListener {
-            Toast.makeText(this@BusinessSignIn, "Error getting current business name", Toast.LENGTH_SHORT).show()
-        }
-    }
-
-
-    private fun checkBusinessSetup(userID: String?) {
-
-        myReference = theDatabase.getReference("Approved Requests")
-        if (!this::myReference.isInitialized) {
-            // Initialize myReference here
-            myReference = theDatabase.getReference("Approved Requests")
-        }
-
-        myReference.get().addOnSuccessListener { snapshot ->
-            if (snapshot.exists()) {
-                val companyName1 = snapshot.child("companyName").value?.toString()
-                if (companyName1 == companyName) {
-                    Toast.makeText(this@BusinessSignIn, "approved req and name match found", Toast.LENGTH_SHORT).show()
-                   // startAppropriateActivity(true)
-                    val intent = Intent(this, BusinessDashboard::class.java)
-                    startActivity(intent)
-                }
-                else
-                {
-                    // Handle case where company names do not match
-                    Toast.makeText(this@BusinessSignIn, "1:$companyName1 and 2:$companyName", Toast.LENGTH_SHORT).show()
-                }
+            if (username.isNotEmpty() && pass.isNotEmpty()) {
+                firebaseAuthentication.signInWithEmailAndPassword(username, pass)
+                    .addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            var userID = FirebaseAuth.getInstance().currentUser?.uid
+                            checkBusinessSetup(userID!!)
+                        } else {
+                            Toast.makeText(this, "Email or Password is Incorrect", Toast.LENGTH_SHORT).show()
+                        }
+                    }
             } else {
-                checkSecondLayout(userID)
+                Toast.makeText(this, "Fields cannot be empty", Toast.LENGTH_SHORT).show()
             }
-        }.addOnFailureListener {
-            Toast.makeText(this@BusinessSignIn, "Error checking Approved Requests", Toast.LENGTH_SHORT).show()
         }
     }
 
-
-
-    private fun checkSecondLayout(userID: String?) {
-        myReference = theDatabase.getReference("Account Requests").child(userID!!)
-        myReference.get().addOnSuccessListener { snapshot ->
-            if (snapshot.exists())
-            {
-                val companyName1 = snapshot.child("companyName").value?.toString()
-                if (companyName1 == companyName)
+    private fun checkBusinessSetup(userID:String) {
+        myReference = theDatabase.getReference("users").child(userID!!).child("Business Information")
+        myReference?.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists())
                 {
-                    Toast.makeText(applicationContext, "Application still pending", Toast.LENGTH_SHORT).show()
-                }
-                else
+                    startAppropriateActivity(true)
+                } else
                 {
-                    Toast.makeText(this@BusinessSignIn, "no match name for account requests", Toast.LENGTH_SHORT).show()
+                    startAppropriateActivity(false)
+                    //    Toast.makeText(applicationContext, "No business set up yet.", Toast.LENGTH_SHORT).show()
                 }
             }
-            else
-            {
-                //startAppropriateActivity(false)
-                val intent = Intent(this, BusinessListIntro::class.java)
-                startActivity(intent)
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(this@BusinessSignIn, error.toString(), Toast.LENGTH_SHORT).show()
             }
-        }.addOnFailureListener {
-            Toast.makeText(this@BusinessSignIn, "Error checking Account Requests", Toast.LENGTH_SHORT).show()
-        }
+        })
     }
 
     private fun startAppropriateActivity(a: Boolean) {
-        val intent = if (a) {
+        val intent = if (a.equals(true))
+        {
             Intent(this, BusinessDashboard::class.java)
         }
         else
@@ -157,7 +104,7 @@ class BusinessSignIn : AppCompatActivity() {
             Intent(this, BusinessListIntro::class.java)
         }
         startActivity(intent)
-        finish()
+        finish()  // Optional: finish the current activity to prevent going back to the sign-in screen
     }
 
     private fun showForgotPasswordDialog() {
@@ -186,8 +133,13 @@ class BusinessSignIn : AppCompatActivity() {
 
     private fun compareEmail(email: EditText) {
         if (email.text.toString().isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(email.text.toString()).matches()) {
-            // Handle invalid email
+            return
+        }
+
+        firebaseAuthentication.sendPasswordResetEmail(email.text.toString()).addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                Toast.makeText(this, "Check your email", Toast.LENGTH_SHORT).show()
+            }
         }
     }
-
 }

@@ -17,6 +17,7 @@ import android.widget.EditText
 import android.widget.FrameLayout
 import com.example.hambaapp.CurrentListing
 import com.example.hambaapp.DeleteListing
+import com.example.hambaapp.HambaAdmin.SignInAdmin
 import com.example.hambaapp.R
 import com.example.hambaapp.Welcome
 import com.example.hambaapp.databinding.ActivityBusinessSettingsBinding
@@ -63,6 +64,11 @@ class BusinessSettings : AppCompatActivity() {
             galleryCheckPermission()
         }
 
+        var callAdmin = findViewById<TextView>(R.id.tv_heading3)
+        callAdmin.setOnClickListener {
+            val intent = Intent(this@BusinessSettings,SignInAdmin::class.java)
+            startActivity(intent)
+        }
         //retrieve username and email from database
         retrieveUserEmail()
         retrieveName()
@@ -112,18 +118,7 @@ class BusinessSettings : AppCompatActivity() {
                     val telephoneNumber = dataSnapshot.child("telephoneNumber").getValue(String::class.java)
                     val businessType = dataSnapshot.child("businessType").getValue(String::class.java)
                     val businessAddress = dataSnapshot.child("businessAddress").getValue(String::class.java)
-                    //val name = dataSnapshot.child("fullName").getValue(String::class.java)
-                    /*
 
-                    //displaying data
-                    var companyName1 = findViewById<TextView>(R.id.tvCompanyNameShow)
-                    var registerNumber1 = findViewById<TextView>(R.id.tvRegisterNumberShow)
-                    var emailAddress1 = findViewById<TextView>(R.id.tvEmailAddressShow)
-                    var telephoneNumber1 = findViewById<TextView>(R.id.tvTelephoneNumberShow)
-                    var businessType1 = findViewById<TextView>(R.id.tvBusinessTypeShow)
-                    var businessAddress1 = findViewById<TextView>(R.id.tvBusinessAddressShow)
-                    var businessCategory = findViewById<TextView>(R.id.tvBusinessCategoryShow)
- */
                     binding.tvCompanyNameShow.text = companyName
                     binding.tvRegisterNumberShow.text = registerNumber
                     binding.tvEmailAddressShow.text = emailAddress

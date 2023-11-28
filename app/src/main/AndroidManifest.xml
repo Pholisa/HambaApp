@@ -35,12 +35,6 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyB3EPkYb9njIsQ1oX9w511QuDb3gC6xDKY" />
         <activity
-            android:name=".DashBusinessView"
-            android:exported="false" />
-        <activity
-            android:name=".DashboardRecycleView"
-            android:exported="false" />
-        <activity
             android:name=".HambaBusiness.BusinessOption"
             android:exported="false" />
         <activity
@@ -71,6 +65,7 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
 
         <activity
             android:name=".AdminPortal"

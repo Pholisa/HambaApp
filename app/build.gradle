@@ -100,7 +100,6 @@ dependencies {
     androidTestImplementation "com.google.truth:truth:1.0.1"
 
     implementation 'com.squareup.picasso:picasso:2.8'
-    implementation 'com.anychart:anychart:1.4.1'
 
 
 }

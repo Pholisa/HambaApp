@@ -56,7 +56,7 @@ class Settings : AppCompatActivity() {
             BottomSheetBehavior.from(sheet1).apply {
                 peekHeight = 0
                 state = BottomSheetBehavior.STATE_EXPANDED
-                textValue.text = "privacy policy goes here"
+                textValue.text = "To be released"
             }
         }
 

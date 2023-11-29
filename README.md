@@ -1,6 +1,19 @@
 # HambaApp
 Tourism Application
 
+NB!
+Admin account(Email: control@gmail.com
+              Password: Password1234)
+Sign up as a business owner to add a business/see the business UI.
+Registration application must first be approved by admin before able to login.
+
+Prerequisites
+1.	Ensure Android Studio (latest updated version) has been installed.
+2.	Recommended emulator:
+-	An android phone (Number 1 option)
+-	Pixel 3a API 34 (very limiting)
+
+
 Main Activity:
 
 Our main activity acts like the welcome page with two prominent buttons, one for logging in and the other for signing up.

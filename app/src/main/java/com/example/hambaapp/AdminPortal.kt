@@ -3,6 +3,7 @@ package com.example.hambaapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.TextView
 import com.example.hambaapp.HambaAdmin.AdminDashboard
 import com.example.hambaapp.HambaAdmin.ActiveBusinesses
 import com.example.hambaapp.HambaTourist.Dashboard
@@ -16,6 +17,12 @@ class AdminPortal : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAdminPortalBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        //logging out admin
+        var logout = findViewById<TextView>(R.id.tv_logout)
+        logout.setOnClickListener{
+            logoutUI()
+        }
 
         //calling navigatuin bar
         navigationBar()
@@ -41,7 +48,8 @@ class AdminPortal : AppCompatActivity() {
                 }
 
                 R.id.profile -> { //Admin settings screen
-                    logoutUI()
+                    val intent = Intent(this, AdminPortal::class.java)
+                    startActivity(intent)
                 }
 
                 else -> {}

@@ -86,6 +86,9 @@
             android:name=".MoreInfo"
             android:exported="false" />
         <activity
+            android:name=".RateUs"
+            android:exported="false" />
+        <activity
             android:name=".Register"
             android:exported="false" />
         <activity

@@ -31,24 +31,7 @@
                 android:textStyle="bold"
                 android:textSize="50sp"/>
 
-            <com.google.android.material.divider.MaterialDivider
-                android:layout_width="match_parent"
-                android:layout_height="4dp"
-                android:layout_marginTop="30dp"/>
 
-            <TextView
-                android:id="@+id/tv_businessstats"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Business Stats"
-                android:padding="20dp"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                android:textSize="20sp"/>
-
-            <com.google.android.material.divider.MaterialDivider
-                android:layout_width="match_parent"
-                android:layout_height="4dp"/>
 
             <com.google.android.material.divider.MaterialDivider
                 android:layout_width="match_parent"

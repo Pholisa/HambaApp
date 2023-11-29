@@ -220,7 +220,6 @@
             android:id="@+id/lay_business"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
             android:orientation="horizontal"
             android:layout_below="@id/tv_heading2">
 
@@ -230,7 +229,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:listitem="@layout/dashboard_list_item"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="1dp"
                 android:textSize="16sp"/>
 
 

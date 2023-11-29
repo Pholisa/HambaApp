@@ -13,7 +13,6 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import android.widget.FrameLayout
-import com.example.hambaapp.HambaAdmin.SignInAdmin
 import com.example.hambaapp.HambaTourist.Dashboard
 import com.example.hambaapp.R
 import com.example.hambaapp.databinding.ActivityBusinessSettingsBinding
@@ -55,27 +54,24 @@ class BusinessSettings : AppCompatActivity() {
             galleryCheckPermission()
         }
 
-        var callAdmin = findViewById<TextView>(R.id.tv_heading3)
-        callAdmin.setOnClickListener {
-            val intent = Intent(this@BusinessSettings,SignInAdmin::class.java)
-            startActivity(intent)
-        }
-        //retrieve username and email from database
+
+        //retrieve username and email from database to display on screen
         retrieveUserEmail()
         retrieveName()
 
         //Retrieve busisiness//company data
         retrieveBusinessData()
 
+        //edit data function
         var edit = findViewById<TextView>(R.id.tvEdit)
-
         edit.setOnClickListener {
             updateData()
         }
 
-
     }
+    //----------------------------------------------------------------------------------------------
 
+    //----------------------------------------------------------------------------------------------
     private val ActivityResultLauncher =
         registerForActivityResult<Intent, ActivityResult>(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
             if (result.resultCode == RESULT_OK) {
@@ -93,7 +89,10 @@ class BusinessSettings : AppCompatActivity() {
                 }
             }
         }
+    //----------------------------------------------------------------------------------------------
 
+    //----------------------------------------------------------------------------------------------
+    //function to retrieve business data to display on the screen
     private fun retrieveBusinessData()
     {
         databaseReference = FirebaseDatabase.getInstance().getReference("users").child(userID!!).child("Business Information")
@@ -131,7 +130,10 @@ class BusinessSettings : AppCompatActivity() {
             }
         })
     }
+    //----------------------------------------------------------------------------------------------
 
+    //----------------------------------------------------------------------------------------------
+    //initialising updating data , executed on bottom sheet
     private fun updateData()
     {
         val sheet1 = findViewById<FrameLayout>(R.id.sheet2)
@@ -153,7 +155,10 @@ class BusinessSettings : AppCompatActivity() {
             }
         }
     }
+    //----------------------------------------------------------------------------------------------
 
+    //----------------------------------------------------------------------------------------------
+    //function to update data in ifrebase
     private fun sendUpdateToFirebase(name: String?, email: String?, registerNumb: String?, telNumb: String?, businessTyp: String?) {
         databaseReference = FirebaseDatabase.getInstance().getReference("users").child(userID!!).child("Business Information")
 
@@ -198,7 +203,7 @@ class BusinessSettings : AppCompatActivity() {
                 Toast.makeText(this@BusinessSettings, "Update failed", Toast.LENGTH_SHORT).show()
             }
     }
-
+    //----------------------------------------------------------------------------------------------
 
     //----------------------------------------------------------------------------------------------
     //function to display user's email to display on screen

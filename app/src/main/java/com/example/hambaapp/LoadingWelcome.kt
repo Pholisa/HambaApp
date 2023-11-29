@@ -25,7 +25,5 @@ class LoadingWelcome : AppCompatActivity() {
         }, 3000)
 
     }
-
-
-
 }
+//------------------------------------------ooo000EndOfFile000ooo-----------------------------------

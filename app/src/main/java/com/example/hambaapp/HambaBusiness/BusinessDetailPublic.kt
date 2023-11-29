@@ -8,3 +8,4 @@ data class BusinessDetailPublic(
     val businessSummary: String? = null,
     val stringImage: String? = null
 )
+//------------------------------------------ooo000EndOfFile000ooo-----------------------------------

@@ -49,25 +49,17 @@ import java.io.IOException
 class BusinessListingData : AppCompatActivity() {
 
     private lateinit var binding: ActivityBusinessListingDataBinding
-    private lateinit var database: DatabaseReference
-
     private val theDatabase = Firebase.database
     private val userID = FirebaseAuth.getInstance().currentUser?.uid
     private val myReference = theDatabase.getReference("users").child(userID!!).child("Listing Data")
     private val myReference2 = theDatabase.getReference("Businesses")
-   // private val myReference = theDatabase.getReference("users").child(userID!!).child("Business Information")
-    private lateinit var firebaseAuthentication: FirebaseAuth
     private var stringImage: String = ""
-
     private val galleryRequestCode = 2
-
     private lateinit var placesClient: PlacesClient
     private lateinit var autoCompleteTextView: AutoCompleteTextView
-    private var theLocation: LatLng = LatLng(0.0, 0.0)
     private var theLocationStringPersonal: String = ""
     private var theLocationStringPublic: String = ""
     private var selectedCategory: String = ""
-
     private val predictions: MutableList<AutocompletePrediction> = mutableListOf()
 
 
@@ -76,6 +68,7 @@ class BusinessListingData : AppCompatActivity() {
         binding = ActivityBusinessListingDataBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //uploading image
         binding.btnBusImageUpload.setOnClickListener {
             galleryCheckPermission()
             val myfileintent = Intent(Intent.ACTION_GET_CONTENT)
@@ -85,12 +78,13 @@ class BusinessListingData : AppCompatActivity() {
 
         //calling category function
         getSelectedCategory()
+
         //calling nav bar function
         navigationBar()
 
-        /////////////////////////////////////
         // Initialize the Places API with your API key
         Places.initialize(applicationContext, "AIzaSyD78Ws9Y4GtZVZtYP9pWBXjHjMNDwGJRbQ")
+       // Places.initialize(applicationContext, )
         placesClient = Places.createClient(this)
 
         // Initialize AutoCompleteTextView
@@ -116,18 +110,20 @@ class BusinessListingData : AppCompatActivity() {
         // Set a listener for item selection
         autoCompleteTextView.setOnItemClickListener { _, _, position, _ ->
             theLocationStringPersonal = autoCompleteTextView.text.toString()
-
             getLatLngFromAddress(autoCompleteTextView.text.toString())
         }
 
+        //description data
         binding.btnBusDescNext.setOnClickListener {
             ValidateData()
-
         }
-
     }
+    //----------------------------------------------------------------------------------------------
 
-    private fun getAutocompletePredictions(query: String) {
+    //----------------------------------------------------------------------------------------------
+    //function that retrieves predictions
+    private fun getAutocompletePredictions(query: String)
+    {
         // Create a request for autocomplete predictions
         val request = FindAutocompletePredictionsRequest.builder()
             .setQuery(query)
@@ -152,8 +148,12 @@ class BusinessListingData : AppCompatActivity() {
                 Log.e("Autocomplete", "Prediction fetching failed: ${exception.localizedMessage}")
             }
     }
+    //----------------------------------------------------------------------------------------------
 
-    private fun getLatLngFromAddress(address: String) {
+    //----------------------------------------------------------------------------------------------
+    //getting the latlng of the address
+    private fun getLatLngFromAddress(address: String)
+    {
         try {
             val geocoder = Geocoder(this)
             val addresses: List<Address>? = geocoder.getFromLocationName(address, 1)
@@ -174,7 +174,9 @@ class BusinessListingData : AppCompatActivity() {
             Log.e("Autocomplete", "Geocoding failed: ${e.localizedMessage}")
         }
     }
+    //----------------------------------------------------------------------------------------------
 
+    //----------------------------------------------------------------------------------------------
     private fun getSelectedCategory()
     {
         val states = listOf("Accommodation", "Food & Entertainment", "Travel", "Other")
@@ -194,7 +196,7 @@ class BusinessListingData : AppCompatActivity() {
             }
         }
     }
-
+    //----------------------------------------------------------------------------------------------
 
     //----------------------------------------------------------------------------------------------
     //validating user data
@@ -358,3 +360,4 @@ class BusinessListingData : AppCompatActivity() {
     }
     //----------------------------------------------------------------------------------------------
 }
+//------------------------------------------ooo000EndOfFile000ooo-----------------------------------

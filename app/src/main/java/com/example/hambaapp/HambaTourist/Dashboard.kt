@@ -39,14 +39,11 @@ class Dashboard : AppCompatActivity() {
         recyclerViewTourism = findViewById(R.id.rvBusinessDisplaying)
         recyclerViewTourism.layoutManager = LinearLayoutManager(this)
 
-
-
         //getting business data from database
         getBusinessData()
 
         //displaying data based in categories
         bindingsForCategoryClickListeners()
-
 
         //calling navigation bar function
         navigationBar()
@@ -114,7 +111,6 @@ class Dashboard : AppCompatActivity() {
                     Toast.makeText(applicationContext, "cant find data", Toast.LENGTH_SHORT).show()
                 }
             }
-
             override fun onCancelled(databaseError: DatabaseError)
             {
                 // Handle error
@@ -132,7 +128,6 @@ class Dashboard : AppCompatActivity() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists())
                 {
-                   // businessArrayList.clear()
                     // Count the number of items
                      var businessCount = snapshot.childrenCount.toInt()
                     var businessTotal = findViewById<TextView>(R.id.tv_heading2)
@@ -165,7 +160,6 @@ class Dashboard : AppCompatActivity() {
     {
         val adapter = TourismAdapter(this@Dashboard, theList,
             onItemClickListener = { userProfile  ->
-               // Toast.makeText(applicationContext, "click works", Toast.LENGTH_SHORT).show()
                 // Bottom sheet data
                 val sheet1 = findViewById<FrameLayout>(R.id.sheet1)
                 BottomSheetBehavior.from(sheet1).apply {
@@ -173,7 +167,6 @@ class Dashboard : AppCompatActivity() {
                     state = BottomSheetBehavior.STATE_EXPANDED
                     //calling function that populates sheet with data from database
                     sheetPopulation(userProfile )
-
                 }
             }
         )
@@ -206,8 +199,6 @@ class Dashboard : AppCompatActivity() {
         businessSummary.text = userProfile.businessSummary
         number.text = userProfile.telephoneNo
         email.text = userProfile.emailAd
-
-
     }
     //----------------------------------------------------------------------------------------------
 
@@ -242,5 +233,5 @@ class Dashboard : AppCompatActivity() {
         }
     }
     //----------------------------------------------------------------------------------------------
-
 }
+//------------------------------------------ooo000EndOfFile000ooo-----------------------------------

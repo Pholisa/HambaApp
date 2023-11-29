@@ -9,7 +9,9 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.hambaapp.HambaBusiness.BusinessOption
+import com.example.hambaapp.MoreInfo
 import com.example.hambaapp.R
+import com.example.hambaapp.RateUs
 import com.example.hambaapp.databinding.ActivitySettingsBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 
@@ -22,13 +24,8 @@ class Settings : AppCompatActivity() {
 
         //calling the navigation bar
         navigationBar()
-        var registerAsOwner = findViewById<ImageView>(R.id.iv_businessEdit)
 
 
-        //about application
-        var about = findViewById<ImageView>(R.id.iv_selectAbout)
-        about.setOnClickListener {
-        }
 
         val sheet1 = findViewById<FrameLayout>(R.id.sheet1)
         var constraintAbout = findViewById<ConstraintLayout>(R.id.constraint_about)
@@ -42,12 +39,8 @@ class Settings : AppCompatActivity() {
         }
         //about
         constraintAbout.setOnClickListener {
-            Toast.makeText(this, "click works", Toast.LENGTH_SHORT).show()
-            BottomSheetBehavior.from(sheet1).apply {
-                peekHeight = 0
-                state = BottomSheetBehavior.STATE_EXPANDED
-                textValue.text = "Hamba by SALTHA is an authentic South African tourism and leisure application designed to provide the best experience of South Africa.Join us as either a small South African business or just looking for a vibe!"
-            }
+            val intent = Intent(this, MoreInfo::class.java)
+            startActivity(intent)
         }
 
         //terms and conditions
@@ -73,7 +66,8 @@ class Settings : AppCompatActivity() {
         //rate
         var constraintRate = findViewById<ConstraintLayout>(R.id.constraint_rate)
         constraintRate.setOnClickListener {
-            Toast.makeText(this, "Enabled at release", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, RateUs::class.java)
+            startActivity(intent)
         }
 
         //share
@@ -82,7 +76,9 @@ class Settings : AppCompatActivity() {
             Toast.makeText(this, "To do ", Toast.LENGTH_SHORT).show()
         }
     }
+    //----------------------------------------------------------------------------------------------
 
+    //----------------------------------------------------------------------------------------------
     private fun navigationBar()
     {
         //This will account for event clicking of the navigation bar (similar to if statement format)
@@ -113,4 +109,6 @@ class Settings : AppCompatActivity() {
             true
         }
     }
+    //----------------------------------------------------------------------------------------------
 }
+//------------------------------------------ooo000EndOfFile000ooo-----------------------------------

@@ -52,17 +52,15 @@ class BusinessRegForm : AppCompatActivity() {
         navigationBar()
 
         val buttonNext = findViewById<Button>(R.id.btnBusNext)
-
-        binding.btnUploadImage.setOnClickListener {
-            galleryCheckPermission()
-
-        }
-
         buttonNext.setOnClickListener {
             validateData()
             val intentNext = Intent(this, BusinessPrev::class.java)
             startActivity(intentNext)
 
+        }
+
+        binding.btnUploadImage.setOnClickListener {
+            galleryCheckPermission()
         }
 
     }
@@ -132,10 +130,8 @@ class BusinessRegForm : AppCompatActivity() {
             .withListener(object : PermissionListener {
                 override fun onPermissionGranted(p0: PermissionGrantedResponse?)
                 {
-                    // gallery()
-                    val myfileintent = Intent(Intent.ACTION_GET_CONTENT)
-                    myfileintent.type = "image/*"
-                    ActivityResultLauncher.launch(myfileintent)
+                     gallery()
+
                 }
 
                 override fun onPermissionDenied(p0: PermissionDeniedResponse?) {
@@ -164,14 +160,17 @@ class BusinessRegForm : AppCompatActivity() {
     //----------------------------------------------------------------------------------------------
 
     //----------------------------------------------------------------------------------------------
-    private fun gallery() {
-        val intent = Intent(Intent.ACTION_PICK)
-        intent.type = "image/*"
-        startActivityForResult(intent, galleryRequestCode)
+    //gallery opening
+    private fun gallery()
+    {
+        val myfileintent = Intent(Intent.ACTION_GET_CONTENT)
+        myfileintent.type = "image/*"
+        ActivityResultLauncher.launch(myfileintent)
     }
     //----------------------------------------------------------------------------------------------
 
     //----------------------------------------------------------------------------------------------
+    //navigation bar function
     private fun navigationBar() {
         //This will account for event clicking of the navigation bar (similar to if statement format)
         binding.bottomNavigationView.setOnItemSelectedListener { item ->

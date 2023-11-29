@@ -34,7 +34,7 @@ class DashBusinessView : AppCompatActivity() {
         }
 
         rateButton.setOnClickListener {
-
         }
     }
 }
+//------------------------------------------ooo000EndOfFile000ooo-----------------------------------

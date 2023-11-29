@@ -16,9 +16,15 @@ class AdminPortal : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAdminPortalBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        //calling navigatuin bar
+        navigationBar()
     }
 
-    private fun navigationBar() {
+    //----------------------------------------------------------------------------------------------
+    //navigation bar
+    private fun navigationBar()
+    {
         //This will account for event clicking of the navigation bar (similar to if statement format)
         binding.bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
@@ -44,6 +50,9 @@ class AdminPortal : AppCompatActivity() {
         }
     }
     //----------------------------------------------------------------------------------------------
+
+    //----------------------------------------------------------------------------------------------
+    //logout function
     private fun logoutUI()
     {
         MaterialAlertDialogBuilder(this)

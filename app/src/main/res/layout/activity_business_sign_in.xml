@@ -1,32 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/hamba_welcome"
+    android:orientation="vertical"
     tools:context=".HambaBusiness.BusinessSignIn">
 
-
     <com.google.android.material.textfield.TextInputLayout
+        android:layout_marginTop="350dp"
         android:id="@+id/edLoginEmail_bus"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/theborder2"
         android:drawablePadding="8dp"
         android:hint="Email Address"
-        android:padding="15dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.642"
-        android:textColor="@color/black" >
+        android:padding="15dp">
+
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
-
+            android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -41,13 +36,7 @@
         android:padding="15dp"
         android:paddingTop="10dp"
         android:textColor="@color/grey"
-        app:endIconMode="password_toggle"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edLoginEmail_bus"
-        app:layout_constraintVertical_bias="0.079">
+        app:endIconMode="password_toggle">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -60,27 +49,18 @@
         android:layout_width="132dp"
         android:layout_height="50dp"
         android:backgroundTint="@color/black"
+        android:layout_gravity="center"
         android:text="SIGN IN"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edLoginPassword_bus"
-        app:layout_constraintVertical_bias="0.242" />
+        android:textColor="@color/white"/>
 
     <RelativeLayout
         android:id="@+id/relative1"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="12dp"
         android:gravity="center"
-        android:padding="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_busSignIn">
+        android:padding="8dp">
 
         <TextView
             android:id="@+id/tvLoginRedirectText"
@@ -129,5 +109,4 @@
         </RelativeLayout>
     </RelativeLayout>
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

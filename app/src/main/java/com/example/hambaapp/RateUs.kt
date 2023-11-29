@@ -7,18 +7,25 @@ import com.example.hambaapp.HambaBusiness.BusinessSettings
 import com.example.hambaapp.HambaTourist.Dashboard
 import com.example.hambaapp.HambaTourist.Favourites
 import com.example.hambaapp.HambaTourist.MapsActivity
+import com.example.hambaapp.HambaTourist.Settings
 import com.example.hambaapp.databinding.ActivityRateUsBinding
 
 class RateUs : AppCompatActivity() {
 
     private lateinit var binding: ActivityRateUsBinding
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRateUsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+        //calling navigation bar
+        navigationBar()
+    }
+
+    private fun sendRatings()
+    {
 
     }
 
@@ -41,13 +48,10 @@ class RateUs : AppCompatActivity() {
                     val intent = Intent(this, Favourites::class.java)
                     startActivity(intent)
                 }
-
                 R.id.profile -> {
-                    val intent = Intent(this, BusinessSettings::class.java)
+                    val intent = Intent(this, Settings::class.java)
                     startActivity(intent)
                 }
-
-
                 else -> {}
             }
             true

@@ -51,7 +51,7 @@ class TourismAdapter(private val context: Context,
         holder.tvBusinessDesc.text =  "Description:" +currentBusiness.businessSummary
         holder.tvBusinessEmail.text = "Email:" + currentBusiness.emailAd
         holder.tvBusinessNo.text = "Number:" + currentBusiness.telephoneNo
-        holder.tvBusinessPrice.text = currentBusiness.price
+        holder.tvBusinessPrice.text = "R"+currentBusiness.price
         holder.tvBusinessLocation.text = currentBusiness.locationString
 
         val imageString = currentBusiness.stringImage

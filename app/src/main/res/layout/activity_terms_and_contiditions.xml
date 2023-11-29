@@ -32,7 +32,7 @@
                 android:layout_height="56dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="60dp"
-                android:text="More Info"
+                android:text="Terms and Conditions"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="25sp" />
@@ -53,8 +53,8 @@
                     android:textStyle="italic"
                     android:textColor="@color/black"
                     android:fontFamily="@font/comfortaabold"
-                    android:text="WHO ARE WE"
-                    android:textSize="30sp" />
+                    android:text="In these Terms and Conditions, defined words are used and referred to below – these words have the following meaning"
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/tv_describe1"
@@ -63,134 +63,81 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
                     android:layout_marginTop="15dp"
-                    android:textColor="@color/white"
-                    android:text="SALTHA (South Aftrican Leisure, Tourism, and Hospitality Association) was founded to provide a secure space in the economy for small rising tourism operators."
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:id="@+id/tv_subHead2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="30dp"
-                    android:layout_marginTop="15dp"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/comfortaabold"
-                    android:text="OUR VISION"
-                    android:textSize="30sp" />
-
-                <TextView
-                    android:id="@+id/tv_describe2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="30dp"
-                    android:layout_marginTop="15dp"
-                    android:text="To be the leading voice of tourism leisure and hospitality for small, medium and large enterprices in South Africa.
-"
-                    android:textColor="@color/white"
                     android:textSize="18sp"
-                    tools:ignore="HardcodedText" />
+                    android:text="\n
+“CPA” means the Consumer Protection Act, 68 of 2008 and the Regulations, as amended;\n
+“Register” means entering your first name, last name, email address, city, selecting a username and password to create an account on the website;\n
+“Terms and Conditions” means these Terms and Conditions;\n
+“You” means the user of the Website and the buyer of deals;\n
+“Us” and “We” means South African Leisure, Tourism and Hospitality Association(SALTHA) trading as Hamba.\n
+“Website” means the Website located at ______
+\n
+INTRODUCTION\n
 
-                <TextView
-                    android:id="@+id/tv_subHead3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="30dp"
-                    android:layout_marginTop="15dp"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/comfortaabold"
-                    android:text="OUR MISSION"
-                    android:textSize="30sp" />
+Please read these Terms and Conditions carefully. When registering an account with Us, You are required to agree to the Terms and Conditions. These Terms and Conditions are made between You and Us.\n
+b)	These Terms and Conditions are applicable when You access and use the Website.\n
+c)	You may not enquire for any category unless You accept these Terms and Conditions.\n
+\n
+General Terms\n
 
-                <TextView
-                    android:id="@+id/tv_describe3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="30dp"
-                    android:layout_marginTop="15dp"
-                    android:text="Aims to develop the leisure and tourism in our country, promotes to protect members rights, lobby for a conductive atmosphere, growth and development of professional small tourism operators."
-                    android:textSize="20sp"
-                    android:textColor="@color/white"
-                    tools:ignore="HardcodedText" />
+I.	The content contained on this Website may be used by You for your own personal.\n
+II.	To use the Website and to enquire for any category You must be 18 years old or over.\n
+III.	These Terms and Conditions are a written contract between You and Us and any other terms do not form part of our contract unless they are made in writing and signed by You and Us.\n
+IV.	If any one or more provisions of these Terms and Conditions should become invalid, illegal or unenforceable in any respect under any law, such provision will be set apart from these Terms and Conditions, and the validity, legality and enforceability of the rest of the provisions will not in any way be affected.\n
+V.	These Terms and Conditions are governed by the laws of the Republic of South Africa.\n
+VI.	Should We amend these Terms and Conditions, the Terms and Conditions which You read and agreed to, will be applicable. We may ask You to agree to the amended Terms and Conditions from time to time.\n
+\n
+The Website\n
+\n
+1.	You agree not to infect the Website with any computer programming (such as a virus) that may damage, interfere with, delay or intercept any data or information on the Website and You agree to pay for any monetary or other loss we may incur as a result of such infection of the Website by You.\n
+2.	We may suspend the Website or any part thereof or close your account after giving notice to You if We determine that the Website is not being used by You in compliance with these Terms and Conditions.\n
+3.	We cannot guarantee that your use of the Website will always be uninterrupted or that it is free from becoming infected by viruses due to factors beyond our control.\n
+4.	Your access to the Website may sometimes be restricted due to repairs or maintenance of the Website. We will try to restore your access as soon as We reasonably can.\n
+5.	We cannot assume any responsibility for lack of functionality which is dependent on your browser or other third party software.\n
+\n
+Intellectual Property\n
+\n
+1.	The Website contains copyright and other intellectual property including logos and other graphics and multimedia works that are our property.\n
+2.	E-mail addresses, names, telephone numbers and fax numbers on the Website may not be incorporated into any database used for electronic marketing or similar purposes. The presentation of such details is not permission from Us to utilise same.\n
+3.	You may not, without our prior written consent, use our intellectual property or that of third parties for any purposes whatsoever.\n
+\n
+Factors Beyond Our Control
+\n
+We will not be liable to You for any breach of our obligations under these Terms and Conditions where We are hindered or prevented from carrying out our obligations by any cause outside
+our reasonable control, including by lightning, fire, flood, extremely severe weather, strike, lock-out, labour dispute, act of God, war, riot, civil commotion, explosion, malicious damage, failure of any telecommunications or computer system, compliance with any law, accident (or by any damage caused by any of such events).\n
+\n
+Privacy Policy\n
+\n
+1.	Your private information required for registering an account on the Website will be kept in the strictest confidence by Us and will not be sold or made known to third parties.\n
+2.	We may electronically collect, store and use your:\n
+\n
+2.1.	name and surname\n
+2.2.	e-mail address;\n
+2.3.	birth date\n
+2.4.	your city;\n
+2.5.	non-personal browsing habits and click patterns\n
+2.6.	IP address\n
+\n
+3.	This information will only be used to do the following:\n
+\n
+3.1.	subject to your consent, to inform You of facts relating to your access and use of the Website;\n
+3.2.	subject to your consent, to inform You about enquires;\n
+3.3.	to compile non-personal statistical information about browsing habits, click-patterns and access to the Website subject to the conditions in clause “beyond our Control”; to verify your identity when transacting with Us.\n
+\n
+4.	Information detailed above is collected either electronically by using cookies or is provided voluntarily by you. You may determine cookie use independently through your browser settings.\n
+\n
+5.	We may collect, maintain, save, compile and share any information collected from You, subject to the following conditions:\n
+\n
+5.1.	We will not disclose your personal information unless you give us your permission thereto or unless required for the purposes of any legal process;\n
+5.2.	We may compile, use and share any information that does not relate to any specific individual;\n
+5.3.	We own and retain all rights to non-personal statistical information and compiled by us;\n
+5.4.	We own and retain all rights to non-personal statistical information collected and compiled by Us online.\n
+6.	We cannot be held liable for security breaches on your electronic device (personal computer or other electronic device used to browse the Website), which may occur as a result of a lack of adequate virus protection software or spy-ware that you may have inadvertently installed on your device.\n
+7.	We will send you emails on a regular basis with the best bargains on interesting things to do, see, and experience in your city. This email is completely free to subscribe to. Every email will include a 'unsubscribe' link to allow for simple opt-out if you no longer wish to receive the emails.\n
+8.	We inspect this policy on a regular basis to ensure that it accurately represents how We utilize your information. The policy in effect on the date You used the Website will apply, so please ensure that You are aware of any modifications./n
+9.	In the event of a major change to this policy, We will notify you through email or on the Website's home page."/>
 
-                <TextView
-                    android:id="@+id/tv_subHead4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="30dp"
-                    android:layout_marginTop="15dp"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/comfortaabold"
-                    android:text="TALK TO US"
-                    android:textSize="30sp" />
 
-                <TextView
-                    android:id="@+id/tv_describe5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="30dp"
-                    android:layout_marginTop="5dp"
-                    android:textColor="@color/white"
-                    android:text="Contact person for SALTHA:"
-                    android:textSize="20sp" />
-                <TextView
-                    android:id="@+id/tv_describe6"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="30dp"
-                    android:layout_marginTop="5dp"
-                    android:textColor="@color/white"
-                    android:text="Mr Richard Zulu"
-                    android:textSize="20sp" />
-                <TextView
-                    android:id="@+id/tv_describe7"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="30dp"
-                    android:layout_marginTop="5dp"
-                    android:textColor="@color/white"
-                    android:text="Cell: 083 790 0875"
-                    android:textSize="20sp" />
-                <TextView
-                    android:id="@+id/tv_describe8"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="30dp"
-                    android:layout_marginTop="5dp"
-                    android:textColor="@color/white"
-                    android:text="Email: info.saltha@gmail.com"
-                    android:textSize="20sp" />
-
-                <TextView
-                    android:id="@+id/tv_describe9"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="30dp"
-                    android:layout_marginTop="105dp"
-                    android:textColor="@color/white"
-                    android:text="This was proudly designed and developed by:"
-                    android:textSize="18sp"
-                    tools:ignore="HardcodedText" />
-                <TextView
-                    android:id="@+id/tv_describe10"
-
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="130dp"
-                    android:layout_marginEnd="30dp"
-                    android:layout_marginTop="15dp"
-                    android:textColor="@color/white"
-                    android:text="CTRL ALT ELITE"
-                    android:textSize="18sp" />
             </LinearLayout>
         </RelativeLayout>
     </ScrollView>

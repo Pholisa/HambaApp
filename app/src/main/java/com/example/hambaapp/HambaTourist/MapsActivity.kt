@@ -34,49 +34,13 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityMapsBinding
-
-    //----------------------------------------------------------------------------------
-    //Reference: EDMT Dev
-    //Url: https://www.youtube.com/watch?v=tI4dV9n6-yE
-    //Reference: The Coders Integrity
-    //Url: https://www.youtube.com/watch?v=SzIuH0HV8tg&t=9s
-    //Use: Show user's current location and Nearby Places
-    lateinit var mapView: MapView
-
-    private val MAP_VIEW_BUNDLE_KEY = "MapViewBundleKey"
-
-    private val DEFAULT_ZOOM = 15f
-
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private val LOCATION_PERMISSION_REQUEST = 1
-
-    private lateinit var accommodation: ImageButton
-
-    private lateinit var transport: ImageButton
-
-    private lateinit var restaurant: ImageButton
-
-    private lateinit var localbar: ImageButton
-
-    private lateinit var atm: ImageButton
-
-    lateinit var mService: IGoogleAPIService
-
-    internal lateinit var currentPlace: MyPlaces
-
-    var latitude = 0.0
-    var longitude = 0.0
-    private val userID = FirebaseAuth.getInstance().currentUser?.uid
     private val database = FirebaseDatabase.getInstance()
-   // private val myReference3 = database.getReference("users").child(userID!!).child("Listing Data")
     private val myMutableMap: MutableMap<LatLng, String> = mutableMapOf()
-
     private val allListingDataReference = database.getReference("Businesses")
     private var  businessName:String = ""
 
-
-    //--------------------------------------------------------------------------------------
-    //Uses Google Services to search nearby places based on the string of the button clicked
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -85,7 +49,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         //calling the nav bar function
         navigationBar()
-
 
         //Initialising map
         val mapFragment = supportFragmentManager.findFragmentById(R.id.google_map) as SupportMapFragment
@@ -134,21 +97,21 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 else
                 {
                     // Handle case when no data is found
-                   // Log.e("FirebaseData", "No data found in Listing Data")
+                    Log.e("FirebaseData", "No data found in Listing Data")
                     Toast.makeText(this@MapsActivity, "No data found in Businesses", Toast.LENGTH_SHORT).show()
                 }
             }
-
             override fun onCancelled(error: DatabaseError) {
                 Log.e("FirebaseData", "Data retrieval failed: $error")
                 // Handle error
                 Toast.makeText(this@MapsActivity, "retrieval failed", Toast.LENGTH_SHORT).show()
             }
         })
-
-
     }
+    //----------------------------------------------------------------------------------------------
 
+    //----------------------------------------------------------------------------------------------
+    //permission result
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray)
     {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
@@ -157,6 +120,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             onMapReady(mMap)
         }
     }
+    //----------------------------------------------------------------------------------------------
 
     //----------------------------------------------------------------------------------------------
     //Executables once map is on screen
@@ -187,7 +151,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                     mMap.addMarker(markerOptions)
 
                     // How zoomed in the map will be.
-                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 10f))
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 8f))
 
 
                     //retrive sightings to display
@@ -200,7 +164,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                                 .title(businessName)
                                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.markersmall))
                             googleMap.addMarker(markerOption)
-                            Toast.makeText(this, "we found $businessName", Toast.LENGTH_SHORT).show()
+                           // Toast.makeText(this, "we found $businessName", Toast.LENGTH_SHORT).show()
                         }
                     }
 
@@ -260,4 +224,4 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     }
     //----------------------------------------------------------------------------------------------
 }
-//------------------------------------------<<<<<<<<<<<-End Of File->>>>>>>>>>>-------------------------
+//------------------------------------------ooo000EndOfFile000ooo-----------------------------------

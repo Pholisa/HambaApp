@@ -15,7 +15,6 @@ import com.google.firebase.ktx.Firebase
 class BusinessListIntro : AppCompatActivity() {
 
     private lateinit var binding: ActivityBusinessListIntroBinding
-
     private val theDatabase = Firebase.database
     private val userID = FirebaseAuth.getInstance().currentUser?.uid
     private val myReference = theDatabase.getReference("users").child(userID!!).child("Business Information")
@@ -26,9 +25,8 @@ class BusinessListIntro : AppCompatActivity() {
         binding = ActivityBusinessListIntroBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
+        //initialising start button
         val buttonStart = findViewById<Button>(R.id.btnGetStart)
-
         buttonStart.setOnClickListener {
             val startIntent = Intent(this, BusinessRegForm::class.java)
             startActivity(startIntent)
@@ -64,6 +62,7 @@ class BusinessListIntro : AppCompatActivity() {
             true
         }
     }
+    //----------------------------------------------------------------------------------------------
 
     //----------------------------------------------------------------------------------------------
     //logout function
@@ -82,6 +81,5 @@ class BusinessListIntro : AppCompatActivity() {
             }
             .show()
     }
-
     //----------------------------------------------------------------------------------------------
 }

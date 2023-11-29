@@ -49,7 +49,7 @@ class BusinessDashboard : AppCompatActivity() {
         recyclerView = findViewById(R.id.recycler1)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        //----------------------------------------------------------------------------------------------
+
         //getting business data from database
         retrievBusinessDataFromFirebase()
 
@@ -84,6 +84,8 @@ class BusinessDashboard : AppCompatActivity() {
             }
         })
     }
+    //----------------------------------------------------------------------------------------------
+
     //----------------------------------------------------------------------------------------------
     //method to handle data click listeners
     private fun adapterData()

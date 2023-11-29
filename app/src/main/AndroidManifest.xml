@@ -30,14 +30,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HambaApp"
         tools:targetApi="31">
+        <activity
+            android:name=".TermsAndContiditions"
+            android:exported="false" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyB3EPkYb9njIsQ1oX9w511QuDb3gC6xDKY" />
+
         <activity
             android:name=".HambaBusiness.BusinessOption"
             android:exported="false" />
-
         <activity
             android:name=".Accomodation"
             android:exported="false" />
@@ -47,22 +50,10 @@
         <activity
             android:name=".AccomodationPage"
             android:exported="false" />
-        <activity
-            android:name=".HambaAdmin.SignInAdmin"
-            android:exported="false" />
-
-        <activity
-            android:name=".DeleteListing"
-            android:exported="false" />
-        <activity
-            android:name=".CurrentListing"
-            android:exported="false" />
-
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-
 
         <activity
             android:name=".AdminPortal"
@@ -80,18 +71,14 @@
         <activity
             android:name=".HambaBusiness.BusinessRegForm"
             android:exported="false" />
-        <activity
-            android:name=".ForgotPassword"
-            android:exported="false" />
+
         <activity
             android:name=".HambaTourist.Dashboard"
             android:exported="false" />
         <activity
             android:name=".HambaBusiness.BusinessSignIn"
             android:exported="false" />
-        <activity
-            android:name=".Entertainment"
-            android:exported="false" />
+       
         <activity
             android:name=".HambaAdmin.AdminDashboard"
             android:exported="false" />
@@ -107,7 +94,6 @@
         <activity
             android:name=".HambaBusiness.BusinessSettings"
             android:exported="false" />
-       
         <activity
             android:name=".HambaBusiness.BusinessListingData"
             android:exported="false" />

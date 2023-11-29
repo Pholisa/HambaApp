@@ -60,14 +60,17 @@
             android:drawablePadding="8dp"
             android:ems="10"
             android:hint="*Company Name*"
-            android:inputType="textPersonName"
+            android:inputType="text"
             android:minHeight="48dp"
             android:padding="8dp"
-            android:textColor="@color/black">
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
+            android:textColor="@color/black"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:background="@drawable/button_background"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -87,10 +90,12 @@
             android:inputType="number"
             android:padding="8dp"
             android:textColor="@color/black" >
+
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                />
+                android:inputType="number"
+                android:background="@drawable/button_background"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -106,14 +111,16 @@
             android:drawablePadding="8dp"
             android:ems="10"
             android:hint="*Business Email Address*"
-            android:inputType="textPersonName"
+            android:inputType="text"
             android:minHeight="48dp"
             android:padding="8dp"
             android:textColor="@color/black" >
+
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                />
+                android:inputType="text"
+                android:background="@drawable/button_background"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -133,10 +140,12 @@
             android:inputType="number"
             android:padding="8dp"
             android:textColor="@color/black" >
+
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                />
+                android:inputType="number"
+                android:background="@drawable/button_background"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -152,12 +161,14 @@
             android:layout_marginRight="35dp"
             android:drawablePadding="8dp"
             android:hint="*Business Type*"
-            android:inputType="textPersonName"
+            android:inputType="text"
             android:padding="8dp" >
+
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                />
+                android:inputType="text"
+                android:background="@drawable/button_background"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -175,11 +186,14 @@
             android:ems="10"
             android:hint="*Address*"
             android:padding="8dp"
+            android:inputType="text"
             android:textColor="@color/black" >
+
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                />
+                android:inputType="text"
+                android:background="@drawable/button_background"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -196,13 +210,15 @@
             android:drawablePadding="8dp"
             android:ems="10"
             android:hint="*Business Category*"
-            android:inputType="textPersonName"
+            android:inputType="text"
             android:padding="8dp"
             android:textColor="@color/black" >
+
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                />
+                android:inputType="text"
+                android:background="@drawable/button_background"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 

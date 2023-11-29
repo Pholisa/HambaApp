@@ -6,8 +6,6 @@ data class BusinessDetail(
     val price: String? = null,
     val businessSummary: String? = null,
     val stringImage: String? = null,
-
-
     )
 
 

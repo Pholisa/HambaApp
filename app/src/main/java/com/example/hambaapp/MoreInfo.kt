@@ -10,6 +10,7 @@ import com.example.hambaapp.HambaBusiness.BusinessSettings
 import com.example.hambaapp.HambaTourist.Dashboard
 import com.example.hambaapp.HambaTourist.Favourites
 import com.example.hambaapp.HambaTourist.MapsActivity
+import com.example.hambaapp.HambaTourist.Settings
 import com.example.hambaapp.databinding.ActivityMoreInfoBinding
 
 class MoreInfo : AppCompatActivity() {
@@ -18,12 +19,12 @@ class MoreInfo : AppCompatActivity() {
 
     lateinit var btnNextOpt: Button
 
-    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMoreInfoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        /*
         btnNextOpt = findViewById(R.id.btnBusNext)
 
         //Allows user to click image view
@@ -31,12 +32,17 @@ class MoreInfo : AppCompatActivity() {
         btnNextOpt.setOnClickListener {
             val intent = Intent(this, BusinessRegForm::class.java)
             startActivity(intent)
-
         }
+
+         */
+        //calling nav bar
         navigationBar()
 
     }
-    private fun navigationBar() {
+    //----------------------------------------------------------------------------------------------
+    //nav bar function
+    private fun navigationBar()
+    {
         //This will account for event clicking of the navigation bar (similar to if statement format)
         binding.bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
@@ -56,14 +62,14 @@ class MoreInfo : AppCompatActivity() {
                     startActivity(intent)
                 }
                 R.id.profile -> {
-                    val intent = Intent(this, BusinessSettings::class.java)
+                    val intent = Intent(this, Settings::class.java)
                     startActivity(intent)
                 }
-
-
                 else -> {}
             }
             true
         }
+        //----------------------------------------------------------------------------------------------
     }
 }
+//------------------------------------------ooo000EndOfFile000ooo-----------------------------------

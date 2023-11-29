@@ -7,6 +7,8 @@
     android:background="@drawable/hamba_background"
     tools:context=".RateUs">
 
+
+
     <TextView
         android:id="@+id/hamba_txt"
         android:layout_width="wrap_content"
@@ -20,20 +22,29 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.023" />
 
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
     <TextView
         android:id="@+id/rateus_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-thin"
+        android:layout_marginTop="50dp"
         android:text="Rate Us"
         android:textColor="@color/white"
-        android:textSize="25dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.092"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.109" />
+        android:textSize="25dp" />
 
     <ImageView
         android:id="@+id/rateus_image"
@@ -41,8 +52,7 @@
         android:layout_height="300dp"
         android:src="@drawable/rateuspic"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="16dp" />
+        android:layout_gravity="center"/>
 
     <TextView
         android:id="@+id/tvLikeHamba"
@@ -51,12 +61,12 @@
         android:fontFamily="sans-serif"
         android:text="Do You like Hamba?"
         android:textAllCaps="true"
-        android:textColor="@color/lightgrey"
+        android:layout_gravity="center"
+        android:textColor="@color/grey"
         android:textSize="40dp"
         android:textStyle="bold"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="223dp" />
+        android:layout_marginTop="10dp"
+        tools:ignore="MissingConstraints"/>
 
     <TextView
         android:id="@+id/rateus_titletext"
@@ -68,9 +78,7 @@
         android:textColor="@color/black"
         android:textSize="30dp"
         android:textStyle="bold"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="9dp"
-        tools:layout_editor_absoluteY="285dp" />
+        android:layout_gravity="center"/>
 
     <TextView
         android:id="@+id/rateus_bodytxtparagraph1"
@@ -110,50 +118,58 @@
         tools:layout_editor_absoluteY="465dp"
         tools:ignore="MissingConstraints" />
 
-    <ImageView
-        android:id="@+id/rateus_redicon"
-        android:layout_width="130dp"
-        android:layout_height="95dp"
-        android:src="@drawable/redfaceicon"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="-14dp"
-        tools:layout_editor_absoluteY="492dp" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
-    <ImageView
-        android:id="@+id/rateus_organeicon"
-        android:layout_width="130dp"
-        android:layout_height="95dp"
-        android:src="@drawable/organefaceicon"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="79dp"
-        tools:layout_editor_absoluteY="492dp" />
+            <ImageView
+                android:id="@+id/rateus_redicon"
+                android:layout_width="130dp"
+                android:layout_height="95dp"
+                android:src="@drawable/redfaceicon"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="-14dp"
+                tools:layout_editor_absoluteY="492dp" />
 
-    <ImageView
-        android:id="@+id/rateus_yellowicon"
-        android:layout_width="130dp"
-        android:layout_height="95dp"
-        android:src="@drawable/yellowfaceicon"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="153dp"
-        tools:layout_editor_absoluteY="492dp" />
+            <ImageView
+                android:id="@+id/rateus_organeicon"
+                android:layout_width="130dp"
+                android:layout_height="95dp"
+                android:src="@drawable/organefaceicon"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="79dp"
+                tools:layout_editor_absoluteY="492dp" />
 
-    <ImageView
-        android:id="@+id/rateus_lgreenicon"
-        android:layout_width="130dp"
-        android:layout_height="95dp"
-        android:src="@drawable/lightgreenfaceicon"
-        tools:layout_editor_absoluteX="227dp"
-        tools:layout_editor_absoluteY="492dp"
-        tools:ignore="MissingConstraints" />
+            <ImageView
+                android:id="@+id/rateus_yellowicon"
+                android:layout_width="130dp"
+                android:layout_height="95dp"
+                android:src="@drawable/yellowfaceicon"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="153dp"
+                tools:layout_editor_absoluteY="492dp" />
 
-    <ImageView
-        android:id="@+id/rateus_dgreenicon"
-        android:layout_width="130dp"
-        android:layout_height="95dp"
-        android:src="@drawable/darkgreenfaceicon"
-        tools:layout_editor_absoluteX="303dp"
-        tools:layout_editor_absoluteY="490dp"
-        tools:ignore="MissingConstraints" />
+            <ImageView
+                android:id="@+id/rateus_lgreenicon"
+                android:layout_width="130dp"
+                android:layout_height="95dp"
+                android:src="@drawable/lightgreenfaceicon"
+                tools:layout_editor_absoluteX="227dp"
+                tools:layout_editor_absoluteY="492dp"
+                tools:ignore="MissingConstraints" />
+
+            <ImageView
+                android:id="@+id/rateus_dgreenicon"
+                android:layout_width="130dp"
+                android:layout_height="95dp"
+                android:src="@drawable/darkgreenfaceicon"
+                tools:layout_editor_absoluteX="303dp"
+                tools:layout_editor_absoluteY="490dp"
+                tools:ignore="MissingConstraints" />
+
+        </LinearLayout>
+
 
 
     <TextView
@@ -178,6 +194,16 @@
         tools:layout_editor_absoluteX="18dp"
         tools:layout_editor_absoluteY="611dp"
         tools:ignore="MissingConstraints" />
+
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:text="submit"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
+    </ScrollView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"

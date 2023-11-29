@@ -27,16 +27,6 @@
 
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:fontFamily="@font/alata"
-                    android:text="Business"
-                    android:textAlignment="center"
-                    android:textColor="@color/black"
-                    android:textSize="48sp"
-                    android:textStyle="bold" />
-
-                <TextView
                     android:id="@+id/tv_started_subtitle"
                     android:layout_width="wrap_content"
                     android:layout_height="150dp"
@@ -44,8 +34,10 @@
                     android:layout_marginTop="15dp"
                     android:fontFamily="@font/alata"
                     android:text="Hamba by SALTHA is an authentic South African tourism and leisure application designed to provide the best experience of South Africa, If you already have an account log in, if you don't have an account please sign up"
+                    android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textSize="18dp"
+
                     android:textStyle="italic"
                     tools:ignore="TextSizeCheck" />
 

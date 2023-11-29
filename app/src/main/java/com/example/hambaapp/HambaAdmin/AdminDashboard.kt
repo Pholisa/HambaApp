@@ -195,9 +195,7 @@ class AdminDashboard : AppCompatActivity() {
         businessType.text = userProfile.businessType
         category.text = userProfile.businessCategory
         emailAddress.text = userProfile.emailAddress
-
     }
-
     //----------------------------------------------------------------------------------------------
 
     //----------------------------------------------------------------------------------------------
@@ -231,3 +229,4 @@ class AdminDashboard : AppCompatActivity() {
     }
     //----------------------------------------------------------------------------------------------
 }
+//------------------------------------------ooo000EndOfFile000ooo-----------------------------------

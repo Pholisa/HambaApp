@@ -30,8 +30,6 @@ class MoreOptions : AppCompatActivity() {
         listImageView = findViewById(R.id.iv_listBusiness)
         portalImageView = findViewById(R.id.iv_businessPortal)
 
-
-
         //Allows user to click image view
         //Will take user to the More Info screen after clicking
         infoImageView.setOnClickListener {
@@ -45,7 +43,6 @@ class MoreOptions : AppCompatActivity() {
         listImageView.setOnClickListener {
             val intent = Intent(this, BusinessListIntro::class.java)
             startActivity(intent)
-
         }
 
         //Allows user to click image view
@@ -53,12 +50,12 @@ class MoreOptions : AppCompatActivity() {
         portalImageView.setOnClickListener {
             val intent = Intent(this, BusinessListIntro::class.java)
             startActivity(intent)
-
         }
 
+        //nav bar function
         navigationBar()
-
     }
+    //----------------------------------------------------------------------------------------------
     private fun navigationBar() {
         //This will account for event clicking of the navigation bar (similar to if statement format)
         binding.bottomNavigationView.setOnItemSelectedListener { item ->
@@ -82,11 +79,11 @@ class MoreOptions : AppCompatActivity() {
                     val intent = Intent(this, BusinessSettings::class.java)
                     startActivity(intent)
                 }
-
-
                 else -> {}
             }
             true
         }
     }
+    //----------------------------------------------------------------------------------------------
 }
+//------------------------------------------ooo000EndOfFile000ooo-----------------------------------

@@ -53,11 +53,14 @@
                 android:drawableLeft="@drawable/baseline_person_24"
                 android:drawablePadding="8dp"
                 android:textColor="@color/white"
+                android:inputType="text"
                 app:endIconMode="clear_text"
              style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:background="@drawable/button_background"/>
         </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -72,7 +75,8 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_background"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -81,13 +85,16 @@
                 android:id="@+id/edEmailAddress"
                 android:layout_marginTop="5dp"
                 android:padding="8dp"
+                android:inputType="text"
                 android:hint="Email Address"
                 android:drawableLeft="@drawable/baseline_person_24"
                 android:drawablePadding="8dp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:inputType="text"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_background"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -104,12 +111,13 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textPassword"/>
+                    android:inputType="textPassword"
+                    android:background="@drawable/button_background"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:id="@+id/edPasswordConfirm"
                 android:layout_marginTop="5dp"
                 android:padding="8dp"
@@ -119,15 +127,17 @@
                 app:endIconMode="password_toggle">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="332dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textPassword" />
+                    android:inputType="textPassword"
+                    android:background="@drawable/button_background"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
-                android:layout_width="match_parent"
+                android:layout_width="200dp"
                 android:layout_height="70dp"
                 android:layout_marginTop="30dp"
+                android:layout_gravity="center"
                 android:text="Sign Up"
                 android:id="@+id/btnSignUp"
                 android:textColor="@color/black"

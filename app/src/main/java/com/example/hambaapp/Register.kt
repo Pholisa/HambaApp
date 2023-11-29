@@ -76,5 +76,6 @@ class Register : AppCompatActivity() {
             startActivity(loginIntent)
         }
     }
+    //----------------------------------------------------------------------------------------------
 
-    }
+}

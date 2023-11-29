@@ -10,6 +10,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.lifecycleScope
+import com.example.hambaapp.HambaAdmin.AdminDashboard
 import com.example.hambaapp.R
 import com.example.hambaapp.Register
 import com.example.hambaapp.databinding.ActivityBusinessSignInBinding
@@ -32,7 +33,8 @@ class BusinessSignIn : AppCompatActivity() {
     private val theDatabase = Firebase.database
     private lateinit var myReference: DatabaseReference
     private var companyName: String = ""
-   private var myReference1 = theDatabase.getReference("users")
+    private var myReference1 = theDatabase.getReference("users")
+    private lateinit var database: DatabaseReference
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,17 +63,49 @@ class BusinessSignIn : AppCompatActivity() {
             if (username.isNotEmpty() && pass.isNotEmpty()) {
                 firebaseAuthentication.signInWithEmailAndPassword(username, pass)
                     .addOnCompleteListener { task ->
-                        if (task.isSuccessful) {
+                        if (task.isSuccessful)
+                        {
                             var userID = FirebaseAuth.getInstance().currentUser?.uid
-                            checkBusinessSetup(userID!!)
-                        } else {
+                            checkRole()
+                        }
+                        else
+                        {
                             Toast.makeText(this, "Email or Password is Incorrect", Toast.LENGTH_SHORT).show()
                         }
                     }
-            } else {
+            }
+            else
+            {
                 Toast.makeText(this, "Fields cannot be empty", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    fun checkRole()
+    {
+        database = Firebase.database.reference
+        val userID = FirebaseAuth.getInstance().currentUser?.uid
+        database.child("users").child(userID!!).get().addOnSuccessListener {
+            val role = it.child("Personal Details").child("role").value.toString()
+
+            if(role == "admin")
+            {
+                //Toast.makeText(this, "role is $role", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, AdminDashboard::class.java)
+                startActivity(intent)
+            }
+            else
+            {
+                //Toast.makeText(this, "role is $role", Toast.LENGTH_SHORT).show()
+                checkBusinessSetup(userID!!)
+            }
+
+
+        }.addOnFailureListener {
+            Toast.makeText(this, it.toString(), Toast.LENGTH_SHORT).show()
+
+        }
+
     }
 
     private fun checkBusinessSetup(userID:String) {
@@ -80,10 +114,36 @@ class BusinessSignIn : AppCompatActivity() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists())
                 {
-                    startAppropriateActivity(true)
-                } else
+                    checkApplicationStatus(userID)
+                   // startAppropriateActivity(true)
+                }
+                else
                 {
                     startAppropriateActivity(false)
+
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(this@BusinessSignIn, error.toString(), Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    private fun checkApplicationStatus(userID:String)
+    {
+        myReference = theDatabase.getReference("Account Requests").child(userID!!)
+        myReference?.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists())
+                {
+                    Toast.makeText(applicationContext, "Application has not been approved yet", Toast.LENGTH_SHORT).show()
+
+                }
+                else
+                {
+                    val intent = Intent(this@BusinessSignIn, BusinessDashboard::class.java)
+                    startActivity(intent)
                     //    Toast.makeText(applicationContext, "No business set up yet.", Toast.LENGTH_SHORT).show()
                 }
             }
@@ -92,6 +152,7 @@ class BusinessSignIn : AppCompatActivity() {
                 Toast.makeText(this@BusinessSignIn, error.toString(), Toast.LENGTH_SHORT).show()
             }
         })
+
     }
 
     private fun startAppropriateActivity(a: Boolean) {
@@ -143,3 +204,13 @@ class BusinessSignIn : AppCompatActivity() {
         }
     }
 }
+
+/*
+{
+  "rules": {
+    ".read": "auth != null",
+    ".write": "auth != null"
+  }
+}
+
+ */

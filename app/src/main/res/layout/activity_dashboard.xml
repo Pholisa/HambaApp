@@ -5,8 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_below="@id/search_bar"
-    android:background="@drawable/hamba_background"
+    android:background="@drawable/bluegradientbackground"
     tools:context=".HambaTourist.Dashboard">
 
     <ScrollView
@@ -25,7 +24,7 @@
         <TextView
             android:id="@+id/tv_title"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:fontFamily="cursive"
             android:text="Hamba"
@@ -97,7 +96,7 @@
 
                     <ImageView
                         android:id="@+id/iv_bed"
-                        android:layout_width="80dp"
+                        android:layout_width="94dp"
                         android:layout_height="70dp"
                         android:src="@drawable/ic_bed" />
 
@@ -342,7 +341,7 @@
                             android:id="@+id/contLocationDBV"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="12dp"
+                            android:layout_marginStart="28dp"
                             android:layout_marginTop="4dp"
                             android:text="Location"
                             android:textSize="20sp"

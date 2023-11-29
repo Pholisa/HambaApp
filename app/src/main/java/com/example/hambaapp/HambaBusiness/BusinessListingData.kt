@@ -186,7 +186,7 @@ class BusinessListingData : AppCompatActivity() {
         dropdownMenu.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(adapterView: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 selectedCategory = dropdownMenu.selectedItem?.toString() ?: ""
-                Toast.makeText(applicationContext, "You selected: $selectedCategory", Toast.LENGTH_LONG).show()
+             //   Toast.makeText(applicationContext, "You selected: $selectedCategory", Toast.LENGTH_LONG).show()
             }
 
             override fun onNothingSelected(adapterView: AdapterView<*>?) {

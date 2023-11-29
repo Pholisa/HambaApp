@@ -28,10 +28,10 @@ class TourismAdapter(private val context: Context,
         val tvBusinessEmail : TextView = itemView.findViewById(R.id.busEmailRV)
         val tvBusinessLocation : TextView = itemView.findViewById(R.id.busLocationRV)
         val tvBusinessNo : TextView = itemView.findViewById(R.id.busNumberRV)
-        val favourites : ImageView = itemView.findViewById(R.id.busImageRV)
+        val more : ImageView = itemView.findViewById(R.id.busImageRV)
 
         //on click listener for favourites
-        init { favourites.setOnClickListener {adapterPosition} }
+        init { more.setOnClickListener {adapterPosition} }
 
     }
 

@@ -37,9 +37,7 @@
         <activity
             android:name=".HambaBusiness.BusinessOption"
             android:exported="false" />
-        <activity
-            android:name=".DashboardAdmin"
-            android:exported="false" />
+
         <activity
             android:name=".Accomodation"
             android:exported="false" />
@@ -52,15 +50,14 @@
         <activity
             android:name=".HambaAdmin.SignInAdmin"
             android:exported="false" />
-        <activity
-            android:name=".Welcome"
-            android:exported="false" />
+
         <activity
             android:name=".DeleteListing"
             android:exported="false" />
         <activity
             android:name=".CurrentListing"
             android:exported="false" />
+
 
         <meta-data
             android:name="preloaded_fonts"
@@ -110,9 +107,7 @@
         <activity
             android:name=".HambaBusiness.BusinessSettings"
             android:exported="false" />
-        <activity
-            android:name=".HambaTourist.TouristSignIn"
-            android:exported="false" />
+       
         <activity
             android:name=".HambaBusiness.BusinessListingData"
             android:exported="false" />

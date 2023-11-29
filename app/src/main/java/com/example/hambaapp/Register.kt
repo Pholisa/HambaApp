@@ -4,10 +4,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import com.example.hambaapp.HambaTourist.TouristSignIn
+import com.example.hambaapp.HambaBusiness.BusinessSignIn
 import com.example.hambaapp.databinding.ActivityRegisterBinding
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
@@ -15,13 +14,7 @@ class Register : AppCompatActivity() {
 
     private lateinit var binding: ActivityRegisterBinding
     private lateinit var firebaseAuthentication: FirebaseAuth
-
     private val theDatabase = Firebase.database
-    private val userID = FirebaseAuth.getInstance().currentUser?.uid
-    val myReference = theDatabase.getReference("users").child(userID ?: "").child("Personal Details")
-
-
-    private lateinit var database: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,12 +40,15 @@ class Register : AppCompatActivity() {
                     firebaseAuthentication.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
                         if(it.isSuccessful)
                         {
+                            val userID = FirebaseAuth.getInstance().currentUser?.uid
+                            val myReference = theDatabase.getReference("users").child(userID!!).child("Personal Details")
 
-                            val User = User(email,name, number)
-                            myReference.setValue(User).addOnSuccessListener {
+                          //  val User = User(email,name, number)
+                            val User1 = User1(email,name, number,"businessowner")
+                            myReference.setValue(User1).addOnSuccessListener {
                                 Toast.makeText(this, "Information Saved", Toast.LENGTH_SHORT).show()
 
-                                val intent = Intent(this, TouristSignIn::class.java)
+                                val intent = Intent(this, BusinessSignIn::class.java)
                                 startActivity(intent)
                             }
 
@@ -76,7 +72,7 @@ class Register : AppCompatActivity() {
 
         //Currently redirects user to register tourist only
         binding.tvLogin1.setOnClickListener {
-            val loginIntent = Intent(this, Welcome::class.java)
+            val loginIntent = Intent(this, BusinessSignIn::class.java)
             startActivity(loginIntent)
         }
     }

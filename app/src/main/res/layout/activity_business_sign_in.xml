@@ -7,32 +7,11 @@
     android:background="@drawable/hamba_welcome"
     tools:context=".HambaBusiness.BusinessSignIn">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="227dp"
-        android:layout_height="347dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.372"
-        app:srcCompat="@drawable/hambalogojpeg2" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="84dp"
-        android:text="Hamba Business"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/edLoginPassword_bus"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/edLoginEmail_bus"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/theborder2"
         android:drawablePadding="8dp"
         android:hint="Email Address"
@@ -56,24 +35,26 @@
         android:layout_height="wrap_content"
         android:background="@drawable/theborder2"
         android:drawableLeft="@drawable/baseline_lock_24"
+        android:drawablePadding="8dp"
         android:hint="Password"
         android:inputType="textPassword"
         android:padding="15dp"
-        android:paddingTop="20dp"
+        android:paddingTop="10dp"
         android:textColor="@color/grey"
+        app:endIconMode="password_toggle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.458"
-        android:drawablePadding="8dp"
-        app:endIconMode="password_toggle">
+        app:layout_constraintTop_toBottomOf="@+id/edLoginEmail_bus"
+        app:layout_constraintVertical_bias="0.079">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"/>
+            android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
+
     <Button
         android:id="@+id/btn_busSignIn"
         android:layout_width="132dp"

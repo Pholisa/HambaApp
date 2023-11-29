@@ -24,20 +24,22 @@ class Settings : AppCompatActivity() {
         navigationBar()
         var registerAsOwner = findViewById<ImageView>(R.id.iv_businessEdit)
 
-        registerAsOwner.setOnClickListener {
-            val intent = Intent(this, BusinessOption::class.java)
-            startActivity(intent)
-        }
 
         //about application
         var about = findViewById<ImageView>(R.id.iv_selectAbout)
         about.setOnClickListener {
-
         }
 
         val sheet1 = findViewById<FrameLayout>(R.id.sheet1)
         var constraintAbout = findViewById<ConstraintLayout>(R.id.constraint_about)
         var textValue = findViewById<TextView>(R.id.tv_aboutText)
+        var constraintList= findViewById<ConstraintLayout>(R.id.list_businessconstraint)
+
+        //List business on click listener/register as business owner
+        constraintList.setOnClickListener{
+            val intent = Intent(this, BusinessOption::class.java)
+            startActivity(intent)
+        }
         //about
         constraintAbout.setOnClickListener {
             Toast.makeText(this, "click works", Toast.LENGTH_SHORT).show()

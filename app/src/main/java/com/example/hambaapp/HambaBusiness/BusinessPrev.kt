@@ -8,7 +8,6 @@ import android.widget.TextView
 import android.widget.Toast
 import com.example.hambaapp.HambaTourist.Dashboard
 import com.example.hambaapp.R
-import com.example.hambaapp.Welcome
 import com.example.hambaapp.databinding.ActivityBusinessPrevBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.auth.FirebaseAuth
@@ -25,7 +24,6 @@ class BusinessPrev : AppCompatActivity() {
     private val userID = FirebaseAuth.getInstance().currentUser?.uid
     private val myReference = theDatabase.getReference("users").child(userID!!).child("Business Information")
     private lateinit var firebaseAuthentication: FirebaseAuth
-
     private lateinit var database: DatabaseReference
     private lateinit var companyName : TextView
     private lateinit var registerNumber : TextView

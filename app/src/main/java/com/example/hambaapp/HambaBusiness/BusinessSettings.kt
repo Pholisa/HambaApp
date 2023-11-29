@@ -7,19 +7,15 @@ import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Base64
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
-import android.widget.EditText
 import android.widget.FrameLayout
-import com.example.hambaapp.CurrentListing
-import com.example.hambaapp.DeleteListing
 import com.example.hambaapp.HambaAdmin.SignInAdmin
+import com.example.hambaapp.HambaTourist.Dashboard
 import com.example.hambaapp.R
-import com.example.hambaapp.Welcome
 import com.example.hambaapp.databinding.ActivityBusinessSettingsBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -36,20 +32,15 @@ import com.karumi.dexter.listener.PermissionGrantedResponse
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.single.PermissionListener
 import java.io.ByteArrayOutputStream
-import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textfield.TextInputLayout
 
 
 class BusinessSettings : AppCompatActivity() {
 
 
     private lateinit var binding: ActivityBusinessSettingsBinding
-    private lateinit var viewListImageView: ImageView
-    private val galleryRequestCode = 2
     private var rationaleDialogShown = false
     private var stringImage: String = ""
     private val userID = FirebaseAuth.getInstance().currentUser?.uid
-    private lateinit var myReference: DatabaseReference
     private lateinit var databaseReference: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -360,7 +351,7 @@ class BusinessSettings : AppCompatActivity() {
             }
 
             .setPositiveButton("Sign out") { dialog, which ->
-                val intent = Intent(this, Welcome::class.java)
+                val intent = Intent(this, Dashboard::class.java)
                 startActivity(intent)
             }
             .show()

@@ -83,12 +83,15 @@ class AdminAdapter(
             onItemClickListener(currentBusiness)
         }
 
+        //button more click listener
         holder.btnMore.setOnClickListener {
             showPopupMenu(holder.btnMore, position, currentBusiness)
         }
-
     }
+    //----------------------------------------------------------------------------------------------
 
+    //----------------------------------------------------------------------------------------------
+    //getting count of items
     override fun getItemCount(): Int {
         return businessList.size
     }

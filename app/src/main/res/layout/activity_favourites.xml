@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -13,39 +14,44 @@
         android:layout_height="wrap_content"
         android:fontFamily="cursive"
         android:text="Hamba"
-        android:textSize="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="50sp"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.037" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_gravity="center"/>
 
     <TextView
-        android:id="@+id/favourites_txt"
+        android:id="@+id/hamba_vibe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-thin"
-        android:text="Favourites (currently disabled)"
-        android:textColor="@color/white"
-        android:textSize="25dp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="105dp"
-        tools:ignore="MissingConstraints" />
+        android:text="what are people saying??"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@id/hamba_txt"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvBusinessDisplayingComments"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/hamba_vibe"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        tools:listitem="@layout/delete_listing_item"
+        android:layout_marginLeft="1dp"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_default="wrap"
+        app:layout_constraintHeight_min="0dp"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:background="@drawable/nav_background"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_navigation"
-        >
-
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
-
-
+        app:menu="@menu/bottom_navigation"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

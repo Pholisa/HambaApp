@@ -3,6 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
     id 'com.google.gms.google-services'
+    id 'org.sonarqube' version '3.3'
 }
 
 android {
@@ -43,6 +44,18 @@ android {
     buildFeatures{
         viewBinding true
     }
+
+
+    sonarqube {
+        properties {
+            property "sonar.projectName", "HambaApplication"
+            property "sonar.projectKey", "HambaApplicationKey"
+            property "sonar.host.url", "http://localhost:9000"
+            property "sonar.language", "kotlin"
+            property "sonar.login", "sqp_839e193a40e851275cea9619b7162142aa7cd436"
+        }
+    }
+
 }
 
 dependencies {
@@ -89,7 +102,7 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.8'
 
     implementation "androidx.fragment:fragment-ktx:1.6.2"
-    implementation 'com.anychart:anychart:1.4.1'
+
 
 
 }

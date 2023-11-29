@@ -32,30 +32,35 @@ class BusinessSignIn : AppCompatActivity() {
     private lateinit var firebaseAuthentication: FirebaseAuth
     private val theDatabase = Firebase.database
     private lateinit var myReference: DatabaseReference
-    private var companyName: String = ""
-    private var myReference1 = theDatabase.getReference("users")
     private lateinit var database: DatabaseReference
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityBusinessSignInBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //initialiasing firebase
         firebaseAuthentication = FirebaseAuth.getInstance()
+
+        //calling setup function where user login happens
         setupUI()
 
+        //registration button
         binding.tvRegisterRedirectText2.setOnClickListener {
             val intent = Intent(this, Register::class.java)
             startActivity(intent)
         }
 
+        //forgot password feature
         binding.tvBusForgot.setOnClickListener {
             showForgotPasswordDialog()
         }
     }
+    //--------------------------------------------------------------------------------------------
 
-    private fun setupUI() {
+    //--------------------------------------------------------------------------------------------
+    private fun setupUI()
+    {
         binding.btnBusSignIn.setOnClickListener {
             val username = binding.edLoginEmailBus.editText?.text.toString()
             val pass = binding.edLoginPasswordBus.editText?.text.toString()
@@ -80,7 +85,10 @@ class BusinessSignIn : AppCompatActivity() {
             }
         }
     }
+    //--------------------------------------------------------------------------------------------
 
+    //--------------------------------------------------------------------------------------------
+    //function that will check the logged in user's role
     fun checkRole()
     {
         database = Firebase.database.reference
@@ -99,15 +107,14 @@ class BusinessSignIn : AppCompatActivity() {
                 //Toast.makeText(this, "role is $role", Toast.LENGTH_SHORT).show()
                 checkBusinessSetup(userID!!)
             }
-
-
         }.addOnFailureListener {
             Toast.makeText(this, it.toString(), Toast.LENGTH_SHORT).show()
-
         }
-
     }
+    //----------------------------------------------------------------------------------------------
 
+    //----------------------------------------------------------------------------------------------
+    //function that checks whether user has applied or not
     private fun checkBusinessSetup(userID:String) {
         myReference = theDatabase.getReference("users").child(userID!!).child("Business Information")
         myReference?.addListenerForSingleValueEvent(object : ValueEventListener {
@@ -129,7 +136,10 @@ class BusinessSignIn : AppCompatActivity() {
             }
         })
     }
+    //----------------------------------------------------------------------------------------------
 
+    //----------------------------------------------------------------------------------------------
+    //function to check if the registered user's application has been approved or not
     private fun checkApplicationStatus(userID:String)
     {
         myReference = theDatabase.getReference("Account Requests").child(userID!!)
@@ -137,24 +147,25 @@ class BusinessSignIn : AppCompatActivity() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists())
                 {
+                    //if data is inside the account requests node then it hasnt been approved yet
                     Toast.makeText(applicationContext, "Application has not been approved yet", Toast.LENGTH_SHORT).show()
-
                 }
                 else
                 {
+                    //its been approved
                     val intent = Intent(this@BusinessSignIn, BusinessDashboard::class.java)
                     startActivity(intent)
-                    //    Toast.makeText(applicationContext, "No business set up yet.", Toast.LENGTH_SHORT).show()
                 }
             }
-
             override fun onCancelled(error: DatabaseError) {
                 Toast.makeText(this@BusinessSignIn, error.toString(), Toast.LENGTH_SHORT).show()
             }
         })
-
     }
+    //----------------------------------------------------------------------------------------------
 
+    //----------------------------------------------------------------------------------------------
+    //function to push user to activities accordingly
     private fun startAppropriateActivity(a: Boolean) {
         val intent = if (a.equals(true))
         {
@@ -167,8 +178,12 @@ class BusinessSignIn : AppCompatActivity() {
         startActivity(intent)
         finish()  // Optional: finish the current activity to prevent going back to the sign-in screen
     }
+    //----------------------------------------------------------------------------------------------
 
-    private fun showForgotPasswordDialog() {
+    //----------------------------------------------------------------------------------------------
+    //forgot password feature
+    private fun showForgotPasswordDialog()
+    {
         val builder = AlertDialog.Builder(this)
         val view = layoutInflater.inflate(R.layout.activity_forgot_password, null)
         val userEmailAddress = view.findViewById<EditText>(R.id.editBox)
@@ -191,8 +206,12 @@ class BusinessSignIn : AppCompatActivity() {
 
         dialog.show()
     }
+    //----------------------------------------------------------------------------------------------
 
-    private fun compareEmail(email: EditText) {
+    //----------------------------------------------------------------------------------------------
+    //function to compare user emails
+    private fun compareEmail(email: EditText)
+    {
         if (email.text.toString().isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(email.text.toString()).matches()) {
             return
         }
@@ -203,6 +222,7 @@ class BusinessSignIn : AppCompatActivity() {
             }
         }
     }
+    //----------------------------------------------------------------------------------------------
 }
 
 /*

@@ -7,6 +7,7 @@ import android.util.Base64
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -28,10 +29,10 @@ class TourismAdapter(private val context: Context,
         val tvBusinessEmail : TextView = itemView.findViewById(R.id.busEmailRV)
         val tvBusinessLocation : TextView = itemView.findViewById(R.id.busLocationRV)
         val tvBusinessNo : TextView = itemView.findViewById(R.id.busNumberRV)
-        val more : ImageView = itemView.findViewById(R.id.busImageRV)
+        val more : Button = itemView.findViewById(R.id.ivFavRV)
 
         //on click listener for favourites
-        init { more.setOnClickListener {adapterPosition} }
+      //  init { more.setOnClickListener {adapterPosition} }
 
     }
 
@@ -50,7 +51,7 @@ class TourismAdapter(private val context: Context,
         holder.tvBusinessDesc.text =  "Description:" +currentBusiness.businessSummary
         holder.tvBusinessEmail.text = "Email:" + currentBusiness.emailAd
         holder.tvBusinessNo.text = "Number:" + currentBusiness.telephoneNo
-        holder.tvBusinessPrice.text = "R" + currentBusiness.price
+        holder.tvBusinessPrice.text = currentBusiness.price
         holder.tvBusinessLocation.text = currentBusiness.locationString
 
         val imageString = currentBusiness.stringImage
@@ -76,6 +77,11 @@ class TourismAdapter(private val context: Context,
         holder.itemView.setOnClickListener {
             onItemClickListener(currentBusiness)
         }
+
+        holder.more.setOnClickListener {
+            onItemClickListener(currentBusiness)
+        }
+
     }
     //----------------------------------------------------------------------------------------------
 
@@ -106,3 +112,4 @@ class TourismAdapter(private val context: Context,
     }
     //----------------------------------------------------------------------------------------------
 }
+//------------------------------------------ooo000EndOfFile000ooo-----------------------------------

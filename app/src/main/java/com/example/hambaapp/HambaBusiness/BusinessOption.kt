@@ -12,10 +12,9 @@ class BusinessOption : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_business_option)
 
-
+        //intitilising text viewws
         val registerBusiness = findViewById<Button>(R.id.btnRegisterBus)
         val signInBusiness = findViewById<Button>(R.id.btnSignInBus)
-
 
         //To access business register UI
         registerBusiness.setOnClickListener {

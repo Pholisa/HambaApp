@@ -18,9 +18,11 @@ class BusinessEntryItems : AppCompatActivity() {
         binding = BusinessEntryItemsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //calling navigation function
         navigationBar()
 
     }
+    //----------------------------------------------------------------------------------------------
 
     //----------------------------------------------------------------------------------------------
     //navigation bar
@@ -48,8 +50,6 @@ class BusinessEntryItems : AppCompatActivity() {
                     val intent = Intent(this, BusinessSettings::class.java)
                     startActivity(intent)
                 }
-
-
                 else -> {}
             }
             true
@@ -57,3 +57,4 @@ class BusinessEntryItems : AppCompatActivity() {
     }
     //----------------------------------------------------------------------------------------------
 }
+//------------------------------------------ooo000EndOfFile000ooo-----------------------------------

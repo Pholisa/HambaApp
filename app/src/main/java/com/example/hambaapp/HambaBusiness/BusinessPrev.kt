@@ -33,17 +33,13 @@ class BusinessPrev : AppCompatActivity() {
     private lateinit var businessAddress : TextView
     private lateinit var businessCategory : TextView
 
-
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityBusinessPrevBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //is user clicks save
+        //if user clicks save
         var save = findViewById<Button>(R.id.btnDone1)
-
         save.setOnClickListener {
             val intent = Intent(this, BusinessDashboard::class.java)
             startActivity(intent)
@@ -74,10 +70,6 @@ class BusinessPrev : AppCompatActivity() {
                 it.child("Business Information").child("businessAddress").child("").value.toString()
             val businessCat =
                 it.child("Business Information").child("businessCategory").child("").value.toString()
-            val theTitle =
-                it.child("Business Description").child("title").child("").value.toString()
-            val businessSum =
-                it.child("Business Description").child("businessSummary").child("").value.toString()
 
             companyName.text = company
             registerNumber.text = regNumber
@@ -87,14 +79,11 @@ class BusinessPrev : AppCompatActivity() {
             businessAddress.text = businessAd
             businessCategory.text = businessCat
 
-
         }.addOnFailureListener {
             Toast.makeText(this, it.toString(), Toast.LENGTH_SHORT).show()
-
         }
-
-
     }
+    //----------------------------------------------------------------------------------------------
 
     //----------------------------------------------------------------------------------------------
     private fun navigationBar() {
@@ -121,6 +110,8 @@ class BusinessPrev : AppCompatActivity() {
             true
         }
     }
+    //----------------------------------------------------------------------------------------------
+
     //----------------------------------------------------------------------------------------------
     //logout function
     private fun logoutUI()

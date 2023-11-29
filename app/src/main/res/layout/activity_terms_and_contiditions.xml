@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/hamba_background"
+    tools:context=".TermsAndContiditions">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="cursive"
+                android:text="Hamba"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="50sp"/>
+
+            <TextView
+                android:id="@+id/tv_heading"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="60dp"
+                android:text="More Info"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="25sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_heading"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_subHead1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="30dp"
+                    android:layout_marginTop="15dp"
+                    android:textStyle="italic"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/comfortaabold"
+                    android:text="WHO ARE WE"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:id="@+id/tv_describe1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginTop="15dp"
+                    android:textColor="@color/white"
+                    android:text="SALTHA (South Aftrican Leisure, Tourism, and Hospitality Association) was founded to provide a secure space in the economy for small rising tourism operators."
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tv_subHead2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="30dp"
+                    android:layout_marginTop="15dp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/comfortaabold"
+                    android:text="OUR VISION"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:id="@+id/tv_describe2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="30dp"
+                    android:layout_marginTop="15dp"
+                    android:text="To be the leading voice of tourism leisure and hospitality for small, medium and large enterprices in South Africa.
+"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:id="@+id/tv_subHead3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="30dp"
+                    android:layout_marginTop="15dp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/comfortaabold"
+                    android:text="OUR MISSION"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:id="@+id/tv_describe3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="30dp"
+                    android:layout_marginTop="15dp"
+                    android:text="Aims to develop the leisure and tourism in our country, promotes to protect members rights, lobby for a conductive atmosphere, growth and development of professional small tourism operators."
+                    android:textSize="20sp"
+                    android:textColor="@color/white"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:id="@+id/tv_subHead4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="30dp"
+                    android:layout_marginTop="15dp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/comfortaabold"
+                    android:text="TALK TO US"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:id="@+id/tv_describe5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="30dp"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/white"
+                    android:text="Contact person for SALTHA:"
+                    android:textSize="20sp" />
+                <TextView
+                    android:id="@+id/tv_describe6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="30dp"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/white"
+                    android:text="Mr Richard Zulu"
+                    android:textSize="20sp" />
+                <TextView
+                    android:id="@+id/tv_describe7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="30dp"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/white"
+                    android:text="Cell: 083 790 0875"
+                    android:textSize="20sp" />
+                <TextView
+                    android:id="@+id/tv_describe8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="30dp"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/white"
+                    android:text="Email: info.saltha@gmail.com"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tv_describe9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="30dp"
+                    android:layout_marginTop="105dp"
+                    android:textColor="@color/white"
+                    android:text="This was proudly designed and developed by:"
+                    android:textSize="18sp"
+                    tools:ignore="HardcodedText" />
+                <TextView
+                    android:id="@+id/tv_describe10"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="130dp"
+                    android:layout_marginEnd="30dp"
+                    android:layout_marginTop="15dp"
+                    android:textColor="@color/white"
+                    android:text="CTRL ALT ELITE"
+                    android:textSize="18sp" />
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/nav_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_navigation"
+        >
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

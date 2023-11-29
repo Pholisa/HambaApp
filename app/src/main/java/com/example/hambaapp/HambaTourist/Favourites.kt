@@ -18,7 +18,9 @@ class Favourites : AppCompatActivity() {
         navigationBar()
     }
 
-    private fun navigationBar() {
+    //----------------------------------------------------------------------------------------------
+    private fun navigationBar()
+    {
         //This will account for event clicking of the navigation bar (similar to if statement format)
         binding.bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
@@ -46,5 +48,7 @@ class Favourites : AppCompatActivity() {
             }
             true
         }
+        //----------------------------------------------------------------------------------------------
     }
 }
+//------------------------------------------ooo000EndOfFile000ooo-----------------------------------

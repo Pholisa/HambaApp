@@ -36,14 +36,15 @@ class MyBusinessAdapter(
         init {
             btnMore.setOnClickListener { showPopupMenu(btnMore, adapterPosition) }
         }
-
     }
 
+    //----------------------------------------------------------------------------------------------
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val itemView =
             LayoutInflater.from(parent.context).inflate(R.layout.list_business_item, parent, false)
         return MyViewHolder(itemView)
     }
+    //----------------------------------------------------------------------------------------------
 
     //----------------------------------------------------------------------------------------------
     //assigning a value to each holder on recycler
@@ -80,13 +81,16 @@ class MyBusinessAdapter(
         holder.itemView.setOnClickListener {
             onItemClickListener(currentBusiness)
         }
+
     }
 
+    //----------------------------------------------------------------------------------------------
     //getting the size of businesses
     override fun getItemCount(): Int
     {
         return businessList.size
     }
+    //----------------------------------------------------------------------------------------------
 
     //----------------------------------------------------------------------------------------------
     // Function to decode image from base64 string
@@ -125,11 +129,8 @@ class MyBusinessAdapter(
                 else -> false
             }
         }
-
         popupMenu.show()
     }
     //----------------------------------------------------------------------------------------------
-
 }
-
-
+//------------------------------------------ooo000EndOfFile000ooo-----------------------------------

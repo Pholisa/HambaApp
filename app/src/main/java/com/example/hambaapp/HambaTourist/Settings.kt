@@ -12,6 +12,7 @@ import com.example.hambaapp.HambaBusiness.BusinessOption
 import com.example.hambaapp.MoreInfo
 import com.example.hambaapp.R
 import com.example.hambaapp.RateUs
+import com.example.hambaapp.TermsAndContiditions
 import com.example.hambaapp.databinding.ActivitySettingsBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 
@@ -24,7 +25,6 @@ class Settings : AppCompatActivity() {
 
         //calling the navigation bar
         navigationBar()
-
 
 
         val sheet1 = findViewById<FrameLayout>(R.id.sheet1)
@@ -46,11 +46,8 @@ class Settings : AppCompatActivity() {
         //terms and conditions
         var constraintConditions = findViewById<ConstraintLayout>(R.id.constraint_conditions)
         constraintConditions.setOnClickListener {
-            BottomSheetBehavior.from(sheet1).apply {
-                peekHeight = 0
-                state = BottomSheetBehavior.STATE_EXPANDED
-                textValue.text = getString(R.string.termsandconditions)
-            }
+            val intent = Intent(this, TermsAndContiditions::class.java)
+            startActivity(intent)
         }
 
         //privacy
@@ -73,7 +70,7 @@ class Settings : AppCompatActivity() {
         //share
         var constraintShare = findViewById<ConstraintLayout>(R.id.constraint_share)
         constraintShare.setOnClickListener {
-            Toast.makeText(this, "To do ", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Enabled at release", Toast.LENGTH_SHORT).show()
         }
     }
     //----------------------------------------------------------------------------------------------

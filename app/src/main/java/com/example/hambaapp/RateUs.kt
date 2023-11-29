@@ -53,6 +53,8 @@ class RateUs : AppCompatActivity() {
             myReference.push().setValue(comment).addOnSuccessListener {
                 // Toast.makeText(this, "selected category is $selectedCategory", Toast.LENGTH_SHORT).show()
                 Toast.makeText(this, "Comment successfully saved! We appreciate the feedback!", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, Favourites::class.java)
+                startActivity(intent)
             }
         }
         else

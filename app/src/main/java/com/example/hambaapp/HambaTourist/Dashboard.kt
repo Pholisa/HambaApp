@@ -20,13 +20,11 @@ class Dashboard : AppCompatActivity() {
 
     private lateinit var binding: ActivityDashboardBinding
     private lateinit var recyclerViewTourism: RecyclerView
-    val businessArrayList = mutableListOf<BusinessDetailPublic1>()
+    val businessArrayList = mutableListOf<BusinessDetailPublic1>() //dictionary to store business data from database
     val businessArrayList1 = mutableListOf<BusinessDetailPublic1>()
     //private val userID = FirebaseAuth.getInstance().currentUser?.uid
     private lateinit var databaseReference: DatabaseReference
     private val database = FirebaseDatabase.getInstance()
-    //var businessCount: Int = 0
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

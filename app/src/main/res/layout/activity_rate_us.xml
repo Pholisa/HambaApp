@@ -184,6 +184,18 @@
         tools:layout_editor_absoluteY="585dp"
         tools:ignore="MissingConstraints" />
 
+        <EditText
+            android:id="@+id/commenter_name"
+            android:layout_width="377dp"
+            android:layout_height="60dp"
+            android:hint="Enter your name"
+            android:inputType="textMultiLine"
+            android:lines="4"
+            tools:layout_editor_absoluteX="18dp"
+            tools:layout_editor_absoluteY="611dp"
+            tools:ignore="MissingConstraints"
+            android:background="@drawable/button_background"/>
+
     <EditText
         android:id="@+id/commentEditText"
         android:layout_width="377dp"
@@ -191,12 +203,13 @@
         android:hint="Enter your comment"
         android:inputType="textMultiLine"
         android:lines="4"
-        tools:layout_editor_absoluteX="18dp"
-        tools:layout_editor_absoluteY="611dp"
-        tools:ignore="MissingConstraints" />
+        android:layout_marginTop="10dp"
+        tools:ignore="MissingConstraints"
+        android:background="@drawable/button_background"/>
 
 
         <Button
+            android:id="@+id/btn_submit_comment"
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:text="submit"

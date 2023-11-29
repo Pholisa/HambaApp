@@ -12,3 +12,8 @@ data class User1
     val fullName: String? = null,
     val phoneNumber: String? = null,
     val role: String? = null)
+
+data class User3
+    (
+    val name: String? = null,
+    val comment: String? = null)
